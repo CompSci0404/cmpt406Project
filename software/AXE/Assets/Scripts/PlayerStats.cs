@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    private int controllerNumber;
+    public int controllerNumber;
     private float moveSpeed;
     private float range;
     private float damage;
@@ -24,6 +24,7 @@ public class PlayerStats : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // initialize stats
         moveSpeed = 30f;
         range = 1f;
         damage = 5f;
