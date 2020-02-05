@@ -17,13 +17,16 @@ public class MainControls : MonoBehaviour
     private List<GameObject> players;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        players = new List<GameObject>();
         // Get movement script from this object
         for (int i = 0; i < transform.childCount; i++)
         {
             players.Add(transform.GetChild(i).gameObject);
         }
+
+        SwapPlayer();
     }
 
     // Update is called once per frame
@@ -31,14 +34,22 @@ public class MainControls : MonoBehaviour
     {
         // wait for an input and set opposite player controller active
         if (Input.GetButtonDown(yButton)) {
-            stats.gameObject.SetActive(false);
-            GameObject nextPlayer = players[0];
-            nextPlayer.SetActive(true);
-            players.Remove(nextPlayer);
-            players.Add(nextPlayer);
+            SwapPlayer();
         };
         
         // player has a method that activates when it becomes active and sends its stats to this class
+    }
+
+    private void SwapPlayer()
+    {
+        Debug.Log("SwapPlayer()");
+
+        if (null != stats) stats.gameObject.SetActive(false);
+        GameObject nextPlayer = players[0];
+        nextPlayer.SetActive(true);
+
+        players.Remove(nextPlayer);
+        players.Add(nextPlayer);
     }
 
     public void UpdateStats(PlayerStats stats)
