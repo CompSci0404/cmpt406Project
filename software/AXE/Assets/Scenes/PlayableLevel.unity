@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 79331753}
   m_Layer: 0
   m_Name: Weapon
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2729,7 +2729,7 @@ Tilemap:
   - first: {x: -6, y: 4, z: 0}
     second:
       m_TileIndex: 15
-      m_TileSpriteIndex: 15
+      m_TileSpriteIndex: 17
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -2819,7 +2819,7 @@ Tilemap:
   - first: {x: 4, y: 4, z: 0}
     second:
       m_TileIndex: 13
-      m_TileSpriteIndex: 13
+      m_TileSpriteIndex: 15
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -2986,16 +2986,16 @@ Tilemap:
     m_Data: {fileID: 21300190, guid: 87e34f36da27a6c49ad7eede589fafe2, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: 21300170, guid: 87e34f36da27a6c49ad7eede589fafe2, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300218, guid: 87e34f36da27a6c49ad7eede589fafe2, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 21300220, guid: 87e34f36da27a6c49ad7eede589fafe2, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 21300214, guid: 87e34f36da27a6c49ad7eede589fafe2, type: 3}
+    m_Data: {fileID: 21300218, guid: 87e34f36da27a6c49ad7eede589fafe2, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300216, guid: 87e34f36da27a6c49ad7eede589fafe2, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300214, guid: 87e34f36da27a6c49ad7eede589fafe2, type: 3}
   - m_RefCount: 4
     m_Data: {fileID: 21300002, guid: 87e34f36da27a6c49ad7eede589fafe2, type: 3}
   - m_RefCount: 1
@@ -3113,6 +3113,7 @@ GameObject:
   - component: {fileID: 617130440}
   - component: {fileID: 617130439}
   - component: {fileID: 617130438}
+  - component: {fileID: 617130442}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -3234,6 +3235,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &617130442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617130437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84fb66a717d24084583cf99c4a84266b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &931795056
 GameObject:
   m_ObjectHideFlags: 0
@@ -3835,7 +3848,7 @@ GameObject:
   - component: {fileID: 1631656405}
   - component: {fileID: 1631656404}
   m_Layer: 0
-  m_Name: Grid
+  m_Name: Room
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
