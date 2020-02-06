@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class movementAi : AIClass
+public class MovementAi : AIClass
 {
     private float saveSpeed;
     private GameObject ply; 
 
-    public bool enemySpotted()
+    public bool EnemySpotted()
     {
-        if (Vector2.Distance(this.transform.position, ply.transform.position) < this.FOV)
+        if (Vector2.Distance(this.transform.position, ply.transform.position) < this.fov)
         {
 
             return true;
@@ -20,18 +20,16 @@ public class movementAi : AIClass
         }
     }
 
-    public void move()
+    public void Move()
     {
         speed = saveSpeed;
         this.transform.position = Vector2.MoveTowards(this.transform.position, ply.transform.position, speed * Time.deltaTime); 
     }
 
 
-    public void idle()
+    public void Idle()
     {
-
         this.speed = 0f; 
-
     }
 
     // Start is called before the first frame update
@@ -42,13 +40,13 @@ public class movementAi : AIClass
 
         decisionTree inRangeNode = new decisionTree();
 
-        inRangeNode.buildDecision(enemySpotted);
+        inRangeNode.buildDecision(EnemySpotted);
 
         decisionTree AiMove = new decisionTree();
-        AiMove.buildAction(move);
+        AiMove.buildAction(Move);
 
         decisionTree AIidle = new decisionTree();
-        AIidle.buildAction(idle);
+        AIidle.buildAction(Idle);
 
         inRangeNode.Right(AiMove);
         inRangeNode.Left(AIidle);

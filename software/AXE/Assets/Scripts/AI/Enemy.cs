@@ -12,11 +12,6 @@ public class Enemy : MonoBehaviour
         // Enemy will have stats
     }
 
-    void Update()
-    {
-        // Enemy AI/Movement here?
-    }
-
     // When player hits the enemy, do something 
     private void OnCollisionEnter2D(Collision2D collision)
     {
