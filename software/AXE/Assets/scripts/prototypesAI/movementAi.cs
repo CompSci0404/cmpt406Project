@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class movementAi : AIClass
 {
-
+    private float saveSpeed;
     private GameObject ply; 
 
     public bool enemySpotted()
@@ -22,6 +22,7 @@ public class movementAi : AIClass
 
     public void move()
     {
+        speed = saveSpeed;
         this.transform.position = Vector2.MoveTowards(this.transform.position, ply.transform.position, speed * Time.deltaTime); 
     }
 
@@ -36,6 +37,7 @@ public class movementAi : AIClass
     // Start is called before the first frame update
     void Start()
     {
+        saveSpeed = speed;
         ply = GameObject.FindWithTag("Player");
 
         decisionTree inRangeNode = new decisionTree();
