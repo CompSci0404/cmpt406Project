@@ -23,25 +23,26 @@ public class Movement : MonoBehaviour
     {
         if (movement.x == -1)
         {
-            this.GetComponent<SpriteRenderer>().flipX = true;
-            Transform weaponT = transform.GetChild(0);
+            //transform.localScale = new Vector3(-1, 1, 1);
+            //this.GetComponent<SpriteRenderer>().flipX = true;
+            //Transform weaponT = transform.GetChild(0);
 
-            Vector3 weaponFlip = new Vector3(transform.position.x - 0.6f, transform.position.y, transform.position.z);
-            weaponT.position = weaponFlip;
+            //Vector3 weaponFlip = new Vector3(transform.position.x - 0.6f, transform.position.y, transform.position.z);
+            //weaponT.position = weaponFlip;
 
-            weaponT.Rotate(0f, 0f, 43.062f);
+            //weaponT.Rotate(0f, 0f, 43.062f);
+            
         }
         else if (movement.x == 1)
         {
-            this.GetComponent<SpriteRenderer>().flipX = false;
+            //this.GetComponent<SpriteRenderer>().flipX = false;
 
-            Transform weaponT = transform.GetChild(0);
+            //Transform weaponT = transform.GetChild(0);
 
-            Vector3 weaponFlip = new Vector3(transform.position.x + 0.5f, transform.position.y, transform.position.z);
-            weaponT.position = weaponFlip;
+            //Vector3 weaponFlip = new Vector3(transform.position.x + 0.5f, transform.position.y, transform.position.z);
+            //weaponT.position = weaponFlip;
 
-            weaponT.Rotate(0f, 0f, -43.955f);
-
+            //weaponT.Rotate(0f, 0f, -43.955f);
         }
         r_body.MovePosition(r_body.position + movement * move_speed * Time.fixedDeltaTime);
     }
