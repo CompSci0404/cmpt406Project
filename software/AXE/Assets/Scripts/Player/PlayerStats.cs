@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,17 +12,56 @@ public class PlayerStats : MonoBehaviour
     private float health;
     private float attackSpeed;
 
-    public float AttackSpeed { get => attackSpeed; set => attackSpeed = value; }
+    public float GetAttackSpeed()
+    {
+        return attackSpeed;
+    }
 
-    public float Health { get => health; set => health = value; }
+    public void SetAttackSpeed(float value)
+    {
+        attackSpeed = value;
+    }
 
-    public float Damage { get => damage; set => damage = value; }
+    public float GetHealth()
+    {
+        return health;
+    }
 
-    public float Range { get => range; set => range = value; }
+    public void SetHealth(float value)
+    {
+        health = value;
+    }
 
-    public float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
+    public float GetDamage()
+    {
+        return damage;
+    }
 
-    // Start is called before the first frame update
+    public void SetDamage(float value)
+    {
+        damage = value;
+    }
+
+    public float GetRange()
+    {
+        return range;
+    }
+
+    public void SetRange(float value)
+    {
+        range = value;
+    }
+
+    public float GetMoveSpeed()
+    {
+        return moveSpeed;
+    }
+
+    public void SetMoveSpeed(float value)
+    {
+        moveSpeed = value;
+    }
+
     void Awake()
     {
         // initialize stats
