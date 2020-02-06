@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
@@ -35,5 +36,16 @@ public class Movement : MonoBehaviour
             transform.localScale = new Vector3(1, 1, 1);
         }
         r_body.MovePosition(r_body.position + movement * move_speed * Time.fixedDeltaTime);
+
+        //var gamepad = Gamepad.current;
+        //if (gamepad == null)
+        //    return; // No gamepad connected.
+
+        //if (gamepad.rightTrigger.wasPressedThisFrame)
+        //{
+        //    // 'Use' code here
+        //}
+
+        //Vector2 move = gamepad.leftStick.ReadValue();
     }
 }
