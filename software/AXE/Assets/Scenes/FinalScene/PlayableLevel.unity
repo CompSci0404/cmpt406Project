@@ -402,7 +402,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  FOV: 3
+  fov: 2
+  health: 5
+  atkDamage: 5
 --- !u!114 &150699248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -564,7 +566,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  FOV: 5
+  fov: 4
+  health: 20
+  atkDamage: 2
 --- !u!114 &352278034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3735,7 +3739,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
-  FOV: 4
+  fov: 3
+  health: 10
+  atkDamage: 3
 --- !u!1 &931795056
 GameObject:
   m_ObjectHideFlags: 0
