@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MainControls : MonoBehaviour
 {
@@ -50,6 +51,7 @@ public class MainControls : MonoBehaviour
 
         players.Remove(nextPlayer);
         players.Add(nextPlayer);
+        gameObject.GetComponent<PlayerInputManager>().j
     }
 
     public void UpdateStats(PlayerStats stats)
