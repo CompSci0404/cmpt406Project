@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 79331752}
   - component: {fileID: 79331754}
   - component: {fileID: 79331753}
+  - component: {fileID: 79331755}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Player
@@ -230,6 +231,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &79331755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79331751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec94f1d99a7544947a29ab807aecf916, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &130421391
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,6 +254,7 @@ GameObject:
   - component: {fileID: 130421392}
   - component: {fileID: 130421394}
   - component: {fileID: 130421393}
+  - component: {fileID: 130421395}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -342,6 +356,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &130421395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 130421391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec94f1d99a7544947a29ab807aecf916, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &150699246
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,7 +384,7 @@ GameObject:
   - component: {fileID: 150699247}
   m_Layer: 0
   m_Name: 'Type2Enemy '
-  m_TagString: Enemy
+  m_TagString: Type2Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -498,7 +524,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 150699246}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.58, y: 3.73, z: -0.43359375}
+  m_LocalPosition: {x: -0.1, y: 4.08, z: -0.43359375}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -520,7 +546,7 @@ GameObject:
   - component: {fileID: 352278033}
   m_Layer: 0
   m_Name: Type1Enemy
-  m_TagString: Enemy
+  m_TagString: Type1Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -660,7 +686,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 352278032}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.03, y: -0.5817703, z: -0.43359375}
+  m_LocalPosition: {x: 4.93, y: -0.71, z: -0.43359375}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3564,7 +3590,7 @@ GameObject:
   - component: {fileID: 617130443}
   m_Layer: 0
   m_Name: UncoloredEnemy
-  m_TagString: Enemy
+  m_TagString: BaseEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3678,7 +3704,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 617130437}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.49, y: -0.5817703, z: -0.43359375}
+  m_LocalPosition: {x: -4.94, y: -0.97, z: -0.43359375}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3724,7 +3750,7 @@ GameObject:
   - component: {fileID: 931795057}
   m_Layer: 0
   m_Name: Player1
-  m_TagString: Player
+  m_TagString: Type1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5297,7 +5323,7 @@ GameObject:
   - component: {fileID: 1838793687}
   m_Layer: 0
   m_Name: SwapController
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5409,7 +5435,7 @@ GameObject:
   - component: {fileID: 2062363000}
   m_Layer: 0
   m_Name: Player2
-  m_TagString: Player
+  m_TagString: Type2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

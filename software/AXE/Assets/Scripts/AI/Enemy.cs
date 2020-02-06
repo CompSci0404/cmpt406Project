@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             // Take damage stats.Damage(collision.getDamage());
-            Debug.Log("Player has enemy!");
+            //Debug.Log("Player hit!");
         }
     }
 }

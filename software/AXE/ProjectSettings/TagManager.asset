@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Type1
+  - Type2
+  - BaseEnemy
+  - Type1Enemy
+  - Type2Enemy
   layers:
   - Default
   - TransparentFX
