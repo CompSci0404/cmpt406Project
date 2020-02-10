@@ -12,18 +12,13 @@ public class Enemy : MonoBehaviour
         // Enemy will have stats
     }
 
-    void Update()
-    {
-        // Enemy AI/Movement here?
-    }
-
     // When player hits the enemy, do something 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Player")
         {
             // Take damage stats.Damage(collision.getDamage());
-            Debug.Log("Player has enemy!");
+            //Debug.Log("Player hit!");
         }
     }
 }
