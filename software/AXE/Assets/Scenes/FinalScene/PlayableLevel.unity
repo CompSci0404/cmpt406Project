@@ -402,7 +402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  fov: 10
+  fov: 2
   health: 5
   atkDamage: 5
 --- !u!114 &150699248
@@ -422,8 +422,8 @@ MonoBehaviour:
   health: 0
   atkDamage: 0
   atkSpeed: 1
-  shotSpeed: 5
-  range: 5
+  shotSpeed: 20
+  range: 10
   projectile: {fileID: 7852274554471292275, guid: ee1df742ff92e0c43b16b0b66dbc6e43,
     type: 3}
 --- !u!60 &150699249

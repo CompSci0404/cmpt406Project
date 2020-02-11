@@ -35,12 +35,14 @@ public class RangedEnemy : AIClass
         else { shootProjectile -= Time.deltaTime; }
     }
 
+    // Shoot projectile at player
     private void fireProjectile()
     {
         GameObject shotFired = (GameObject)Instantiate(projectile, transform.position, Quaternion.identity);
         target = player.transform.position - transform.position;
-        //float distance = target.magnitude;
-        //Vector2 direction = target / distance;
-        shotFired.GetComponent<Rigidbody2D>().AddForce(new Vector2(target.x * shotSpeed, target.y * shotSpeed));
+        float distance = target.magnitude;
+        Vector2 direction = target / distance;
+        // Force based on target will make bullets come out slower as you approach, kind of neat
+        shotFired.GetComponent<Rigidbody2D>().AddForce(new Vector2(direction.x * shotSpeed, direction.y * shotSpeed));
     }
 }
