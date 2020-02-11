@@ -38,14 +38,14 @@ public class MovementAi : AIClass
         saveSpeed = speed;
         ply = GameObject.FindWithTag("Player");
 
-        decisionTree inRangeNode = new decisionTree();
+        DecisionTree inRangeNode = new DecisionTree();
 
         inRangeNode.buildDecision(EnemySpotted);
 
-        decisionTree AiMove = new decisionTree();
+        DecisionTree AiMove = new DecisionTree();
         AiMove.buildAction(Move);
 
-        decisionTree AIidle = new decisionTree();
+        DecisionTree AIidle = new DecisionTree();
         AIidle.buildAction(Idle);
 
         inRangeNode.Right(AiMove);

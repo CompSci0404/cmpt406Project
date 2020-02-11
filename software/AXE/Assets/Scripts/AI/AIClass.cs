@@ -9,7 +9,7 @@ public abstract class AIClass : MonoBehaviour
     public float health;
     public float atkDamage;
 
-    protected decisionTree rootOfTree;
+    protected DecisionTree rootOfTree;
 
     // later we need to add damage for AI, HP
 
