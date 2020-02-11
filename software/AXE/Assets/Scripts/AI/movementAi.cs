@@ -52,13 +52,11 @@ public class MovementAi : AIClass
         inRangeNode.Left(AIidle);
 
         rootOfTree = inRangeNode; 
-        
     }
 
     // Update is called once per frame
     void Update()
     {
         rootOfTree.search(); 
-
     }
 }
