@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,11 +19,6 @@ public abstract class AIClass : MonoBehaviour
         health -= damage;
         Debug.Log(health);
         if (health <= 0) { Die(); }
-    }
-
-    public void Attack()
-    {
-
     }
 
     public void Die()
