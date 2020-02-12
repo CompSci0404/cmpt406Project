@@ -18,7 +18,7 @@ public class Projectile : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             // Add player damage
-            Debug.Log("Player hit" + damage + " damage");
+            Debug.Log("Player hit " + damage + " damage");
             Destroy(gameObject);
         }
         else if(collision.gameObject.tag == "Projectile" ||
