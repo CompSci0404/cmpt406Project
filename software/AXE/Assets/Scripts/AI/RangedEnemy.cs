@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * Lower ranged enemy that moves towards the player to attack
+ */
 public class RangedEnemy : AIClass
 {
     public float atkSpeed, shotSpeed, range;
@@ -10,7 +13,7 @@ public class RangedEnemy : AIClass
     private float playerInRangeX, playerInRangeY, shootProjectile;
 
     public GameObject projectile;
-    private Transform player;
+    public Transform player;
     private Vector2 target;
 
     // Start is called before the first frame update
