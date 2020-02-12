@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovementAi : AIClass
+public class MovementAI : AIClass
 {
     private float saveSpeed;
     private GameObject ply; 
@@ -11,12 +11,10 @@ public class MovementAi : AIClass
     {
         if (Vector2.Distance(this.transform.position, ply.transform.position) < this.fov)
         {
-
             return true;
         } else
         {
             return false;
-        
         }
     }
 
@@ -26,6 +24,11 @@ public class MovementAi : AIClass
         this.transform.position = Vector2.MoveTowards(this.transform.position, ply.transform.position, speed * Time.deltaTime); 
     }
 
+    public void MoveAway()
+    {
+        speed = saveSpeed;
+        this.transform.position = -(Vector2.MoveTowards(this.transform.position, ply.transform.position, speed * Time.deltaTime));
+    }
 
     public void Idle()
     {
@@ -44,6 +47,9 @@ public class MovementAi : AIClass
 
         DecisionTree AiMove = new DecisionTree();
         AiMove.buildAction(Move);
+
+        //DecisionTree AiMoveAway = new DecisionTree();
+        //AiMove.buildAction(MoveAway);
 
         DecisionTree AIidle = new DecisionTree();
         AIidle.buildAction(Idle);
