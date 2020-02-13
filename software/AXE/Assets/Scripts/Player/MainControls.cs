@@ -36,8 +36,21 @@ public class MainControls : MonoBehaviour
         // wait for an input and set opposite player controller active
         if (Input.GetButtonDown(yButton)) {
             SwapPlayer();
-        };
-        
+        }
+
+        if (Input.GetButtonDown(bButton))
+        {
+            Attack();
+        }
+        if (Input.GetButtonDown(aButton))
+        {
+            Ability1();
+        }
+        if (Input.GetButtonDown(xButton))
+        {
+            Ability2();
+        }
+
         // player has a method that activates when it becomes active and sends its stats to this class
     }
 
@@ -51,7 +64,31 @@ public class MainControls : MonoBehaviour
 
         players.Remove(nextPlayer);
         players.Add(nextPlayer);
-        gameObject.GetComponent<PlayerInputManager>().j
+    }
+
+    // Normal Attack
+    private void Attack()
+    {
+        Debug.Log("Attacking");
+        // if player 1 melee
+        // if player 2 range
+    }
+
+    // Ability 1
+    private void Ability1()
+    {
+        Debug.Log("Ability 1");
+        
+        // if player 1 use P1 A1
+        // if player 2 use P2 A1
+    }
+
+    // Ability 2
+    private void Ability2()
+    {
+        Debug.Log("Ability 2");
+        // if player 1 use P1 A2
+        // if player 2 use P2 A2
     }
 
     public void UpdateStats(PlayerStats stats)
