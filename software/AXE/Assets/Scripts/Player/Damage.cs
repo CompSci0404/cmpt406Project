@@ -26,6 +26,8 @@ public class Damage : MonoBehaviour
         {
             // Weapon does damage
             Debug.Log("Type 1 interaction");
+
+
             collision.gameObject.GetComponent<AIClass>().Damage(damage);
         }
         else if (collision.gameObject.tag == "Type2Enemy" && parent.tag == "Type2")

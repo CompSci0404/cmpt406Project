@@ -33,7 +33,7 @@ public abstract class AIClass : MonoBehaviour
     public void Damage(float damage)
     {
         health -= damage;
-        Debug.Log(health);
+        Debug.Log( "AI Health: " + health);
         if (health <= 0) { Die(); }
     }
 

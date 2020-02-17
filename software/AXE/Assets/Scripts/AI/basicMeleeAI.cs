@@ -4,6 +4,19 @@ using UnityEngine;
 
 public class basicMeleeAI : AIClass
 {
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            Debug.Log("I am a AI, and this is BIG DAMAGE"); 
+            collision.gameObject.GetComponent<Movement>().DmgPlyer(this.atkDamage); 
+
+        }
+
+    }
+
     // Start is called before the first frame update
     void Start()
     {

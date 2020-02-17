@@ -371,6 +371,7 @@ GameObject:
   - component: {fileID: 7600984664673736891}
   - component: {fileID: 7600984664673736880}
   - component: {fileID: 7600984664673736881}
+  - component: {fileID: 2560377454590884877}
   m_Layer: 0
   m_Name: SwapController
   m_TagString: Player
@@ -612,6 +613,19 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!114 &2560377454590884877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7600984664673736890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d53f9f5b2fd233f4ab34f7f1fea2f6ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controllerNumber: 0
 --- !u!1 &7600984665031520794
 GameObject:
   m_ObjectHideFlags: 0
