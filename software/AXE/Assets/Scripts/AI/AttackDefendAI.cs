@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/*
 public class AttackDefendAI : AIClass
 {
     protected DecisionTree rootOfTree;
@@ -42,3 +44,4 @@ public class AttackDefendAI : AIClass
 
     }
 }
+*/ 

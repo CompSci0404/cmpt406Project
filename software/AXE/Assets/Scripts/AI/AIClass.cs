@@ -11,8 +11,24 @@ public abstract class AIClass : MonoBehaviour
     public float atkDamage;
 
     protected DecisionTree rootOfTree;
+    private float saveSpeed;
+    private GameObject ply; 
 
-    // later we need to add damage for AI, HP
+    //---[[pre-setup calls THESE NEED TO BE CALLED BEFORE ANYTHING!]]---//
+
+    public void setSaveSpeed()
+    {
+        this.saveSpeed = speed; 
+    }
+
+
+    public void FindPly()
+    {
+        this.ply = GameObject.FindWithTag("Player"); 
+
+    }
+
+    // --- [[ Damage to AI: ]] ---//
 
     public void Damage(float damage)
     {
@@ -25,4 +41,41 @@ public abstract class AIClass : MonoBehaviour
     {
         Destroy(this.gameObject);
     }
+
+    //---[[Movement Decisions]]---//
+
+    public bool EnemySpotted()
+    {
+        if (Vector2.Distance(this.transform.position, ply.transform.position) < this.fov)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    //---[[Movement Actions!]]---//
+
+    public void MoveTowardsPly()
+    {
+        speed = saveSpeed;
+        this.transform.position = Vector2.MoveTowards(this.transform.position, ply.transform.position, speed * Time.deltaTime);
+    }
+
+    public void MoveAwayFromPly()
+    {
+        speed = saveSpeed;
+        this.transform.position = -(Vector2.MoveTowards(this.transform.position, ply.transform.position, speed * Time.deltaTime));
+
+    }
+
+    public void Idle()
+    {
+        this.speed = 0f;
+    }
+
+
+
 }
