@@ -34,7 +34,8 @@ public class Damage : MonoBehaviour
             Debug.Log("Type 2 interaction");
             collision.gameObject.GetComponent<AIClass>().Damage(damage);
         }
-        else 
+        else if (collision.gameObject.tag == "Type1Enemy" && parent.tag == "Type2" 
+            || collision.gameObject.tag == "Type2Enemy" && parent.tag == "Type1")
         {
             Debug.Log("Wrong type! Switch to other player!");
         }

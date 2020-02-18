@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class decisionTree
+public class DecisionTree
 {
 
     // delegates:
@@ -14,10 +14,10 @@ public class decisionTree
 
     Action action; // I can create varaibles for each of my Delegates.
     Decision decision;
-    decisionTree leftNode;
-    decisionTree rightNode;
+    DecisionTree leftNode;
+    DecisionTree rightNode;
 
-    public decisionTree()
+    public DecisionTree()
     {
 
         this.action = null;
@@ -74,7 +74,7 @@ public class decisionTree
 	 */
 
 
-    public void Left(decisionTree leftNode)
+    public void Left(DecisionTree leftNode)
     {
 
 
@@ -92,7 +92,7 @@ public class decisionTree
 	 * return Nothing
 	 * 
 	 */
-    public void Right(decisionTree rightNode)
+    public void Right(DecisionTree rightNode)
     {
 
         this.rightNode = rightNode;
