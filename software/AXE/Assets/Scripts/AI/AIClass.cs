@@ -22,7 +22,7 @@ public abstract class AIClass : MonoBehaviour
 
     //---[[pre-setup calls]]---//
 
-    public void setSaveSpeed()
+    public void SetSaveSpeed()
     {
         this.saveSpeed = speed; 
     }
@@ -145,7 +145,7 @@ public abstract class AIClass : MonoBehaviour
 
     //---[[Movement Actions!]]---//
 
-    public void MoveTowardsplayer()
+    public void MoveTowardsPlayer()
     {
         speed = saveSpeed;
         this.transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);

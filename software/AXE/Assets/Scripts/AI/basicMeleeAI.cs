@@ -19,25 +19,25 @@ public class BasicMeleeAI : AIClass
         //we build the entire AI here, always grab the pre-set up functions, then contruct the 
         //ai decision tree depending on how it functions!
 
-        this.setSaveSpeed();
-        this.FindPly();
+        this.SetSaveSpeed();
+        this.FindPlayer();
 
-        DecisionTree R = new DecisionTree();
+        DecisionTree MeleeTree = new DecisionTree();
 
-        R.buildDecision(this.EnemySpotted);
+        MeleeTree.buildDecision(this.EnemySpotted);
 
         DecisionTree aiMove = new DecisionTree();
 
-        aiMove.buildAction(this.MoveTowardsPly);
+        aiMove.buildAction(this.MoveTowardsPlayer);
 
         DecisionTree aiIdle = new DecisionTree();
 
         aiIdle.buildAction(this.Idle);
 
-        R.Right(aiMove);
-        R.Left(aiIdle);
+        MeleeTree.Right(aiMove);
+        MeleeTree.Left(aiIdle);
 
-        rootOfTree = R; 
+        rootOfTree = MeleeTree; 
     }
 
     // Update is called once per frame
