@@ -2,19 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class basicMeleeAI : AIClass
+public class BasicMeleeAI : AIClass
 {
-
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Player")
         {
             Debug.Log("I am a AI, and this is BIG DAMAGE"); 
             collision.gameObject.GetComponent<Movement>().DmgPlyer(this.atkDamage); 
-
         }
-
     }
 
     // Start is called before the first frame update
@@ -42,7 +38,6 @@ public class basicMeleeAI : AIClass
         R.Left(aiIdle);
 
         rootOfTree = R; 
-
     }
 
     // Update is called once per frame

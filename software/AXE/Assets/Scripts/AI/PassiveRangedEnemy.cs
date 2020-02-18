@@ -36,22 +36,17 @@ public class PassiveRangedEnemy : AIClass
         DecisionTree idleChoice = new DecisionTree();
         idleChoice.buildAction(this.Idle);
 
-
         enemySpotted.Right(tooClose);
         enemySpotted.Left(idleChoice);
         tooClose.Right(runAway);
         tooClose.Left(attack);
 
         this.rootOfTree = enemySpotted; 
-
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-
         this.rootOfTree.search(); 
-        
     }
 }
