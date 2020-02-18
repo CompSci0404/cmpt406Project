@@ -120,6 +120,75 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &110861904
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8529135504718482639, guid: a7404ed7821a0604db7c6723470cfd34,
+        type: 3}
+      propertyPath: m_Name
+      value: BasicEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8529135504718482627, guid: a7404ed7821a0604db7c6723470cfd34,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 8529135504718482627, guid: a7404ed7821a0604db7c6723470cfd34,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 8529135504718482627, guid: a7404ed7821a0604db7c6723470cfd34,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8529135504718482627, guid: a7404ed7821a0604db7c6723470cfd34,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8529135504718482627, guid: a7404ed7821a0604db7c6723470cfd34,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8529135504718482627, guid: a7404ed7821a0604db7c6723470cfd34,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8529135504718482627, guid: a7404ed7821a0604db7c6723470cfd34,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8529135504718482627, guid: a7404ed7821a0604db7c6723470cfd34,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8529135504718482627, guid: a7404ed7821a0604db7c6723470cfd34,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8529135504718482627, guid: a7404ed7821a0604db7c6723470cfd34,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8529135504718482627, guid: a7404ed7821a0604db7c6723470cfd34,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a7404ed7821a0604db7c6723470cfd34, type: 3}
 --- !u!1 &716603635
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,6 +272,52 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1068540874 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8529135504718482639, guid: a7404ed7821a0604db7c6723470cfd34,
+    type: 3}
+  m_PrefabInstance: {fileID: 110861904}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1068540875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068540874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed042c6844bfb924b9708c02c66d6bdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  fov: 10
+  range: 7
+  health: 20
+  atkDamage: 5
+  tooCloseRange: 0
+  velocityOfRangedAttack: 20
+  rangedAttackCooldown: 0.25
+--- !u!114 &1068540880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068540874}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f91b5b3d6358afa4caedc8be30480b92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  fov: 10
+  range: 5
+  health: 10
+  atkDamage: 10
+  tooCloseRange: 5
+  velocityOfRangedAttack: 20
+  rangedAttackCooldown: 0.25
 --- !u!1001 &1879287695
 PrefabInstance:
   m_ObjectHideFlags: 0
