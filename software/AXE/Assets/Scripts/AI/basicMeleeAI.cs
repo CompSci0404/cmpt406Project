@@ -24,15 +24,15 @@ public class BasicMeleeAI : AIClass
 
         DecisionTree MeleeTree = new DecisionTree();
 
-        MeleeTree.buildDecision(this.EnemySpotted);
+        MeleeTree.BuildDecision(this.EnemySpotted);
 
         DecisionTree aiMove = new DecisionTree();
 
-        aiMove.buildAction(this.MoveTowardsPlayer);
+        aiMove.BuildAction(this.MoveTowardsPlayer);
 
         DecisionTree aiIdle = new DecisionTree();
 
-        aiIdle.buildAction(this.Idle);
+        aiIdle.BuildAction(this.Idle);
 
         MeleeTree.Right(aiMove);
         MeleeTree.Left(aiIdle);
@@ -43,6 +43,6 @@ public class BasicMeleeAI : AIClass
     // Update is called once per frame
     void Update()
     {
-        this.rootOfTree.search(); 
+        this.rootOfTree.Search(); 
     }
 }

@@ -37,7 +37,7 @@ public class DecisionTree
 	 * 
 	 */
 
-    public void buildDecision(Decision aiChoice)
+    public void BuildDecision(Decision aiChoice)
     {
 
         this.decision = aiChoice;
@@ -56,7 +56,7 @@ public class DecisionTree
 	 */
 
 
-    public void buildAction(Action aiAction)
+    public void BuildAction(Action aiAction)
     {
 
         this.action = aiAction;
@@ -101,7 +101,7 @@ public class DecisionTree
     /**
 	 * recusvily search throughout my tree until find the correct action to take. 
 	 */
-    public void search()
+    public void Search()
     {
 
         if (action != null)
@@ -114,12 +114,12 @@ public class DecisionTree
         else if (this.decision())
         {
 
-            rightNode.search();
+            rightNode.Search();
 
         }
         else
         {
-            leftNode.search();
+            leftNode.Search();
         }
 
 
