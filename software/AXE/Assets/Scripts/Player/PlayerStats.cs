@@ -9,7 +9,8 @@ public class PlayerStats : MonoBehaviour
     private float moveSpeed;
     private float range;
     private float damage;
-    private float health;
+    private float maxHealth;
+    private float currHealth;
     private float attackSpeed;
     private int lives;
 
@@ -23,14 +24,24 @@ public class PlayerStats : MonoBehaviour
         attackSpeed = value;
     }
 
-    public float GetHealth()
+    public float GetMaxHealth()
     {
-        return health;
+        return maxHealth;
     }
 
-    public void SetHealth(float value)
+    public void SetMaxHealth(float value)
     {
-        health = value;
+        maxHealth = value;
+    }
+
+    public float GetCurrHealth()
+    {
+        return currHealth;
+    }
+
+    public void SetCurrHealth(float value)
+    {
+        currHealth = value;
     }
 
     public float GetDamage()
@@ -79,7 +90,8 @@ public class PlayerStats : MonoBehaviour
         moveSpeed = 10f;
         range = 1f;
         damage = 5f;
-        health = 10f;
+        maxHealth = 10f;
+        currHealth = GetMaxHealth();
         attackSpeed = 1.25f;
         lives = 3;
     }
@@ -92,17 +104,17 @@ public class PlayerStats : MonoBehaviour
     // Enemy damage will call this method
     public void DamagePlayer(float damage)
     {
-        float health = GetHealth();
+        float health = GetCurrHealth();
 
         health -= damage;
 
-        SetHealth(health);
+        SetCurrHealth(health);
 
-        if (GetHealth() <= 0 && GetLives() <= 0)
+        if (GetCurrHealth() <= 0 && GetLives() <= 0)
         {
             Death();
         }
-        else if (GetHealth() <= 0 && GetLives() > 0)
+        else if (GetCurrHealth() <= 0 && GetLives() > 0)
         {
             Respawn();
         }
@@ -112,8 +124,10 @@ public class PlayerStats : MonoBehaviour
     // Respawns the character with one less life
     private void Respawn()
     {
+        // Death animation && give invincibility
         SetLives(GetLives() - 1);
         Debug.Log("Player lost a life");
+        SetCurrHealth(GetMaxHealth());
     }
 
     // Full death of player
