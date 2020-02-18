@@ -12,29 +12,29 @@ public class PassiveRangedEnemy : AIClass
     void Start()
     {
 
-        this.setSaveSpeed();
-        this.FindPly();
-        this.setcoolDown();
-        this.buildRngPrefabs();
+        this.SetSaveSpeed();
+        this.FindPlayer();
+        this.SetCooldown();
+        this.BuildRangePrefabs();
 
 
         //---[[building decision tree:]]---//
 
         DecisionTree enemySpotted = new DecisionTree();
 
-        enemySpotted.buildDecision(this.EnemySpotted);
+        enemySpotted.BuildDecision(this.EnemySpotted);
 
         DecisionTree tooClose = new DecisionTree();
-        tooClose.buildDecision(this.toClose);
+        tooClose.BuildDecision(this.TooClose);
 
         DecisionTree runAway = new DecisionTree();
-        runAway.buildAction(this.MoveAwayFromPly);
+        runAway.BuildAction(this.MoveAwayFromPlayer);
 
         DecisionTree attack = new DecisionTree();
-        attack.buildAction(this.rngAttackPly);
+        attack.BuildAction(this.RangedAttack);
 
         DecisionTree idleChoice = new DecisionTree();
-        idleChoice.buildAction(this.Idle);
+        idleChoice.BuildAction(this.Idle);
 
         enemySpotted.Right(tooClose);
         enemySpotted.Left(idleChoice);
@@ -47,6 +47,6 @@ public class PassiveRangedEnemy : AIClass
     // Update is called once per frame
     void Update()
     {
-        this.rootOfTree.search(); 
+        this.rootOfTree.Search(); 
     }
 }

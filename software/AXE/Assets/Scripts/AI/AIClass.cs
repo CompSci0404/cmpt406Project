@@ -159,7 +159,7 @@ public abstract class AIClass : MonoBehaviour
 
     }
 
-    public void MoveAwayFromplayer()
+    public void MoveAwayFromPlayer()
     {
         speed = saveSpeed;
 
