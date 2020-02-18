@@ -10,6 +10,7 @@ TagManager:
   - BaseEnemy
   - Type1Enemy
   - Type2Enemy
+  - Projectile
   layers:
   - Default
   - TransparentFX
