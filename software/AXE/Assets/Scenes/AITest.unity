@@ -297,7 +297,7 @@ MonoBehaviour:
   atkDamage: 5
   tooCloseRange: 0
   velocityOfRangedAttack: 20
-  rangedAttackCooldown: 0.25
+  rangedAttackCooldown: 0.5
 --- !u!114 &1068540880
 MonoBehaviour:
   m_ObjectHideFlags: 0
