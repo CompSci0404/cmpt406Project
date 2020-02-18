@@ -9,7 +9,7 @@ public class BasicMeleeAI : AIClass
         if(collision.gameObject.tag == "Player")
         {
             Debug.Log("I am a AI, and this is BIG DAMAGE"); 
-            collision.gameObject.GetComponent<Movement>().DmgPlyer(this.atkDamage); 
+            collision.gameObject.GetComponent<PlayerStats>().DamagePlayer(this.atkDamage); 
         }
     }
 
