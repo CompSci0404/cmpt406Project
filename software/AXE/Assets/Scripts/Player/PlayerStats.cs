@@ -13,6 +13,7 @@ public class PlayerStats : MonoBehaviour
     private float currHealth;
     private float attackSpeed;
     private int lives;
+    private bool isInvincible;
 
     public float GetAttackSpeed()
     {
@@ -94,6 +95,7 @@ public class PlayerStats : MonoBehaviour
         currHealth = GetMaxHealth();
         attackSpeed = 1.25f;
         lives = 3;
+        isInvincible = false;
     }
 
     public int GetControllerNumber()
@@ -104,19 +106,28 @@ public class PlayerStats : MonoBehaviour
     // Enemy damage will call this method
     public void DamagePlayer(float damage)
     {
-        float health = GetCurrHealth();
-
-        health -= damage;
-
-        SetCurrHealth(health);
-
-        if (GetCurrHealth() <= 0 && GetLives() <= 0)
+        if (isInvincible)
         {
-            Death();
+            Debug.Log("Player is invincible!");
         }
-        else if (GetCurrHealth() <= 0 && GetLives() > 0)
+        else
         {
-            Respawn();
+            float health = GetCurrHealth();
+
+            health -= damage;
+
+            SetCurrHealth(health);
+
+            Debug.Log("Player was hit for " + damage + " damage!");
+
+            if (GetCurrHealth() <= 0 && GetLives() <= 0)
+            {
+                Death();
+            }
+            else if (GetCurrHealth() <= 0 && GetLives() > 0)
+            {
+                Respawn();
+            }
         }
     }
 
@@ -128,7 +139,10 @@ public class PlayerStats : MonoBehaviour
         SetLives(GetLives() - 1);
         Debug.Log("Player lost a life");
         SetCurrHealth(GetMaxHealth());
+        isInvincible = true;
+        Invoke("ResetInvincibility", 2);
     }
+
 
     // Full death of player
     private void Death()
@@ -137,6 +151,11 @@ public class PlayerStats : MonoBehaviour
 
         // this will destroy the SwapContoller Object (this can be final death) 
         Destroy(this.gameObject, 2.5f);
+    }
+
+    private void ResetInvincibility()
+    {
+        isInvincible = false;
     }
 
 }
