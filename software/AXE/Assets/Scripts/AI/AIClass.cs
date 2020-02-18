@@ -9,16 +9,16 @@ public abstract class AIClass : MonoBehaviour
     public float fov;
     public float health;
     public float atkDamage;
-    public float toCloseRng;    /*only enforced when this unit is retreating*/
-    public float VelocityOfRngAtck;
-    public float rngAttackCoolDown; 
+    public float tooCloseRange;    /*only enforced when this unit is retreating*/
+    public float velocityOfRangedAttack;
+    public float rangedAttackCooldown; 
 
     protected DecisionTree rootOfTree;
 
     private float saveSpeed;
-    private GameObject ply;
-    private List<GameObject> rngPrefabs; /*like a library of all projectiles */
-    private float coolDown;
+    private GameObject player;
+    private List<GameObject> rangePrefabs; /*like a library of all projectiles */
+    private float cooldown;
 
     //---[[pre-setup calls]]---//
 
@@ -28,21 +28,21 @@ public abstract class AIClass : MonoBehaviour
     }
 
 
-    public void FindPly()
+    public void FindPlayer()
     {
-        this.ply = GameObject.FindWithTag("Player"); 
+        this.player = GameObject.FindWithTag("Player"); 
 
     }
 
-    public void setcoolDown()
+    public void SetCooldown()
     {
 
-        this.coolDown = 0; 
+        this.cooldown = 0; 
     } 
 
-    public void buildRngPrefabs()
+    public void BuildRangePrefabs()
     {
-        rngPrefabs = new List<GameObject>(); 
+        rangePrefabs = new List<GameObject>(); 
 
         object[] prefabs;
         int counter = 0; 
@@ -54,7 +54,7 @@ public abstract class AIClass : MonoBehaviour
 
             GameObject newItem = (GameObject)prefabs[counter];
 
-            rngPrefabs.Add(newItem);
+            rangePrefabs.Add(newItem);
 
             counter++; 
         }
@@ -77,28 +77,28 @@ public abstract class AIClass : MonoBehaviour
 
     //---[[range attack actions]]---//
 
-    public void rngAttackPly()
+    public void RangedAttack()
     {
 
-        if (coolDown != 0)
+        if (cooldown != 0)
         {
 
-            this.coolDown -= Time.deltaTime;
+            this.cooldown -= Time.deltaTime;
 
-            if (this.coolDown <= 0)
+            if (this.cooldown <= 0)
             {
-                this.coolDown = 0;
+                this.cooldown = 0;
             }
 
 
         }
-        else if (coolDown == 0)
+        else if (cooldown == 0)
         {
 
             // direction that AI is currently facing is where we want to shoot our object!
-            Vector2 direction = (ply.transform.position - this.transform.position).normalized;
+            Vector2 direction = (player.transform.position - this.transform.position).normalized;
 
-            GameObject newProjectile = Instantiate(rngPrefabs[0], this.transform.position, Quaternion.identity);
+            GameObject newProjectile = Instantiate(rangePrefabs[0], this.transform.position, Quaternion.identity);
 
             float Angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
@@ -106,9 +106,9 @@ public abstract class AIClass : MonoBehaviour
 
             Physics2D.IgnoreCollision(newProjectile.GetComponent<PolygonCollider2D>(), this.gameObject.GetComponent<PolygonCollider2D>(), true);
 
-            newProjectile.GetComponent<Rigidbody2D>().AddForce(direction * VelocityOfRngAtck);
+            newProjectile.GetComponent<Rigidbody2D>().AddForce(direction * velocityOfRangedAttack);
 
-            coolDown = this.rngAttackCoolDown;
+            cooldown = this.rangedAttackCooldown;
 
             Destroy(newProjectile, 3.0f); 
         }
@@ -120,7 +120,7 @@ public abstract class AIClass : MonoBehaviour
 
     public bool EnemySpotted()
     {
-        if (Vector2.Distance(this.transform.position, ply.transform.position) < this.fov)
+        if (Vector2.Distance(this.transform.position, player.transform.position) < this.fov)
         {
             return true;
         }
@@ -130,9 +130,9 @@ public abstract class AIClass : MonoBehaviour
         }
     }
 
-    public bool toClose()
+    public bool TooClose()
     {
-        if(Vector2.Distance(this.transform.position, ply.transform.position) < toCloseRng)
+        if(Vector2.Distance(this.transform.position, player.transform.position) < tooCloseRange)
         {
             return true;
         }else
@@ -145,25 +145,25 @@ public abstract class AIClass : MonoBehaviour
 
     //---[[Movement Actions!]]---//
 
-    public void MoveTowardsPly()
+    public void MoveTowardsplayer()
     {
         speed = saveSpeed;
-        this.transform.position = Vector2.MoveTowards(this.transform.position, ply.transform.position, speed * Time.deltaTime);
+        this.transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
     }
 
     /*This is more like a teleport we should keep it.*/
     public void Teleport()
     {
         speed = saveSpeed;
-        this.transform.position = -(Vector2.MoveTowards(this.transform.position, ply.transform.position, speed * Time.deltaTime));
+        this.transform.position = -(Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime));
 
     }
 
-    public void MoveAwayFromPly()
+    public void MoveAwayFromplayer()
     {
         speed = saveSpeed;
 
-        Vector2 direction = this.gameObject.transform.position - ply.transform.position;
+        Vector2 direction = this.gameObject.transform.position - player.transform.position;
 
         transform.Translate(direction.normalized * speed * Time.deltaTime); 
 
