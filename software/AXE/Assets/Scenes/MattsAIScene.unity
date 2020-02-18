@@ -317,13 +317,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1988698423}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f869152cde29c54580fe45f0545d962, type: 3}
+  m_Script: {fileID: 11500000, guid: b198e25caaea1994c9e1b40bb8873556, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 10
   fov: 5
-  health: 10
-  atkDamage: 1
+  health: 20
+  atkDamage: 5
+  toCloseRng: 0
+  VelocityOfRngAtck: 0
+  rngAttackCoolDown: 0
 --- !u!61 &1988698425
 BoxCollider2D:
   m_ObjectHideFlags: 0
