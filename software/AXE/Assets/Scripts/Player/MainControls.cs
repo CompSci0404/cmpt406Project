@@ -51,7 +51,6 @@ public class MainControls : MonoBehaviour
 
         players.Remove(nextPlayer);
         players.Add(nextPlayer);
-        gameObject.GetComponent<PlayerInputManager>().j
     }
 
     public void UpdateStats(PlayerStats stats)
