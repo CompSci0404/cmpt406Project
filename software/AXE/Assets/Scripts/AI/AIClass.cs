@@ -7,6 +7,7 @@ public abstract class AIClass : MonoBehaviour
 {
     public float speed;
     public float fov;
+    public float range;
     public float health;
     public float atkDamage;
     public float tooCloseRange;    /*only enforced when this unit is retreating*/
@@ -27,16 +28,13 @@ public abstract class AIClass : MonoBehaviour
         this.saveSpeed = speed; 
     }
 
-
     public void FindPlayer()
     {
         this.player = GameObject.FindWithTag("Player"); 
-
     }
 
     public void SetCooldown()
     {
-
         this.cooldown = 0; 
     } 
 
@@ -51,14 +49,12 @@ public abstract class AIClass : MonoBehaviour
 
         while(counter < prefabs.Length)
         {
-
             GameObject newItem = (GameObject)prefabs[counter];
 
             rangePrefabs.Add(newItem);
 
             counter++; 
         }
-       
     } 
 
     // --- [[ Damage to AI: ]] ---//
@@ -82,19 +78,15 @@ public abstract class AIClass : MonoBehaviour
 
         if (cooldown != 0)
         {
-
             this.cooldown -= Time.deltaTime;
 
             if (this.cooldown <= 0)
             {
                 this.cooldown = 0;
             }
-
-
         }
         else if (cooldown == 0)
         {
-
             // direction that AI is currently facing is where we want to shoot our object!
             Vector2 direction = (player.transform.position - this.transform.position).normalized;
 
@@ -112,9 +104,7 @@ public abstract class AIClass : MonoBehaviour
 
             Destroy(newProjectile, 3.0f); 
         }
-
     }
-
 
     //---[[Movement Decisions]]---//
 
@@ -135,10 +125,23 @@ public abstract class AIClass : MonoBehaviour
         if(Vector2.Distance(this.transform.position, player.transform.position) < tooCloseRange)
         {
             return true;
-        }else
+        }
+        else
         {
 
             return false; 
+        }
+    }
+
+    public bool CheckRange()
+    {
+        if (Vector2.Distance(this.transform.position, player.transform.position) < this.range)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
@@ -156,7 +159,6 @@ public abstract class AIClass : MonoBehaviour
     {
         speed = saveSpeed;
         this.transform.position = -(Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime));
-
     }
 
     public void MoveAwayFromPlayer()
