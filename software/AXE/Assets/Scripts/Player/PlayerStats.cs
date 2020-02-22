@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+    [SerializeField]
+    public HUD HUD;
+
     public int controllerNumber;
     private float moveSpeed;
     private float range;
@@ -13,6 +16,7 @@ public class PlayerStats : MonoBehaviour
     private float currHealth;
     private float attackSpeed;
     private int lives;
+    private int hearts;
     private bool isInvincible;
 
     public float GetAttackSpeed()
@@ -85,6 +89,16 @@ public class PlayerStats : MonoBehaviour
         lives = life;
     }
 
+    public int GetHearts()
+    {
+        return hearts;
+    }
+
+    public void SetHearts(int heart)
+    {
+        hearts = heart;
+    }
+
     void Awake()
     {
         // initialize stats
@@ -95,7 +109,9 @@ public class PlayerStats : MonoBehaviour
         currHealth = GetMaxHealth();
         attackSpeed = 1.25f;
         lives = 3;
+        hearts = 3;
         isInvincible = false;
+        HUD = FindObjectOfType<HUD>();
     }
 
     public int GetControllerNumber()
@@ -118,6 +134,8 @@ public class PlayerStats : MonoBehaviour
 
             SetCurrHealth(health);
 
+            RemoveHeart();
+
             Debug.Log("Player was hit for " + damage + " damage!");
 
             if (GetCurrHealth() <= 0 && GetLives() <= 0)
@@ -129,6 +147,12 @@ public class PlayerStats : MonoBehaviour
                 Respawn();
             }
         }
+    }
+
+    private void RemoveHeart()
+    {
+        SetHearts(GetHearts() - 1);
+        HUD.RemoveHUDHeart();
     }
 
     // Will have to set to other controller? 
