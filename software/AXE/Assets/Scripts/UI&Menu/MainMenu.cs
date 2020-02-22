@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
+/**
+ * This class will contain the methods to start and stop the game. 
+ */
 public class MainMenu : MonoBehaviour
 {
     // Start Scene

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/**
+ * This class contains all the methods needed to pause, resume, and quit the game. 
+ */
 public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
