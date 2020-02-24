@@ -35,11 +35,11 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
 
-        if (movement.x == -1)
+        if (movement.x <= -1)
         {
             transform.localScale = new Vector3(-1, 1, 1);
         }
-        else if (movement.x == 1)
+        else if (movement.x >= 1)
         {
             transform.localScale = new Vector3(1, 1, 1);
         }
