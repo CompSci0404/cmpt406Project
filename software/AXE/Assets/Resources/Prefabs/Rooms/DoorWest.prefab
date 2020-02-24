@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5196756977039760788}
   - component: {fileID: 7417992465945957183}
   m_Layer: 0
-  m_Name: ExitWest
+  m_Name: DoorWest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,7 +92,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.5, y: 0}
