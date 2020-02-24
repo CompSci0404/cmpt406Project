@@ -30,7 +30,7 @@ public class Door : MonoBehaviour
         destination = door;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject player = collision.gameObject;
         if (!player.CompareTag("Player"))
