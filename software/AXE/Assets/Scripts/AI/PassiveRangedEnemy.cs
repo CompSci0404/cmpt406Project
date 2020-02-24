@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/**
- * Higher ranged enemy that moves away from the player to attack
- */
+/// <summary>
+///  Higher ranged enemy that moves away from the player to attack
+/// </summary>
 public class PassiveRangedEnemy : AIClass
 {
 

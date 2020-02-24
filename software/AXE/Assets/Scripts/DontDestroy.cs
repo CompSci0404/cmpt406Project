@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/***
- * Class that when attached to an object will stop it from being deleted between scenes
- **/
+/// <summary>
+/// Class that when attached to an object will stop it from being deleted between scenes
+/// </summary>
 public class DontDestroy : MonoBehaviour
 {
     public static DontDestroy Instance
