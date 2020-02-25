@@ -43,19 +43,19 @@ public class Door : MonoBehaviour
                 return;
             }
 
-            switch (direction)
+            switch (destination.direction)
             {
                 case Compass.North:
-                    obj.transform.position = destination.transform.position + Vector3.up;
-                    break;
-                case Compass.East:
-                    obj.transform.position = destination.transform.position + Vector3.right;
-                    break;
-                case Compass.South:
                     obj.transform.position = destination.transform.position + Vector3.down;
                     break;
-                case Compass.West:
+                case Compass.East:
                     obj.transform.position = destination.transform.position + Vector3.left;
+                    break;
+                case Compass.South:
+                    obj.transform.position = destination.transform.position + Vector3.up;
+                    break;
+                case Compass.West:
+                    obj.transform.position = destination.transform.position + Vector3.right;
                     break;
                 default:
                     Debug.LogError("Reached default in switch statement.");
