@@ -33,37 +33,34 @@ public class Door : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        GameObject player = collision.gameObject;
-        if (!player.CompareTag("Player"))
+        GameObject obj = collision.gameObject;
+        if (obj.CompareTag("Player"))
         {
-            return;
-        }
+            if (null == destination)
+            {
+                // throw new MissingReferenceException("The collided door does not have a destination.");
+                Debug.LogError("This door has no destination!");
+                return;
+            }
 
-        if (null == destination)
-        {
-            // throw new MissingReferenceException("The collided door does not have a destination.");
-            Debug.LogError("This door has no destination!");
-            return;
+            switch (direction)
+            {
+                case Compass.North:
+                    obj.transform.position = destination.transform.position + Vector3.up;
+                    break;
+                case Compass.East:
+                    obj.transform.position = destination.transform.position + Vector3.right;
+                    break;
+                case Compass.South:
+                    obj.transform.position = destination.transform.position + Vector3.down;
+                    break;
+                case Compass.West:
+                    obj.transform.position = destination.transform.position + Vector3.left;
+                    break;
+                default:
+                    Debug.LogError("Reached default in switch statement.");
+                    break;
+            }
         }
-
-        switch(direction)
-        {
-            case Compass.North:
-                player.transform.position = destination.transform.position + Vector3.up;
-                break;
-            case Compass.East:
-                player.transform.position = destination.transform.position + Vector3.right;
-                break;
-            case Compass.South:
-                player.transform.position = destination.transform.position + Vector3.down;
-                break;
-            case Compass.West:
-                player.transform.position = destination.transform.position + Vector3.left;
-                break;
-            default:
-                Debug.LogError("Reached default in switch statement.");
-                break;
-        }
-
     }
 }
