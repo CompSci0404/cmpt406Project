@@ -36,7 +36,7 @@ public class RangedAttack: MonoBehaviour
         {
             timer = Mathf.Max(0, timer - Time.deltaTime);
         }
-        else if (Input.GetButton("Fire1"))
+        else if (Input.GetButtonDown("J2B"))
         {
             ShootArrow(angle);
             timer = stats.GetAttackSpeed();
