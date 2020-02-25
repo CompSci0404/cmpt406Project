@@ -11,6 +11,7 @@ public class Door : MonoBehaviour
 
     public Compass direction;
 
+    [SerializeField]
     private Door destination;
 
     // Start is called before the first frame update
