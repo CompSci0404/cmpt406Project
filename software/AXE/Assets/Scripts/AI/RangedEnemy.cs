@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/**
- * Lower ranged enemy that moves towards the player to attack
- */
+/// <summary>
+/// Lower ranged enemy that moves towards the player to attack
+/// </summary>
 public class RangedEnemy : AIClass
 {
 
