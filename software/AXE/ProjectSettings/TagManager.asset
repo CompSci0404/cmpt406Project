@@ -10,6 +10,7 @@ TagManager:
   - Type1Enemy
   - Type2Enemy
   - Projectile
+  - Arrow
   layers:
   - Default
   - TransparentFX
