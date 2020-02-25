@@ -1,0 +1,703 @@
+fileFormatVersion: 2
+guid: f7238739a53606b4b8819ebb2ed185a3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7752090861721639596
+    second: HUD_spritesheet_flat_0
+  - first:
+      213: 1133099192676856118
+    second: HUD_spritesheet_flat_1
+  - first:
+      213: -946653421190913868
+    second: HUD_spritesheet_flat_2
+  - first:
+      213: -7160915220210471372
+    second: HUD_spritesheet_flat_3
+  - first:
+      213: -4392361917042610846
+    second: HUD_spritesheet_flat_4
+  - first:
+      213: 2395699567029822454
+    second: HUD_spritesheet_flat_5
+  - first:
+      213: -3997925133345103493
+    second: HUD_spritesheet_flat_6
+  - first:
+      213: 7020913065031710270
+    second: HUD_spritesheet_flat_7
+  - first:
+      213: 2651082958074271423
+    second: HUD_spritesheet_flat_8
+  - first:
+      213: 6991054760090909235
+    second: HUD_spritesheet_flat_9
+  - first:
+      213: -1411483789092660506
+    second: HUD_spritesheet_flat_10
+  - first:
+      213: 5593634746553448845
+    second: HUD_spritesheet_flat_11
+  - first:
+      213: 8257062760666218444
+    second: HUD_spritesheet_flat_12
+  - first:
+      213: 2259707717924147081
+    second: HUD_spritesheet_flat_13
+  - first:
+      213: -2287110985609890040
+    second: HUD_spritesheet_flat_14
+  - first:
+      213: -7407218598893283066
+    second: HUD_spritesheet_flat_15
+  - first:
+      213: 9111028332274007392
+    second: HUD_spritesheet_flat_16
+  - first:
+      213: 5137058067043386692
+    second: HUD_spritesheet_flat_17
+  - first:
+      213: -640105622686285551
+    second: HUD_spritesheet_flat_18
+  - first:
+      213: -1058487431815566136
+    second: HUD_spritesheet_flat_19
+  - first:
+      213: 9065483563877368166
+    second: HUD_spritesheet_flat_20
+  - first:
+      213: -5180602712190035905
+    second: HUD_spritesheet_flat_21
+  - first:
+      213: -8375576127138623945
+    second: HUD_spritesheet_flat_22
+  - first:
+      213: -5212479333666733236
+    second: HUD_spritesheet_flat_23
+  - first:
+      213: -829020973308623490
+    second: HUD_spritesheet_flat_24
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: HUD_spritesheet_flat_0
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 389
+        width: 95
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f200c7ebd0c395742afa70840aafc8b0
+      internalID: -7752090861721639596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD_spritesheet_flat_1
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 392
+        width: 95
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93f2afc644a535c43a9c7dbc9b71359a
+      internalID: 1133099192676856118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD_spritesheet_flat_2
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 389
+        width: 95
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a5fb6f9eea464f48853512f4a288d02
+      internalID: -946653421190913868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD_spritesheet_flat_3
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 384
+        width: 95
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9099f4080459034479fd7b71763e79ec
+      internalID: -7160915220210471372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD_spritesheet_flat_4
+      rect:
+        serializedVersion: 2
+        x: 536
+        y: 420
+        width: 45
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 054da1555acc21048bebd58a6dc36aba
+      internalID: -4392361917042610846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD_spritesheet_flat_5
+      rect:
+        serializedVersion: 2
+        x: 628
+        y: 418
+        width: 47
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a884238407d962645988915351504833
+      internalID: 2395699567029822454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD_spritesheet_flat_6
+      rect:
+        serializedVersion: 2
+        x: 723
+        y: 419
+        width: 46
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0daab4df83733fe4aaca6f5cf7ee76ef
+      internalID: -3997925133345103493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD_spritesheet_flat_7
+      rect:
+        serializedVersion: 2
+        x: 833
+        y: 429
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56149752c4a729d42930c1bf76d2327d
+      internalID: 7020913065031710270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD_spritesheet_flat_8
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 428
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adbc0d0eeeea68d4a85bb52011b51db8
+      internalID: 2651082958074271423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD_spritesheet_flat_9
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 238
+        width: 95
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 902abbde588e9844aad57c49b1f7b7ca
+      internalID: 6991054760090909235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD_spritesheet_flat_10
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 235
+        width: 95
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e8d27282198c324b86a901518aa0502
+      internalID: -1411483789092660506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD_spritesheet_flat_11
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 223
+        width: 95
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 623dbb5d5082d3a4c8e7466a8ab1a73b
+      internalID: 5593634746553448845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD_spritesheet_flat_12
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 212
+        width: 95
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cce1a4fd12ac369478f4af0559da1cde
+      internalID: 8257062760666218444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD_spritesheet_flat_13
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 212
+        width: 95
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3b97bfba8632a642b654f72b6c56bd0
+      internalID: 2259707717924147081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD_spritesheet_flat_14
+      rect:
+        serializedVersion: 2
+        x: 628
+        y: 223
+        width: 95
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f1fbdec9c68fbc44928147b5105c9d9
+      internalID: -2287110985609890040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD_spritesheet_flat_15
+      rect:
+        serializedVersion: 2
+        x: 746
+        y: 232
+        width: 95
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be9d542640cb3fc40848cdb3e955de0e
+      internalID: -7407218598893283066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD_spritesheet_flat_16
+      rect:
+        serializedVersion: 2
+        x: 862
+        y: 232
+        width: 95
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8557ea17283fbfb428ad41030da2b253
+      internalID: 9111028332274007392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD_spritesheet_flat_17
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 58
+        width: 95
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa7af5a8a1e0a8a4bbee2bb4c5b0ca0f
+      internalID: 5137058067043386692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD_spritesheet_flat_18
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 61
+        width: 95
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44c2470a70dcf1b4eb3543a32cefb5fe
+      internalID: -640105622686285551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD_spritesheet_flat_19
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 47
+        width: 95
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e528ee8400ca6fb45ac874d19fd44c9b
+      internalID: -1058487431815566136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD_spritesheet_flat_20
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 35
+        width: 95
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51a0ceed36042b54d81860a9cc5ebeee
+      internalID: 9065483563877368166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD_spritesheet_flat_21
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 36
+        width: 95
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 684ab4cbf18a07f4f943ae1d50568237
+      internalID: -5180602712190035905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD_spritesheet_flat_22
+      rect:
+        serializedVersion: 2
+        x: 628
+        y: 47
+        width: 95
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd8eaa2cc737cbb44af452cd6b42f0ed
+      internalID: -8375576127138623945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD_spritesheet_flat_23
+      rect:
+        serializedVersion: 2
+        x: 745
+        y: 56
+        width: 95
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb7da4e6c96123043bdcbcf1a90c3d7a
+      internalID: -5212479333666733236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD_spritesheet_flat_24
+      rect:
+        serializedVersion: 2
+        x: 862
+        y: 58
+        width: 95
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02225e12e4f752544ae69697e7c3a18a
+      internalID: -829020973308623490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
