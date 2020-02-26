@@ -9,6 +9,7 @@ public class MeleeAttack : MonoBehaviour
     private float attackTime;
     [SerializeField] private Transform weaponPoint;
 
+
     private bool canAttack;
 
     void Start()
@@ -39,11 +40,16 @@ public class MeleeAttack : MonoBehaviour
         if (canAttack)
         {
             
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(weaponPoint.position, stats.GetRange(), enemyLayers);
-            foreach (Collider2D enemy in hitEnemies)
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(weaponPoint.position, stats.GetRange() / 3, enemyLayers);
+            Debug.Log(hitEnemies.Length);
+            for( int i = 0; i < hitEnemies.Length; i++ )
             {
-                enemy.GetComponent<AIClass>().Damage(stats.GetDamage());
-                Debug.Log("Player 1 Melee Attack");
+                if (hitEnemies[i].CompareTag("BaseEnemy"))
+                {
+                    hitEnemies[i].GetComponent<AIClass>().Damage(stats.GetDamage());
+                    Debug.Log("Player 1 Melee Attacking Enemy");
+                }
+                
             }
             canAttack = false;
         }
@@ -51,13 +57,10 @@ public class MeleeAttack : MonoBehaviour
     }
 
     // attack range arch
-    private void OnDrawGizmosSelected()
+    void OnDrawGizmosSelected()
     {
-        if (weaponPoint == null)
-        {
-            return;
-        }
-        Gizmos.DrawWireSphere(weaponPoint.position, stats.GetRange());
+        
+        Gizmos.DrawWireSphere(weaponPoint.position, stats.GetRange() / 3);
     }
     
 }
