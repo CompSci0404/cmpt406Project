@@ -190,7 +190,7 @@ public class PlayerStats : MonoBehaviour
     }
 
     // Full death of player
-    private void Death()
+    public void Death()
     {
         Debug.Log("Wah I am dead :(");
 

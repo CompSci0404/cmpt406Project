@@ -15,6 +15,10 @@ public class LiveCounter : MonoBehaviour
         {
             //throw error
         }
+        else if(NewTotal == 0)
+        {
+            stats.Death();
+        }
         else if (lives.Length == NewTotal)
         {
             lives[NewTotal - 1].GetComponent<Renderer>().sortingOrder = 1;
