@@ -1498,20 +1498,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7600984664035167007, guid: 16c7e1f4973d0fb44910bce4460806f1,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 848a54d0d95107741b2d4bc6d9d75212,
-        type: 3}
-    - target: {fileID: 7600984665031520790, guid: 16c7e1f4973d0fb44910bce4460806f1,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -5460534888604412527, guid: e4703a6cbc22ccb4faf2b995789dc673,
-        type: 3}
-    m_RemovedComponents:
-    - {fileID: 2560377454590884877, guid: 16c7e1f4973d0fb44910bce4460806f1, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16c7e1f4973d0fb44910bce4460806f1, type: 3}
 --- !u!1 &504744129
 GameObject:
@@ -9160,6 +9147,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BasicEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8529135504718482639, guid: a7404ed7821a0604db7c6723470cfd34,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8529135504718482627, guid: a7404ed7821a0604db7c6723470cfd34,
         type: 3}
