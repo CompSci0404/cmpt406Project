@@ -10,6 +10,7 @@ public class RangedAttack: MonoBehaviour
     GameObject parent;
     private Camera camera;
     private Rigidbody2D rBody;
+    Vector2 lookDirection;
 
     public GameObject arrowPrefab;
     private float timer = 0f;
@@ -29,10 +30,15 @@ public class RangedAttack: MonoBehaviour
     void Update()
     {
         // Calculate direction of shot
-        Vector2 mousePos = camera.ScreenToWorldPoint(Input.mousePosition);
+        //Vector2 mousePos = camera.ScreenToWorldPoint(Input.mousePosition);
 
-        Vector2 target = mousePos - rBody.position;
-        float angle = Mathf.Atan2(target.y, target.x) * Mathf.Rad2Deg - 90f;
+        //Vector2 target = mousePos - rBody.position;
+        //float angle = Mathf.Atan2(target.y, target.x) * Mathf.Rad2Deg - 90f;
+        
+        // Contoller Inputs
+        lookDirection = new Vector2(Input.GetAxis("LookHorizontal"), Input.GetAxis("LookVertical"));
+        Vector2 target = lookDirection - rBody.position;
+        float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 180f;
 
         if (timer > 0)
         {
