@@ -550,6 +550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02af853f3763fd44a955609dd7070761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doorParent: {fileID: 8577621071510790067}
 --- !u!114 &4609861933935917862
 MonoBehaviour:
   m_ObjectHideFlags: 0
