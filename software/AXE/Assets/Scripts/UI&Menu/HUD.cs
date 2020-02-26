@@ -17,7 +17,7 @@ public class HUD : MonoBehaviour
     void Start()
     {
         stats = FindObjectOfType<PlayerStats>();
-        for (int i = 0; i < stats.GetHearts(); i++)
+        for (int i = 0; i < stats.GetCurrHearts(); i++)
             HeartOnHUD();
     }
 

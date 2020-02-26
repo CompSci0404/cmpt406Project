@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class MainControls : MonoBehaviour
 {
     private PlayerStats stats;
+    public HudSwitch HUD;
 
     private string horizontalAxis;
     private string verticalAxis;
@@ -27,7 +28,7 @@ public class MainControls : MonoBehaviour
         {
             players.Add(transform.GetChild(i).gameObject);
         }
-
+        HUD = FindObjectOfType<HudSwitch>();
         SwapPlayer();
     }
 
@@ -64,6 +65,16 @@ public class MainControls : MonoBehaviour
 
         players.Remove(nextPlayer);
         players.Add(nextPlayer);
+
+        if (controllerNumber == 1)
+        {
+            HUD.ThorSwitch = true;
+        }
+        // if player 2 range
+        if (controllerNumber == 2)
+        {
+            HUD.ValkSwitch = true;
+        }
     }
 
     // Normal Attack
