@@ -7,7 +7,6 @@ using UnityEngine.InputSystem;
 public class MainControls : MonoBehaviour
 {
     private PlayerStats stats;
-    public HudSwitch switcher;
     public HUD HUD;
 
     private bool justSwapped;
@@ -25,7 +24,6 @@ public class MainControls : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        switcher = FindObjectOfType<HudSwitch>();
         HUD = FindObjectOfType<HUD>();
         players = new List<GameObject>();
         int count = transform.childCount;
@@ -48,7 +46,19 @@ public class MainControls : MonoBehaviour
             }
             else
             {
-                SwapPlayer();
+                if (controllerNumber == 1)
+                {
+                    HUD.ThorSwitch = true;
+                    HUD.ChangeCharacterIcon();
+                    SwapPlayer();
+                }
+                // if player 2 range
+                else if (controllerNumber == 2)
+                {
+                    HUD.ValkSwitch = true;
+                    HUD.ChangeCharacterIcon();
+                    SwapPlayer();
+                }
             }
         }
         if (Input.GetButtonDown(bButton))
@@ -78,17 +88,6 @@ public class MainControls : MonoBehaviour
         players.Remove(nextPlayer);
         players.Add(nextPlayer);
 
-        if (controllerNumber == 1)
-        {
-            switcher.ValkSwitch = true;
-            HUD.ChangeCharacterIcon();
-        }
-        // if player 2 range
-        if (controllerNumber == 2)
-        {
-            switcher.ThorSwitch = true;
-            HUD.ChangeCharacterIcon();
-        }
         justSwapped = true;
         Invoke("ResetSwap", 1);
     }

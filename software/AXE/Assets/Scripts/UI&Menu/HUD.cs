@@ -8,10 +8,17 @@ using UnityEngine;
  */
 public class HUD : MonoBehaviour
 {
-    private HudSwitch switcher;
     private PlayerStats stats;
     private Stack<GameObject> hearts;
     private GameObject heartSpaces;
+
+    public Animator animator;
+
+    public bool ThorSwitch;
+    public bool ValkSwitch;
+
+    public GameObject[] ThorHealth;
+    public GameObject[] ValkHealth;
 
     // Start is called before the first frame update.
     void Start()
@@ -19,12 +26,18 @@ public class HUD : MonoBehaviour
         stats = FindObjectOfType<PlayerStats>();
         hearts = new Stack<GameObject>();
 
-        for (int i = 0; i < stats.GetCurrHearts(); i++)
-        {
-            heartSpaces = GameObject.Find("HeartSpaces").transform.Find("HeartSpace"+ i.ToString()).gameObject;
-            BuildHeartPrefabs();
-            HeartOnHUD(heartSpaces);
-        }
+        ThorSwitch = false;
+        ValkSwitch = false;
+
+        ThorHealth = GameObject.FindGameObjectsWithTag("ThorHrt");
+        ValkHealth = GameObject.FindGameObjectsWithTag("ValkHrt");
+
+        //for (int i = 0; i < stats.GetCurrHearts(); i++)
+        //{
+        //    heartSpaces = GameObject.Find("HeartSpaces").transform.Find("HeartSpace"+ i.ToString()).gameObject;
+        //    BuildHeartPrefabs();
+        //    HeartOnHUD(heartSpaces);
+        //}
     }
 
     // Create our heart prefab to be used by our hud.
@@ -72,6 +85,42 @@ public class HUD : MonoBehaviour
         //else
         //{
         //    switcher.ValkSwitch = true;
-        //}
+        //
+
+        //temporary if statements
+        if (ThorSwitch)
+        {
+            //have to set other bool to false first or
+            //animation will loop infinitly
+            animator.SetTrigger("ValkSwitch");
+
+            ThorSwitch = false;
+
+            foreach (var Hrt in ThorHealth)
+            {
+                Hrt.GetComponent<Renderer>().sortingOrder = -1;
+            }
+            foreach (var Hrt in ValkHealth)
+            {
+                Hrt.GetComponent<Renderer>().sortingOrder = 1;
+            }
+        }
+        if (ValkSwitch)
+        {
+            //have to set other bool to false first or
+            //animation will loop infinitly
+            animator.SetTrigger("ThorSwitch");
+
+            ValkSwitch = false;
+
+            foreach (var Hrt in ValkHealth)
+            {
+                Hrt.GetComponent<Renderer>().sortingOrder = -1;
+            }
+            foreach (var Hrt in ThorHealth)
+            {
+                Hrt.GetComponent<Renderer>().sortingOrder = 1;
+            }
+        }
     }
 }

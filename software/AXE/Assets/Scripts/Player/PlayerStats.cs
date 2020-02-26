@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    public HeartDisplay Hearts;
-    public HudSwitch HUD;
+    private HeartDisplay Hearts;
+    private HUD HUD;
 
     public int controllerNumber;
     private float moveSpeed;
@@ -112,7 +112,7 @@ public class PlayerStats : MonoBehaviour
         lives = 3;
         isInvincible = false;
         Hearts = FindObjectOfType<HeartDisplay>();
-        HUD = FindObjectOfType<HudSwitch>();
+        HUD = FindObjectOfType<HUD>();
     }
 
     public int GetControllerNumber()
@@ -173,7 +173,7 @@ public class PlayerStats : MonoBehaviour
         SetCurrHearts(GetMaxHearts());
         ResetHearts();
         isInvincible = true;
-        Invoke("ResetInvincibility", 2);
+        Invoke("ResetInvincibility", 1);
     }
 
     private void ResetHearts()
