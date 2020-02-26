@@ -94,8 +94,6 @@ public class HUD : MonoBehaviour
             //animation will loop infinitly
             animator.SetTrigger("ValkSwitch");
 
-            ThorSwitch = false;
-
             foreach (var Hrt in ThorHealth)
             {
                 Hrt.GetComponent<Renderer>().sortingOrder = -1;
@@ -104,6 +102,7 @@ public class HUD : MonoBehaviour
             {
                 Hrt.GetComponent<Renderer>().sortingOrder = 1;
             }
+            ThorSwitch = false;
         }
         if (ValkSwitch)
         {
@@ -111,8 +110,6 @@ public class HUD : MonoBehaviour
             //animation will loop infinitly
             animator.SetTrigger("ThorSwitch");
 
-            ValkSwitch = false;
-
             foreach (var Hrt in ValkHealth)
             {
                 Hrt.GetComponent<Renderer>().sortingOrder = -1;
@@ -121,6 +118,7 @@ public class HUD : MonoBehaviour
             {
                 Hrt.GetComponent<Renderer>().sortingOrder = 1;
             }
+            ValkSwitch = false;
         }
     }
 }
