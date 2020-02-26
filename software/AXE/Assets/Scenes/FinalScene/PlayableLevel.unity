@@ -189,7 +189,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1478223032, guid: 89c7979f36aad3648a06a3d95128cf75, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8657805481962424174, guid: 89c7979f36aad3648a06a3d95128cf75,
         type: 3}
@@ -245,6 +245,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 774390919845380310, guid: 89c7979f36aad3648a06a3d95128cf75,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4655079801261172409, guid: 89c7979f36aad3648a06a3d95128cf75,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7593684867511458085, guid: 89c7979f36aad3648a06a3d95128cf75,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89c7979f36aad3648a06a3d95128cf75, type: 3}
@@ -9110,11 +9125,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BasicEnemy
       objectReference: {fileID: 0}
-    - target: {fileID: 8529135504718482639, guid: a7404ed7821a0604db7c6723470cfd34,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8529135504718482627, guid: a7404ed7821a0604db7c6723470cfd34,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9169,11 +9179,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8529135505175110924, guid: a7404ed7821a0604db7c6723470cfd34,
-        type: 3}
-      propertyPath: HUD
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7404ed7821a0604db7c6723470cfd34, type: 3}

@@ -137,6 +137,8 @@ public class PlayerStats : MonoBehaviour
 
             Debug.Log("Player was hit for " + damage + " damage!");
 
+            RemoveHeart();
+
             if (GetCurrHearts() <= 0 && GetLives() <= 0)
             {
                 Death();
@@ -145,16 +147,12 @@ public class PlayerStats : MonoBehaviour
             {
                 Respawn();
             }
-
-            RemoveHeart();
-
         }
     }
 
     private void RemoveHeart()
     {
         Debug.Log("RemoveHeart");
-        SetCurrHearts(GetCurrHearts() - 1);
         if (controllerNumber == 1)
         {
             HUD.ThorHealth[GetCurrHearts()].GetComponent<HeartDisplay>().isShown = false;
