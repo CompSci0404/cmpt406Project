@@ -53,7 +53,8 @@ public class MainControls : MonoBehaviour
                 {
                     HUD.ThorSwitch = true;
                     HUD.ChangeCharacterIcon();
-                    thorAnimator.SetTrigger("thor_switch");
+                    thorAnimator.SetTrigger("switch");
+                    stats.SetLives(stats.GetLives() - 1);
                     SwapPlayer();
                 }
                 // if player 2 range
@@ -61,7 +62,8 @@ public class MainControls : MonoBehaviour
                 {
                     HUD.ValkSwitch = true;
                     HUD.ChangeCharacterIcon();
-                    valkAnimator.SetTrigger("valk_switch");
+                    valkAnimator.SetTrigger("switch");
+                    stats.SetLives(stats.GetLives() - 1);
                     SwapPlayer();
                 }
             }
