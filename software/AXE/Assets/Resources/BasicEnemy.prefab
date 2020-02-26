@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8529135504718482626}
   - component: {fileID: 8529135504718482637}
   - component: {fileID: 8529135504718482636}
+  - component: {fileID: 8529135505175110924}
   m_Layer: 0
   m_Name: BasicEnemy
   m_TagString: BaseEnemy
@@ -134,3 +135,24 @@ PolygonCollider2D:
       - {x: 0.25, y: -0.5}
       - {x: 0.4375, y: -0.25}
       - {x: 0.4375, y: 0.5}
+--- !u!114 &8529135505175110924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8529135504718482639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed042c6844bfb924b9708c02c66d6bdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HUD: {fileID: 0}
+  speed: 5
+  fov: 10
+  range: 7
+  health: 15
+  atkDamage: 4
+  tooCloseRange: 0
+  velocityOfRangedAttack: 15
+  rangedAttackCooldown: 0.5
