@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeAttack : MainControls
+public class MeleeAttack : MonoBehaviour
 {
     /// <summary>
     /// attackPoint point where the weapon is
@@ -17,18 +17,18 @@ public class MeleeAttack : MainControls
     
     void Awake()
     {
-        attackPoint = this.GetComponentInChildren<Transform>();
-        attackRange = this.GetComponent<PlayerStats>().GetRange();
+        //attackPoint = this.GetComponentInChildren<Transform>();
+        //attackRange = this.GetComponent<PlayerStats>().GetRange();
     }
     // Melee attack of character
-    public void meleeAttack()
+    public void MlAttack()
     {
-
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
-        foreach(Collider2D enemy in hitEnemies)
-        {
-            Debug.Log("Melee Attack");
-        }
+        Debug.Log("Player 1 Melee Attack");
+        //Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+        //foreach(Collider2D enemy in hitEnemies)
+        //{
+        //    Debug.Log("Melee Attack");
+        //}
     }
 
     // attack range arch

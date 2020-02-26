@@ -75,6 +75,7 @@ public class MainControls : MonoBehaviour
 
         if (controllerNumber == 1)
         {
+            this.GetComponent<MeleeAttack>().MlAttack();
             Debug.Log("Player 1 Melee Attacking");
         }
         // if player 2 range
