@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -197,6 +198,7 @@ public class PlayerStats : MonoBehaviour
         // this will destroy the SwapContoller Object (this can be final death) 
         Destroy(this.gameObject, .5f);
         // create Game Over Screen
+        SceneManager.LoadScene(2);
     }
 
     private void ResetInvincibility()
