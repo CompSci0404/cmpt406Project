@@ -119,7 +119,7 @@ public class PlayerStats : MonoBehaviour
         damage = 5f;
         maxHealth = 10f;
         currHealth = GetMaxHealth();
-        attackSpeed = 1.25f;
+        attackSpeed = .25f;
         lives = 3;
         hearts = 3;
         isInvincible = false;

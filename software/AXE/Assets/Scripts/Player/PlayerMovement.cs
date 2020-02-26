@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        stats = this.GetComponent<PlayerStats>();
+        stats = this.GetComponentInChildren<PlayerStats>();
         rBody = gameObject.GetComponent<Rigidbody2D>();
         movement = new Vector2();
         moveSpeed = stats.GetMoveSpeed();

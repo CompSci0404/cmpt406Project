@@ -7,6 +7,7 @@ using UnityEngine;
 /// </summary>
 public class RangedAttack: MonoBehaviour
 {
+    GameObject parent;
     private Camera camera;
     private Rigidbody2D rBody;
 
@@ -18,8 +19,9 @@ public class RangedAttack: MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        camera = GetComponent<Camera>();
-        rBody = GetComponent<Rigidbody2D>();
+        parent = transform.parent.gameObject;
+        camera = FindObjectOfType<Camera>();
+        rBody = parent.GetComponent<Rigidbody2D>();
         stats = GetComponent<PlayerStats>();
     }
 
