@@ -5,14 +5,19 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+    [SerializeField]
+    public HUD HUD;
+
     public int controllerNumber;
     private float moveSpeed;
     private float range;
+    private float atkForce;
     private float damage;
     private float maxHealth;
     private float currHealth;
     private float attackSpeed;
     private int lives;
+    private int hearts;
     private bool isInvincible;
 
     public float GetAttackSpeed()
@@ -65,6 +70,16 @@ public class PlayerStats : MonoBehaviour
         range = value;
     }
 
+    public float GetAtkForce()
+    {
+        return atkForce;
+    }
+
+    public void SetAtkForce(float value)
+    {
+        atkForce = value;
+    }
+
     public float GetMoveSpeed()
     {
         return moveSpeed;
@@ -85,17 +100,30 @@ public class PlayerStats : MonoBehaviour
         lives = life;
     }
 
+    public int GetHearts()
+    {
+        return hearts;
+    }
+
+    public void SetHearts(int heart)
+    {
+        hearts = heart;
+    }
+
     void Awake()
     {
         // initialize stats
         moveSpeed = 10f;
         range = 1f;
+        atkForce = 20f;
         damage = 5f;
         maxHealth = 10f;
         currHealth = GetMaxHealth();
-        attackSpeed = 1.25f;
+        attackSpeed = .25f;
         lives = 3;
+        hearts = 3;
         isInvincible = false;
+        HUD = FindObjectOfType<HUD>();
     }
 
     public int GetControllerNumber()
@@ -118,6 +146,8 @@ public class PlayerStats : MonoBehaviour
 
             SetCurrHealth(health);
 
+            RemoveHeart();
+
             Debug.Log("Player was hit for " + damage + " damage!");
 
             if (GetCurrHealth() <= 0 && GetLives() <= 0)
@@ -129,6 +159,12 @@ public class PlayerStats : MonoBehaviour
                 Respawn();
             }
         }
+    }
+
+    private void RemoveHeart()
+    {
+        SetHearts(GetHearts() - 1);
+        HUD.RemoveHUDHeart();
     }
 
     // Will have to set to other controller? 
