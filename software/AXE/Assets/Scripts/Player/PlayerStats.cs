@@ -2,22 +2,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
-    [SerializeField]
-    public HUD HUD;
+    private HeartDisplay Hearts;
+    private HUD HUD;
 
     public int controllerNumber;
     private float moveSpeed;
     private float range;
     private float atkForce;
     private float damage;
-    private float maxHealth;
-    private float currHealth;
+    private int maxHearts;
+    private int currHearts;
     private float attackSpeed;
     private int lives;
-    private int hearts;
     private bool isInvincible;
 
     public float GetAttackSpeed()
@@ -30,24 +30,24 @@ public class PlayerStats : MonoBehaviour
         attackSpeed = value;
     }
 
-    public float GetMaxHealth()
+    public int GetMaxHearts()
     {
-        return maxHealth;
+        return maxHearts;
     }
 
-    public void SetMaxHealth(float value)
+    public void SetMaxHealth(int value)
     {
-        maxHealth = value;
+        maxHearts = value;
     }
 
-    public float GetCurrHealth()
+    public int GetCurrHearts()
     {
-        return currHealth;
+        return currHearts;
     }
 
-    public void SetCurrHealth(float value)
+    public void SetCurrHearts(int value)
     {
-        currHealth = value;
+        currHearts = value;
     }
 
     public float GetDamage()
@@ -100,16 +100,6 @@ public class PlayerStats : MonoBehaviour
         lives = life;
     }
 
-    public int GetHearts()
-    {
-        return hearts;
-    }
-
-    public void SetHearts(int heart)
-    {
-        hearts = heart;
-    }
-
     void Awake()
     {
         // initialize stats
@@ -117,12 +107,12 @@ public class PlayerStats : MonoBehaviour
         range = 1f;
         atkForce = 20f;
         damage = 5f;
-        maxHealth = 10f;
-        currHealth = GetMaxHealth();
+        maxHearts = 3;
+        currHearts = GetMaxHearts();
         attackSpeed = .25f;
         lives = 3;
-        hearts = 3;
         isInvincible = false;
+        Hearts = FindObjectOfType<HeartDisplay>();
         HUD = FindObjectOfType<HUD>();
     }
 
@@ -132,7 +122,7 @@ public class PlayerStats : MonoBehaviour
     }
 
     // Enemy damage will call this method
-    public void DamagePlayer(float damage)
+    public void DamagePlayer(int damage)
     {
         if (isInvincible)
         {
@@ -140,21 +130,21 @@ public class PlayerStats : MonoBehaviour
         }
         else
         {
-            float health = GetCurrHealth();
+            int heart = GetCurrHearts();
 
-            health -= damage;
+            heart -= damage;
 
-            SetCurrHealth(health);
-
-            RemoveHeart();
+            SetCurrHearts(heart);
 
             Debug.Log("Player was hit for " + damage + " damage!");
 
-            if (GetCurrHealth() <= 0 && GetLives() <= 0)
+            RemoveHeart();
+
+            if (GetCurrHearts() <= 0 && GetLives() <= 0)
             {
                 Death();
             }
-            else if (GetCurrHealth() <= 0 && GetLives() > 0)
+            else if (GetCurrHearts() <= 0 && GetLives() > 0)
             {
                 Respawn();
             }
@@ -163,8 +153,15 @@ public class PlayerStats : MonoBehaviour
 
     private void RemoveHeart()
     {
-        SetHearts(GetHearts() - 1);
-        HUD.RemoveHUDHeart();
+        Debug.Log("RemoveHeart");
+        if (controllerNumber == 1)
+        {
+            HUD.ThorHealth[GetCurrHearts()].GetComponent<HeartDisplay>().isShown = false;
+        }
+        if (controllerNumber == 2)
+        {
+            HUD.ValkHealth[GetCurrHearts()].GetComponent<HeartDisplay>().isShown = false;
+        }
     }
 
     // Will have to set to other controller? 
@@ -173,10 +170,23 @@ public class PlayerStats : MonoBehaviour
     {
         // Death animation && give invincibility
         SetLives(GetLives() - 1);
-        Debug.Log("Player lost a life");
-        SetCurrHealth(GetMaxHealth());
+        Debug.Log("Player lost a life, lives remaining:" + GetLives().ToString());
+        SetCurrHearts(GetMaxHearts());
+        ResetHearts();
         isInvincible = true;
-        Invoke("ResetInvincibility", 2);
+        Invoke("ResetInvincibility", 1);
+    }
+
+    private void ResetHearts()
+    {
+        foreach (var Hrt in HUD.ThorHealth)
+        {
+            Hrt.GetComponent<HeartDisplay>().isShown = true;
+        }
+        foreach (var Hrt in HUD.ValkHealth)
+        {
+            Hrt.GetComponent<HeartDisplay>().isShown = true;
+        }
     }
 
 
@@ -186,7 +196,9 @@ public class PlayerStats : MonoBehaviour
         Debug.Log("Wah I am dead :(");
 
         // this will destroy the SwapContoller Object (this can be final death) 
-        Destroy(this.gameObject, 2.5f);
+        Destroy(this.gameObject, .5f);
+        // create Game Over Screen
+        SceneManager.LoadScene(2);
     }
 
     private void ResetInvincibility()
