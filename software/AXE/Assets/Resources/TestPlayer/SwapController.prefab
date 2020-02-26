@@ -158,6 +158,7 @@ GameObject:
   - component: {fileID: 7600984664673736881}
   - component: {fileID: 7600984664673736886}
   - component: {fileID: 4479636796296197987}
+  - component: {fileID: 895764767}
   m_Layer: 0
   m_Name: SwapController
   m_TagString: Player
@@ -400,6 +401,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 642b604de6f13a84ea2624712e9472d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &895764767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7600984664673736890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c28d65072c49d164b94aface75d273f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thorAnimator: {fileID: 7300317345096882598}
+  valkAnimator: {fileID: 8849725717746089244}
 --- !u!1 &7600984665031520794
 GameObject:
   m_ObjectHideFlags: 0

@@ -110,7 +110,7 @@ public class PlayerStats : MonoBehaviour
         maxHearts = 3;
         currHearts = GetMaxHearts();
         attackSpeed = .25f;
-        lives = 3;
+        lives = 10;
         isInvincible = false;
         Hearts = FindObjectOfType<HeartDisplay>();
         HUD = FindObjectOfType<HUD>();
@@ -188,7 +188,6 @@ public class PlayerStats : MonoBehaviour
             Hrt.GetComponent<HeartDisplay>().isShown = true;
         }
     }
-
 
     // Full death of player
     private void Death()

@@ -42,15 +42,6 @@ public class PlayerMovement : MonoBehaviour
     // After the update frame gets the users input, fixed update will move the player.
     private void FixedUpdate()
     {
-
-        if (movement.x <= -1)
-        {
-            transform.localScale = new Vector3(-1, 1, 1);
-        }
-        else if (movement.x >= 1)
-        {
-            transform.localScale = new Vector3(1, 1, 1);
-        }
         rBody.MovePosition(rBody.position + movement * moveSpeed * Time.fixedDeltaTime);
         rBody.SetRotation(angle);
     }
