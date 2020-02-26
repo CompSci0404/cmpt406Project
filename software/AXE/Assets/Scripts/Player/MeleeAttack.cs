@@ -14,7 +14,7 @@ public class MeleeAttack : MainControls
     public LayerMask enemyLayers;
 
     // Update is called once per frame
-    /*
+    
     void Awake()
     {
         attackPoint = this.GetComponentInChildren<Transform>();
@@ -40,5 +40,5 @@ public class MeleeAttack : MainControls
         }
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
-    */
+    
 }

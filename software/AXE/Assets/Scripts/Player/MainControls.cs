@@ -38,15 +38,15 @@ public class MainControls : MonoBehaviour
             SwapPlayer();
         }
 
-        if (Input.GetButtonDown(bButton))
+        else if (Input.GetButtonDown(bButton))
         {
             Attack();
         }
-        if (Input.GetButtonDown(aButton))
+        else if (Input.GetButtonDown(aButton))
         {
             Ability1();
         }
-        if (Input.GetButtonDown(xButton))
+        else if (Input.GetButtonDown(xButton))
         {
             Ability2();
         }
@@ -64,30 +64,57 @@ public class MainControls : MonoBehaviour
 
         players.Remove(nextPlayer);
         players.Add(nextPlayer);
+
     }
 
     // Normal Attack
     private void Attack()
     {
-        Debug.Log("Attacking");
+        
         // if player 1 melee
+
+        if (controllerNumber == 1)
+        {
+            Debug.Log("Player 1 Melee Attacking");
+        }
         // if player 2 range
+        else if (controllerNumber == 2)
+        {
+            Debug.Log("Player 2 Range Attacking");
+        }
+        
     }
 
     // Ability 1
     private void Ability1()
     {
-        Debug.Log("Ability 1");
-        
+
         // if player 1 use P1 A1
+        if (controllerNumber == 1)
+        {
+            Debug.Log("Player 1 uses Ability 1");
+        }
+        // if player 2 range
+        else if (controllerNumber == 2)
+        {
+            Debug.Log("Player 2 uses Ability 1");
+        }
         // if player 2 use P2 A1
     }
 
     // Ability 2
     private void Ability2()
     {
-        Debug.Log("Ability 2");
         // if player 1 use P1 A2
+        if (controllerNumber == 1)
+        {
+            Debug.Log("Player 1 uses Ability 2");
+        }
+        // if player 2 range
+        else if (controllerNumber == 2)
+        {
+            Debug.Log("Player 2 uses Ability 2");
+        }
         // if player 2 use P2 A2
     }
 
