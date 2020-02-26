@@ -23,8 +23,9 @@ public class MainControls : MonoBehaviour
     void Awake()
     {
         players = new List<GameObject>();
+        int count = transform.childCount;
         // Get movement script from this object
-        for (int i = 0; i < transform.childCount; i++)
+        for (int i = 0; i < count; i++)
         {
             players.Add(transform.GetChild(i).gameObject);
         }

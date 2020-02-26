@@ -8,24 +8,27 @@ using UnityEngine;
  */
 public class HUD : MonoBehaviour
 {
-    private Stack<GameObject> hearts;
-    public GameObject heart;
-
+    private HudSwitch switcher;
     private PlayerStats stats;
+    private Stack<GameObject> hearts;
+    private GameObject heartSpaces;
 
     // Start is called before the first frame update.
     void Start()
     {
         stats = FindObjectOfType<PlayerStats>();
+        hearts = new Stack<GameObject>();
+        heartSpaces = FindObjectOfType<GameObject>();
         for (int i = 0; i < stats.GetCurrHearts(); i++)
-            HeartOnHUD();
+        {
+            BuildHeartPrefabs();
+            HeartOnHUD(i);
+        }
     }
 
     // Create our heart prefab to be used by our hud.
     public void BuildHeartPrefabs()
     {
-        hearts = new Stack<GameObject>();
-
         object[] prefabs;
         int counter = 0;
 
@@ -42,9 +45,9 @@ public class HUD : MonoBehaviour
     }
 
     // Add a heart to the hud at a given offset or in a given space.
-    void HeartOnHUD()
+    void HeartOnHUD(int index)
     {
-        //GameObject newHeart = Instantiate(hearts.Pop(), this.transform.position, Quaternion.identity);
+        GameObject newHeart = Instantiate(hearts.Pop(), heartSpaces.transform.position, Quaternion.identity);
     }
 
     private void Update()

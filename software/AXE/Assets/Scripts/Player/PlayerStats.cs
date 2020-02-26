@@ -171,7 +171,7 @@ public class PlayerStats : MonoBehaviour
     {
         // Death animation && give invincibility
         SetLives(GetLives() - 1);
-        Debug.Log("Player lost a life");
+        Debug.Log("Player lost a life, lives remaining:" + GetLives().ToString());
         SetCurrHearts(GetMaxHearts());
         ResetHearts();
         isInvincible = true;
