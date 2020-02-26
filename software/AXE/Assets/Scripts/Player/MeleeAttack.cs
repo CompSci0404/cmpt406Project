@@ -4,41 +4,63 @@ using UnityEngine;
 
 public class MeleeAttack : MonoBehaviour
 {
-    /// <summary>
-    /// attackPoint point where the weapon is
-    /// attackRange from stats of each player
-    /// enemyLayer 
-    /// </summary>
-    private Transform attackPoint;
-    private float attackRange;
+    private PlayerStats stats;
     public LayerMask enemyLayers;
+    private float attackTime;
+    [SerializeField] private Transform weaponPoint;
 
-    // Update is called once per frame
-    /*
-    void Awake()
+
+    private bool canAttack;
+
+    void Start()
     {
-        attackPoint = this.GetComponentInChildren<Transform>();
-        attackRange = this.GetComponent<PlayerStats>().GetRange();
+        stats = GetComponent<PlayerStats>();
+        attackTime = 0f;
+    }
+    // Update is called once per frame
+
+    void Update()
+    {
+        // used canAttack bool so MeleeAttack updates correctly
+        if (attackTime <= 0)
+        {
+            canAttack = true;
+            attackTime = stats.GetAttackSpeed();
+        }
+        else
+        {
+            attackTime -= Time.deltaTime;
+        }
+        
     }
     // Melee attack of character
-    public void meleeAttack()
+    // used in MainControls
+    public void MeleeAtt()
     {
-
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
-        foreach(Collider2D enemy in hitEnemies)
+        if (canAttack)
         {
-            Debug.Log("Melee Attack");
+            
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(weaponPoint.position, stats.GetRange() / 3, enemyLayers);
+            Debug.Log(hitEnemies.Length);
+            for( int i = 0; i < hitEnemies.Length; i++ )
+            {
+                if (hitEnemies[i].CompareTag("BaseEnemy"))
+                {
+                    hitEnemies[i].GetComponent<AIClass>().Damage(stats.GetDamage());
+                    Debug.Log("Player 1 Melee Attacking Enemy");
+                }
+                
+            }
+            canAttack = false;
         }
+        
     }
 
     // attack range arch
-    private void OnDrawGizmosSelected()
+    void OnDrawGizmosSelected()
     {
-        if (attackPoint == null)
-        {
-            return;
-        }
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+        
+        Gizmos.DrawWireSphere(weaponPoint.position, stats.GetRange() / 3);
     }
-    */
+    
 }
