@@ -17,14 +17,14 @@ public class Arrow : MonoBehaviour
         arrowDamage = damage;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (used) return;
 
         GameObject obj = collision.gameObject;
 
         // Check if bullent should not be destroyed
-        string[] tags = { "Player", "Arrow" };
+        string[] tags = { "Player", "Arrow", "Projectile"};
         for (int i = 0; i < tags.Length; i++)
         {
             if (obj.CompareTag(tags[i])) return;
@@ -33,7 +33,7 @@ public class Arrow : MonoBehaviour
         // Check if collision is an enemy
         used = true;
         Destroy(gameObject);
-        if (obj.CompareTag("Enemy"))
+        if (obj.CompareTag("BaseEnemy"))
         {
             obj.GetComponent<AIClass>().Damage(arrowDamage);
             return;

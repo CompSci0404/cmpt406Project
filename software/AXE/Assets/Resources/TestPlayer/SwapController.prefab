@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 7600984664035167006}
   - component: {fileID: 7600984664035167005}
   - component: {fileID: 801095915342241112}
+  - component: {fileID: 7300317345096882598}
   m_Layer: 0
   m_Name: Player1
-  m_TagString: Type1
+  m_TagString: Thor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300474, guid: 87e34f36da27a6c49ad7eede589fafe2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 848a54d0d95107741b2d4bc6d9d75212, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -123,6 +124,25 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 0
+--- !u!95 &7300317345096882598
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7600984664035167004}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b639cf788d4601847beedae22b7c335b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7600984664673736890
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,7 +157,6 @@ GameObject:
   - component: {fileID: 7600984664673736880}
   - component: {fileID: 7600984664673736881}
   - component: {fileID: 7600984664673736886}
-  - component: {fileID: 2560377454590884877}
   - component: {fileID: 4479636796296197987}
   m_Layer: 0
   m_Name: SwapController
@@ -366,19 +385,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e4ba6132e645349bacc687cb8f6d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2560377454590884877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7600984664673736890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d53f9f5b2fd233f4ab34f7f1fea2f6ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controllerNumber: 0
+  HUD: {fileID: 0}
+  thorAnimator: {fileID: 7300317345096882598}
+  valkAnimator: {fileID: 8849725717746089244}
 --- !u!114 &4479636796296197987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,6 +413,7 @@ GameObject:
   - component: {fileID: 7600984665031520789}
   - component: {fileID: 7600984665031520788}
   - component: {fileID: 6502305135600347040}
+  - component: {fileID: 8849725717746089244}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Type2
@@ -463,7 +473,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300470, guid: 87e34f36da27a6c49ad7eede589fafe2, type: 3}
+  m_Sprite: {fileID: -5460534888604412527, guid: e4703a6cbc22ccb4faf2b995789dc673,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -513,3 +524,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrowPrefab: {fileID: 8998638514090871916, guid: 853993b47d69d8e48afbc20df487f630,
     type: 3}
+--- !u!95 &8849725717746089244
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7600984665031520794}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 945d89ea8b9328e49a4f782ac6a0e1bb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

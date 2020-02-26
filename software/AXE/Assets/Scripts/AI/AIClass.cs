@@ -9,7 +9,7 @@ public abstract class AIClass : MonoBehaviour
     public float fov;
     public float range;
     public float health;
-    public float atkDamage;
+    public int atkDamage;
     public float tooCloseRange;    /*only enforced when this unit is retreating*/
     public float velocityOfRangedAttack;
     public float rangedAttackCooldown; 

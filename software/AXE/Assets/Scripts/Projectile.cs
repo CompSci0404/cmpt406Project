@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public float damage;
+    public int damage;
 
     // Start is called before the first frame update
     void Start()
@@ -18,8 +18,16 @@ public class Projectile : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             // Add player damage
-            collision.gameObject.GetComponent<PlayerStats>().DamagePlayer(damage);
-            print("hit player for now.");
+            collision.gameObject.GetComponentInChildren<PlayerStats>().DamagePlayer(damage);
+            Destroy(gameObject);
+        }
+        else if(collision.gameObject.tag == "Projectile" ||
+            collision.gameObject.tag == "Type2Enemy")
+        {
+      
+        }
+        else
+        {
             Destroy(gameObject);
         }
 

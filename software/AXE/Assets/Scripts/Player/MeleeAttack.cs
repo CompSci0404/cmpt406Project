@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeAttack : MainControls
+public class MeleeAttack : MonoBehaviour
 {
     /// <summary>
     /// attackPoint point where the weapon is

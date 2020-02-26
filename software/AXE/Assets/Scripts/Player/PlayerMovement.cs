@@ -6,6 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     Rigidbody2D rBody;
     Vector2 movement;
+    Vector2 lookDirection;
+    float angle;
 
     float moveSpeed;
 
@@ -17,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
         stats = this.GetComponentInChildren<PlayerStats>();
         rBody = gameObject.GetComponent<Rigidbody2D>();
         movement = new Vector2();
+        lookDirection = new Vector2();
         moveSpeed = stats.GetMoveSpeed();
     }
 
@@ -29,6 +32,11 @@ public class PlayerMovement : MonoBehaviour
         {
             movement.Normalize();
         }
+
+        // Contoller Inputs
+        lookDirection = new Vector2(Input.GetAxis("LookHorizontal"), Input.GetAxis("LookVertical"));
+        Vector2 target = lookDirection - rBody.position;
+        float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
     }
 
     // After the update frame gets the users input, fixed update will move the player.
@@ -44,5 +52,6 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale = new Vector3(1, 1, 1);
         }
         rBody.MovePosition(rBody.position + movement * moveSpeed * Time.fixedDeltaTime);
+        rBody.SetRotation(angle);
     }
 }

@@ -13,6 +13,8 @@ TagManager:
   - Arrow
   - ThorHrt
   - ValkHrt
+  - Thor
+  - Valk
   layers:
   - Default
   - TransparentFX
