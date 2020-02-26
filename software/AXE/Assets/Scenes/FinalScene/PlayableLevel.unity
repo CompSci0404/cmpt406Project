@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 79331754}
   - component: {fileID: 79331753}
   - component: {fileID: 79331755}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Weapon
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -255,7 +255,7 @@ GameObject:
   - component: {fileID: 130421394}
   - component: {fileID: 130421393}
   - component: {fileID: 130421395}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -382,7 +382,7 @@ GameObject:
   - component: {fileID: 150699249}
   - component: {fileID: 150699247}
   - component: {fileID: 150699248}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 'Type2Enemy '
   m_TagString: Type2Enemy
   m_Icon: {fileID: 0}
@@ -401,10 +401,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bca23cac143c6e74a93f552772b0c2c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  fov: 2
-  health: 5
-  atkDamage: 5
 --- !u!114 &150699248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -426,6 +422,7 @@ MonoBehaviour:
   range: 10
   projectile: {fileID: 7852274554471292275, guid: ee1df742ff92e0c43b16b0b66dbc6e43,
     type: 3}
+  player: {fileID: 0}
 --- !u!60 &150699249
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -554,7 +551,7 @@ GameObject:
   - component: {fileID: 352278036}
   - component: {fileID: 352278035}
   - component: {fileID: 352278033}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Type1Enemy
   m_TagString: Type1Enemy
   m_Icon: {fileID: 0}
@@ -573,10 +570,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bca23cac143c6e74a93f552772b0c2c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  fov: 5
-  health: 20
-  atkDamage: 3
 --- !u!60 &352278035
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -3137,7 +3130,7 @@ GameObject:
   - component: {fileID: 617130439}
   - component: {fileID: 617130438}
   - component: {fileID: 617130443}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: UncoloredEnemy
   m_TagString: BaseEnemy
   m_Icon: {fileID: 0}
@@ -3271,10 +3264,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bca23cac143c6e74a93f552772b0c2c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
-  fov: 3
-  health: 10
-  atkDamage: 4
 --- !u!1 &892475631
 GameObject:
   m_ObjectHideFlags: 0
@@ -4329,7 +4318,8 @@ GameObject:
   - component: {fileID: 931795059}
   - component: {fileID: 931795058}
   - component: {fileID: 931795057}
-  m_Layer: 0
+  - component: {fileID: 931795061}
+  m_Layer: 9
   m_Name: Player1
   m_TagString: Type1
   m_Icon: {fileID: 0}
@@ -4425,6 +4415,22 @@ Transform:
   m_Father: {fileID: 1838793691}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &931795061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 931795056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e0fb699b113d1d4da3c40300ef10254, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 256
+  weaponPoint: {fileID: 79331752}
 --- !u!1 &1009556552
 GameObject:
   m_ObjectHideFlags: 0
@@ -9259,7 +9265,7 @@ GameObject:
   - component: {fileID: 2062363002}
   - component: {fileID: 2062363001}
   - component: {fileID: 2062363000}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player2
   m_TagString: Type2
   m_Icon: {fileID: 0}

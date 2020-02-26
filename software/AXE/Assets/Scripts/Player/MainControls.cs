@@ -37,7 +37,7 @@ public class MainControls : MonoBehaviour
         if (Input.GetButtonDown(yButton)) {
             SwapPlayer();
         }
-
+        
         else if (Input.GetButtonDown(bButton))
         {
             Attack();
@@ -75,8 +75,7 @@ public class MainControls : MonoBehaviour
 
         if (controllerNumber == 1)
         {
-            this.GetComponent<MeleeAttack>().MlAttack();
-            Debug.Log("Player 1 Melee Attacking");
+            this.GetComponentInChildren<MeleeAttack>().MeleeAtt();
         }
         // if player 2 range
         else if (controllerNumber == 2)
