@@ -23,6 +23,8 @@ public class MainControls : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        switcher = FindObjectOfType<HudSwitch>();
+        HUD = FindObjectOfType<HUD>();
         players = new List<GameObject>();
         int count = transform.childCount;
         // Get movement script from this object
@@ -30,8 +32,6 @@ public class MainControls : MonoBehaviour
         {
             players.Add(transform.GetChild(i).gameObject);
         }
-        switcher = FindObjectOfType<HudSwitch>();
-        HUD = FindObjectOfType<HUD>();
         SwapPlayer();
     }
 
@@ -63,7 +63,7 @@ public class MainControls : MonoBehaviour
         Debug.Log("SwapPlayer()");
 
         if (null != stats) stats.gameObject.SetActive(false);
-        GameObject nextPlayer = players[1];
+        GameObject nextPlayer = players[0];
         nextPlayer.SetActive(true);
 
         players.Remove(nextPlayer);
