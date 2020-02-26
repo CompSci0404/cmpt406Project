@@ -23,7 +23,6 @@ public abstract class AIClass : MonoBehaviour
     private string currentAct;
     private float teleportCoolDown = 0;
     private float teleportTimerSet = 6;
-    private bool inTeleportState = false;
 
     //---[[pre-setup calls]]---//
 
@@ -195,7 +194,6 @@ public abstract class AIClass : MonoBehaviour
 
     private IEnumerator playAnim()
     {
-         inTeleportState = true;
             
         yield return new WaitForSeconds(2.0f);
         print("after courtiune");

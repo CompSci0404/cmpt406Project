@@ -9,6 +9,8 @@ using UnityEngine;
 public class RangedEnemy : AIClass
 {
 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,7 +47,6 @@ public class RangedEnemy : AIClass
     void Update()
     {
         this.rootOfTree.Search();
-        print(this.returnCurrentAct());
     }
 
 }
