@@ -59,7 +59,7 @@ public class MainControls : MonoBehaviour
         Debug.Log("SwapPlayer()");
 
         if (null != stats) stats.gameObject.SetActive(false);
-        GameObject nextPlayer = players[0];
+        GameObject nextPlayer = players[1];
         nextPlayer.SetActive(true);
 
         players.Remove(nextPlayer);
