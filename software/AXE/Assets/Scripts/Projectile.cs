@@ -19,15 +19,7 @@ public class Projectile : MonoBehaviour
         {
             // Add player damage
             collision.gameObject.GetComponent<PlayerStats>().DamagePlayer(damage);
-            Destroy(gameObject);
-        }
-        else if(collision.gameObject.tag == "Projectile" ||
-            collision.gameObject.tag == "Type2Enemy")
-        {
-      
-        }
-        else
-        {
+            print("hit player for now.");
             Destroy(gameObject);
         }
 

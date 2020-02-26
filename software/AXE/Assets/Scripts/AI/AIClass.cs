@@ -20,6 +20,10 @@ public abstract class AIClass : MonoBehaviour
     private GameObject player;
     private List<GameObject> rangePrefabs; /*like a library of all projectiles */
     private float cooldown;
+    private string currentAct;
+    private float teleportCoolDown = 0;
+    private float teleportTimerSet = 6;
+    private bool inTeleportState = false;
 
     //---[[pre-setup calls]]---//
 
@@ -87,6 +91,11 @@ public abstract class AIClass : MonoBehaviour
         }
         else if (cooldown == 0)
         {
+
+            this.currentAct = "attack";
+
+            this.gameObject.GetComponent<enemyAnim>().updateCurrentAct(currentAct);
+
             // direction that AI is currently facing is where we want to shoot our object!
             Vector2 direction = (player.transform.position - this.transform.position).normalized;
 
@@ -151,20 +160,54 @@ public abstract class AIClass : MonoBehaviour
     public void MoveTowardsPlayer()
     {
         speed = saveSpeed;
+        this.currentAct = "move";
+        this.gameObject.GetComponent<enemyAnim>().updateCurrentAct(currentAct);
         this.transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
     }
 
     /*This is more like a teleport we should keep it.*/
     public void Teleport()
     {
-        speed = saveSpeed;
+
+        // teleport cooldown.
+        if (teleportCoolDown != 0)
+        {
+            this.teleportCoolDown -= Time.deltaTime;
+
+            if (this.teleportCoolDown <= 0)
+            {
+                this.teleportCoolDown = 0;
+            }
+        }
+        else if (teleportCoolDown == 0)
+        {
+            speed = saveSpeed;
+            this.currentAct = "move";
+            this.gameObject.GetComponent<enemyAnim>().updateCurrentAct(currentAct);
+            teleportCoolDown = teleportTimerSet;
+
+            StartCoroutine(playAnim());
+
+        }
+
+    }
+
+
+    private IEnumerator playAnim()
+    {
+         inTeleportState = true;
+            
+        yield return new WaitForSeconds(2.0f);
+        print("after courtiune");
         this.transform.position = -(Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime));
+
     }
 
     public void MoveAwayFromPlayer()
     {
         speed = saveSpeed;
-
+        this.currentAct = "move";
+        this.gameObject.GetComponent<enemyAnim>().updateCurrentAct(currentAct);
         Vector2 direction = this.gameObject.transform.position - player.transform.position;
 
         transform.Translate(direction.normalized * speed * Time.deltaTime); 
@@ -173,9 +216,15 @@ public abstract class AIClass : MonoBehaviour
 
     public void Idle()
     {
+        this.currentAct = "idle";
+        this.gameObject.GetComponent<enemyAnim>().updateCurrentAct(currentAct);
         this.speed = 0f;
     }
 
+    public string returnCurrentAct()
+    {
+        return this.currentAct;
+    }
 
 
 }

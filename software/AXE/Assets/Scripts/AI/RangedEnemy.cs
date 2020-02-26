@@ -45,6 +45,7 @@ public class RangedEnemy : AIClass
     void Update()
     {
         this.rootOfTree.Search();
+        print(this.returnCurrentAct());
     }
 
 }
