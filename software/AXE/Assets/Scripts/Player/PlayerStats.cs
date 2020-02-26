@@ -113,7 +113,6 @@ public class PlayerStats : MonoBehaviour
         isInvincible = false;
         Hearts = FindObjectOfType<HeartDisplay>();
         HUD = FindObjectOfType<HudSwitch>();
-        controllerNumber = 0;
     }
 
     public int GetControllerNumber()
