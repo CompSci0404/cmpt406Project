@@ -4,14 +4,27 @@ using UnityEngine;
 
 public class RoomSystem : MonoBehaviour
 {
+    bool isClear = false;
+
+    List<Transform> doors;
+
+    [SerializeField]
+    Transform doorParent;
+
     // Start is called before the first frame update
     void Start()
     {
+        doors = new List<Transform>();
     }
 
     // Update is called once per frame
     void Update()
     {
+    }
+
+    void RoomClear()
+    {
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

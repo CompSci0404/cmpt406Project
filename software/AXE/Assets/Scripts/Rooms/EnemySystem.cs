@@ -34,8 +34,13 @@ public class EnemySystem : MonoBehaviour
     {
         if (isActive && enemies.Count <= 0)
         {
-            isClear = true;
+            SendMessage("RoomClear");
         }
+    }
+
+    void RoomClear()
+    {
+        isClear = true;
     }
 
     void PlayerEnter()
