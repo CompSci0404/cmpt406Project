@@ -10,6 +10,8 @@ public class MainControls : MonoBehaviour
     public HudSwitch switcher;
     public HUD HUD;
 
+    private bool justSwapped;
+
     private string horizontalAxis;
     private string verticalAxis;
     private string aButton;
@@ -40,7 +42,14 @@ public class MainControls : MonoBehaviour
     {
         // wait for an input and set opposite player controller active
         if (Input.GetButtonDown(yButton)) {
-            SwapPlayer();
+            if(justSwapped)
+            {
+                //cannot switch yet
+            }
+            else
+            {
+                SwapPlayer();
+            }
         }
         if (Input.GetButtonDown(bButton))
         {
@@ -71,15 +80,22 @@ public class MainControls : MonoBehaviour
 
         if (controllerNumber == 1)
         {
-            switcher.ThorSwitch = true;
+            switcher.ValkSwitch = true;
             HUD.ChangeCharacterIcon();
         }
         // if player 2 range
         if (controllerNumber == 2)
         {
-            switcher.ValkSwitch = true;
+            switcher.ThorSwitch = true;
             HUD.ChangeCharacterIcon();
         }
+        justSwapped = true;
+        Invoke("ResetSwap", 1);
+    }
+
+    private void ResetSwap()
+    {
+        justSwapped = false;
     }
 
     // Normal Attack

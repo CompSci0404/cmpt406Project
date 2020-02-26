@@ -195,7 +195,8 @@ public class PlayerStats : MonoBehaviour
         Debug.Log("Wah I am dead :(");
 
         // this will destroy the SwapContoller Object (this can be final death) 
-        Destroy(this.gameObject, 2.5f);
+        Destroy(this.gameObject, .5f);
+        // create Game Over Screen
     }
 
     private void ResetInvincibility()
