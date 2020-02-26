@@ -8,6 +8,9 @@ public class RoomSystem : MonoBehaviour
 
     List<Transform> doors;
 
+    [SerializeField]
+    Transform doorParent;
+
     // Start is called before the first frame update
     void Start()
     {
