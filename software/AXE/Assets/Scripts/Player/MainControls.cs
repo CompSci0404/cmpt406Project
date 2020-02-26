@@ -7,7 +7,8 @@ using UnityEngine.InputSystem;
 public class MainControls : MonoBehaviour
 {
     private PlayerStats stats;
-    public HudSwitch HUD;
+    public HudSwitch switcher;
+    public HUD HUD;
 
     private string horizontalAxis;
     private string verticalAxis;
@@ -29,7 +30,8 @@ public class MainControls : MonoBehaviour
         {
             players.Add(transform.GetChild(i).gameObject);
         }
-        HUD = FindObjectOfType<HudSwitch>();
+        switcher = FindObjectOfType<HudSwitch>();
+        HUD = FindObjectOfType<HUD>();
         SwapPlayer();
     }
 
@@ -69,12 +71,14 @@ public class MainControls : MonoBehaviour
 
         if (controllerNumber == 1)
         {
-            HUD.ThorSwitch = true;
+            switcher.ThorSwitch = true;
+            HUD.ChangeCharacterIcon();
         }
         // if player 2 range
         if (controllerNumber == 2)
         {
-            HUD.ValkSwitch = true;
+            switcher.ValkSwitch = true;
+            HUD.ChangeCharacterIcon();
         }
     }
 

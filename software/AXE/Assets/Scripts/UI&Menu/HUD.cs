@@ -18,11 +18,12 @@ public class HUD : MonoBehaviour
     {
         stats = FindObjectOfType<PlayerStats>();
         hearts = new Stack<GameObject>();
-        heartSpaces = FindObjectOfType<GameObject>();
+
         for (int i = 0; i < stats.GetCurrHearts(); i++)
         {
+            heartSpaces = GameObject.Find("HeartSpaces").transform.Find("HeartSpace"+ i.ToString()).gameObject;
             BuildHeartPrefabs();
-            HeartOnHUD(i);
+            HeartOnHUD(heartSpaces);
         }
     }
 
@@ -45,9 +46,10 @@ public class HUD : MonoBehaviour
     }
 
     // Add a heart to the hud at a given offset or in a given space.
-    void HeartOnHUD(int index)
+    void HeartOnHUD(GameObject heartSpaces)
     {
         GameObject newHeart = Instantiate(hearts.Pop(), heartSpaces.transform.position, Quaternion.identity);
+        Debug.Log(hearts.ToString());
     }
 
     private void Update()
@@ -65,5 +67,11 @@ public class HUD : MonoBehaviour
     public void ChangeCharacterIcon()
     {
         // Change sprite from 0- 20 to go through the swap.
+        //if (stats.controllerNumber == 1)
+        //    switcher.ThorSwitch = true;
+        //else
+        //{
+        //    switcher.ValkSwitch = true;
+        //}
     }
 }
