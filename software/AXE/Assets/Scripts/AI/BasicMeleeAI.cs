@@ -8,8 +8,8 @@ public class BasicMeleeAI : AIClass
     {
         if(collision.gameObject.tag == "Player")
         {
-            Debug.Log("I am a AI, and this is BIG DAMAGE"); 
-            collision.gameObject.GetComponentInChildren<PlayerStats>().DamagePlayer(this.atkDamage); 
+            this.gameObject.GetComponent<enemyAnim>().updateCurrentAct("attack");
+            collision.gameObject.GetComponent<PlayerStats>().DamagePlayer(this.atkDamage); 
         }
     }
 
