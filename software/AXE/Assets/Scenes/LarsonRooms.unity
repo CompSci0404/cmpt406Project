@@ -1082,7 +1082,7 @@ PrefabInstance:
     - target: {fileID: 6202419709121153713, guid: dc3e8c58f6b604c4d82a70fa4b01c177,
         type: 3}
       propertyPath: m_Name
-      value: SampleRoom
+      value: Room1
       objectReference: {fileID: 0}
     - target: {fileID: 6202419709121153712, guid: dc3e8c58f6b604c4d82a70fa4b01c177,
         type: 3}

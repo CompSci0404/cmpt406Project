@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        stats = this.GetComponent<PlayerStats>();
+        stats = this.GetComponentInChildren<PlayerStats>();
         rBody = gameObject.GetComponent<Rigidbody2D>();
         movement = new Vector2();
         moveSpeed = stats.GetMoveSpeed();
@@ -35,11 +35,11 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
 
-        if (movement.x == -1)
+        if (movement.x <= -1)
         {
             transform.localScale = new Vector3(-1, 1, 1);
         }
-        else if (movement.x == 1)
+        else if (movement.x >= 1)
         {
             transform.localScale = new Vector3(1, 1, 1);
         }
