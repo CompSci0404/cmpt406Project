@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -37,7 +38,6 @@ public class MainControls : MonoBehaviour
         if (Input.GetButtonDown(yButton)) {
             SwapPlayer();
         }
-
         if (Input.GetButtonDown(bButton))
         {
             Attack();
@@ -59,7 +59,7 @@ public class MainControls : MonoBehaviour
         Debug.Log("SwapPlayer()");
 
         if (null != stats) stats.gameObject.SetActive(false);
-        GameObject nextPlayer = players[0];
+        GameObject nextPlayer = players[1];
         nextPlayer.SetActive(true);
 
         players.Remove(nextPlayer);
@@ -71,7 +71,15 @@ public class MainControls : MonoBehaviour
     {
         Debug.Log("Attacking");
         // if player 1 melee
+        if (controllerNumber == 1)
+        {
+            Debug.Log("melee attack");
+        }
         // if player 2 range
+        if (controllerNumber == 2)
+        {
+            Debug.Log("ranged attack");
+        }
     }
 
     // Ability 1

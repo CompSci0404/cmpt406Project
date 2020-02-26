@@ -11,6 +11,7 @@ public class PlayerStats : MonoBehaviour
     public int controllerNumber;
     private float moveSpeed;
     private float range;
+    private float atkForce;
     private float damage;
     private float maxHealth;
     private float currHealth;
@@ -69,6 +70,16 @@ public class PlayerStats : MonoBehaviour
         range = value;
     }
 
+    public float GetAtkForce()
+    {
+        return atkForce;
+    }
+
+    public void SetAtkForce(float value)
+    {
+        atkForce = value;
+    }
+
     public float GetMoveSpeed()
     {
         return moveSpeed;
@@ -104,10 +115,11 @@ public class PlayerStats : MonoBehaviour
         // initialize stats
         moveSpeed = 10f;
         range = 1f;
+        atkForce = 20f;
         damage = 5f;
         maxHealth = 10f;
         currHealth = GetMaxHealth();
-        attackSpeed = 1.25f;
+        attackSpeed = .25f;
         lives = 3;
         hearts = 3;
         isInvincible = false;

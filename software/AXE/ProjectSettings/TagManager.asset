@@ -10,8 +10,7 @@ TagManager:
   - Type1Enemy
   - Type2Enemy
   - Projectile
-  - Platformer
-  - Top_down
+  - Arrow
   layers:
   - Default
   - TransparentFX
@@ -46,9 +45,6 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Room
-    uniqueID: 3145319839
-    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
