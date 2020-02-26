@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -6,6 +7,12 @@ using UnityEngine.InputSystem;
 public class MainControls : MonoBehaviour
 {
     private PlayerStats stats;
+    public HUD HUD;
+
+    public Animator thorAnimator;
+    public Animator valkAnimator;
+
+    private bool justSwapped;
 
     private string horizontalAxis;
     private string verticalAxis;
@@ -20,13 +27,14 @@ public class MainControls : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        HUD = FindObjectOfType<HUD>();
         players = new List<GameObject>();
+        int count = transform.childCount;
         // Get movement script from this object
-        for (int i = 0; i < transform.childCount; i++)
+        for (int i = 0; i < count; i++)
         {
             players.Add(transform.GetChild(i).gameObject);
         }
-
         SwapPlayer();
     }
 
@@ -35,9 +43,30 @@ public class MainControls : MonoBehaviour
     {
         // wait for an input and set opposite player controller active
         if (Input.GetButtonDown(yButton)) {
-            SwapPlayer();
+            if(justSwapped)
+            {
+                //cannot switch yet
+            }
+            else
+            {
+                if (controllerNumber == 1)
+                {
+                    HUD.ThorSwitch = true;
+                    HUD.ChangeCharacterIcon();
+                    thorAnimator.SetTrigger("thor_switch");
+                    SwapPlayer();
+                }
+                // if player 2 range
+                else if (controllerNumber == 2)
+                {
+                    HUD.ValkSwitch = true;
+                    HUD.ChangeCharacterIcon();
+                    valkAnimator.SetTrigger("valk_switch");
+                    SwapPlayer();
+                }
+            }
         }
-        
+
         else if (Input.GetButtonDown(bButton))
         {
             Attack();
@@ -65,6 +94,13 @@ public class MainControls : MonoBehaviour
         players.Remove(nextPlayer);
         players.Add(nextPlayer);
 
+        justSwapped = true;
+        Invoke("ResetSwap", 1);
+    }
+
+    private void ResetSwap()
+    {
+        justSwapped = false;
     }
 
     // Normal Attack
@@ -72,7 +108,6 @@ public class MainControls : MonoBehaviour
     {
         
         // if player 1 melee
-
         if (controllerNumber == 1)
         {
             this.GetComponentInChildren<MeleeAttack>().MeleeAtt();
@@ -82,7 +117,6 @@ public class MainControls : MonoBehaviour
         {
             Debug.Log("Player 2 Range Attacking");
         }
-        
     }
 
     // Ability 1
