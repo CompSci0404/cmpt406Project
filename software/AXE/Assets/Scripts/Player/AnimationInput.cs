@@ -56,6 +56,14 @@ public class AnimationInput : MonoBehaviour
         //    valkAnimator.SetTrigger("idle_front");
         //}
 
+        //Debug.Log(lookDirection.ToString());
+
+        if(lookDirection.x == 0.0f && lookDirection.y == 0.0f)
+        {
+            //Debug.Log("No Right Stick Input");
+            thorAnimator.SetTrigger("idle_front");
+        }
+
         if (lookDirection.y >= -0.5f && lookDirection.y <= 0)
         {
             thorAnimator.SetTrigger("idle_right");
