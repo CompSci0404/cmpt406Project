@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5544134512873333591}
   m_Layer: 0
   m_Name: cyberWizard
-  m_TagString: Untagged
+  m_TagString: BaseEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   speed: 2
   fov: 10
   range: 5
-  health: 100
+  health: 30
   atkDamage: 1
   tooCloseRange: 0
   velocityOfRangedAttack: 100
