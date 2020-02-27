@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8422682816821592727}
   - component: {fileID: 8422682816821592724}
   - component: {fileID: 8422682816821592725}
-  - component: {fileID: 8422682816821592721}
+  - component: {fileID: 315639154512859546}
   - component: {fileID: 8422682816821592720}
   m_Layer: 0
   m_Name: nanoGhost
@@ -139,7 +139,7 @@ MonoBehaviour:
   tooCloseRange: 5
   velocityOfRangedAttack: 100
   rangedAttackCooldown: 3
---- !u!114 &8422682816821592721
+--- !u!114 &315639154512859546
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8422682816821592746}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d30f8a7febf27c0449680b8bd5e5e616, type: 3}
+  m_Script: {fileID: 11500000, guid: 9aeeec43933370a4585b44cab0faa321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isCyberWizard: 0

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8473600148024395762}
   - component: {fileID: 8473600148024395760}
   - component: {fileID: 8473600148024395765}
-  - component: {fileID: 8473600148024395764}
+  - component: {fileID: 5240349899102476966}
   - component: {fileID: 8473600148024395761}
   m_Layer: 8
   m_Name: Draugr
@@ -130,7 +130,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.3073287, y: 2.601936}
   m_EdgeRadius: 0
---- !u!114 &8473600148024395764
+--- !u!114 &5240349899102476966
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -139,11 +139,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8473600148024395775}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d30f8a7febf27c0449680b8bd5e5e616, type: 3}
+  m_Script: {fileID: 11500000, guid: 9aeeec43933370a4585b44cab0faa321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isCyberWizard: 0
   isDragur: 1
+  isNanoGhost: 0
 --- !u!95 &8473600148024395761
 Animator:
   serializedVersion: 3
