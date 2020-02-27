@@ -12,11 +12,12 @@ GameObject:
   - component: {fileID: 8473600148024395762}
   - component: {fileID: 8473600148024395760}
   - component: {fileID: 8473600148024395765}
-  - component: {fileID: 8473600148024395764}
+  - component: {fileID: 5240349899102476966}
   - component: {fileID: 8473600148024395761}
+  - component: {fileID: 4338684983844641417}
   m_Layer: 8
   m_Name: Draugr
-  m_TagString: Type1Enemy
+  m_TagString: BaseEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,7 +101,7 @@ MonoBehaviour:
   fov: 5
   range: 0
   health: 20
-  atkDamage: 5
+  atkDamage: 1
   tooCloseRange: 0
   velocityOfRangedAttack: 0
   rangedAttackCooldown: 0
@@ -130,7 +131,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.3073287, y: 2.601936}
   m_EdgeRadius: 0
---- !u!114 &8473600148024395764
+--- !u!114 &5240349899102476966
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -139,11 +140,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8473600148024395775}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d30f8a7febf27c0449680b8bd5e5e616, type: 3}
+  m_Script: {fileID: 11500000, guid: 9aeeec43933370a4585b44cab0faa321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isCyberWizard: 0
   isDragur: 1
+  isNanoGhost: 0
 --- !u!95 &8473600148024395761
 Animator:
   serializedVersion: 3
@@ -163,3 +165,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!50 &4338684983844641417
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8473600148024395775}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 10
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4

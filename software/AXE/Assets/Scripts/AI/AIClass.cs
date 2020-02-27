@@ -71,6 +71,7 @@ public abstract class AIClass : MonoBehaviour
 
     public void Die()
     {
+        SendMessageUpwards("EnemyDestroyed", gameObject, SendMessageOptions.RequireReceiver);
         Destroy(this.gameObject);
     }
 

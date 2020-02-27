@@ -72,6 +72,7 @@ public class MainControls : MonoBehaviour
         else if (Input.GetButtonDown(bButton))
         {
             Attack();
+
         }
         else if (Input.GetButtonDown(aButton))
         {
@@ -112,6 +113,8 @@ public class MainControls : MonoBehaviour
         // if player 1 melee
         if (controllerNumber == 1)
         {
+            Debug.Log("Player 1 Melee Attacking");
+            thorAnimator.SetTrigger("attack_front");
             this.GetComponentInChildren<MeleeAttack>().MeleeAtt();
         }
         // if player 2 range

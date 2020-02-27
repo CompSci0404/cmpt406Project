@@ -19,7 +19,7 @@ public class enemyAnim : MonoBehaviour
     public void updateCurrentAct(string updatedAct)
     {
         this.currentAct = updatedAct;
-        print(currentAct + "we in this");
+        //print(currentAct + "we in this");
     }
 
     public void playAnim() {
@@ -125,6 +125,6 @@ public class enemyAnim : MonoBehaviour
     {
 
         playAnim();
-        print(currentAct);
+        //print(currentAct);
     }
 }

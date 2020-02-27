@@ -4,13 +4,15 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Type1
+  - Type2
+  - BaseEnemy
+  - Type1Enemy
+  - Type2Enemy
+  - Projectile
+  - Arrow
   - ThorHrt
   - ValkHrt
-  - Thor
-  - Type2
-  - Arrow
-  - BaseEnemy
-  - Projectile
   layers:
   - Default
   - TransparentFX
@@ -20,7 +22,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - enemy
   - 
   - 
   - 
@@ -45,6 +47,21 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Room
+    uniqueID: 1731364199
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Door
+    uniqueID: 1497551797
+    locked: 0
+  - name: Enemy
+    uniqueID: 1524485801
+    locked: 0
+  - name: Player
+    uniqueID: 3516099815
+    locked: 0
+  - name: UI
+    uniqueID: 3876357789
     locked: 0

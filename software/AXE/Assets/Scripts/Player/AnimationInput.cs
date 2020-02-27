@@ -20,18 +20,8 @@ public class AnimationInput : MonoBehaviour
     {
         lookDirection = new Vector2(Input.GetAxis("LookHorizontal"), Input.GetAxis("LookVertical"));
 
-        Debug.Log(lookDirection.ToString());
-
-        Debug.Log("Y-Look Value:" + lookDirection.y.ToString());
-        Debug.Log("X-Look Value:" + lookDirection.x.ToString());
-
-
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
-
-        Debug.Log("X Values:" + movement.x.ToString());
-        Debug.Log("Y Values:" + movement.y.ToString());
-
 
         if (movement.magnitude > 1)
         {
@@ -65,6 +55,14 @@ public class AnimationInput : MonoBehaviour
         //    thorAnimator.SetTrigger("idle_front");
         //    valkAnimator.SetTrigger("idle_front");
         //}
+
+        //Debug.Log(lookDirection.ToString());
+
+        if(lookDirection.x == 0.0f && lookDirection.y == 0.0f)
+        {
+            //Debug.Log("No Right Stick Input");
+            thorAnimator.SetTrigger("idle_front");
+        }
 
         if (lookDirection.y >= -0.5f && lookDirection.y <= 0)
         {

@@ -12,11 +12,12 @@ GameObject:
   - component: {fileID: 5544134512873333586}
   - component: {fileID: 5544134512873333587}
   - component: {fileID: 5544134512873333584}
-  - component: {fileID: 5544134512873333590}
+  - component: {fileID: 6131212942110702436}
   - component: {fileID: 5544134512873333591}
-  m_Layer: 0
+  - component: {fileID: 3377440892816740069}
+  m_Layer: 8
   m_Name: cyberWizard
-  m_TagString: Untagged
+  m_TagString: BaseEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +100,7 @@ MonoBehaviour:
   speed: 2
   fov: 10
   range: 5
-  health: 100
+  health: 30
   atkDamage: 1
   tooCloseRange: 0
   velocityOfRangedAttack: 100
@@ -146,7 +147,7 @@ PolygonCollider2D:
       - {x: 0.5833334, y: -1.3333334}
       - {x: 0.7083334, y: -1.0416667}
       - {x: 0.625, y: 0.083333336}
---- !u!114 &5544134512873333590
+--- !u!114 &6131212942110702436
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -155,9 +156,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5544134512873333596}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d30f8a7febf27c0449680b8bd5e5e616, type: 3}
+  m_Script: {fileID: 11500000, guid: 9aeeec43933370a4585b44cab0faa321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCyberWizard: 1
+  isDragur: 0
+  isNanoGhost: 0
 --- !u!95 &5544134512873333591
 Animator:
   serializedVersion: 3
@@ -177,3 +181,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!50 &3377440892816740069
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5544134512873333596}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 10
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
