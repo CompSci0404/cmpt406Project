@@ -8,8 +8,7 @@ public class EnemyDummy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            SendMessageUpwards("EnemyDestroyed", this);
-            Destroy(this);
+            SendMessageUpwards("EnemyDestroyed", gameObject, SendMessageOptions.RequireReceiver);
         }
     }
 }
