@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8473600148024395761}
   m_Layer: 8
   m_Name: Draugr
-  m_TagString: Type1Enemy
+  m_TagString: BaseEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,7 +100,7 @@ MonoBehaviour:
   fov: 5
   range: 0
   health: 20
-  atkDamage: 5
+  atkDamage: 1
   tooCloseRange: 0
   velocityOfRangedAttack: 0
   rangedAttackCooldown: 0

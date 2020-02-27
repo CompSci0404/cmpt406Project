@@ -56,11 +56,10 @@ public class MeleeAttack : MonoBehaviour
         
     }
 
-    // attack range arch
-    void OnDrawGizmosSelected()
-    {
-        
-        Gizmos.DrawWireSphere(weaponPoint.position, stats.GetRange() / 3);
-    }
+    //// attack range arch
+    //void OnDrawGizmosSelected()
+    //{
+    //    Gizmos.DrawWireSphere(weaponPoint.position, stats.GetRange() / 3);
+    //}
     
 }
