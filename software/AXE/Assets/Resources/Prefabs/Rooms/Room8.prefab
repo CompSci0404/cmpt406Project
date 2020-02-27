@@ -6886,7 +6886,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyParent: {fileID: 2426787268503106944}
-  spawnParent: {fileID: 0}
+  spawnParent: {fileID: 4123836720734770844}
 --- !u!1 &3994263414682840468
 GameObject:
   m_ObjectHideFlags: 0
@@ -7617,7 +7617,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7214284116882457235}
   m_Layer: 0
-  m_Name: Positions (1)
+  m_Name: Positions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
