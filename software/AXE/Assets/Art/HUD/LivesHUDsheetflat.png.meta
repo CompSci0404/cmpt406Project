@@ -1,0 +1,391 @@
+fileFormatVersion: 2
+guid: f0f1ac3e011664ceab1559f7c7698606
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8035128832181747779
+    second: LivesHUDsheetflat_0
+  - first:
+      213: 8022857127926466028
+    second: LivesHUDsheetflat_1
+  - first:
+      213: 7547410954885001392
+    second: LivesHUDsheetflat_2
+  - first:
+      213: -6990458890165346736
+    second: LivesHUDsheetflat_3
+  - first:
+      213: -3448700370278437634
+    second: LivesHUDsheetflat_4
+  - first:
+      213: -6412125687437244332
+    second: LivesHUDsheetflat_5
+  - first:
+      213: 2376142385572258293
+    second: LivesHUDsheetflat_6
+  - first:
+      213: 7298153378378830626
+    second: LivesHUDsheetflat_7
+  - first:
+      213: -600695227832032513
+    second: LivesHUDsheetflat_8
+  - first:
+      213: -2545034377846937103
+    second: LivesHUDsheetflat_9
+  - first:
+      213: 6757122876375703856
+    second: LivesHUDsheetflat_10
+  - first:
+      213: 4096597290483696849
+    second: LivesHUDsheetflat_11
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: LivesHUDsheetflat_0
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 99
+        width: 177
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b2273636ae9f4db79807ff9d89f11ba
+      internalID: 8035128832181747779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LivesHUDsheetflat_1
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 167
+        width: 12
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f263b9437790e46ba97a194a38c6459c
+      internalID: 8022857127926466028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LivesHUDsheetflat_2
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 168
+        width: 73
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef602793521e347caa0fae3cfc47756c
+      internalID: 7547410954885001392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LivesHUDsheetflat_3
+      rect:
+        serializedVersion: 2
+        x: 443
+        y: 166
+        width: 47
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b09a7c120bafb45f38c28f25d9b2b125
+      internalID: -6990458890165346736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LivesHUDsheetflat_4
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 166
+        width: 47
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acda568f43b674f408348c63c7b252e7
+      internalID: -3448700370278437634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LivesHUDsheetflat_5
+      rect:
+        serializedVersion: 2
+        x: 613
+        y: 166
+        width: 53
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 228163f4ac5c047a2aa9f5d5c0548ccb
+      internalID: -6412125687437244332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LivesHUDsheetflat_6
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 164
+        width: 47
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9d0795239b5e4e50a5001ed4befd2b9
+      internalID: 2376142385572258293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LivesHUDsheetflat_7
+      rect:
+        serializedVersion: 2
+        x: 789
+        y: 169
+        width: 54
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9e78995a12f54742a343c34c9d4fa84
+      internalID: 7298153378378830626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LivesHUDsheetflat_8
+      rect:
+        serializedVersion: 2
+        x: 881
+        y: 169
+        width: 56
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c000226751fb44a6c8cab7a35b051eb2
+      internalID: -600695227832032513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LivesHUDsheetflat_9
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 52
+        width: 56
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b5f8883c57bd47e5be3ae6bca83bce4
+      internalID: -2545034377846937103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LivesHUDsheetflat_10
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 52
+        width: 63
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e65ec1ce87a246b8a6ba1d3a80df223
+      internalID: 6757122876375703856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LivesHUDsheetflat_11
+      rect:
+        serializedVersion: 2
+        x: 545
+        y: 50
+        width: 13
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98ece013db33045bd8378939a9b638ea
+      internalID: 4096597290483696849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

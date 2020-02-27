@@ -1,0 +1,1294 @@
+fileFormatVersion: 2
+guid: d1d008aa2e56f544cbbb1bb4f845a7ce
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5125486215702144472
+    second: Thor_Spritesheet_0
+  - first:
+      213: 4932590475939834805
+    second: Thor_Spritesheet_1
+  - first:
+      213: 5832839359199133911
+    second: Thor_Spritesheet_2
+  - first:
+      213: -4834620754376642508
+    second: Thor_Spritesheet_3
+  - first:
+      213: 4737944949881151823
+    second: Thor_Spritesheet_4
+  - first:
+      213: 7199041503627929139
+    second: Thor_Spritesheet_5
+  - first:
+      213: -7061928408512568446
+    second: Thor_Spritesheet_6
+  - first:
+      213: 3809165973770430870
+    second: Thor_Spritesheet_7
+  - first:
+      213: -677163828420691248
+    second: Thor_Spritesheet_8
+  - first:
+      213: -1811312225541882906
+    second: Thor_Spritesheet_9
+  - first:
+      213: 1246174920945801385
+    second: Thor_Spritesheet_10
+  - first:
+      213: -1424038979172315300
+    second: Thor_Spritesheet_11
+  - first:
+      213: -4812345835579129658
+    second: Thor_Spritesheet_12
+  - first:
+      213: -1738951896980144144
+    second: Thor_Spritesheet_13
+  - first:
+      213: 1443756900031540065
+    second: Thor_Spritesheet_14
+  - first:
+      213: -4277924657701352725
+    second: Thor_Spritesheet_15
+  - first:
+      213: 8198831649581568708
+    second: Thor_Spritesheet_16
+  - first:
+      213: -2747096458672187037
+    second: Thor_Spritesheet_17
+  - first:
+      213: -3446858103998958572
+    second: Thor_Spritesheet_18
+  - first:
+      213: -4637991530805846656
+    second: Thor_Spritesheet_19
+  - first:
+      213: -5410839224046461763
+    second: Thor_Spritesheet_20
+  - first:
+      213: 8320331415353677259
+    second: Thor_Spritesheet_21
+  - first:
+      213: -3022571049416139793
+    second: Thor_Spritesheet_22
+  - first:
+      213: 8021622673176265941
+    second: Thor_Spritesheet_23
+  - first:
+      213: -2179619043760621486
+    second: Thor_Spritesheet_24
+  - first:
+      213: -5980524202307073104
+    second: Thor_Spritesheet_25
+  - first:
+      213: -5790099343863793024
+    second: Thor_Spritesheet_26
+  - first:
+      213: 4854916152115147941
+    second: Thor_Spritesheet_27
+  - first:
+      213: -7360429470057316519
+    second: Thor_Spritesheet_28
+  - first:
+      213: -8703906972687063365
+    second: Thor_Spritesheet_29
+  - first:
+      213: 8615514019016220956
+    second: Thor_Spritesheet_30
+  - first:
+      213: 4983394579450944036
+    second: Thor_Spritesheet_31
+  - first:
+      213: 8116573085783022462
+    second: Thor_Spritesheet_32
+  - first:
+      213: 6279455127052091941
+    second: Thor_Spritesheet_33
+  - first:
+      213: -8148921569512682739
+    second: Thor_Spritesheet_34
+  - first:
+      213: -8140168565725753662
+    second: Thor_Spritesheet_35
+  - first:
+      213: 8467693023732716736
+    second: Thor_Spritesheet_36
+  - first:
+      213: -6611120315414725350
+    second: Thor_Spritesheet_37
+  - first:
+      213: -950902653128441161
+    second: Thor_Spritesheet_38
+  - first:
+      213: 4648540264580415239
+    second: Thor_Spritesheet_39
+  - first:
+      213: -7624435896637478567
+    second: Thor_Spritesheet_40
+  - first:
+      213: -418321501561778346
+    second: Thor_Spritesheet_41
+  - first:
+      213: 3281782603382950868
+    second: Thor_Spritesheet_42
+  - first:
+      213: -2899506508685122541
+    second: Thor_Spritesheet_43
+  - first:
+      213: -5576258364507789719
+    second: Thor_Spritesheet_44
+  - first:
+      213: 1519696039313169226
+    second: Thor_Spritesheet_45
+  - first:
+      213: 3117150107652464904
+    second: Thor_Spritesheet_46
+  - first:
+      213: -5982270769514720554
+    second: Thor_Spritesheet_47
+  - first:
+      213: -6989824348004084081
+    second: Thor_Spritesheet_48
+  - first:
+      213: 2217888117218850632
+    second: Thor_Spritesheet_49
+  - first:
+      213: 8023727511634601813
+    second: Thor_Spritesheet_50
+  - first:
+      213: 530489896583622177
+    second: Thor_Spritesheet_51
+  - first:
+      213: -7280421141209692954
+    second: Thor_Spritesheet_52
+  - first:
+      213: -7484362155574069394
+    second: Thor_Spritesheet_53
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Thor_Spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 424
+        width: 45
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cea760314661ab44b3973315cc0278f
+      internalID: 5125486215702144472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 424
+        width: 45
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99fc0c84c3929244fb41723b1e6695b1
+      internalID: 4932590475939834805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 423
+        width: 28
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17c58f7e0fd63924db5eb72d2efd91ec
+      internalID: 5832839359199133911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 424
+        width: 33
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6ee7c3a659cbca4d90fa02fcab882d7
+      internalID: -4834620754376642508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 425
+        width: 27
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c020b28c5d11de41a86c612bd5c9d14
+      internalID: 4737944949881151823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 424
+        width: 33
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9603d81f9482ff14294f8a1b48240962
+      internalID: 7199041503627929139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 424
+        width: 47
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c1cbd9ef3c836c49b0bc9dfa6d9c2fe
+      internalID: -7061928408512568446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 424
+        width: 45
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0020cef075a5ca468c26055bab9fe52
+      internalID: 3809165973770430870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 355
+        width: 37
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23075589b50501c4d821650df900897a
+      internalID: -677163828420691248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 356
+        width: 41
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c6e47fc0a09776498b8ab8322cbbcda
+      internalID: -1811312225541882906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 355
+        width: 47
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10b597e869e799047877190958a10aa3
+      internalID: 1246174920945801385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 354
+        width: 41
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c8a18f30094d6e4fb37de734e662093
+      internalID: -1424038979172315300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_12
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 355
+        width: 41
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 617a03507a1c2ed4184a40451249c5a6
+      internalID: -4812345835579129658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 355
+        width: 41
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 494dad54e7943b549b479ba2bc7e26a4
+      internalID: -1738951896980144144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 356
+        width: 41
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f46d325ef6b74a46a3be9711f357d41
+      internalID: 1443756900031540065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 354
+        width: 53
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 409b73d96e63e1943ba5427810da6567
+      internalID: -4277924657701352725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_16
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 285
+        width: 48
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 107fa18d5ae531046accd8f34e6238a0
+      internalID: 8198831649581568708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_17
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 284
+        width: 40
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93239eecd6d77634eb0e8d814816c3c8
+      internalID: -2747096458672187037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_18
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 285
+        width: 41
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80b4e8e10fce8ef4c8cdc47d6c4c5d2b
+      internalID: -3446858103998958572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_19
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 284
+        width: 42
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aae476f5332fe2a45a2805185e985233
+      internalID: -4637991530805846656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_20
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 286
+        width: 41
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c289541224c67784c975617a94d59d1a
+      internalID: -5410839224046461763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_21
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 284
+        width: 41
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37779030044987044bb1603a734d1663
+      internalID: 8320331415353677259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_22
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 284
+        width: 41
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed859dd8c44827447ab5cd1913f48575
+      internalID: -3022571049416139793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_23
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 285
+        width: 41
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3bca69d0a22cec4ebd45791b95c2516
+      internalID: 8021622673176265941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_24
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 213
+        width: 49
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a78d5ab176d5e9a4489fa0852764df0b
+      internalID: -2179619043760621486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_25
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 214
+        width: 54
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cfcdd501a8d72a4f9ee8b84b71ab278
+      internalID: -5980524202307073104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_26
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 214
+        width: 41
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64d7fe02c6c735e4989bf7b6cecfe25b
+      internalID: -5790099343863793024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_27
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 214
+        width: 46
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d12be9a1363a3de40a7536eb0c6269c0
+      internalID: 4854916152115147941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_28
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 211
+        width: 46
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bb44b387234625488772f81309fcfcb
+      internalID: -7360429470057316519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_29
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 212
+        width: 51
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c83e267f8be7e3488aca61a702c5b8a
+      internalID: -8703906972687063365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_30
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 214
+        width: 46
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a0cbee4d05ccac489b99b811d937fd1
+      internalID: 8615514019016220956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_31
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 212
+        width: 45
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 807c56aa8e0a48f4091eecf58a28446f
+      internalID: 4983394579450944036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_32
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 144
+        width: 49
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ead85b4d568160479731cbf11a5103e
+      internalID: 8116573085783022462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_33
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 143
+        width: 43
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70d0c24652cebbf42808813be7074f47
+      internalID: 6279455127052091941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_34
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 143
+        width: 46
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53a88aa2199018b4fbd62af12ab8c3dd
+      internalID: -8148921569512682739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_35
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 143
+        width: 46
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9620984434420d042a2edc0c80d3b21d
+      internalID: -8140168565725753662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_36
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 141
+        width: 46
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08a9f1b738685a142aadb7c6f33163dc
+      internalID: 8467693023732716736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_37
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 142
+        width: 48
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d41bf74b80e4dc409ddc8ce3907c421
+      internalID: -6611120315414725350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_38
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 142
+        width: 45
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ced3950a6f797224f980d34cff1b9334
+      internalID: -950902653128441161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_39
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 142
+        width: 51
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd223d090efbcab4684dc37f3427b06d
+      internalID: 4648540264580415239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_40
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 76
+        width: 54
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ab8e7a0594b40549aa127fa074588af
+      internalID: -7624435896637478567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_41
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 74
+        width: 54
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81595d13bb58cd144a7fba6acf616924
+      internalID: -418321501561778346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_42
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 74
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdb37f40a6ff0874dbf300b119bb2a92
+      internalID: 3281782603382950868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_43
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 74
+        width: 54
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f6814781d399ff4982a474cfb453ac2
+      internalID: -2899506508685122541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_44
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 72
+        width: 49
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c16b0c6337ebf747887d64671197036
+      internalID: -5576258364507789719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_45
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 73
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e1b1414ab404084ca1d388c26f8fada
+      internalID: 1519696039313169226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_46
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 5
+        width: 58
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ae28e975369a0443a230f0260c174a7
+      internalID: 3117150107652464904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_48
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 4
+        width: 59
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d91cbd30381adff49aaa3428777b53ca
+      internalID: -6989824348004084081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thor_Spritesheet_50
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 8
+        width: 52
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b5cc6d81ae7cad44ba30c4999bdf284
+      internalID: 8023727511634601813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
