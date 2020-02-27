@@ -16,8 +16,7 @@ public class EnemySystem : MonoBehaviour
 
     List<Transform> enemies;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         enemyCount = enemyParent.childCount;
 
@@ -25,6 +24,7 @@ public class EnemySystem : MonoBehaviour
 
         for (int i=0; i < enemyParent.childCount; i++)
         {
+            Debug.Log("Enemy counted");
             enemies.Add(enemyParent.GetChild(i));
         }
     }
@@ -36,6 +36,12 @@ public class EnemySystem : MonoBehaviour
         {
             SendMessage("RoomClear");
         }
+    }
+
+    public void EnemyDestroyed(GameObject enemy)
+    {
+        enemies.Remove(enemy.transform);
+        Destroy(enemy);
     }
 
     void RoomClear()
@@ -68,16 +74,19 @@ public class EnemySystem : MonoBehaviour
     private void SpawnEnemies()
     {
         Debug.Log("Spawning enemies");
+        enemyParent.gameObject.SetActive(true);
         for (int i=0; i < enemies.Count; i++)
         {
+            Debug.Log("Enemy Spawned");
             int spawnpoint = i % spawnParent.childCount;
-            enemies[i].SetParent(spawnParent.GetChild(spawnpoint));
+            enemies[i].position = spawnParent.GetChild(spawnpoint).position;
         }
     }
 
     private void DespawnEnemies()
     {
         Debug.Log("Despawning enemies");
+        enemyParent.gameObject.SetActive(false);
         for (int i = 0; i < enemies.Count; i++)
         {
             enemies[i].SetParent(enemyParent);

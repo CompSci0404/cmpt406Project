@@ -147,12 +147,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed042c6844bfb924b9708c02c66d6bdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HUD: {fileID: 0}
   speed: 5
   fov: 10
   range: 7
   health: 15
-  atkDamage: 4
+  atkDamage: 1
   tooCloseRange: 0
   velocityOfRangedAttack: 15
   rangedAttackCooldown: 0.5
