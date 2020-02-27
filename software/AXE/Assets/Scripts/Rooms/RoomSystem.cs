@@ -15,6 +15,16 @@ public class RoomSystem : MonoBehaviour
     void Start()
     {
         doors = new List<Transform>();
+
+        for (int i = 0; i < doorParent.childCount; i++)
+        {
+            Transform door = doorParent.GetChild(i);
+
+            if (door.childCount > 0)
+            {
+                doors.Add(door.GetChild(0));
+            }
+        }
     }
 
     // Update is called once per frame
@@ -22,9 +32,24 @@ public class RoomSystem : MonoBehaviour
     {
     }
 
+    void PlayerEnter()
+    {
+        if (!isClear)
+        {
+            foreach (Transform door in doors)
+            {
+                door.gameObject.SetActive(false);
+            }
+        }
+    }
+
     void RoomClear()
     {
-
+        isClear = true;
+        foreach (Transform door in doors)
+        {
+            door.gameObject.SetActive(true);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
