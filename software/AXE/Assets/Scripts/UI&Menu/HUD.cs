@@ -8,24 +8,41 @@ using UnityEngine;
  */
 public class HUD : MonoBehaviour
 {
-    private Stack<GameObject> hearts;
-    public GameObject heart;
-
     private PlayerStats stats;
+    private Stack<GameObject> hearts;
+    private GameObject heartSpaces;
+
+    public Animator animator;
+
+    public bool ThorSwitch;
+    public bool ValkSwitch;
+
+    public GameObject[] ThorHealth;
+    public GameObject[] ValkHealth;
 
     // Start is called before the first frame update.
     void Start()
     {
         stats = FindObjectOfType<PlayerStats>();
-        for (int i = 0; i < stats.GetHearts(); i++)
-            HeartOnHUD();
+        hearts = new Stack<GameObject>();
+
+        ThorSwitch = false;
+        ValkSwitch = false;
+
+        ThorHealth = GameObject.FindGameObjectsWithTag("ThorHrt");
+        ValkHealth = GameObject.FindGameObjectsWithTag("ValkHrt");
+
+        //for (int i = 0; i < stats.GetCurrHearts(); i++)
+        //{
+        //    heartSpaces = GameObject.Find("HeartSpaces").transform.Find("HeartSpace"+ i.ToString()).gameObject;
+        //    BuildHeartPrefabs();
+        //    HeartOnHUD(heartSpaces);
+        //}
     }
 
     // Create our heart prefab to be used by our hud.
     public void BuildHeartPrefabs()
     {
-        hearts = new Stack<GameObject>();
-
         object[] prefabs;
         int counter = 0;
 
@@ -42,9 +59,10 @@ public class HUD : MonoBehaviour
     }
 
     // Add a heart to the hud at a given offset or in a given space.
-    void HeartOnHUD()
+    void HeartOnHUD(GameObject heartSpaces)
     {
-        //GameObject newHeart = Instantiate(hearts.Pop(), this.transform.position, Quaternion.identity);
+        GameObject newHeart = Instantiate(hearts.Pop(), heartSpaces.transform.position, Quaternion.identity);
+        Debug.Log(hearts.ToString());
     }
 
     private void Update()
@@ -62,5 +80,45 @@ public class HUD : MonoBehaviour
     public void ChangeCharacterIcon()
     {
         // Change sprite from 0- 20 to go through the swap.
+        //if (stats.controllerNumber == 1)
+        //    switcher.ThorSwitch = true;
+        //else
+        //{
+        //    switcher.ValkSwitch = true;
+        //
+
+        //temporary if statements
+        if (ThorSwitch)
+        {
+            //have to set other bool to false first or
+            //animation will loop infinitly
+            animator.SetTrigger("ValkSwitch");
+
+            foreach (var Hrt in ThorHealth)
+            {
+                Hrt.GetComponent<Renderer>().sortingOrder = -1;
+            }
+            foreach (var Hrt in ValkHealth)
+            {
+                Hrt.GetComponent<Renderer>().sortingOrder = 1;
+            }
+            ThorSwitch = false;
+        }
+        if (ValkSwitch)
+        {
+            //have to set other bool to false first or
+            //animation will loop infinitly
+            animator.SetTrigger("ThorSwitch");
+
+            foreach (var Hrt in ValkHealth)
+            {
+                Hrt.GetComponent<Renderer>().sortingOrder = -1;
+            }
+            foreach (var Hrt in ThorHealth)
+            {
+                Hrt.GetComponent<Renderer>().sortingOrder = 1;
+            }
+            ValkSwitch = false;
+        }
     }
 }

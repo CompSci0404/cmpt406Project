@@ -7,6 +7,12 @@ using UnityEngine.InputSystem;
 public class MainControls : MonoBehaviour
 {
     private PlayerStats stats;
+    public HUD HUD;
+
+    public Animator thorAnimator;
+    public Animator valkAnimator;
+
+    private bool justSwapped;
 
     private string horizontalAxis;
     private string verticalAxis;
@@ -21,13 +27,14 @@ public class MainControls : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        HUD = FindObjectOfType<HUD>();
         players = new List<GameObject>();
+        int count = transform.childCount;
         // Get movement script from this object
-        for (int i = 0; i < transform.childCount; i++)
+        for (int i = 0; i < count; i++)
         {
             players.Add(transform.GetChild(i).gameObject);
         }
-
         SwapPlayer();
     }
 
@@ -36,17 +43,41 @@ public class MainControls : MonoBehaviour
     {
         // wait for an input and set opposite player controller active
         if (Input.GetButtonDown(yButton)) {
-            SwapPlayer();
+            if(justSwapped)
+            {
+                //cannot switch yet
+            }
+            else
+            {
+                if (controllerNumber == 1)
+                {
+                    HUD.ThorSwitch = true;
+                    HUD.ChangeCharacterIcon();
+                    thorAnimator.SetTrigger("switch");
+                    stats.SetLives(stats.GetLives() - 1);
+                    SwapPlayer();
+                }
+                // if player 2 range
+                else if (controllerNumber == 2)
+                {
+                    HUD.ValkSwitch = true;
+                    HUD.ChangeCharacterIcon();
+                    valkAnimator.SetTrigger("switch");
+                    stats.SetLives(stats.GetLives() - 1);
+                    SwapPlayer();
+                }
+            }
         }
-        if (Input.GetButtonDown(bButton))
+
+        else if (Input.GetButtonDown(bButton))
         {
             Attack();
         }
-        if (Input.GetButtonDown(aButton))
+        else if (Input.GetButtonDown(aButton))
         {
             Ability1();
         }
-        if (Input.GetButtonDown(xButton))
+        else if (Input.GetButtonDown(xButton))
         {
             Ability2();
         }
@@ -59,43 +90,67 @@ public class MainControls : MonoBehaviour
         Debug.Log("SwapPlayer()");
 
         if (null != stats) stats.gameObject.SetActive(false);
-        GameObject nextPlayer = players[1];
+        GameObject nextPlayer = players[0];
         nextPlayer.SetActive(true);
 
         players.Remove(nextPlayer);
         players.Add(nextPlayer);
+
+        justSwapped = true;
+        Invoke("ResetSwap", 1);
+    }
+
+    private void ResetSwap()
+    {
+        justSwapped = false;
     }
 
     // Normal Attack
     private void Attack()
     {
-        Debug.Log("Attacking");
+        
         // if player 1 melee
         if (controllerNumber == 1)
         {
-            Debug.Log("melee attack");
+            this.GetComponentInChildren<MeleeAttack>().MeleeAtt();
         }
         // if player 2 range
-        if (controllerNumber == 2)
+        else if (controllerNumber == 2)
         {
-            Debug.Log("ranged attack");
+            Debug.Log("Player 2 Range Attacking");
         }
     }
 
     // Ability 1
     private void Ability1()
     {
-        Debug.Log("Ability 1");
-        
+
         // if player 1 use P1 A1
+        if (controllerNumber == 1)
+        {
+            Debug.Log("Player 1 uses Ability 1");
+        }
+        // if player 2 range
+        else if (controllerNumber == 2)
+        {
+            Debug.Log("Player 2 uses Ability 1");
+        }
         // if player 2 use P2 A1
     }
 
     // Ability 2
     private void Ability2()
     {
-        Debug.Log("Ability 2");
         // if player 1 use P1 A2
+        if (controllerNumber == 1)
+        {
+            Debug.Log("Player 1 uses Ability 2");
+        }
+        // if player 2 range
+        else if (controllerNumber == 2)
+        {
+            Debug.Log("Player 2 uses Ability 2");
+        }
         // if player 2 use P2 A2
     }
 

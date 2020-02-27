@@ -6872,7 +6872,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02af853f3763fd44a955609dd7070761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorParent: {fileID: 0}
+  doorParent: {fileID: 412029332863928641}
 --- !u!114 &6652388540033635476
 MonoBehaviour:
   m_ObjectHideFlags: 0
