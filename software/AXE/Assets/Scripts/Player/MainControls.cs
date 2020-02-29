@@ -12,6 +12,9 @@ public class MainControls : MonoBehaviour
     /*public Animator thorAnimator;
     public Animator valkAnimator;*/
 
+    [SerializeField]
+    private ThorAnimationInput thorAnimation;
+
     private bool justSwapped;
 
     private string horizontalAxis;
@@ -115,6 +118,7 @@ public class MainControls : MonoBehaviour
         {
             Debug.Log("Player 1 Melee Attacking");
             /*thorAnimator.SetTrigger("attack_front");*/
+            thorAnimation.AttackAnimTrigger();
             this.GetComponentInChildren<MeleeAttack>().MeleeAtt();
         }
         // if player 2 range
