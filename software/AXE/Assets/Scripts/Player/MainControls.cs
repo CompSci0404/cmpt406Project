@@ -9,8 +9,8 @@ public class MainControls : MonoBehaviour
     private PlayerStats stats;
     public HUD HUD;
 
-    public Animator thorAnimator;
-    public Animator valkAnimator;
+    /*public Animator thorAnimator;
+    public Animator valkAnimator;*/
 
     private bool justSwapped;
 
@@ -53,7 +53,7 @@ public class MainControls : MonoBehaviour
                 {
                     HUD.ThorSwitch = true;
                     HUD.ChangeCharacterIcon();
-                    thorAnimator.SetTrigger("switch");
+                   /* thorAnimator.SetTrigger("switch");*/
                     stats.SetLives(stats.GetLives() - 1);
                     SwapPlayer();
                 }
@@ -62,7 +62,7 @@ public class MainControls : MonoBehaviour
                 {
                     HUD.ValkSwitch = true;
                     HUD.ChangeCharacterIcon();
-                    valkAnimator.SetTrigger("switch");
+                    /*valkAnimator.SetTrigger("switch");*/
                     stats.SetLives(stats.GetLives() - 1);
                     SwapPlayer();
                 }
@@ -114,7 +114,7 @@ public class MainControls : MonoBehaviour
         if (controllerNumber == 1)
         {
             Debug.Log("Player 1 Melee Attacking");
-            thorAnimator.SetTrigger("attack_front");
+            /*thorAnimator.SetTrigger("attack_front");*/
             this.GetComponentInChildren<MeleeAttack>().MeleeAtt();
         }
         // if player 2 range
