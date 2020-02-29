@@ -30,12 +30,12 @@ public class Inventory : MonoBehaviour
         rightAvail = true;
         downAvail = true;
         playerRB = GetComponent<Rigidbody2D>();
-        curDPad = GetComponentInParent<MainControls>().getDPadLastPos();
+        
         myPosition = gameObject.transform;
     }
     public void Update()
     {
-        
+        curDPad = GetComponentInParent<MainControls>().getDPadLastPos();
     }
     public void PickUpItem()
     {
@@ -142,6 +142,40 @@ public class Inventory : MonoBehaviour
                 
             }
         }
+    }
+
+    public GameObject getUpItem()
+    {
+        return upItem;
+    }
+    public GameObject getLeftItem()
+    {
+        return leftItem;
+    }
+    public GameObject getRightItem()
+    {
+        return rightItem;
+    }
+    public GameObject getDownItem()
+    {
+        return downItem;
+    }
+
+    public void setUpAvail(bool b)
+    {
+        upAvail = b;
+    }
+    public void setLeftAvail(bool b)
+    {
+        leftAvail = b;
+    }
+    public void setRightAvail(bool b)
+    {
+        rightAvail = b;
+    }
+    public void setDownAvail(bool b)
+    {
+        downAvail = b;
     }
 
 }

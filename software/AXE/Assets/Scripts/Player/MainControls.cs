@@ -25,6 +25,7 @@ public class MainControls : DPad
     private List<GameObject> players;
 
     private string lastDPadPressed;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -78,11 +79,11 @@ public class MainControls : DPad
         }
         else if (Input.GetButtonDown(aButton))
         {
-            Ability1();
+            UseItem();
         }
         else if (Input.GetButtonDown(xButton))
         {
-            Ability2();
+            PickUpItem();
         }
         // DPad presses
         else if (DPad.IsUp)
@@ -145,24 +146,65 @@ public class MainControls : DPad
     }
 
     // Ability 1
-    private void Ability1()
+    private void UseItem()
     {
-
         // if player 1 use P1 A1
         if (controllerNumber == 1)
         {
             Debug.Log("Use Item thats in <" + lastDPadPressed + " DPad>");
+
+            if (lastDPadPressed == "up")
+            {
+                this.GetComponent<Inventory>().getUpItem().GetComponentInChildren<ItemClass>().ItemActivate();
+                this.GetComponent<Inventory>().setUpAvail(true);
+            }
+            else if (lastDPadPressed == "left")
+            {
+                this.GetComponent<Inventory>().getLeftItem().GetComponentInChildren<ItemClass>().ItemActivate();
+                this.GetComponent<Inventory>().setLeftAvail(true);
+            }
+            else if (lastDPadPressed == "right")
+            {
+                this.GetComponent<Inventory>().getRightItem().GetComponentInChildren<ItemClass>().ItemActivate();
+                this.GetComponent<Inventory>().setRightAvail(true);
+            }
+            else if (lastDPadPressed == "down")
+            {
+                this.GetComponent<Inventory>().getDownItem().GetComponentInChildren<ItemClass>().ItemActivate();
+                this.GetComponent<Inventory>().setDownAvail(true);
+            }
         }
         // if player 2 range
         else if (controllerNumber == 2)
         {
             Debug.Log("Use Item thats in <" + lastDPadPressed + " DPad>");
+
+            if (lastDPadPressed == "up")
+            {
+                this.GetComponent<Inventory>().getUpItem().GetComponentInChildren<ItemClass>().ItemActivate();
+                this.GetComponent<Inventory>().setUpAvail(true);
+            }
+            else if (lastDPadPressed == "left")
+            {
+                this.GetComponent<Inventory>().getLeftItem().GetComponentInChildren<ItemClass>().ItemActivate();
+                this.GetComponent<Inventory>().setLeftAvail(true);
+            }
+            else if (lastDPadPressed == "right")
+            {
+                this.GetComponent<Inventory>().getRightItem().GetComponentInChildren<ItemClass>().ItemActivate();
+                this.GetComponent<Inventory>().setRightAvail(true);
+            }
+            else if (lastDPadPressed == "down")
+            {
+                this.GetComponent<Inventory>().getDownItem().GetComponentInChildren<ItemClass>().ItemActivate();
+                this.GetComponent<Inventory>().setDownAvail(true);
+            }
         }
         // if player 2 use P2 A1
     }
 
     // Ability 2
-    private void Ability2()
+    private void PickUpItem()
     {
         // if player 1 use P1 A2
         if (controllerNumber == 1)
@@ -201,6 +243,11 @@ public class MainControls : DPad
     public string getDPadLastPos()
     {
         return lastDPadPressed;
+    }
+
+    public int getControllerNumber()
+    {
+        return controllerNumber;
     }
 
 }

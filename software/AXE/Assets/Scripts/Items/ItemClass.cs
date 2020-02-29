@@ -24,13 +24,8 @@ public abstract class ItemClass : MonoBehaviour
     public delegate void ItemDelegate();
     public ItemDelegate itemEffect;
 
-    private Inventory inventory;
     
-    private void Awake()
-    {
-        inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
-    }
-    public void UseItem()
+    public void ItemActivate()
     {
         if(myItemType == ItemType.consumable)
         {
@@ -39,18 +34,12 @@ public abstract class ItemClass : MonoBehaviour
         }
         else if (myItemType == ItemType.swapAbility)
         {
-            itemEffect();
-
+            Debug.Log("not yet implemented");
         }
-    }
-
-    public void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log("item coll");
-        if (collision.gameObject.tag == "Player" && (Input.GetButtonDown("J1X") || Input.GetButtonDown("J2X")))
+        else if (myItemType == ItemType.playerAbility)
         {
-            Debug.Log(collision.gameObject.tag);
-            Destroy(this.gameObject);
+            Debug.Log("abilityItem not yet implemented");
         }
     }
+
 }
