@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class MainControls : MonoBehaviour
+public class MainControls : DPad
 {
     private PlayerStats stats;
     public HUD HUD;
@@ -24,9 +24,11 @@ public class MainControls : MonoBehaviour
 
     private List<GameObject> players;
 
+    private string lastDPadPressed;
     // Start is called before the first frame update
     void Awake()
     {
+        lastDPadPressed = "up";
         HUD = FindObjectOfType<HUD>();
         players = new List<GameObject>();
         int count = transform.childCount;
@@ -82,6 +84,24 @@ public class MainControls : MonoBehaviour
         {
             Ability2();
         }
+        // DPad presses
+        else if (DPad.IsUp)
+        {
+            lastDPadPressed = "up";
+        }
+        else if (DPad.IsDown)
+        {
+            lastDPadPressed = "down";
+        }
+        else if (DPad.IsLeft)
+        {
+            lastDPadPressed = "left";
+        }
+        else if (DPad.IsRight)
+        {
+            lastDPadPressed = "right";
+        }
+
 
         // player has a method that activates when it becomes active and sends its stats to this class
     }
@@ -131,12 +151,12 @@ public class MainControls : MonoBehaviour
         // if player 1 use P1 A1
         if (controllerNumber == 1)
         {
-            Debug.Log("Player 1 uses Ability 1");
+            Debug.Log("Use Item thats in <" + lastDPadPressed + " DPad>");
         }
         // if player 2 range
         else if (controllerNumber == 2)
         {
-            Debug.Log("Player 2 uses Ability 1");
+            Debug.Log("Use Item thats in <" + lastDPadPressed + " DPad>");
         }
         // if player 2 use P2 A1
     }
@@ -147,12 +167,14 @@ public class MainControls : MonoBehaviour
         // if player 1 use P1 A2
         if (controllerNumber == 1)
         {
-            Debug.Log("Player 1 uses Ability 2");
+            Debug.Log("Item Picked up goes to <" + lastDPadPressed + " DPad>");
+            this.GetComponent<Inventory>().PickUpItem();
+
         }
         // if player 2 range
         else if (controllerNumber == 2)
         {
-            Debug.Log("Player 2 uses Ability 2");
+            Debug.Log("Item Picked up goes to <" + lastDPadPressed + " DPad>");
         }
         // if player 2 use P2 A2
     }
@@ -173,6 +195,12 @@ public class MainControls : MonoBehaviour
         bButton = "J" + controllerNumber + "B";
         xButton = "J" + controllerNumber + "X";
         yButton = "J" + controllerNumber + "Y";
+    }
+
+    // get dpad last position
+    public string getDPadLastPos()
+    {
+        return lastDPadPressed;
     }
 
 }
