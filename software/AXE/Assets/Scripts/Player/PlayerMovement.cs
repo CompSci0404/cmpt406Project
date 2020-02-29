@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private PlayerStats stats;
 
     [SerializeField]
-    private AnimationInput thorAnimation;
+    private ThorAnimationInput thorAnimation;
 
     // Start is called before the first frame update
     void Start()
@@ -36,12 +36,13 @@ public class PlayerMovement : MonoBehaviour
             movement.Normalize();
         }
 
+        thorAnimation.SetMovement(movement);
+
         // Contoller Inputs
         lookDirection = new Vector2(Input.GetAxis("LookHorizontal"), Input.GetAxis("LookVertical"));
         Vector2 target = lookDirection - rBody.position;
         float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
 
-        thorAnimation.SetMovement(movement);
         thorAnimation.SetLook(lookDirection);
     }
 
