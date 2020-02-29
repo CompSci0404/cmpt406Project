@@ -26,20 +26,33 @@ public class Inventory : MonoBehaviour
     private void Start()
     {
         upAvail = true;
+        leftAvail = true;
+        rightAvail = true;
+        downAvail = true;
         playerRB = GetComponent<Rigidbody2D>();
-    }
-    public void Update()
-    {
         curDPad = GetComponentInParent<MainControls>().getDPadLastPos();
         myPosition = gameObject.transform;
     }
+    public void Update()
+    {
+        
+    }
     public void PickUpItem()
     {
+        // get all item in range for pickup
+
         Collider2D[] ItemsInRange = Physics2D.OverlapCircleAll(myPosition.position, 1);
         for (int i = 0; i < ItemsInRange.Length; i++)
         {
+            
             if (ItemsInRange[i].CompareTag("Item"))
             {
+                // check if a dpad direction is empty
+                // if it is pick up item and add it to inventory UI
+                // also change name to prevent repetitive adition of clone in name
+                // then make dpad button not available
+                Debug.Log(ItemsInRange.Length);
+                
                 if (curDPad == "up")
                 {
                     if (upAvail)
@@ -48,6 +61,8 @@ public class Inventory : MonoBehaviour
                         UP.name = ItemsInRange[i].gameObject.name;
                         Destroy(ItemsInRange[i].gameObject);
                         upAvail = false;
+                        break;
+
                     }
                     else
                     {
@@ -57,23 +72,72 @@ public class Inventory : MonoBehaviour
                         GameObject UP = Instantiate(ItemsInRange[i].gameObject, upItem.transform, false);
                         UP.name = ItemsInRange[i].gameObject.name;
                         Destroy(ItemsInRange[i].gameObject);
+                        break;
                     }
-                    
+
                 }
                 else if (curDPad == "left")
                 {
-                    Instantiate(ItemsInRange[i].gameObject, leftItem.transform, false);
-                    Destroy(ItemsInRange[i].gameObject);
+                    if (leftAvail)
+                    {
+                        GameObject Left = Instantiate(ItemsInRange[i].gameObject, leftItem.transform, false);
+                        Left.name = ItemsInRange[i].gameObject.name;
+                        Destroy(ItemsInRange[i].gameObject);
+                        leftAvail = false;
+                        break;
+                    }
+                    else
+                    {
+                        GameObject droppedLeft = Instantiate(leftItem.transform.GetChild(0).gameObject, playerRB.position, Quaternion.identity);
+                        droppedLeft.name = leftItem.transform.GetChild(0).gameObject.name;
+                        Destroy(leftItem.transform.GetChild(0).gameObject);
+                        GameObject Left = Instantiate(ItemsInRange[i].gameObject, leftItem.transform, false);
+                        Left.name = ItemsInRange[i].gameObject.name;
+                        Destroy(ItemsInRange[i].gameObject);
+                        break;
+                    }
                 }
                 else if (curDPad == "right")
                 {
-                    Instantiate(ItemsInRange[i].gameObject, rightItem.transform, false);
-                    Destroy(ItemsInRange[i].gameObject);
+                    if (rightAvail)
+                    {
+                        GameObject Right = Instantiate(ItemsInRange[i].gameObject, rightItem.transform, false);
+                        Right.name = ItemsInRange[i].gameObject.name;
+                        Destroy(ItemsInRange[i].gameObject);
+                        rightAvail = false;
+                        break;
+                    }
+                    else
+                    {
+                        GameObject droppedRight = Instantiate(rightItem.transform.GetChild(0).gameObject, playerRB.position, Quaternion.identity);
+                        droppedRight.name = rightItem.transform.GetChild(0).gameObject.name;
+                        Destroy(rightItem.transform.GetChild(0).gameObject);
+                        GameObject Right = Instantiate(ItemsInRange[i].gameObject, rightItem.transform, false);
+                        Right.name = ItemsInRange[i].gameObject.name;
+                        Destroy(ItemsInRange[i].gameObject);
+                        break;
+                    }
                 }
                 else if (curDPad == "down")
                 {
-                    Instantiate(ItemsInRange[i].gameObject, downItem.transform, false);
-                    Destroy(ItemsInRange[i].gameObject);
+                    if (downAvail)
+                    {
+                        GameObject Down = Instantiate(ItemsInRange[i].gameObject, downItem.transform, false);
+                        Down.name = ItemsInRange[i].gameObject.name;
+                        Destroy(ItemsInRange[i].gameObject);
+                        downAvail = false;
+                        break;
+                    }
+                    else
+                    {
+                        GameObject droppedDown = Instantiate(downItem.transform.GetChild(0).gameObject, playerRB.position, Quaternion.identity);
+                        droppedDown.name = downItem.transform.GetChild(0).gameObject.name;
+                        Destroy(downItem.transform.GetChild(0).gameObject);
+                        GameObject Down = Instantiate(ItemsInRange[i].gameObject, downItem.transform, false);
+                        Down.name = ItemsInRange[i].gameObject.name;
+                        Destroy(ItemsInRange[i].gameObject);
+                        break;
+                    }
                 }
                 
             }
