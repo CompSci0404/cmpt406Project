@@ -7,7 +7,6 @@ public class AnimationInput : MonoBehaviour
     Vector2 movement;
     Vector2 lookDirection;
     public Animator thorAnimator;
-    public Animator valkAnimator;
 
     // Start is called before the first frame update
     void Start()
@@ -28,14 +27,11 @@ public class AnimationInput : MonoBehaviour
             movement.Normalize();
         }
 
-        Debug.Log("Move x: " + movement.x);
-        Debug.Log("Move y: " + movement.y);
-        Debug.Log("Look x: " + lookDirection.x);
-        Debug.Log("Look y: " + lookDirection.y);
-
-        thorAnimator.SetFloat("MovementX", movement.x);
-        thorAnimator.SetFloat("MovementY", movement.y);
-        thorAnimator.SetFloat("LookX", lookDirection.x);
-        thorAnimator.SetFloat("LookY", lookDirection.y);
+        if (gameObject.activeInHierarchy) {
+            thorAnimator.SetFloat("MovementX", movement.x);
+            thorAnimator.SetFloat("MovementY", movement.y);
+            thorAnimator.SetFloat("LookX", lookDirection.x);
+            thorAnimator.SetFloat("LookY", lookDirection.y);
+        }
     }
 }
