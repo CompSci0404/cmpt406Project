@@ -7,6 +7,7 @@ public class ThorAnimationInput : MonoBehaviour, AnimationInput
     [SerializeField]
     private Animator thorAnimator;
 
+    private float moveAngle;
     private Vector2 movement;
     private Vector2 lookDirection;
 
@@ -18,12 +19,12 @@ public class ThorAnimationInput : MonoBehaviour, AnimationInput
 
     public void SetMovement(Vector2 move)
     {
-        //movement = move;
+        movement = move;
     }
 
     public void SetLook(Vector2 look)
     {
-        //lookDirection = look;
+        lookDirection = look;
     }
 
     public void AttackAnimTrigger()
@@ -36,14 +37,6 @@ public class ThorAnimationInput : MonoBehaviour, AnimationInput
     {
        lookDirection = new Vector2(Input.GetAxis("LookHorizontal"), Input.GetAxis("LookVertical"));
 
-        movement.x = Input.GetAxis("Horizontal");
-        movement.y = Input.GetAxis("Vertical");
-
-        if (movement.magnitude > 1)
-        {
-            movement.Normalize();
-        }
-
         if (gameObject.activeInHierarchy)
         {
 
@@ -53,12 +46,14 @@ public class ThorAnimationInput : MonoBehaviour, AnimationInput
             } else
             {
                 thorAnimator.SetBool("Moving", true);
+                moveAngle = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg;
+                if (moveAngle < -45.0f) moveAngle += 360.0f;
+                thorAnimator.SetFloat("MoveAngle", moveAngle);
             }
-
-            thorAnimator.SetFloat("MovementX", movement.x);
+/*            thorAnimator.SetFloat("MovementX", movement.x);
             thorAnimator.SetFloat("MovementY", movement.y);
             thorAnimator.SetFloat("LookX", lookDirection.x);
-            thorAnimator.SetFloat("LookY", lookDirection.y);
+            thorAnimator.SetFloat("LookY", lookDirection.y);*/
         }
     }
 }
