@@ -9,9 +9,6 @@ public class MainControls : MonoBehaviour
     private PlayerStats stats;
     public HUD HUD;
 
-    /*public Animator thorAnimator;
-    public Animator valkAnimator;*/
-
     [SerializeField]
     private ThorAnimationInput thorAnimation;
 
@@ -92,6 +89,8 @@ public class MainControls : MonoBehaviour
     private void SwapPlayer()
     {
         Debug.Log("SwapPlayer()");
+
+        if(controllerNumber == 1) thorAnimation.SwapAnimTrigger();
 
         if (null != stats) stats.gameObject.SetActive(false);
         GameObject nextPlayer = players[0];

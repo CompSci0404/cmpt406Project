@@ -9,6 +9,9 @@ public class PlayerStats : MonoBehaviour
     private HeartDisplay Hearts;
     private HUD HUD;
 
+    [SerializeField]
+    private ThorAnimationInput thorAnimation;
+
     public int controllerNumber;
     private float moveSpeed;
     private float range;
@@ -169,6 +172,8 @@ public class PlayerStats : MonoBehaviour
     private void Respawn()
     {
         // Death animation && give invincibility
+        thorAnimation.DeathAnimTrigger();
+
         SetLives(GetLives() - 1);
         Debug.Log("Player lost a life, lives remaining:" + GetLives().ToString());
         SetCurrHearts(GetMaxHearts());

@@ -33,6 +33,17 @@ public class ThorAnimationInput : MonoBehaviour, AnimationInput
         thorAnimator.SetTrigger("Attack");
     }
 
+    public void DeathAnimTrigger()
+    {
+        thorAnimator.SetTrigger("Death");
+    }
+
+    public void SwapAnimTrigger()
+    {
+        Debug.Log("Thor swap trigger");
+        thorAnimator.SetTrigger("Swap");
+    }
+
     // Update is called once per frame
     void Update()
     {
