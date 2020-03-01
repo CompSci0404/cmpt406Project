@@ -109,6 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d53f9f5b2fd233f4ab34f7f1fea2f6ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thorAnimation: {fileID: 801519461853888842}
   controllerNumber: 1
 --- !u!114 &801095915342241112
 MonoBehaviour:
@@ -524,6 +525,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d53f9f5b2fd233f4ab34f7f1fea2f6ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thorAnimation: {fileID: 801519461853888842}
   controllerNumber: 2
 --- !u!114 &6502305135600347040
 MonoBehaviour:

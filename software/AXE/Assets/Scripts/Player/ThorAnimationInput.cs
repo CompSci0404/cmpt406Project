@@ -40,7 +40,7 @@ public class ThorAnimationInput : MonoBehaviour, AnimationInput
 
     public void SwapAnimTrigger()
     {
-        Debug.Log("Thor swap trigger");
+        //Debug.Log("Thor swap trigger");
         thorAnimator.SetTrigger("Swap");
     }
 
