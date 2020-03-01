@@ -33,6 +33,9 @@ public class MainControls : DPad
     // Start is called before the first frame update
     void Awake()
     {
+        // set for testing
+        swapAbility = "ClusterBomb";
+
         lastDPadPressed = "up";
         HUD = FindObjectOfType<HUD>();
         players = new List<GameObject>();
@@ -126,7 +129,7 @@ public class MainControls : DPad
 
         if(swapAbility == "ClusterBomb")
         {
-            Instantiate(bomb, gameObject.transform);
+            Instantiate(bomb, this.gameObject.transform);
         }
 
         Invoke("ResetSwap", 1);
@@ -260,4 +263,8 @@ public class MainControls : DPad
         return controllerNumber;
     }
 
+    public string GetSwapAbility()
+    {
+        return swapAbility;
+    }
 }

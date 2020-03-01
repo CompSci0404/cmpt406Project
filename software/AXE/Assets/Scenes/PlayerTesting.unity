@@ -1409,6 +1409,12 @@ PrefabInstance:
       propertyPath: enemyLayers.m_Bits
       value: 256
       objectReference: {fileID: 0}
+    - target: {fileID: 7600984664673736886, guid: 16c7e1f4973d0fb44910bce4460806f1,
+        type: 3}
+      propertyPath: bomb
+      value: 
+      objectReference: {fileID: 2783781131979127740, guid: b9b934d4c1928e2439df0557178c5db4,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16c7e1f4973d0fb44910bce4460806f1, type: 3}
 --- !u!4 &449513574 stripped
