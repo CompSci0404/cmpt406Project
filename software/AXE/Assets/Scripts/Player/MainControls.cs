@@ -11,6 +11,8 @@ public class MainControls : MonoBehaviour
 
     [SerializeField]
     private ThorAnimationInput thorAnimation;
+    [SerializeField]
+    private ValkAnimationInput valkAnimation;
 
     private bool justSwapped;
 
@@ -90,7 +92,8 @@ public class MainControls : MonoBehaviour
     {
         Debug.Log("SwapPlayer()");
 
-        if(controllerNumber == 1) thorAnimation.SwapAnimTrigger();
+        if (controllerNumber == 1) thorAnimation.SwapAnimTrigger();
+        if (controllerNumber == 2) valkAnimation.SwapAnimTrigger();
 
         if (null != stats) stats.gameObject.SetActive(false);
         GameObject nextPlayer = players[0];

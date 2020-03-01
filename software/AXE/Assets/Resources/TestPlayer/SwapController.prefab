@@ -110,6 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thorAnimation: {fileID: 801519461853888842}
+  valkAnimation: {fileID: 5674073172893567759}
   controllerNumber: 1
 --- !u!114 &801095915342241112
 MonoBehaviour:
@@ -403,6 +404,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HUD: {fileID: 0}
   thorAnimation: {fileID: 801519461853888842}
+  valkAnimation: {fileID: 5674073172893567759}
 --- !u!114 &4479636796296197987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -416,6 +418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thorAnimation: {fileID: 801519461853888842}
+  valkAnimation: {fileID: 5674073172893567759}
 --- !u!1 &7600984665031520794
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,6 +433,7 @@ GameObject:
   - component: {fileID: 7600984665031520788}
   - component: {fileID: 6502305135600347040}
   - component: {fileID: 8849725717746089244}
+  - component: {fileID: 5674073172893567759}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Type2
@@ -526,6 +530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thorAnimation: {fileID: 801519461853888842}
+  valkAnimation: {fileID: 5674073172893567759}
   controllerNumber: 2
 --- !u!114 &6502305135600347040
 MonoBehaviour:
@@ -551,7 +556,7 @@ Animator:
   m_GameObject: {fileID: 7600984665031520794}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 945d89ea8b9328e49a4f782ac6a0e1bb, type: 2}
+  m_Controller: {fileID: 9100000, guid: c760b8d7056ac2543b838fc22746e979, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -560,3 +565,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5674073172893567759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7600984665031520794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a3f7182e47b3c94587ee60a20a324f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  valkAnimator: {fileID: 8849725717746089244}

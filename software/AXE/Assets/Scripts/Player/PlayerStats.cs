@@ -11,6 +11,8 @@ public class PlayerStats : MonoBehaviour
 
     [SerializeField]
     private ThorAnimationInput thorAnimation;
+    [SerializeField]
+    private ValkAnimationInput valkAnimation;
 
     public int controllerNumber;
     private float moveSpeed;
@@ -172,7 +174,8 @@ public class PlayerStats : MonoBehaviour
     private void Respawn()
     {
         // Death animation && give invincibility
-        thorAnimation.DeathAnimTrigger();
+        if (controllerNumber == 1) thorAnimation.DeathAnimTrigger();
+        if (controllerNumber == 2) valkAnimation.DeathAnimTrigger();
 
         SetLives(GetLives() - 1);
         Debug.Log("Player lost a life, lives remaining:" + GetLives().ToString());

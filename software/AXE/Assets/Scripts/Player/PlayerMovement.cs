@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField]
     private ThorAnimationInput thorAnimation;
+    [SerializeField]
+    private ValkAnimationInput valkAnimation;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         thorAnimation.SetMovement(movement);
+        valkAnimation.SetMovement(movement);
 
         // Contoller Inputs
         lookDirection = new Vector2(Input.GetAxis("LookHorizontal"), Input.GetAxis("LookVertical"));
@@ -44,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
         float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
 
         thorAnimation.SetLook(lookDirection);
+        valkAnimation.SetLook(lookDirection);
     }
 
     // After the update frame gets the users input, fixed update will move the player.

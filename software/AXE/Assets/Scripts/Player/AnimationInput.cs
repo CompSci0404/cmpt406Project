@@ -6,7 +6,6 @@ interface AnimationInput
 {
     void SetMovement(Vector2 move);
     void SetLook(Vector2 look);
-    void AttackAnimTrigger();
     void DeathAnimTrigger();
     void SwapAnimTrigger();
 }
