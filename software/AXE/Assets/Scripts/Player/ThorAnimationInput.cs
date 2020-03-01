@@ -8,6 +8,7 @@ public class ThorAnimationInput : MonoBehaviour, AnimationInput
     private Animator thorAnimator;
 
     private float moveAngle;
+    private float lookAngle;
     private Vector2 movement;
     private Vector2 lookDirection;
 
@@ -50,10 +51,10 @@ public class ThorAnimationInput : MonoBehaviour, AnimationInput
                 if (moveAngle < -45.0f) moveAngle += 360.0f;
                 thorAnimator.SetFloat("MoveAngle", moveAngle);
             }
-/*            thorAnimator.SetFloat("MovementX", movement.x);
-            thorAnimator.SetFloat("MovementY", movement.y);
-            thorAnimator.SetFloat("LookX", lookDirection.x);
-            thorAnimator.SetFloat("LookY", lookDirection.y);*/
+            lookAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
+            lookAngle -= 90.0f;
+            if (lookAngle < -45.0f) lookAngle += 360.0f;
+            thorAnimator.SetFloat("LookAngle", lookAngle);
         }
     }
 }
