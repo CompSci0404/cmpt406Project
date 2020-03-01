@@ -26,6 +26,10 @@ public class MainControls : DPad
 
     private string lastDPadPressed;
 
+    private string swapAbility;
+
+    public GameObject bomb;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -119,6 +123,12 @@ public class MainControls : DPad
         players.Add(nextPlayer);
 
         justSwapped = true;
+
+        if(swapAbility == "ClusterBomb")
+        {
+            Instantiate(bomb, gameObject.transform);
+        }
+
         Invoke("ResetSwap", 1);
     }
 
