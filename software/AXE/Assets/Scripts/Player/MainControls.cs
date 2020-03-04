@@ -26,9 +26,16 @@ public class MainControls : DPad
 
     private string lastDPadPressed;
 
+    private string swapAbility;
+
+    public GameObject bomb;
+
     // Start is called before the first frame update
     void Awake()
     {
+        // set for testing
+        swapAbility = "ClusterBomb";
+
         lastDPadPressed = "up";
         HUD = FindObjectOfType<HUD>();
         players = new List<GameObject>();
@@ -119,6 +126,16 @@ public class MainControls : DPad
         players.Add(nextPlayer);
 
         justSwapped = true;
+
+        if(swapAbility == "ClusterBomb")
+        {
+            Instantiate(bomb, this.gameObject.transform);
+        }
+        else if(swapAbility == "TimelineShifter")
+        {
+            // how to call itemEffect?
+        }
+
         Invoke("ResetSwap", 1);
     }
 
@@ -250,4 +267,8 @@ public class MainControls : DPad
         return controllerNumber;
     }
 
+    public string GetSwapAbility()
+    {
+        return swapAbility;
+    }
 }

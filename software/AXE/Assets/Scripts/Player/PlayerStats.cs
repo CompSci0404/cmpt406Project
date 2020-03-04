@@ -200,7 +200,12 @@ public class PlayerStats : MonoBehaviour
         SceneManager.LoadScene(2);
     }
 
-    private void ResetInvincibility()
+    public void MakeInvincible()
+    {
+        isInvincible = true;
+    }
+
+    public void ResetInvincibility()
     {
         isInvincible = false;
     }
