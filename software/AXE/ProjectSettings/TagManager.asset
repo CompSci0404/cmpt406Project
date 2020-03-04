@@ -15,6 +15,7 @@ TagManager:
   - ValkHrt
   - Thor
   - Item
+  - Ability
   layers:
   - Default
   - TransparentFX
