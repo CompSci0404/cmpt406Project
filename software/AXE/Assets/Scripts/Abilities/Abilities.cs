@@ -21,7 +21,7 @@ public class Abilities : MonoBehaviour
 
     // going to be "A", "X", or "Swap" 
     public string abilitySlot;
-   
+
     private Transform position;
     private Rigidbody2D rBody;
 
@@ -53,82 +53,71 @@ public class Abilities : MonoBehaviour
                 // if it is pick up ability and add it to ability UI
                 // disable button (for now)
                 Debug.Log(AbilitiesInRange.Length);
-                
-                if (abilitySlot == "A")
+
+                abilitySlot = "A";
+
+                if (aAvailable)
                 {
-                    if (aAvailable)
-                    {
-                        GameObject A = Instantiate(AbilitiesInRange[i].gameObject, aAbility.transform, false);
-                        A.name = AbilitiesInRange[i].gameObject.name;
-                        Destroy(AbilitiesInRange[i].gameObject);
-                        aAvailable = false;
-                        break;
+                    GameObject A = Instantiate(AbilitiesInRange[i].gameObject, aAbility.transform, false);
+                    A.transform.localPosition = new Vector3(0.033f, -0.025f, -1f);
+                    Vector3 scaleChange = new Vector3(-0.2f, -0.2f, 0f);
+                    A.transform.localScale += scaleChange;
+                    A.name = AbilitiesInRange[i].gameObject.name;
+                    Destroy(AbilitiesInRange[i].gameObject);
+                    aAvailable = false;
+                    break;
 
-                    }
-                    else
-                    {
-                        GameObject dropA = Instantiate(aAbility.transform.GetChild(0).gameObject, rBody.position, Quaternion.identity);
-                        dropA.name = aAbility.transform.GetChild(0).gameObject.name;
-                        Destroy(aAbility.transform.GetChild(0).gameObject);
-                        GameObject A = Instantiate(AbilitiesInRange[i].gameObject, aAbility.transform, false);
-                        A.name = AbilitiesInRange[i].gameObject.name;
-                        Destroy(AbilitiesInRange[i].gameObject);
-                        break;
-                    }
                 }
-                //if (abilitySlot == "X")
-                //{
-                //    if (xAvailable)
-                //    {
-                //        GameObject X = Instantiate(AbilitiesInRange[i].gameObject, xAbility.transform, false);
-                //        X.name = AbilitiesInRange[i].gameObject.name;
-                //        Destroy(AbilitiesInRange[i].gameObject);
-                //        xAvailable = false;
-                //        break;
-
-                //    }
-                //    else
-                //    {
-                //        GameObject dropX = Instantiate(xAbility.transform.GetChild(0).gameObject, rBody.position, Quaternion.identity);
-                //        dropX.name = xAbility.transform.GetChild(0).gameObject.name;
-                //        Destroy(xAbility.transform.GetChild(0).gameObject);
-                //        GameObject X = Instantiate(AbilitiesInRange[i].gameObject, xAbility.transform, false);
-                //        X.name = AbilitiesInRange[i].gameObject.name;
-                //        Destroy(AbilitiesInRange[i].gameObject);
-                //        break;
-                //    }
-                //}
-                if (abilitySlot == "Swap")
+                else
                 {
-                    if(swapAvailable)
-                    {
-                        GameObject Swap = Instantiate(AbilitiesInRange[i].gameObject, swapAbility.transform, false);
-                        Swap.name = AbilitiesInRange[i].gameObject.name;
-                        Destroy(AbilitiesInRange[i].gameObject);
-                        swapAvailable = false;
-                        break;
-
-                    }
-                    else
-                    {
-                        GameObject dropSwap = Instantiate(swapAbility.transform.GetChild(0).gameObject, rBody.position, Quaternion.identity);
-                        dropSwap.name = swapAbility.transform.GetChild(0).gameObject.name;
-                        Destroy(swapAbility.transform.GetChild(0).gameObject);
-                        GameObject Swap = Instantiate(AbilitiesInRange[i].gameObject, swapAbility.transform, false);
-                        Swap.name = AbilitiesInRange[i].gameObject.name;
-                        Destroy(AbilitiesInRange[i].gameObject);
-                        break;
+                    GameObject dropA = Instantiate(aAbility.transform.GetChild(0).gameObject, rBody.position, Quaternion.identity);
+                    dropA.name = aAbility.transform.GetChild(0).gameObject.name;
+                    Destroy(aAbility.transform.GetChild(0).gameObject);
+                    GameObject A = Instantiate(AbilitiesInRange[i].gameObject, aAbility.transform, false);
+                    A.name = AbilitiesInRange[i].gameObject.name;
+                    Destroy(AbilitiesInRange[i].gameObject);
+                    break;
                 }
+            }
+
+            else if (AbilitiesInRange[i].CompareTag("SwapAbility"))
+            {
+                abilitySlot = "Swap";
+
+                if (swapAvailable)
+                {
+                    GameObject Swap = Instantiate(AbilitiesInRange[i].gameObject, swapAbility.transform, false);
+                    Swap.transform.localPosition = new Vector3(0.046f, -0.029f, 0f);
+                    Vector3 scaleChange = new Vector3(-0.1f, -0.1f, 0f);
+                    Swap.transform.localScale += scaleChange;
+                    Swap.name = AbilitiesInRange[i].gameObject.name;
+                    Destroy(AbilitiesInRange[i].gameObject);
+                    swapAvailable = false;
+                    break;
+
+                }
+                else
+                {
+                    GameObject dropSwap = Instantiate(swapAbility.transform.GetChild(0).gameObject, rBody.position, Quaternion.identity);
+                    dropSwap.name = swapAbility.transform.GetChild(0).gameObject.name;
+                    Destroy(swapAbility.transform.GetChild(0).gameObject);
+                    GameObject Swap = Instantiate(AbilitiesInRange[i].gameObject, swapAbility.transform, false);
+                    Swap.name = AbilitiesInRange[i].gameObject.name;
+                    Destroy(AbilitiesInRange[i].gameObject);
+                    break;
                 }
             }
         }
     }
+
     public GameObject getaAbility()
     {
         return aAbility;
     }
+
     //public GameObject getxAbility()
     //{
     //    return xAbility;
     //}
+
 }
