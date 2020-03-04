@@ -120,6 +120,80 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &74181296
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3744995540914543573, guid: 42893adbd0198a647ba6932fb58a5265,
+        type: 3}
+      propertyPath: m_Name
+      value: GodLaser
+      objectReference: {fileID: 0}
+    - target: {fileID: 3744995540914543576, guid: 42893adbd0198a647ba6932fb58a5265,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3744995540914543576, guid: 42893adbd0198a647ba6932fb58a5265,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 3744995540914543576, guid: 42893adbd0198a647ba6932fb58a5265,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3744995540914543576, guid: 42893adbd0198a647ba6932fb58a5265,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3744995540914543576, guid: 42893adbd0198a647ba6932fb58a5265,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3744995540914543576, guid: 42893adbd0198a647ba6932fb58a5265,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3744995540914543576, guid: 42893adbd0198a647ba6932fb58a5265,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3744995540914543576, guid: 42893adbd0198a647ba6932fb58a5265,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3744995540914543576, guid: 42893adbd0198a647ba6932fb58a5265,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3744995540914543576, guid: 42893adbd0198a647ba6932fb58a5265,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3744995540914543576, guid: 42893adbd0198a647ba6932fb58a5265,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3744995540914543577, guid: 42893adbd0198a647ba6932fb58a5265,
+        type: 3}
+      propertyPath: myItemType
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 42893adbd0198a647ba6932fb58a5265, type: 3}
 --- !u!1 &123513624
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,7 +443,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: SwiftSauce
   itemDescription: increase a speed
-  myItemType: 0
+  myItemType: 1
   ItemCooldown: 0
 --- !u!212 &388710093
 SpriteRenderer:
@@ -1893,6 +1967,7 @@ MonoBehaviour:
   HUD: {fileID: 0}
   thorAnimator: {fileID: 7408067126954169306}
   valkAnimator: {fileID: 8742006499949262688}
+  bomb: {fileID: 0}
 --- !u!4 &7709403318431552203
 Transform:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class MainControls : DPad
+public class MainControls : MonoBehaviour
 {
     private PlayerStats stats;
     public HUD HUD;
@@ -82,6 +82,7 @@ public class MainControls : DPad
         else if (Input.GetButtonDown(bButton))
         {
             Attack();
+            
 
         }
         else if (Input.GetButtonDown(aButton))
@@ -100,18 +101,22 @@ public class MainControls : DPad
         else if (DPad.IsUp)
         {
             lastDPadPressed = "up";
+            Debug.Log("last pressed up");
         }
         else if (DPad.IsDown)
         {
             lastDPadPressed = "down";
+            Debug.Log("last pressed down");
         }
         else if (DPad.IsLeft)
         {
             lastDPadPressed = "left";
+            Debug.Log("last pressed left");
         }
         else if (DPad.IsRight)
         {
             lastDPadPressed = "right";
+            Debug.Log("last pressed right");
         }
 
 
@@ -173,26 +178,25 @@ public class MainControls : DPad
         if (controllerNumber == 1)
         {
             Debug.Log("Use Item thats in <" + lastDPadPressed + " DPad>");
-
-            if (lastDPadPressed == "up")
+            if (lastDPadPressed == "up" && !this.GetComponent<Inventory>().isUpItem())
             {
                 this.GetComponent<Inventory>().getUpItem().GetComponentInChildren<ItemClass>().ItemActivate();
-                this.GetComponent<Inventory>().setUpAvail(true);
             }
-            else if (lastDPadPressed == "left")
+            else if (lastDPadPressed == "left" && !this.GetComponent<Inventory>().isLeftItem())
             {
                 this.GetComponent<Inventory>().getLeftItem().GetComponentInChildren<ItemClass>().ItemActivate();
-                this.GetComponent<Inventory>().setLeftAvail(true);
             }
-            else if (lastDPadPressed == "right")
+            else if (lastDPadPressed == "right" && !this.GetComponent<Inventory>().isRightItem())
             {
                 this.GetComponent<Inventory>().getRightItem().GetComponentInChildren<ItemClass>().ItemActivate();
-                this.GetComponent<Inventory>().setRightAvail(true);
             }
-            else if (lastDPadPressed == "down")
+            else if (lastDPadPressed == "down" && !this.GetComponent<Inventory>().isDownItem())
             {
                 this.GetComponent<Inventory>().getDownItem().GetComponentInChildren<ItemClass>().ItemActivate();
-                this.GetComponent<Inventory>().setDownAvail(true);
+            }
+            else
+            {
+                Debug.Log("Player has no item to use");
             }
         }
         // if player 2 range
@@ -200,25 +204,21 @@ public class MainControls : DPad
         {
             Debug.Log("Use Item thats in <" + lastDPadPressed + " DPad>");
 
-            if (lastDPadPressed == "up")
+            if (lastDPadPressed == "up" && !this.GetComponent<Inventory>().isUpItem())
             {
                 this.GetComponent<Inventory>().getUpItem().GetComponentInChildren<ItemClass>().ItemActivate();
-                this.GetComponent<Inventory>().setUpAvail(true);
             }
-            else if (lastDPadPressed == "left")
+            else if (lastDPadPressed == "left" && !this.GetComponent<Inventory>().isLeftItem())
             {
                 this.GetComponent<Inventory>().getLeftItem().GetComponentInChildren<ItemClass>().ItemActivate();
-                this.GetComponent<Inventory>().setLeftAvail(true);
             }
-            else if (lastDPadPressed == "right")
+            else if (lastDPadPressed == "right" && !this.GetComponent<Inventory>().isRightItem())
             {
                 this.GetComponent<Inventory>().getRightItem().GetComponentInChildren<ItemClass>().ItemActivate();
-                this.GetComponent<Inventory>().setRightAvail(true);
             }
-            else if (lastDPadPressed == "down")
+            else if (lastDPadPressed == "down" && !this.GetComponent<Inventory>().isDownItem())
             {
                 this.GetComponent<Inventory>().getDownItem().GetComponentInChildren<ItemClass>().ItemActivate();
-                this.GetComponent<Inventory>().setDownAvail(true);
             }
         }
         // if player 2 use P2 A1

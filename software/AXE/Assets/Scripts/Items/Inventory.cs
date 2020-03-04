@@ -9,10 +9,6 @@ public class Inventory : MonoBehaviour
     [SerializeField] private GameObject leftItem;
     [SerializeField] private GameObject rightItem;
     [SerializeField] private GameObject downItem;
-    private bool upAvail;
-    private bool leftAvail;
-    private bool rightAvail;
-    private bool downAvail;
 
     private Transform myPosition;
     private Rigidbody2D playerRB;
@@ -23,12 +19,11 @@ public class Inventory : MonoBehaviour
     // 1 = Left
     // 2 = Right
     // 3 = Down
+
+    // check for swap abilities
+    private GameObject swapAbility;
     private void Start()
     {
-        upAvail = true;
-        leftAvail = true;
-        rightAvail = true;
-        downAvail = true;
         playerRB = GetComponent<Rigidbody2D>();
         
         myPosition = gameObject.transform;
@@ -55,17 +50,19 @@ public class Inventory : MonoBehaviour
                 
                 if (curDPad == "up")
                 {
-                    if (upAvail)
+                    if (isUpItem())
                     {
+                        Debug.Log("Up avail 1");
                         GameObject UP = Instantiate(ItemsInRange[i].gameObject, upItem.transform, false);
                         UP.name = ItemsInRange[i].gameObject.name;
+                        //handleIfSwap(ItemsInRange[i].gameObject, UP);
                         Destroy(ItemsInRange[i].gameObject);
-                        upAvail = false;
                         break;
 
                     }
                     else
                     {
+                        Debug.Log("Up avail 2");
                         GameObject droppedUP = Instantiate(upItem.transform.GetChild(0).gameObject, playerRB.position, Quaternion.identity);
                         droppedUP.name = upItem.transform.GetChild(0).gameObject.name;
                         Destroy(upItem.transform.GetChild(0).gameObject);
@@ -78,12 +75,11 @@ public class Inventory : MonoBehaviour
                 }
                 else if (curDPad == "left")
                 {
-                    if (leftAvail)
+                    if (!isLeftItem())
                     {
                         GameObject Left = Instantiate(ItemsInRange[i].gameObject, leftItem.transform, false);
                         Left.name = ItemsInRange[i].gameObject.name;
                         Destroy(ItemsInRange[i].gameObject);
-                        leftAvail = false;
                         break;
                     }
                     else
@@ -99,12 +95,11 @@ public class Inventory : MonoBehaviour
                 }
                 else if (curDPad == "right")
                 {
-                    if (rightAvail)
+                    if (!isRightItem())
                     {
                         GameObject Right = Instantiate(ItemsInRange[i].gameObject, rightItem.transform, false);
                         Right.name = ItemsInRange[i].gameObject.name;
                         Destroy(ItemsInRange[i].gameObject);
-                        rightAvail = false;
                         break;
                     }
                     else
@@ -120,12 +115,11 @@ public class Inventory : MonoBehaviour
                 }
                 else if (curDPad == "down")
                 {
-                    if (downAvail)
+                    if (!isDownItem())
                     {
                         GameObject Down = Instantiate(ItemsInRange[i].gameObject, downItem.transform, false);
                         Down.name = ItemsInRange[i].gameObject.name;
                         Destroy(ItemsInRange[i].gameObject);
-                        downAvail = false;
                         break;
                     }
                     else
@@ -161,21 +155,57 @@ public class Inventory : MonoBehaviour
         return downItem;
     }
 
-    public void setUpAvail(bool b)
+    public bool isUpItem()
     {
-        upAvail = b;
+        if (upItem.GetComponentInChildren<ItemClass>() == null)
+        {
+            Debug.Log("Up avail");
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
-    public void setLeftAvail(bool b)
+    public bool isLeftItem()
     {
-        leftAvail = b;
+        if (leftItem.GetComponentInChildren<ItemClass>() == null)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
-    public void setRightAvail(bool b)
+    public bool isRightItem()
     {
-        rightAvail = b;
+        if (rightItem.GetComponentInChildren<ItemClass>() == null)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
-    public void setDownAvail(bool b)
+    public bool isDownItem()
     {
-        downAvail = b;
+        if (downItem.GetComponentInChildren<ItemClass>() == null)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public void handleIfSwap(GameObject swapAb, GameObject DPadPos)
+    {
+        if (swapAb.GetComponent<ItemClass>().myItemType == ItemClass.ItemType.swapAbility)
+        {
+            swapAbility = DPadPos;
+        }
     }
 
 }
