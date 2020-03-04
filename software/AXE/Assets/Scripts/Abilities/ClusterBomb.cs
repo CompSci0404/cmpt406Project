@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// A cluster of powerful micro explosives is released in a large radius around the character who switched out, damaging all enemies caught in the blast.
 /// </summary>
-public class ClusterBomb : MonoBehaviour
+public class ClusterBomb : ItemClass
 {
     public GameObject bomb;
     float power = 5f;
@@ -15,7 +15,7 @@ public class ClusterBomb : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        itemEffect = Detonate;
     }
 
     // Update is called once per frame

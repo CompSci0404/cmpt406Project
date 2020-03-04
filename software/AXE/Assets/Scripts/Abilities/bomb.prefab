@@ -4767,6 +4767,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 763fb74314b9a06428ad6d60c1aeb3ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemName: ClusterBomb
+  itemDescription: A cluster of powerful micro explosives is released in a large radius
+    around the character who switched out, damaging all enemies caught in the blast.
+  myItemType: 1
+  ItemCooldown: 0
   bomb: {fileID: 2783781131979127740}
 --- !u!1 &2930557893268511748
 GameObject:

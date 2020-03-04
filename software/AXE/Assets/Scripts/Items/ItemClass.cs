@@ -4,7 +4,6 @@ using UnityEngine;
 
 public abstract class ItemClass : MonoBehaviour
 {
-
     // consumable = one time use
     // swapAbility = used when swap used
     // playerAbility = unlimited use but cooldown base
@@ -34,6 +33,7 @@ public abstract class ItemClass : MonoBehaviour
         }
         else if (myItemType == ItemType.swapAbility)
         {
+            itemEffect();
             Debug.Log("not yet implemented");
         }
         else if (myItemType == ItemType.playerAbility)
