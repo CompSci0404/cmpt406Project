@@ -42,7 +42,7 @@ public class DropSystem : MonoBehaviour
     }
 
     // Called by an enemy to get a chance to drop an item
-    public void DropFromPools(Transform t, float dropChance)
+    public void DropFromPools(Transform t)
     {
         int randInt = Random.Range(0, 101);
         print(randInt);
