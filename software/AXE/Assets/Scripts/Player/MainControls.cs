@@ -131,6 +131,10 @@ public class MainControls : DPad
         {
             Instantiate(bomb, this.gameObject.transform);
         }
+        else if(swapAbility == "TimelineShifter")
+        {
+            // how to call itemEffect?
+        }
 
         Invoke("ResetSwap", 1);
     }
