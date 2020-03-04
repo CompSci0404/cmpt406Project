@@ -86,12 +86,16 @@ public class MainControls : DPad
         }
         else if (Input.GetButtonDown(aButton))
         {
+            // The use item should be used by the DPad
             UseItem();
+            UseAbility();
         }
         else if (Input.GetButtonDown(xButton))
         {
             PickUpItem();
+            PickUpAbility();
         }
+
         // DPad presses
         else if (DPad.IsUp)
         {
@@ -234,8 +238,39 @@ public class MainControls : DPad
         else if (controllerNumber == 2)
         {
             Debug.Log("Item Picked up goes to <" + lastDPadPressed + " DPad>");
+            this.GetComponent<Inventory>().PickUpItem();
         }
         // if player 2 use P2 A2
+    }
+
+    // Ability 1
+    private void UseAbility()
+    {
+        if (controllerNumber == 1)
+        {
+
+        }
+        else if (controllerNumber == 2)
+        {
+
+        }
+    }
+
+    // Ability 2
+    private void PickUpAbility()
+    {
+        // if player 1 use P1 A2
+        if (controllerNumber == 1)
+        {
+            this.GetComponent<Abilities>().abilitySlot = "A";
+            this.GetComponent<Abilities>().PickUpAbility();
+
+        }
+        // if player 2 range
+        else if (controllerNumber == 2)
+        {
+            this.GetComponent<Abilities>().PickUpAbility();
+        }
     }
 
     public void UpdateStats(PlayerStats stats)

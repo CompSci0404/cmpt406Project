@@ -124,6 +124,7 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 0
+  weaponPoint: {fileID: 0}
 --- !u!95 &7300317345096882598
 Animator:
   serializedVersion: 3
@@ -159,6 +160,8 @@ GameObject:
   - component: {fileID: 7600984664673736886}
   - component: {fileID: 4479636796296197987}
   - component: {fileID: 895764767}
+  - component: {fileID: 8330869376092234921}
+  - component: {fileID: 5291062775590370721}
   m_Layer: 0
   m_Name: SwapController
   m_TagString: Player
@@ -389,6 +392,7 @@ MonoBehaviour:
   HUD: {fileID: 0}
   thorAnimator: {fileID: 7300317345096882598}
   valkAnimator: {fileID: 8849725717746089244}
+  bomb: {fileID: 0}
 --- !u!114 &4479636796296197987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -415,6 +419,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thorAnimator: {fileID: 7300317345096882598}
   valkAnimator: {fileID: 8849725717746089244}
+--- !u!114 &8330869376092234921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7600984664673736890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba6e1015c22750b4a95923daee8cee0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upItem: {fileID: 0}
+  leftItem: {fileID: 0}
+  rightItem: {fileID: 0}
+  downItem: {fileID: 0}
+--- !u!114 &5291062775590370721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7600984664673736890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f1037f2dfc336d4ebf2424d8bcc003c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aAbility: {fileID: 0}
+  xAbility: {fileID: 0}
+  swapAbility: {fileID: 0}
 --- !u!1 &7600984665031520794
 GameObject:
   m_ObjectHideFlags: 0

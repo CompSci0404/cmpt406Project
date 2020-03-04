@@ -20,7 +20,7 @@ public class Abilities : MonoBehaviour
     private bool swapAvailable;
 
     // going to be "A", "X", or "Swap" 
-    private string abilitySlot;
+    public string abilitySlot;
    
     private Transform position;
     private Rigidbody2D rBody;
@@ -44,7 +44,6 @@ public class Abilities : MonoBehaviour
     public void PickUpAbility()
     {
         // get all abilities in range for pickup
-
         Collider2D[] AbilitiesInRange = Physics2D.OverlapCircleAll(position.position, 1);
         for (int i = 0; i < AbilitiesInRange.Length; i++)
         {
@@ -54,7 +53,7 @@ public class Abilities : MonoBehaviour
                 // if it is pick up ability and add it to ability UI
                 // disable button (for now)
                 Debug.Log(AbilitiesInRange.Length);
-
+                
                 if (abilitySlot == "A")
                 {
                     if (aAvailable)
@@ -77,28 +76,28 @@ public class Abilities : MonoBehaviour
                         break;
                     }
                 }
-                if (abilitySlot == "X")
-                {
-                    if (xAvailable)
-                    {
-                        GameObject X = Instantiate(AbilitiesInRange[i].gameObject, xAbility.transform, false);
-                        X.name = AbilitiesInRange[i].gameObject.name;
-                        Destroy(AbilitiesInRange[i].gameObject);
-                        xAvailable = false;
-                        break;
+                //if (abilitySlot == "X")
+                //{
+                //    if (xAvailable)
+                //    {
+                //        GameObject X = Instantiate(AbilitiesInRange[i].gameObject, xAbility.transform, false);
+                //        X.name = AbilitiesInRange[i].gameObject.name;
+                //        Destroy(AbilitiesInRange[i].gameObject);
+                //        xAvailable = false;
+                //        break;
 
-                    }
-                    else
-                    {
-                        GameObject dropX = Instantiate(xAbility.transform.GetChild(0).gameObject, rBody.position, Quaternion.identity);
-                        dropX.name = xAbility.transform.GetChild(0).gameObject.name;
-                        Destroy(xAbility.transform.GetChild(0).gameObject);
-                        GameObject X = Instantiate(AbilitiesInRange[i].gameObject, xAbility.transform, false);
-                        X.name = AbilitiesInRange[i].gameObject.name;
-                        Destroy(AbilitiesInRange[i].gameObject);
-                        break;
-                    }
-                }
+                //    }
+                //    else
+                //    {
+                //        GameObject dropX = Instantiate(xAbility.transform.GetChild(0).gameObject, rBody.position, Quaternion.identity);
+                //        dropX.name = xAbility.transform.GetChild(0).gameObject.name;
+                //        Destroy(xAbility.transform.GetChild(0).gameObject);
+                //        GameObject X = Instantiate(AbilitiesInRange[i].gameObject, xAbility.transform, false);
+                //        X.name = AbilitiesInRange[i].gameObject.name;
+                //        Destroy(AbilitiesInRange[i].gameObject);
+                //        break;
+                //    }
+                //}
                 if (abilitySlot == "Swap")
                 {
                     if(swapAvailable)
