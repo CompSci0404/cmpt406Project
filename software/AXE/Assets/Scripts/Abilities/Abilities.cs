@@ -10,8 +10,8 @@ public class Abilities : MonoBehaviour
     // UI ability location 
     [SerializeField]
     private GameObject aAbility;
-    [SerializeField]
-    private GameObject xAbility;
+    //[SerializeField]
+    //private GameObject xAbility;
     [SerializeField]
     private GameObject swapAbility;
 
@@ -127,8 +127,8 @@ public class Abilities : MonoBehaviour
     {
         return aAbility;
     }
-    public GameObject getxAbility()
-    {
-        return xAbility;
-    }
+    //public GameObject getxAbility()
+    //{
+    //    return xAbility;
+    //}
 }
