@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7600984664035167005}
   - component: {fileID: 801095915342241112}
   - component: {fileID: 7300317345096882598}
+  - component: {fileID: 801519461853888842}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Thor
@@ -108,6 +109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d53f9f5b2fd233f4ab34f7f1fea2f6ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thorAnimation: {fileID: 801519461853888842}
+  valkAnimation: {fileID: 5674073172893567759}
   controllerNumber: 1
 --- !u!114 &801095915342241112
 MonoBehaviour:
@@ -124,6 +127,7 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 0
+  weaponPoint: {fileID: 0}
 --- !u!95 &7300317345096882598
 Animator:
   serializedVersion: 3
@@ -143,6 +147,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &801519461853888842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7600984664035167004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c28d65072c49d164b94aface75d273f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thorAnimator: {fileID: 7300317345096882598}
 --- !u!1 &7600984664673736890
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,7 +175,6 @@ GameObject:
   - component: {fileID: 7600984664673736881}
   - component: {fileID: 7600984664673736886}
   - component: {fileID: 4479636796296197987}
-  - component: {fileID: 895764767}
   m_Layer: 0
   m_Name: SwapController
   m_TagString: Player
@@ -387,8 +403,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HUD: {fileID: 0}
-  thorAnimator: {fileID: 7300317345096882598}
-  valkAnimator: {fileID: 8849725717746089244}
+  thorAnimation: {fileID: 801519461853888842}
+  valkAnimation: {fileID: 5674073172893567759}
 --- !u!114 &4479636796296197987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -401,20 +417,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 642b604de6f13a84ea2624712e9472d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &895764767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7600984664673736890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c28d65072c49d164b94aface75d273f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thorAnimator: {fileID: 7300317345096882598}
-  valkAnimator: {fileID: 8849725717746089244}
+  thorAnimation: {fileID: 801519461853888842}
+  valkAnimation: {fileID: 5674073172893567759}
 --- !u!1 &7600984665031520794
 GameObject:
   m_ObjectHideFlags: 0
@@ -429,6 +433,7 @@ GameObject:
   - component: {fileID: 7600984665031520788}
   - component: {fileID: 6502305135600347040}
   - component: {fileID: 8849725717746089244}
+  - component: {fileID: 5674073172893567759}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Type2
@@ -524,6 +529,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d53f9f5b2fd233f4ab34f7f1fea2f6ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thorAnimation: {fileID: 801519461853888842}
+  valkAnimation: {fileID: 5674073172893567759}
   controllerNumber: 2
 --- !u!114 &6502305135600347040
 MonoBehaviour:
@@ -549,7 +556,7 @@ Animator:
   m_GameObject: {fileID: 7600984665031520794}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 945d89ea8b9328e49a4f782ac6a0e1bb, type: 2}
+  m_Controller: {fileID: 9100000, guid: c760b8d7056ac2543b838fc22746e979, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -558,3 +565,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5674073172893567759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7600984665031520794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a3f7182e47b3c94587ee60a20a324f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  valkAnimator: {fileID: 8849725717746089244}
