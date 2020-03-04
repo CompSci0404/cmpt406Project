@@ -23,7 +23,8 @@ public class EnergyShield : ItemClass
 
     void SpawnShield()
     {
-        Instantiate(energyShield, this.gameObject.transform);
+        this.gameObject.GetComponent<CircleCollider2D>().enabled = false;
+        Instantiate(energyShield, playerCont.transform);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
