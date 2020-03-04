@@ -51,7 +51,7 @@ public class Inventory : MonoBehaviour
                 // if it is pick up item and add it to inventory UI
                 // also change name to prevent repetitive adition of clone in name
                 // then make dpad button not available
-                Debug.Log(ItemsInRange.Length);
+                //Debug.Log(ItemsInRange.Length);
                 
                 if (curDPad == "up")
                 {
