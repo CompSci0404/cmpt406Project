@@ -52,7 +52,6 @@ public class Inventory : MonoBehaviour
                 {
                     if (isUpItem())
                     {
-                        Debug.Log("Up avail 1");
                         GameObject UP = Instantiate(ItemsInRange[i].gameObject, upItem.transform, false);
                         UP.name = ItemsInRange[i].gameObject.name;
                         //handleIfSwap(ItemsInRange[i].gameObject, UP);
@@ -62,7 +61,6 @@ public class Inventory : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log("Up avail 2");
                         GameObject droppedUP = Instantiate(upItem.transform.GetChild(0).gameObject, playerRB.position, Quaternion.identity);
                         droppedUP.name = upItem.transform.GetChild(0).gameObject.name;
                         Destroy(upItem.transform.GetChild(0).gameObject);
@@ -75,7 +73,7 @@ public class Inventory : MonoBehaviour
                 }
                 else if (curDPad == "left")
                 {
-                    if (!isLeftItem())
+                    if (isLeftItem())
                     {
                         GameObject Left = Instantiate(ItemsInRange[i].gameObject, leftItem.transform, false);
                         Left.name = ItemsInRange[i].gameObject.name;
@@ -95,7 +93,7 @@ public class Inventory : MonoBehaviour
                 }
                 else if (curDPad == "right")
                 {
-                    if (!isRightItem())
+                    if (isRightItem())
                     {
                         GameObject Right = Instantiate(ItemsInRange[i].gameObject, rightItem.transform, false);
                         Right.name = ItemsInRange[i].gameObject.name;
@@ -115,7 +113,7 @@ public class Inventory : MonoBehaviour
                 }
                 else if (curDPad == "down")
                 {
-                    if (!isDownItem())
+                    if (isDownItem())
                     {
                         GameObject Down = Instantiate(ItemsInRange[i].gameObject, downItem.transform, false);
                         Down.name = ItemsInRange[i].gameObject.name;

@@ -52,10 +52,4 @@ public class GodLaser : ItemClass
         playerCont = GameObject.FindWithTag("Player");
     }
 
-    private void OnDrawGizmos()
-    {
-        lookDirection = new Vector2(Input.GetAxis("LookHorizontal"), Input.GetAxis("LookVertical"));
-        Gizmos.DrawCube(playerRB.transform.position, new Vector2(2f, 5f));
-    }
-
 }
