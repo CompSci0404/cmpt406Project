@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : ItemClass
+public class GodLaser : ItemClass
 {
     private GameObject playerCont;
     private Rigidbody2D playerRB;
