@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3550553798748792367}
   m_Layer: 0
   m_Name: TimelineShifter
-  m_TagString: Ability
+  m_TagString: SwapAbility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

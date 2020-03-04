@@ -16,6 +16,8 @@ TagManager:
   - Thor
   - Item
   - Ability
+  - Message
+  - SwapAbility
   layers:
   - Default
   - TransparentFX
