@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 1314400604440817085}
   - component: {fileID: 2387692682659906819}
   - component: {fileID: 6448977742172355713}
+  - component: {fileID: 6947075294260642245}
+  - component: {fileID: 4492945353952977940}
   m_Layer: 0
   m_Name: SwiftSauce
   m_TagString: Item
@@ -114,3 +116,32 @@ MonoBehaviour:
   itemDescription: Increase player's move and attack speed
   myItemType: 0
   ItemCooldown: 0
+--- !u!58 &6947075294260642245
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6723162061165601016}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0127329035, y: -0.072153114}
+  serializedVersion: 2
+  m_Radius: 0.7
+--- !u!114 &4492945353952977940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6723162061165601016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3e822dfe2ef49945a65fb9e141c83a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PickupMessage: {fileID: 0}
