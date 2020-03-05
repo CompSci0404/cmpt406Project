@@ -1182,6 +1182,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 664688373117898062, guid: b24533ff8fb454e41bfc9c2eb89c7d2e,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3550553798748792367, guid: b24533ff8fb454e41bfc9c2eb89c7d2e,
+        type: 3}
+      propertyPath: PickupMessage
+      value: 
+      objectReference: {fileID: 1303276505}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b24533ff8fb454e41bfc9c2eb89c7d2e, type: 3}
 --- !u!1001 &375127678
@@ -1375,10 +1385,10 @@ RectTransform:
   m_Children:
   - {fileID: 1792718910}
   - {fileID: 2044680610}
+  - {fileID: 593938929}
   - {fileID: 965406315}
   - {fileID: 1894127346}
   - {fileID: 1303276506}
-  - {fileID: 593938929}
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1647,6 +1657,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2783781131979127740, guid: b9b934d4c1928e2439df0557178c5db4,
         type: 3}
+    - target: {fileID: 7600984664673736886, guid: 16c7e1f4973d0fb44910bce4460806f1,
+        type: 3}
+      propertyPath: thorAnimation
+      value: 
+      objectReference: {fileID: 1041180074}
+    - target: {fileID: 7600984664673736886, guid: 16c7e1f4973d0fb44910bce4460806f1,
+        type: 3}
+      propertyPath: valkAnimation
+      value: 
+      objectReference: {fileID: 1041180082}
     - target: {fileID: 8330869376092234921, guid: 16c7e1f4973d0fb44910bce4460806f1,
         type: 3}
       propertyPath: upItem
@@ -1837,7 +1857,7 @@ RectTransform:
   - {fileID: 409885548}
   - {fileID: 1757483210}
   m_Father: {fileID: 384569344}
-  m_RootOrder: 5
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2571,7 +2591,7 @@ RectTransform:
   m_LocalScale: {x: 200, y: 200, z: 1}
   m_Children: []
   m_Father: {fileID: 384569344}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2613,8 +2633,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -418609507
-  m_SortingLayer: 4
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5358b44929c112a4b96678829692bd99, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2627,6 +2647,58 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &966212263 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1043148768029968436, guid: b31949b2153b9124e9f84874c6079345,
+    type: 3}
+  m_PrefabInstance: {fileID: 1530300197}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &966212264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966212263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1a45966da9b2c34380746b36e3e73f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swapAbilities:
+  - {fileID: 664688373117898064, guid: b24533ff8fb454e41bfc9c2eb89c7d2e, type: 3}
+  - {fileID: 2783781131979127740, guid: b9b934d4c1928e2439df0557178c5db4, type: 3}
+  itemAbilities:
+  - {fileID: 3744995540914543573, guid: 42893adbd0198a647ba6932fb58a5265, type: 3}
+  - {fileID: 8265659140601263921, guid: 0690e459da1b5ed40a71bb027533a113, type: 3}
+  consumableItem:
+  - {fileID: 5267318244921707893, guid: 5e1b17fae340c9e47990b4ba3ebf21bf, type: 3}
+  - {fileID: 6723162061165601016, guid: b872448cfcc5bb14c8a517ce8ff345d9, type: 3}
+  dropChance: 25
+--- !u!114 &1041180074 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 895764767, guid: 16c7e1f4973d0fb44910bce4460806f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 449513573}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c28d65072c49d164b94aface75d273f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1041180082 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 109676076239904554, guid: 16c7e1f4973d0fb44910bce4460806f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 449513573}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a3f7182e47b3c94587ee60a20a324f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1057411148
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3042,6 +3114,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7133599090814482981, guid: 42893adbd0198a647ba6932fb58a5265,
+        type: 3}
+      propertyPath: PickupMessage
+      value: 
+      objectReference: {fileID: 1303276505}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42893adbd0198a647ba6932fb58a5265, type: 3}
 --- !u!1001 &1223337447
@@ -3230,7 +3307,7 @@ RectTransform:
   m_Children:
   - {fileID: 1845101488}
   m_Father: {fileID: 384569344}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5686,7 +5763,7 @@ RectTransform:
   m_LocalScale: {x: 200, y: 200, z: 1}
   m_Children: []
   m_Father: {fileID: 384569344}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5728,8 +5805,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -418609507
-  m_SortingLayer: 4
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c55c5a701738c304485b730a97fc8898, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
