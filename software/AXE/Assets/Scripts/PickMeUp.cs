@@ -7,15 +7,22 @@ using UnityEngine;
 /// </summary>
 public class PickMeUp : MonoBehaviour
 {
-    [SerializeField]
+    GameObject[] GameObjects;
     GameObject PickupMessage;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Player"))
         {
+            GameObjects = FindObjectsOfType<GameObject>();
+            for(int i=0; i < GameObjects.Length;i++)
+            {
+                if(GameObjects[i].CompareTag("Message"))
+                {
+                    PickupMessage = GameObjects[i];
+                }
+            }
             PickupMessage.transform.position = new Vector2(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 1);
-            PickupMessage.SetActive(true);
         }
         else
         {
@@ -27,7 +34,7 @@ public class PickMeUp : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            PickupMessage.SetActive(false);
+            PickupMessage.transform.position = new Vector3(0, 0, 200);
         }
         else
         {
