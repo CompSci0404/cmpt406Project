@@ -59,13 +59,15 @@ public class MainControls : MonoBehaviour
             }
             else
             {
+                justSwapped = true;
+
                 if (controllerNumber == 1)
                 {
                     HUD.ThorSwitch = true;
                     HUD.ChangeCharacterIcon();
                     thorAnimation.SwapAnimTrigger();
                     stats.SetLives(stats.GetLives() - 1);
-                    SwapPlayer();
+                    Invoke("SwapPlayer", 1);
                 }
                 // if player 2 range
                 else if (controllerNumber == 2)
@@ -74,7 +76,7 @@ public class MainControls : MonoBehaviour
                     HUD.ChangeCharacterIcon();
                     valkAnimation.SwapAnimTrigger();
                     stats.SetLives(stats.GetLives() - 1);
-                    SwapPlayer();
+                    Invoke("SwapPlayer", 1);
                 }
             }
         }
@@ -123,17 +125,12 @@ public class MainControls : MonoBehaviour
 
     private void SwapPlayer()
     {
-        if (controllerNumber == 1) thorAnimation.SwapAnimTrigger();
-        if (controllerNumber == 2) valkAnimation.SwapAnimTrigger();
-
         if (null != stats) stats.gameObject.SetActive(false);
         GameObject nextPlayer = players[0];
         nextPlayer.SetActive(true);
 
         players.Remove(nextPlayer);
         players.Add(nextPlayer);
-
-        justSwapped = true;
 
         if (swapAbility.Equals(""))
         {
