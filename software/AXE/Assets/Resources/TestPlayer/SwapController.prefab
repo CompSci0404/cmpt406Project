@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2058283858
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2058283859}
+  m_Layer: 0
+  m_Name: Weapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2058283859
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058283858}
+  m_LocalRotation: {x: -0, y: -0, z: -0.55922025, w: 0.8290191}
+  m_LocalPosition: {x: 0.39, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7600984664035167000}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -68.004005}
 --- !u!1 &7600984664035167004
 GameObject:
   m_ObjectHideFlags: 0
@@ -14,7 +44,6 @@ GameObject:
   - component: {fileID: 7600984664035167005}
   - component: {fileID: 801095915342241112}
   - component: {fileID: 7300317345096882598}
-  - component: {fileID: 801519461853888842}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Thor
@@ -32,7 +61,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 2058283859}
   m_Father: {fileID: 7600984664673736887}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -109,8 +139,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d53f9f5b2fd233f4ab34f7f1fea2f6ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thorAnimation: {fileID: 801519461853888842}
-  valkAnimation: {fileID: 5674073172893567759}
+  thorAnimation: {fileID: 0}
+  valkAnimation: {fileID: 0}
   controllerNumber: 1
 --- !u!114 &801095915342241112
 MonoBehaviour:
@@ -126,8 +156,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyLayers:
     serializedVersion: 2
-    m_Bits: 0
-  weaponPoint: {fileID: 0}
+    m_Bits: 256
+  weaponPoint: {fileID: 2058283859}
 --- !u!95 &7300317345096882598
 Animator:
   serializedVersion: 3
@@ -147,19 +177,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &801519461853888842
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7600984664035167004}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c28d65072c49d164b94aface75d273f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thorAnimator: {fileID: 7300317345096882598}
 --- !u!1 &7600984664673736890
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,6 +192,10 @@ GameObject:
   - component: {fileID: 7600984664673736881}
   - component: {fileID: 7600984664673736886}
   - component: {fileID: 4479636796296197987}
+  - component: {fileID: 895764767}
+  - component: {fileID: 109676076239904554}
+  - component: {fileID: 8330869376092234921}
+  - component: {fileID: 5291062775590370721}
   m_Layer: 0
   m_Name: SwapController
   m_TagString: Player
@@ -261,8 +282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 2cf1a50401ab73a4a9daca0c32e56016,
-    type: 3}
+  m_Actions: {fileID: 0}
   m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
@@ -403,8 +423,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HUD: {fileID: 0}
-  thorAnimation: {fileID: 801519461853888842}
-  valkAnimation: {fileID: 5674073172893567759}
+  thorAnimation: {fileID: 895764767}
+  valkAnimation: {fileID: 109676076239904554}
+  justSwapped: 0
+  swapAbility: 
 --- !u!114 &4479636796296197987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -417,8 +439,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 642b604de6f13a84ea2624712e9472d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thorAnimation: {fileID: 801519461853888842}
-  valkAnimation: {fileID: 5674073172893567759}
+  thorAnimation: {fileID: 895764767}
+  valkAnimation: {fileID: 109676076239904554}
+--- !u!114 &895764767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7600984664673736890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c28d65072c49d164b94aface75d273f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thorAnimator: {fileID: 7300317345096882598}
+--- !u!114 &109676076239904554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7600984664673736890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a3f7182e47b3c94587ee60a20a324f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  valkAnimator: {fileID: 8849725717746089244}
+--- !u!114 &8330869376092234921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7600984664673736890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba6e1015c22750b4a95923daee8cee0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upItem: {fileID: 0}
+  leftItem: {fileID: 0}
+  rightItem: {fileID: 0}
+  downItem: {fileID: 0}
+--- !u!114 &5291062775590370721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7600984664673736890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f1037f2dfc336d4ebf2424d8bcc003c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aAbility: {fileID: 0}
+  swapAbility: {fileID: 0}
+  aAvailable: 0
+  swapAvailable: 0
+  abilitySlot: 
 --- !u!1 &7600984665031520794
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,7 +514,6 @@ GameObject:
   - component: {fileID: 7600984665031520788}
   - component: {fileID: 6502305135600347040}
   - component: {fileID: 8849725717746089244}
-  - component: {fileID: 5674073172893567759}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Type2
@@ -529,8 +609,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d53f9f5b2fd233f4ab34f7f1fea2f6ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thorAnimation: {fileID: 801519461853888842}
-  valkAnimation: {fileID: 5674073172893567759}
+  thorAnimation: {fileID: 0}
+  valkAnimation: {fileID: 0}
   controllerNumber: 2
 --- !u!114 &6502305135600347040
 MonoBehaviour:
@@ -565,16 +645,3 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5674073172893567759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7600984665031520794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a3f7182e47b3c94587ee60a20a324f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  valkAnimator: {fileID: 8849725717746089244}
