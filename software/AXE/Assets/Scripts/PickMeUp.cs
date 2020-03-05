@@ -12,12 +12,26 @@ public class PickMeUp : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        PickupMessage.transform.position = new Vector2(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 1);
-        PickupMessage.SetActive(true);
+        if(collision.CompareTag("Player"))
+        {
+            PickupMessage.transform.position = new Vector2(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 1);
+            PickupMessage.SetActive(true);
+        }
+        else
+        {
+            return;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        PickupMessage.SetActive(false);
+        if (collision.CompareTag("Player"))
+        {
+            PickupMessage.SetActive(false);
+        }
+        else
+        {
+            return;
+        }
     }
 }
