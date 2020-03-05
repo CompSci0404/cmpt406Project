@@ -2,23 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OdinAle: MonoBehaviour
+public class OdinAle: ItemClass
 {
-    private static PlayerStats stats;
+    private PlayerStats stats;
 
     private bool used = false;
 
-    // On collision, check for player tag and add health
-    private void OnTriggerEnter2D(Collider2D col)
+    private GameObject playerCont;
+    void Start()
     {
-        stats = GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
-        if (col.CompareTag("Player") && used == false)
-        {
-            used = true;
-            Destroy(gameObject);
+        itemEffect = AddHealth;
+        playerCont = GameObject.FindWithTag("Player");
+    }
 
-            // need merge into dev
-            // stats.SetCurrHearts(stats.GetMaxHearts());
+    void AddHealth()
+    {
+        if (playerCont.GetComponent<MainControls>().getControllerNumber() == 1)
+        {
+            playerCont = GameObject.FindWithTag("Thor");
         }
+        else
+        {
+            playerCont = GameObject.FindWithTag("Type2");
+        }
+        used = true;
+        stats = playerCont.GetComponent<PlayerStats>();
+        int maxHearts = stats.GetMaxHearts();
+        stats.SetCurrHearts(maxHearts);
     }
 }
