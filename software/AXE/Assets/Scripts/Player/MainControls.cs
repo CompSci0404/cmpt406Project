@@ -14,7 +14,7 @@ public class MainControls : MonoBehaviour
     [SerializeField]
     private ValkAnimationInput valkAnimation;
 
-    private bool justSwapped;
+    public bool justSwapped;
 
     private string horizontalAxis;
     private string verticalAxis;
@@ -28,9 +28,7 @@ public class MainControls : MonoBehaviour
 
     private string lastDPadPressed;
 
-    private string swapAbility;
-
-    public GameObject bomb;
+    public string swapAbility;
 
     // Start is called before the first frame update
     void Awake()
@@ -120,15 +118,11 @@ public class MainControls : MonoBehaviour
             lastDPadPressed = "right";
             Debug.Log("last pressed right");
         }
-
-
         // player has a method that activates when it becomes active and sends its stats to this class
     }
 
     private void SwapPlayer()
     {
-        Debug.Log("SwapPlayer()");
-
         if (controllerNumber == 1) thorAnimation.SwapAnimTrigger();
         if (controllerNumber == 2) valkAnimation.SwapAnimTrigger();
 
@@ -141,15 +135,11 @@ public class MainControls : MonoBehaviour
 
         justSwapped = true;
 
-        if(swapAbility == "ClusterBomb")
+        if (swapAbility.Equals(""))
         {
-            Instantiate(bomb, this.gameObject.transform);
+            Debug.Log("No Ability");
         }
-        else if(swapAbility == "TimelineShifter")
-        {
-            // how to call itemEffect?
-
-        }
+        else { this.GetComponent<Abilities>().GetSwapAbility().GetComponentInChildren<ItemClass>().ItemActivate(); }
 
         Invoke("ResetSwap", 1);
     }
@@ -254,11 +244,19 @@ public class MainControls : MonoBehaviour
     {
         if (controllerNumber == 1)
         {
-            this.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>().ItemActivate();
+            if (GetComponent<Abilities>().aAvailable)
+            {
+                Debug.Log("NO ITEM");
+            }
+            else { this.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>().ItemActivate(); }
         }
         else if (controllerNumber == 2)
         {
-            this.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>().ItemActivate();
+            if (GetComponent<Abilities>().aAvailable)
+            {
+                Debug.Log("NO ITEM");
+            }
+            else { this.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>().ItemActivate(); }
         }
     }
 

@@ -10,31 +10,31 @@ public class Abilities : MonoBehaviour
     // UI ability location 
     [SerializeField]
     private GameObject aAbility;
-    //[SerializeField]
-    //private GameObject xAbility;
     [SerializeField]
     private GameObject swapAbility;
 
-    private bool aAvailable;
-    private bool xAvailable;
-    private bool swapAvailable;
+    public bool aAvailable;
+    public bool swapAvailable;
 
-    // going to be "A", "X", or "Swap" 
+    // going to be "A", or "Swap" 
     public string abilitySlot;
 
     private Transform position;
     private Rigidbody2D rBody;
 
+    private MainControls controls;
+
     // Start is called before the first frame update
     void Start()
     {
         aAvailable = true;
-        xAvailable = true;
         swapAvailable = true;
 
         position = gameObject.transform;
 
         rBody = GetComponent<Rigidbody2D>();
+
+        controls = GetComponent<MainControls>();
     }
 
     // Update is called once per frame
@@ -54,7 +54,6 @@ public class Abilities : MonoBehaviour
                 // check if a button is empty
                 // if it is pick up ability and add it to ability UI
                 // disable button (for now)
-                Debug.Log(AbilitiesInRange.Length);
 
                 abilitySlot = "A";
 
@@ -68,7 +67,6 @@ public class Abilities : MonoBehaviour
                     Destroy(AbilitiesInRange[i].gameObject);
                     aAvailable = false;
                     break;
-
                 }
                 else
                 {
@@ -96,8 +94,8 @@ public class Abilities : MonoBehaviour
                     Swap.name = AbilitiesInRange[i].gameObject.name;
                     Destroy(AbilitiesInRange[i].gameObject);
                     swapAvailable = false;
+                    controls.swapAbility = "YES";
                     break;
-
                 }
                 else
                 {
@@ -120,9 +118,8 @@ public class Abilities : MonoBehaviour
         return aAbility;
     }
 
-    //public GameObject getxAbility()
-    //{
-    //    return xAbility;
-    //}
-
+    public GameObject GetSwapAbility()
+    {
+        return swapAbility;
+    }
 }
