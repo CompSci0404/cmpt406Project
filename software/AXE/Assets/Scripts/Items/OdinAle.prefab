@@ -10,11 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 5267318244921707889}
   - component: {fileID: 5267318244921707888}
-  - component: {fileID: 5267318244921707895}
+  - component: {fileID: 8594995983807781401}
   - component: {fileID: 5267318244921707894}
+  - component: {fileID: 4192009130246356263}
+  - component: {fileID: 4362268801879178026}
   m_Layer: 0
   m_Name: OdinAle
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,8 +84,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &5267318244921707895
-PolygonCollider2D:
+--- !u!58 &8594995983807781401
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -95,22 +97,9 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.27999055, y: 0.30529833}
-      - {x: -0.27170944, y: -0.42536116}
-      - {x: 0.35586774, y: -0.43192124}
-      - {x: 0.35874808, y: 0.2956655}
+  m_Offset: {x: 0.03, y: -0.09}
+  serializedVersion: 2
+  m_Radius: 0.45
 --- !u!114 &5267318244921707894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,3 +112,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91ab68c24097aec4da2cfc863d9f22c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!58 &4192009130246356263
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5267318244921707893}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.03, y: -0.1}
+  serializedVersion: 2
+  m_Radius: 0.7
+--- !u!114 &4362268801879178026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5267318244921707893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3e822dfe2ef49945a65fb9e141c83a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PickupMessage: {fileID: 0}

@@ -34,7 +34,7 @@ public class MainControls : MonoBehaviour
     void Awake()
     {
         // set for testing
-        swapAbility = "ClusterBomb";
+        //swapAbility = "ClusterBomb";
 
         lastDPadPressed = "up";
         HUD = FindObjectOfType<HUD>();
@@ -88,7 +88,7 @@ public class MainControls : MonoBehaviour
         else if (Input.GetButtonDown(aButton))
         {
             // The use item should be used by the DPad
-            UseItem();
+            //UseItem();
             UseAbility();
         }
         else if (Input.GetButtonDown(xButton))
@@ -143,6 +143,7 @@ public class MainControls : MonoBehaviour
         else if(swapAbility == "TimelineShifter")
         {
             // how to call itemEffect?
+
         }
 
         Invoke("ResetSwap", 1);
@@ -248,11 +249,11 @@ public class MainControls : MonoBehaviour
     {
         if (controllerNumber == 1)
         {
-
+            this.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>().ItemActivate();
         }
         else if (controllerNumber == 2)
         {
-
+            this.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>().ItemActivate();
         }
     }
 
@@ -262,9 +263,7 @@ public class MainControls : MonoBehaviour
         // if player 1 use P1 A2
         if (controllerNumber == 1)
         {
-            this.GetComponent<Abilities>().abilitySlot = "A";
             this.GetComponent<Abilities>().PickUpAbility();
-
         }
         // if player 2 range
         else if (controllerNumber == 2)

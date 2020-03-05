@@ -34,11 +34,10 @@ public abstract class ItemClass : MonoBehaviour
         else if (myItemType == ItemType.swapAbility)
         {
             itemEffect();
-            Debug.Log("not yet implemented");
         }
         else if (myItemType == ItemType.playerAbility)
         {
-            Debug.Log("abilityItem not yet implemented");
+            itemEffect();
         }
     }
 
