@@ -16,7 +16,8 @@ public class ClusterBomb : ItemClass
     // Start is called before the first frame update
     void Start()
     {
-        //gameObject.GetComponent<ParticleSystem>().Stop();
+        gameObject.SetActive(true);
+        gameObject.GetComponent<ParticleSystem>().Stop();
         itemEffect = Detonate;
         swapCheck = FindObjectOfType<MainControls>();
     }
@@ -25,6 +26,7 @@ public class ClusterBomb : ItemClass
     {
         if(swapCheck.justSwapped)
         {
+            gameObject.GetComponent<ParticleSystem>().Play();
             Vector2 explosionPosition = bomb.transform.position;
             Collider2D[] colliders = Physics2D.OverlapCircleAll(explosionPosition, radius);
 

@@ -418,7 +418,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &60797607
 PrefabInstance:
@@ -863,7 +863,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &231248641
 PrefabInstance:
@@ -1390,7 +1390,7 @@ RectTransform:
   - {fileID: 1894127346}
   - {fileID: 1303276506}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3682,6 +3682,11 @@ PrefabInstance:
       propertyPath: PickupMessage
       value: 
       objectReference: {fileID: 1303276505}
+    - target: {fileID: 1903072590392491950, guid: b9b934d4c1928e2439df0557178c5db4,
+        type: 3}
+      propertyPath: ItemCooldown
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9b934d4c1928e2439df0557178c5db4, type: 3}
 --- !u!1001 &1431657855
@@ -6102,6 +6107,75 @@ PrefabInstance:
       objectReference: {fileID: 1303276505}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0690e459da1b5ed40a71bb027533a113, type: 3}
+--- !u!1001 &2081882292
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5267318244921707893, guid: 5e1b17fae340c9e47990b4ba3ebf21bf,
+        type: 3}
+      propertyPath: m_Name
+      value: OdinAle
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267318244921707889, guid: 5e1b17fae340c9e47990b4ba3ebf21bf,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.5662766
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267318244921707889, guid: 5e1b17fae340c9e47990b4ba3ebf21bf,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.0356029
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267318244921707889, guid: 5e1b17fae340c9e47990b4ba3ebf21bf,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -28.999006
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267318244921707889, guid: 5e1b17fae340c9e47990b4ba3ebf21bf,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267318244921707889, guid: 5e1b17fae340c9e47990b4ba3ebf21bf,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267318244921707889, guid: 5e1b17fae340c9e47990b4ba3ebf21bf,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267318244921707889, guid: 5e1b17fae340c9e47990b4ba3ebf21bf,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267318244921707889, guid: 5e1b17fae340c9e47990b4ba3ebf21bf,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267318244921707889, guid: 5e1b17fae340c9e47990b4ba3ebf21bf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267318244921707889, guid: 5e1b17fae340c9e47990b4ba3ebf21bf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267318244921707889, guid: 5e1b17fae340c9e47990b4ba3ebf21bf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5e1b17fae340c9e47990b4ba3ebf21bf, type: 3}
 --- !u!1 &2082960010 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5589531317195367955, guid: f09dc25c3c4932b45bf596d25330db6a,

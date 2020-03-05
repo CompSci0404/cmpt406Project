@@ -4840,7 +4840,7 @@ MonoBehaviour:
   itemDescription: A cluster of powerful micro explosives is released in a large radius
     around the character who switched out, damaging all enemies caught in the blast.
   myItemType: 1
-  ItemCooldown: 0
+  ItemCooldown: 10
   bomb: {fileID: 2783781131979127740}
 --- !u!58 &1084346653074080943
 CircleCollider2D:
@@ -4870,7 +4870,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3e822dfe2ef49945a65fb9e141c83a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PickupMessage: {fileID: 0}
 --- !u!1 &2930557893268511748
 GameObject:
   m_ObjectHideFlags: 0

@@ -88,7 +88,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 195f398ff0ebbb245985b2d0c221b666, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -115,7 +115,7 @@ MonoBehaviour:
   itemName: TimelineShifter
   itemDescription: Player is invincible for a limited period of time
   myItemType: 1
-  ItemCooldown: 0
+  ItemCooldown: 20
 --- !u!58 &-2819715823275452070
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -144,4 +144,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3e822dfe2ef49945a65fb9e141c83a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PickupMessage: {fileID: 0}
