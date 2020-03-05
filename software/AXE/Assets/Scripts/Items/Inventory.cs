@@ -53,7 +53,7 @@ public class Inventory : MonoBehaviour
                     if (isUpItem())
                     {
                         GameObject UP = Instantiate(ItemsInRange[i].gameObject, upItem.transform, false);
-                        UP.transform.localPosition = new Vector3(-0.036f, 0.065f, 0f);
+                        UP.transform.localPosition = new Vector3(-0.04f, 0.065f, 0f);
                         UP.name = ItemsInRange[i].gameObject.name;
                         //handleIfSwap(ItemsInRange[i].gameObject, UP);
                         Destroy(ItemsInRange[i].gameObject);
@@ -77,7 +77,7 @@ public class Inventory : MonoBehaviour
                     if (isLeftItem())
                     {
                         GameObject Left = Instantiate(ItemsInRange[i].gameObject, leftItem.transform, false);
-                        Left.transform.localPosition = new Vector3(0.973f, -0.729f, 0f);
+                        Left.transform.localPosition = new Vector3(-1.44f, -1.33f, 0f);
                         Left.name = ItemsInRange[i].gameObject.name;
                         Destroy(ItemsInRange[i].gameObject);
                         break;
@@ -98,7 +98,7 @@ public class Inventory : MonoBehaviour
                     if (isRightItem())
                     {
                         GameObject Right = Instantiate(ItemsInRange[i].gameObject, rightItem.transform, false);
-                        Right.transform.localPosition = new Vector3(-1.026f, -0.72f, 0f);
+                        Right.transform.localPosition = new Vector3(1.33f, -1.33f, 0f);
                         Right.name = ItemsInRange[i].gameObject.name;
                         Destroy(ItemsInRange[i].gameObject);
                         break;
@@ -119,7 +119,7 @@ public class Inventory : MonoBehaviour
                     if (isDownItem())
                     {
                         GameObject Down = Instantiate(ItemsInRange[i].gameObject, downItem.transform, false);
-                        Down.transform.localPosition = new Vector3(-0.026f, -1.514f, 0f);
+                        Down.transform.localPosition = new Vector3(-0.04f, -2.7f, 0f);
                         Down.name = ItemsInRange[i].gameObject.name;
                         Destroy(ItemsInRange[i].gameObject);
                         break;
