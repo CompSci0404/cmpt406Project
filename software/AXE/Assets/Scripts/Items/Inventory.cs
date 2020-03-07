@@ -66,6 +66,7 @@ public class Inventory : MonoBehaviour
                         droppedUP.name = upItem.transform.GetChild(0).gameObject.name;
                         Destroy(upItem.transform.GetChild(0).gameObject);
                         GameObject UP = Instantiate(ItemsInRange[i].gameObject, upItem.transform, false);
+                        UP.transform.localPosition = new Vector3(0f, 0.065f, 0f);
                         UP.name = ItemsInRange[i].gameObject.name;
                         Destroy(ItemsInRange[i].gameObject);
                         break;
@@ -77,7 +78,7 @@ public class Inventory : MonoBehaviour
                     if (isLeftItem())
                     {
                         GameObject Left = Instantiate(ItemsInRange[i].gameObject, leftItem.transform, false);
-                        Left.transform.localPosition = new Vector3(-1.44f, -1.33f, 0f);
+                        Left.transform.localPosition = new Vector3(0f, 0.065f, 0f);
                         Left.name = ItemsInRange[i].gameObject.name;
                         Destroy(ItemsInRange[i].gameObject);
                         break;
@@ -88,6 +89,7 @@ public class Inventory : MonoBehaviour
                         droppedLeft.name = leftItem.transform.GetChild(0).gameObject.name;
                         Destroy(leftItem.transform.GetChild(0).gameObject);
                         GameObject Left = Instantiate(ItemsInRange[i].gameObject, leftItem.transform, false);
+                        Left.transform.localPosition = new Vector3(0f, 0.065f, 0f);
                         Left.name = ItemsInRange[i].gameObject.name;
                         Destroy(ItemsInRange[i].gameObject);
                         break;
@@ -98,7 +100,7 @@ public class Inventory : MonoBehaviour
                     if (isRightItem())
                     {
                         GameObject Right = Instantiate(ItemsInRange[i].gameObject, rightItem.transform, false);
-                        Right.transform.localPosition = new Vector3(1.33f, -1.33f, 0f);
+                        Right.transform.localPosition = new Vector3(0f, 0.065f, 0f);
                         Right.name = ItemsInRange[i].gameObject.name;
                         Destroy(ItemsInRange[i].gameObject);
                         break;
@@ -109,6 +111,7 @@ public class Inventory : MonoBehaviour
                         droppedRight.name = rightItem.transform.GetChild(0).gameObject.name;
                         Destroy(rightItem.transform.GetChild(0).gameObject);
                         GameObject Right = Instantiate(ItemsInRange[i].gameObject, rightItem.transform, false);
+                        Right.transform.localPosition = new Vector3(0f, 0.065f, 0f);
                         Right.name = ItemsInRange[i].gameObject.name;
                         Destroy(ItemsInRange[i].gameObject);
                         break;
@@ -119,7 +122,7 @@ public class Inventory : MonoBehaviour
                     if (isDownItem())
                     {
                         GameObject Down = Instantiate(ItemsInRange[i].gameObject, downItem.transform, false);
-                        Down.transform.localPosition = new Vector3(-0.04f, -2.7f, 0f);
+                        Down.transform.localPosition = new Vector3(-0.06f, 0.065f, 0f);
                         Down.name = ItemsInRange[i].gameObject.name;
                         Destroy(ItemsInRange[i].gameObject);
                         break;
@@ -130,6 +133,7 @@ public class Inventory : MonoBehaviour
                         droppedDown.name = downItem.transform.GetChild(0).gameObject.name;
                         Destroy(downItem.transform.GetChild(0).gameObject);
                         GameObject Down = Instantiate(ItemsInRange[i].gameObject, downItem.transform, false);
+                        Down.transform.localPosition = new Vector3(-0.06f, 0.065f, 0f);
                         Down.name = ItemsInRange[i].gameObject.name;
                         Destroy(ItemsInRange[i].gameObject);
                         break;

@@ -24,6 +24,8 @@ public class MainControls : MonoBehaviour
     private string yButton;
     private int controllerNumber;
 
+    private string lbButton;
+
     private List<GameObject> players;
 
     private string lastDPadPressed;
@@ -53,7 +55,7 @@ public class MainControls : MonoBehaviour
     {
         // wait for an input and set opposite player controller active
         if (Input.GetButtonDown(yButton)) {
-            if(justSwapped)
+            if (justSwapped)
             {
                 //cannot switch yet
             }
@@ -84,13 +86,13 @@ public class MainControls : MonoBehaviour
         else if (Input.GetButtonDown(bButton))
         {
             Attack();
-            
+
 
         }
         else if (Input.GetButtonDown(aButton))
         {
             // The use item should be used by the DPad
-            //UseItem();
+
             UseAbility();
         }
         else if (Input.GetButtonDown(xButton))
@@ -119,6 +121,10 @@ public class MainControls : MonoBehaviour
         {
             lastDPadPressed = "right";
             Debug.Log("last pressed right");
+        }
+        else if (Input.GetButtonDown(lbButton))
+        {
+            UseItem();
         }
         // player has a method that activates when it becomes active and sends its stats to this class
     }
@@ -288,6 +294,7 @@ public class MainControls : MonoBehaviour
         bButton = "J" + controllerNumber + "B";
         xButton = "J" + controllerNumber + "X";
         yButton = "J" + controllerNumber + "Y";
+        lbButton = "LeftBumper";
     }
 
     // get dpad last position
