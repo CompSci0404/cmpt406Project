@@ -24,9 +24,18 @@ public class SwiftSauce : ItemClass
         
         float attackSpeed = playerCont.GetComponent<PlayerStats>().GetAttackSpeed();
         float moveSpeed = playerCont.GetComponentInParent<PlayerStats>().GetMoveSpeed();
-        Debug.Log(playerCont.GetComponentInParent<PlayerStats>().GetMoveSpeed());
         playerCont.GetComponent<PlayerStats>().SetAttackSpeed(attackSpeed * 1.5f);
         playerCont.GetComponent<PlayerStats>().SetMoveSpeed(moveSpeed * 1.5f);
-        Debug.Log(playerCont.GetComponentInParent<PlayerStats>().GetMoveSpeed());
+        Invoke("ResetSpeed", 2);
+    }
+
+    void ResetSpeed()
+    {
+        Debug.Log("RESETTING");
+        float attackSpeed = playerCont.GetComponent<PlayerStats>().GetAttackSpeed();
+        float moveSpeed = playerCont.GetComponentInParent<PlayerStats>().GetMoveSpeed();
+        playerCont.GetComponent<PlayerStats>().SetAttackSpeed(attackSpeed / 1.5f);
+        playerCont.GetComponent<PlayerStats>().SetMoveSpeed(moveSpeed / 1.5f);
+
     }
 }

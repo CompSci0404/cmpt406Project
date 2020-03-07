@@ -2,23 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : ItemClass
+public class GodLaser : ItemClass
 {
     private GameObject playerCont;
     private Rigidbody2D playerRB;
     private PlayerStats stats;
+    Vector2 lookDirection;
+    [SerializeField] private GameObject SpellIndicator;
     // Start is called before the first frame update
     void Start()
     {
-        stats = GetComponent<PlayerStats>();
         itemEffect = UseGodLaser;
         playerCont = GameObject.FindWithTag("Player");
-        playerRB = GetComponent<Rigidbody2D>();
+        playerRB = playerCont.GetComponent<Rigidbody2D>();
     }
 
-
+    private void Update()
+    {
+    }
     public void UseGodLaser()
     {
+        
+        GameObject droppedLeft = Instantiate(SpellIndicator, playerRB.position, Quaternion.identity);
+        Vector2 lookDirection = new Vector2(Input.GetAxis("LookHorizontal"), Input.GetAxis("LookVertical"));
+        float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 180f;
+
         // search for current player stats
         if (playerCont.GetComponent<MainControls>().getControllerNumber() == 1)
         {
@@ -29,13 +37,13 @@ public class NewBehaviourScript : ItemClass
             playerCont = GameObject.FindWithTag("Type2");
         }
 
-        Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(playerRB.position, new Vector2(1f, 5f), LayerMask.NameToLayer("Enemy"));
+        Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(playerRB.transform.position, new Vector2(2f, 5f), LayerMask.NameToLayer("Enemy"));
         Debug.Log(hitEnemies.Length);
         for (int i = 0; i < hitEnemies.Length; i++)
         {
             if (hitEnemies[i].CompareTag("BaseEnemy"))
             {
-                hitEnemies[i].GetComponent<AIClass>().Damage(stats.GetDamage()*4);
+                hitEnemies[i].GetComponent<AIClass>().Damage(playerCont.GetComponent<PlayerStats>().GetDamage()*4);
                 Debug.Log("GodLaser Used");
             }
 
@@ -43,10 +51,5 @@ public class NewBehaviourScript : ItemClass
         // move back player cont to 
         playerCont = GameObject.FindWithTag("Player");
     }
-        //// attack range arch
-    void OnDrawGizmosSelected()
-     {
-            Gizmos.DrawWireSphere(playerRB.position, stats.GetRange() / 3);
-     }
-    
+
 }

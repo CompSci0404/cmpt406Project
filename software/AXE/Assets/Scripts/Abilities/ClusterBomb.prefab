@@ -14,9 +14,11 @@ GameObject:
   - component: {fileID: 2783781131979127742}
   - component: {fileID: 2783781131979127741}
   - component: {fileID: 1903072590392491950}
+  - component: {fileID: 1084346653074080943}
+  - component: {fileID: 3886873788913290882}
   m_Layer: 0
-  m_Name: bomb
-  m_TagString: Ability
+  m_Name: ClusterBomb
+  m_TagString: SwapAbility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -353,7 +355,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.3
+      scalar: 0.5
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4838,8 +4840,36 @@ MonoBehaviour:
   itemDescription: A cluster of powerful micro explosives is released in a large radius
     around the character who switched out, damaging all enemies caught in the blast.
   myItemType: 1
-  ItemCooldown: 0
+  ItemCooldown: 10
   bomb: {fileID: 2783781131979127740}
+--- !u!58 &1084346653074080943
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2783781131979127740}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.25
+--- !u!114 &3886873788913290882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2783781131979127740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3e822dfe2ef49945a65fb9e141c83a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2930557893268511748
 GameObject:
   m_ObjectHideFlags: 0
