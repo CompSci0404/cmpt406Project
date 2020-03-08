@@ -14,8 +14,6 @@ public class MainControls : MonoBehaviour
     [SerializeField]
     private ValkAnimationInput valkAnimation;
 
-    [SerializeField] private GameObject reticle;
-
     public bool justSwapped;
 
     private string horizontalAxis;
@@ -29,6 +27,7 @@ public class MainControls : MonoBehaviour
     private string lbButton;
 
     private string rightTrigger;
+    private GameObject reticle;
     private float rightStickAngle;
     private Vector2 rightStickDirection;
 
@@ -54,25 +53,36 @@ public class MainControls : MonoBehaviour
             players.Add(transform.GetChild(i).gameObject);
         }
         SwapPlayer();
-        reticle.SetActive(false);
-    }
+        }
 
     // Update is called once per frame
     void Update()
     {
-        // take right stick to move reticle around player
+        // update vector and angle for the right stick
         rightStickDirection = new Vector2(Input.GetAxis("LookHorizontal"), Input.GetAxis("LookVertical")).normalized;
         rightStickAngle = Mathf.Atan2(rightStickDirection.y, rightStickDirection.x) * Mathf.Rad2Deg - 180f;
+
+        if (reticle == null)
+        {
+            reticle = Instantiate((GameObject)Resources.Load("Reticle"), gameObject.transform.position,
+                Quaternion.Euler(0, 0, rightStickAngle)) as GameObject;
+            reticle.SetActive(false);
+        }
+        // update position of reticle
+        reticle.transform.localPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0);
+        
+        // take right stick to move reticle around player
         if (Input.GetAxis(rightTrigger) > 0 && gameObject.GetComponent<Abilities>().isAbility())
         {
+            // create player reticle
             reticle.SetActive(true);
         }
         else if (Input.GetAxis(rightTrigger) <= 0 && gameObject.GetComponent<Abilities>().isAbility())
-        { 
+        {
             reticle.SetActive(false);
         }
         // aim reticle
-        reticleAim();
+        reticle.transform.rotation = Quaternion.Euler(0, 0, rightStickAngle);
 
         // wait for an input and set opposite player controller active
         if (Input.GetButtonDown(yButton)) {
@@ -330,11 +340,6 @@ public class MainControls : MonoBehaviour
     public string GetSwapAbility()
     {
         return swapAbility;
-    }
-    public void reticleAim()
-    {
-        reticle.transform.rotation = Quaternion.Euler(0, 0, rightStickAngle);
-        //reticle.transform.position = new Vector2 (reticle.transform.position.x*rightStickDirection.x, reticle.transform.position.y*rightStickDirection.y);
     }
     public Vector2 getRSDirection()
     {

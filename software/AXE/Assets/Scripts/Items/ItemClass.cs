@@ -45,18 +45,10 @@ public abstract class ItemClass : MonoBehaviour
             itemEffect();
         }
     }
-    public bool getHasIndicator()
-    {
-        return hasIndicator;
-    }
+
     public void setHasIndicator(bool boolIndicator)
     {
         hasIndicator = boolIndicator;
-    }
-
-    public GameObject GetSpellIndicator()
-    {
-        return spellIndicatior;
     }
 
 }
