@@ -70,11 +70,24 @@ public class Abilities : MonoBehaviour
                 }
                 else
                 {
+                    // removed 'rBody.position =' before new Vecotr2(rBody.pos... in dropA second param
                     GameObject dropA = Instantiate(aAbility.transform.GetChild(0).gameObject,
-                    rBody.position = new Vector2(rBody.position.x + 0.5f, rBody.position.y + -0.5f) ,Quaternion.identity);
+                    new Vector2(rBody.position.x + 0.5f, rBody.position.y + -0.5f) ,Quaternion.identity);
+
+                    // changes
+                    Vector3 scaleChange = new Vector3(-0.2f, -0.2f, 0f);
+                    dropA.transform.localScale -= scaleChange;
+                    //
+
                     dropA.name = aAbility.transform.GetChild(0).gameObject.name;
                     Destroy(aAbility.transform.GetChild(0).gameObject);
                     GameObject A = Instantiate(AbilitiesInRange[i].gameObject, aAbility.transform, false);
+
+                    // changes
+                    A.transform.localPosition = new Vector3(0.033f, -0.025f, -1f);
+                    A.transform.localScale += scaleChange;
+                    //
+
                     A.name = AbilitiesInRange[i].gameObject.name;
                     Destroy(AbilitiesInRange[i].gameObject);
                     break;
@@ -99,12 +112,25 @@ public class Abilities : MonoBehaviour
                 }
                 else
                 {
-                    rBody.position = new Vector2(rBody.position.x + 1, rBody.position.y + 1);
+                    //rBody.position = new Vector2(rBody.position.x + 1, rBody.position.y + 1);
+                    // removed 'rBody.position =' before new Vecotr2(rBody.pos... in dropSwap second param
                     GameObject dropSwap = Instantiate(swapAbility.transform.GetChild(0).gameObject, 
-                        rBody.position = new Vector2(rBody.position.x + 0.5f, rBody.position.y + -0.5f), Quaternion.identity);
+                    new Vector2(rBody.position.x + 0.5f, rBody.position.y + -0.5f), Quaternion.identity);
+
+                    // changes
+                    Vector3 scaleChange = new Vector3(-0.1f, -0.1f, 0f);
+                    dropSwap.transform.localScale -= scaleChange;
+                    //
+
                     dropSwap.name = swapAbility.transform.GetChild(0).gameObject.name;
                     Destroy(swapAbility.transform.GetChild(0).gameObject);
                     GameObject Swap = Instantiate(AbilitiesInRange[i].gameObject, swapAbility.transform, false);
+
+                    // changes
+                    Swap.transform.localPosition = new Vector3(0.033f, -0.025f, -1f);
+                    Swap.transform.localScale += scaleChange;
+                    //
+
                     Swap.name = AbilitiesInRange[i].gameObject.name;
                     Destroy(AbilitiesInRange[i].gameObject);
                     break;

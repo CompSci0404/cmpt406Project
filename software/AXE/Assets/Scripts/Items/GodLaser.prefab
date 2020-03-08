@@ -128,8 +128,9 @@ MonoBehaviour:
     through all enemies.
   myItemType: 2
   ItemCooldown: 5
-  isIndicator: 0
   spellIndicatior: {fileID: 1474362284191183351, guid: 7da101454a65a6f439857d3eea557ad8,
+    type: 3}
+  spellIndicatior2: {fileID: 1474362284191183351, guid: 7da101454a65a6f439857d3eea557ad8,
     type: 3}
 --- !u!58 &4757509488211693421
 CircleCollider2D:
