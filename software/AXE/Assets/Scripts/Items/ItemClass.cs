@@ -18,6 +18,8 @@ public abstract class ItemClass : MonoBehaviour
     public ItemType myItemType;
 
     [SerializeField] private int ItemCooldown;
+    // if item or ability has an area indicator to show the player
+    [SerializeField] private bool isIndicator;
 
     // use any type of item with one function
     public delegate void ItemDelegate();
@@ -39,6 +41,11 @@ public abstract class ItemClass : MonoBehaviour
         {
             itemEffect();
         }
+    }
+
+    public bool GetIsIndicator()
+    {
+        return isIndicator;
     }
 
 }

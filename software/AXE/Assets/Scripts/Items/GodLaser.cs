@@ -4,11 +4,19 @@ using UnityEngine;
 
 public class GodLaser : ItemClass
 {
+
     private GameObject playerCont;
+    private GameObject curPlayCont;
     private Rigidbody2D playerRB;
     private PlayerStats stats;
-    Vector2 lookDirection;
-    [SerializeField] private GameObject SpellIndicator;
+
+    [SerializeField] private GameObject spellIndicatior;
+
+    private bool usable;
+
+    private Vector2 lookDirection;
+    private float angle;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,37 +27,52 @@ public class GodLaser : ItemClass
 
     private void Update()
     {
+        angle = playerCont.GetComponent<MainControls>().getRSAngle();
+        lookDirection = playerCont.GetComponent<MainControls>().getRSDirection();
+        
     }
     public void UseGodLaser()
     {
-        
-        GameObject droppedLeft = Instantiate(SpellIndicator, playerRB.position, Quaternion.identity);
-        Vector2 lookDirection = new Vector2(Input.GetAxis("LookHorizontal"), Input.GetAxis("LookVertical"));
-        float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 180f;
-
-        // search for current player stats
         if (playerCont.GetComponent<MainControls>().getControllerNumber() == 1)
         {
-            playerCont = GameObject.FindWithTag("Thor");
+            stats = GameObject.FindWithTag("Thor").GetComponent<PlayerStats>();
         }
-        else
+        else if (playerCont.GetComponent<MainControls>().getControllerNumber() == 2)
         {
-            playerCont = GameObject.FindWithTag("Type2");
+            stats = GameObject.FindWithTag("Type2").GetComponent<PlayerStats>();
         }
 
-        Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(playerRB.transform.position, new Vector2(2f, 5f), LayerMask.NameToLayer("Enemy"));
-        Debug.Log(hitEnemies.Length);
+
+        
+        RaycastHit2D[] hitEnemies = Physics2D.BoxCastAll(playerRB.transform.position, new Vector2(1, 1), angle, new Vector2(lookDirection.y, lookDirection.x), 30f);
+        GameObject laser = Instantiate(spellIndicatior, playerRB.transform.position, Quaternion.Euler(0, 0, angle));
         for (int i = 0; i < hitEnemies.Length; i++)
-        {
-            if (hitEnemies[i].CompareTag("BaseEnemy"))
-            {
-                hitEnemies[i].GetComponent<AIClass>().Damage(playerCont.GetComponent<PlayerStats>().GetDamage()*4);
-                Debug.Log("GodLaser Used");
-            }
+         {
+            AIClass enemy = hitEnemies[i].transform.GetComponent<AIClass>();
+            if (enemy != null)
+             {
+                 Debug.Log(enemy);
+                 enemy.Damage(stats.GetDamage() * 4);
+             }
 
-        }
-        // move back player cont to 
-        playerCont = GameObject.FindWithTag("Player");
+
+         }
+         StartCoroutine(deleteEffects(laser));
+
     }
+
+    IEnumerator deleteEffects(GameObject effect)
+    {
+        yield return new WaitForSeconds(1f);
+        Destroy(effect);
+    }
+    
+    /*
+    //private void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(playerRB.transform.position, new Vector3(playerRB.transform.position.x + 10, playerRB.transform.position.y + 10, playerRB.transform.position.z));
+        Gizmos.DrawCube(new Vector3(playerRB.transform.position.x, playerRB.transform.position.y, playerRB.transform.position.z), new Vector3(1, 1, 0));
+    }
+    */
 
 }

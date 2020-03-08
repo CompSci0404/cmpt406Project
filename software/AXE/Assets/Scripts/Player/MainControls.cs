@@ -14,6 +14,8 @@ public class MainControls : MonoBehaviour
     [SerializeField]
     private ValkAnimationInput valkAnimation;
 
+    [SerializeField] private GameObject reticle;
+
     public bool justSwapped;
 
     private string horizontalAxis;
@@ -25,6 +27,10 @@ public class MainControls : MonoBehaviour
     private int controllerNumber;
 
     private string lbButton;
+
+    private string rightTrigger;
+    private float rightStickAngle;
+    private Vector2 rightStickDirection;
 
     private List<GameObject> players;
 
@@ -48,11 +54,26 @@ public class MainControls : MonoBehaviour
             players.Add(transform.GetChild(i).gameObject);
         }
         SwapPlayer();
+        reticle.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        // take right stick to move reticle around player
+        rightStickDirection = new Vector2(Input.GetAxis("LookHorizontal"), Input.GetAxis("LookVertical"));
+        rightStickAngle = Mathf.Atan2(rightStickDirection.y, rightStickDirection.x) * Mathf.Rad2Deg - 180f;
+        if (Input.GetAxis(rightTrigger) > 0)
+        {
+            reticle.SetActive(true);
+        }
+        else if (Input.GetAxis(rightTrigger) <= 0)
+        {
+            reticle.SetActive(false);
+        }
+        // aim reticle
+        reticleAim();
+
         // wait for an input and set opposite player controller active
         if (Input.GetButtonDown(yButton)) {
             if (justSwapped)
@@ -70,6 +91,7 @@ public class MainControls : MonoBehaviour
                     thorAnimation.SwapAnimTrigger();
                     stats.SetLives(stats.GetLives() - 1);
                     Invoke("SwapPlayer", 1);
+                    
                 }
                 // if player 2 range
                 else if (controllerNumber == 2)
@@ -79,20 +101,17 @@ public class MainControls : MonoBehaviour
                     valkAnimation.SwapAnimTrigger();
                     stats.SetLives(stats.GetLives() - 1);
                     Invoke("SwapPlayer", 1);
+                    
                 }
             }
         }
 
         else if (Input.GetButtonDown(bButton))
         {
-            Attack();
-
-
+            Attack();       
         }
         else if (Input.GetButtonDown(aButton))
         {
-            // The use item should be used by the DPad
-
             UseAbility();
         }
         else if (Input.GetButtonDown(xButton))
@@ -143,7 +162,6 @@ public class MainControls : MonoBehaviour
             Debug.Log("No Ability");
         }
         else { this.GetComponent<Abilities>().GetSwapAbility().GetComponentInChildren<ItemClass>().ItemActivate(); }
-
         Invoke("ResetSwap", 1);
     }
 
@@ -295,6 +313,7 @@ public class MainControls : MonoBehaviour
         xButton = "J" + controllerNumber + "X";
         yButton = "J" + controllerNumber + "Y";
         lbButton = "LeftBumper";
+        rightTrigger = "RightTrigger";
     }
 
     // get dpad last position
@@ -311,5 +330,19 @@ public class MainControls : MonoBehaviour
     public string GetSwapAbility()
     {
         return swapAbility;
+    }
+    public void reticleAim()
+    {
+        reticle.transform.rotation = Quaternion.Euler(0, 0, rightStickAngle);
+        //reticle.transform.position = new Vector2 (reticle.transform.position.x*rightStickDirection.x, reticle.transform.position.y*rightStickDirection.y);
+    }
+    public Vector2 getRSDirection()
+    {
+        return rightStickDirection;
+    }
+
+    public float getRSAngle()
+    {
+        return rightStickAngle;
     }
 }
