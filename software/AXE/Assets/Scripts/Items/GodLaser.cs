@@ -10,7 +10,7 @@ public class GodLaser : ItemClass
     private Rigidbody2D playerRB;
     private PlayerStats stats;
 
-    [SerializeField] private GameObject spellIndicatior;
+    [SerializeField] private GameObject spellIndicatior2;
 
     private bool usable;
 
@@ -45,7 +45,7 @@ public class GodLaser : ItemClass
 
         
         RaycastHit2D[] hitEnemies = Physics2D.BoxCastAll(playerRB.transform.position, new Vector2(1, 1), angle, new Vector2(lookDirection.y, lookDirection.x), 30f);
-        GameObject laser = Instantiate(spellIndicatior, playerRB.transform.position, Quaternion.Euler(0, 0, angle));
+        GameObject laser = Instantiate(spellIndicatior2, playerRB.transform.position, Quaternion.Euler(0, 0, angle));
         for (int i = 0; i < hitEnemies.Length; i++)
          {
             AIClass enemy = hitEnemies[i].transform.GetComponent<AIClass>();

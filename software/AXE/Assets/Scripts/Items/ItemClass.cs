@@ -16,14 +16,17 @@ public abstract class ItemClass : MonoBehaviour
     public string itemName;
     public string itemDescription;
     public ItemType myItemType;
+    private bool hasIndicator;
 
     [SerializeField] private int ItemCooldown;
     // if item or ability has an area indicator to show the player
-    [SerializeField] private bool isIndicator;
+    
+    [SerializeField] private GameObject spellIndicatior;
 
     // use any type of item with one function
     public delegate void ItemDelegate();
     public ItemDelegate itemEffect;
+
 
     
     public void ItemActivate()
@@ -42,10 +45,18 @@ public abstract class ItemClass : MonoBehaviour
             itemEffect();
         }
     }
-
-    public bool GetIsIndicator()
+    public bool getHasIndicator()
     {
-        return isIndicator;
+        return hasIndicator;
+    }
+    public void setHasIndicator(bool boolIndicator)
+    {
+        hasIndicator = boolIndicator;
+    }
+
+    public GameObject GetSpellIndicator()
+    {
+        return spellIndicatior;
     }
 
 }

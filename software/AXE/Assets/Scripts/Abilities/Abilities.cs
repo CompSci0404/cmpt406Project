@@ -71,7 +71,7 @@ public class Abilities : MonoBehaviour
                 else
                 {
                     GameObject dropA = Instantiate(aAbility.transform.GetChild(0).gameObject,
-                        rBody.position = new Vector2(rBody.position.x + 0.5f, rBody.position.y + -0.5f) ,Quaternion.identity);
+                    rBody.position = new Vector2(rBody.position.x + 0.5f, rBody.position.y + -0.5f) ,Quaternion.identity);
                     dropA.name = aAbility.transform.GetChild(0).gameObject.name;
                     Destroy(aAbility.transform.GetChild(0).gameObject);
                     GameObject A = Instantiate(AbilitiesInRange[i].gameObject, aAbility.transform, false);
@@ -121,5 +121,10 @@ public class Abilities : MonoBehaviour
     public GameObject GetSwapAbility()
     {
         return swapAbility;
+    }
+
+    public bool isAbility()
+    {
+        return aAbility.GetComponentInChildren<ItemClass>() != null;
     }
 }
