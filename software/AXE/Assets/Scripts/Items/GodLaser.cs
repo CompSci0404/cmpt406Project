@@ -10,10 +10,6 @@ public class GodLaser : ItemClass
     private Rigidbody2D playerRB;
     private PlayerStats stats;
 
-    [SerializeField] private GameObject spellIndicatior2;
-
-    private bool usable;
-
     private Vector2 lookDirection;
     private float angle;
 
@@ -25,14 +21,9 @@ public class GodLaser : ItemClass
         playerRB = playerCont.GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
-    {
-        angle = playerCont.GetComponent<MainControls>().getRSAngle();
-        lookDirection = playerCont.GetComponent<MainControls>().getRSDirection();
-        
-    }
     public void UseGodLaser()
     {
+        // make sure we have the right player stat
         if (playerCont.GetComponent<MainControls>().getControllerNumber() == 1)
         {
             stats = GameObject.FindWithTag("Thor").GetComponent<PlayerStats>();
@@ -42,10 +33,18 @@ public class GodLaser : ItemClass
             stats = GameObject.FindWithTag("Type2").GetComponent<PlayerStats>();
         }
 
+        // box collider 2D Version
+        angle = playerCont.GetComponent<MainControls>().getRSAngle();
+        lookDirection = playerCont.GetComponent<MainControls>().getRSDirection();
+        // ability indicator
+        GameObject laser = Instantiate((GameObject)Resources.Load("GodLaserIndicator"), playerRB.transform.position, Quaternion.Euler(0, 0, angle)) as GameObject;
 
+        // GodLaser Raycast Version
+        // con is not very accurate because of the controls
+        // RaycastHit2D[] hitEnemies = Physics2D.BoxCastAll(playerRB.transform.position, new Vector2(1, 1), angle, new Vector2(lookDirection.y, lookDirection.x), 30f);
+        // create spell indicator that will land where player aims and will leave an area with box collider
         
-        RaycastHit2D[] hitEnemies = Physics2D.BoxCastAll(playerRB.transform.position, new Vector2(1, 1), angle, new Vector2(lookDirection.y, lookDirection.x), 30f);
-        GameObject laser = Instantiate(spellIndicatior2, playerRB.transform.position, Quaternion.Euler(0, 0, angle));
+        /*
         for (int i = 0; i < hitEnemies.Length; i++)
          {
             AIClass enemy = hitEnemies[i].transform.GetComponent<AIClass>();
@@ -56,8 +55,10 @@ public class GodLaser : ItemClass
              }
 
 
-         }
-         StartCoroutine(deleteEffects(laser));
+         }*/
+
+        // remove the particle effect indicator
+        StartCoroutine(deleteEffects(laser));
 
     }
 
@@ -66,6 +67,7 @@ public class GodLaser : ItemClass
         yield return new WaitForSeconds(1f);
         Destroy(effect);
     }
+
     
     /*
     //private void OnDrawGizmos()

@@ -65,19 +65,10 @@ public class MainControls : MonoBehaviour
         rightStickAngle = Mathf.Atan2(rightStickDirection.y, rightStickDirection.x) * Mathf.Rad2Deg - 180f;
         if (Input.GetAxis(rightTrigger) > 0 && gameObject.GetComponent<Abilities>().isAbility())
         {
-            if (gameObject.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>().getHasIndicator())
-            {
-                gameObject.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>().GetSpellIndicator().SetActive(true);
-            }
-            
             reticle.SetActive(true);
         }
         else if (Input.GetAxis(rightTrigger) <= 0 && gameObject.GetComponent<Abilities>().isAbility())
-        {
-            if (gameObject.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>().getHasIndicator())
-            {
-                gameObject.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>().GetSpellIndicator().SetActive(false);
-            }
+        { 
             reticle.SetActive(false);
         }
         // aim reticle
