@@ -6,22 +6,64 @@ public class RoomInfo : MonoBehaviour
 {
     public Vector2Int dimensions;
 
-    private struct DoorData
-    {
-        Transform door;
-        Door.Compass facing;
-        Vector2 targetPosition;
-    }
+    public List<Door> northDoors;
+    public List<Door> eastDoors;
+    public List<Door> southDoors;
+    public List<Door> westDoors;
 
-    public List<Transform> northDoors;
-    public List<Transform> eastDoors;
-    public List<Transform> southDoors;
-    public List<Transform> westDoors;
-
-
+    // Get relative area on a room-sized grid (bottom left: 0,0)
     public Rect GetRect(Vector2 position)
     {
         return new Rect(position, dimensions);
+    }
+
+    public bool HasDoor(Door.Facing direction)
+    {
+        switch (direction)
+        {
+            case Door.Facing.North:
+                return 0 < northDoors.Count;
+            case Door.Facing.East:
+                return 0 < eastDoors.Count;
+            case Door.Facing.South:
+                return 0 < southDoors.Count;
+            case Door.Facing.West:
+                return 0 < westDoors.Count;
+        }
+        return false;
+    }
+
+    public Door GetDoor(Door.Facing direction, int selection)
+    {
+        switch (direction)
+        {
+            case Door.Facing.North:
+                return northDoors[selection];
+            case Door.Facing.East:
+                return eastDoors[selection];
+            case Door.Facing.South:
+                return southDoors[selection];
+            case Door.Facing.West:
+                return westDoors[selection];
+        }
+        return null;
+    }
+
+    public List<Door> GetDoors(Door.Facing direction)
+    {
+        switch (direction)
+        {
+            case Door.Facing.North:
+                return northDoors;
+            case Door.Facing.East:
+                return eastDoors;
+            case Door.Facing.South:
+                return southDoors;
+            case Door.Facing.West:
+                return westDoors;
+        }
+
+        return null;
     }
 
     public bool HasNorthDoor()
@@ -29,7 +71,7 @@ public class RoomInfo : MonoBehaviour
         return 0 != northDoors.Count;
     }
 
-    public Transform GetNorthDoor(int selection)
+    public Door GetNorthDoor(int selection)
     {
         if (selection >= northDoors.Count)
         {
@@ -40,7 +82,7 @@ public class RoomInfo : MonoBehaviour
         return northDoors[selection];
     }
 
-    public List<Transform> GetNorthDoors()
+    public List<Door> GetNorthDoors()
     {
         if (!HasNorthDoor())
         {
@@ -55,7 +97,7 @@ public class RoomInfo : MonoBehaviour
         return 0 != eastDoors.Count;
     }
 
-    public Transform GetEastDoor(int selection)
+    public Door GetEastDoor(int selection)
     {
         if (selection > eastDoors.Count)
         {
@@ -66,7 +108,7 @@ public class RoomInfo : MonoBehaviour
         return eastDoors[selection];
     }
 
-    public List<Transform> GetEastDoors()
+    public List<Door> GetEastDoors()
     {
         if (!HasEastDoor())
         {
@@ -81,7 +123,7 @@ public class RoomInfo : MonoBehaviour
         return 0 != southDoors.Count;
     }
 
-    public Transform GetSouthDoor(int selection)
+    public Door GetSouthDoor(int selection)
     {
         if (selection > southDoors.Count)
         {
@@ -92,7 +134,7 @@ public class RoomInfo : MonoBehaviour
         return southDoors[selection];
     }
 
-    public List<Transform> GetSouthDoors()
+    public List<Door> GetSouthDoors()
     {
         if (!HasSouthDoor())
         {
@@ -107,7 +149,7 @@ public class RoomInfo : MonoBehaviour
         return 0 != westDoors.Count;
     }
 
-    public Transform GetWestDoor(int selection)
+    public Door GetWestDoor(int selection)
     {
         if (selection > westDoors.Count)
         {
@@ -118,7 +160,7 @@ public class RoomInfo : MonoBehaviour
         return westDoors[selection];
     }
 
-    public List<Transform> GetWestDoors()
+    public List<Door> GetWestDoors()
     {
         if (!HasWestDoor())
         {

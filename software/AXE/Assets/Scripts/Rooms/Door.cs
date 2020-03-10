@@ -4,15 +4,52 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    public enum Compass
+
+    public enum Facing
     {
         North, East, South, West
     };
 
-    public Compass direction;
+    public Facing direction;
+
+    public Vector2Int position;
 
     [SerializeField]
     private Door destination;
+
+    // Get relative position on a room-sized grid (bottom left: 0,0)
+    public Vector2Int GetPosition()
+    {
+        return position;
+    }
+
+    public Facing GetDirection()
+    {
+        return direction;
+    }
+
+    // Get relative destination on a room-sized grid (bottom left: 0,0)
+    public Vector2Int GetDestination()
+    {
+        Vector2Int destination = position;
+        switch(direction)
+        {
+            case Facing.North:
+                destination += Vector2Int.up;
+                break;
+            case Facing.East:
+                destination += Vector2Int.right;
+                break;
+            case Facing.South:
+                destination += Vector2Int.down;
+                break;
+            case Facing.West:
+                destination += Vector2Int.left;
+                break;
+        }
+
+        return destination;
+    }
 
     public void AssignPartner(Door door)
     {
@@ -33,16 +70,16 @@ public class Door : MonoBehaviour
 
             switch (destination.direction)
             {
-                case Compass.North:
+                case Facing.North:
                     obj.transform.position = destination.transform.position + Vector3.down;
                     break;
-                case Compass.East:
+                case Facing.East:
                     obj.transform.position = destination.transform.position + Vector3.left;
                     break;
-                case Compass.South:
+                case Facing.South:
                     obj.transform.position = destination.transform.position + Vector3.up;
                     break;
-                case Compass.West:
+                case Facing.West:
                     obj.transform.position = destination.transform.position + Vector3.right;
                     break;
                 default:
