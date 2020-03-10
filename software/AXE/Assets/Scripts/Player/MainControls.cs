@@ -277,16 +277,31 @@ public class MainControls : MonoBehaviour
         {
             if (GetComponent<Abilities>().aAvailable)
             {
-                Debug.Log("NO ITEM");
+                Debug.Log("NO ABILITY");
+            }
+            else if (!this.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>().GetAbilityJustUsed())
+            {
+                this.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>().ItemActivate();
             }
             else
             {
-                this.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>().ItemActivate();
+                Debug.Log("ABILITY ON COOLDOWN");
             }
         }
         else if (controllerNumber == 2)
         {
-            this.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>().ItemActivate();
+            if (GetComponent<Abilities>().aAvailable)
+            {
+                Debug.Log("NO ABILITY");
+            }
+            else if (!this.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>().GetAbilityJustUsed())
+            {
+                this.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>().ItemActivate();
+            }
+            else
+            {
+                Debug.Log("ABILITY ON COOLDOWN");
+            }
         }
     }
 

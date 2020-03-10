@@ -96,12 +96,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Plasma Hammer
-  itemDescription: 
+  itemDescription: Large area attack in front of the player, deals 300% player damage.
   myItemType: 2
-  abilityCooldown: 0
+  abilityCooldown: 2
   itemDuration: 0
-  itemMultiplier: 0
-  spellIndicatior: {fileID: 0}
+  itemMultiplier: 3
 --- !u!58 &6532614381103332673
 CircleCollider2D:
   m_ObjectHideFlags: 0

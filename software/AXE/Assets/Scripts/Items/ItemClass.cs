@@ -19,9 +19,10 @@ public abstract class ItemClass : MonoBehaviour
     private bool hasIndicator;
     private int playerItemUsed;
     private bool usable;
+    private bool abilityJustUsed;
 
     [SerializeField] private int abilityCooldown;
-    private int cooldown;
+    private int curAbilityCooldown;
     [SerializeField] private float itemDuration;
     [SerializeField] private float itemMultiplier;
     // if item or ability has an area indicator to show the player
@@ -54,14 +55,19 @@ public abstract class ItemClass : MonoBehaviour
         }
         else if (myItemType == ItemType.playerAbility)
         {
-            if(cooldown == 0)
+            
+            if(curAbilityCooldown == 0)
             {
+                curAbilityCooldown = abilityCooldown;
                 itemEffect();
-                cooldown = abilityCooldown;
+                abilityJustUsed = true;
+                
             }
-            else
+            if (abilityJustUsed)
             {
-                Invoke("itemEffect", abilityCooldown);
+                // will be relocated at top of this else if statement and check if cooldown is 0 then change abilityJustUsed to false
+                // just need room to call SetCurAbilityCooldown(abilityCooldown - 1) once a player finnish a room or once it calls roomClear()
+                Invoke("TempTimer", abilityCooldown);
             }
             
         }
@@ -69,7 +75,8 @@ public abstract class ItemClass : MonoBehaviour
 
     public void TempTimer()
     {
-        cooldown = 0;
+        curAbilityCooldown = 0;
+        abilityJustUsed = false;
     }
 
     public void setHasIndicator(bool boolIndicator)
@@ -121,12 +128,16 @@ public abstract class ItemClass : MonoBehaviour
         return usable;
     }
 
-    public int GetAbilityCooldown()
+    public int GetCurAbilityCooldown()
     {
-        return abilityCooldown;
+        return curAbilityCooldown;
     }
     public void setAbilityCooldown(int cooldown)
     {
-        abilityCooldown = cooldown;
+        curAbilityCooldown = cooldown;
+    }
+    public bool GetAbilityJustUsed()
+    {
+        return abilityJustUsed;
     }
 }
