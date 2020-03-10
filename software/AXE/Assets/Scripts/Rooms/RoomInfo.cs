@@ -6,6 +6,13 @@ public class RoomInfo : MonoBehaviour
 {
     public Vector2Int dimensions;
 
+    private struct DoorData
+    {
+        Transform door;
+        Door.Compass facing;
+        Vector2 targetPosition;
+    }
+
     public List<Transform> northDoors;
     public List<Transform> eastDoors;
     public List<Transform> southDoors;
@@ -24,13 +31,23 @@ public class RoomInfo : MonoBehaviour
 
     public Transform GetNorthDoor(int selection)
     {
-        if (selection > northDoors.Count)
+        if (selection >= northDoors.Count)
         {
             Debug.LogError("GetNorthDoor: Index out of range");
             return null;
         }
 
         return northDoors[selection];
+    }
+
+    public List<Transform> GetNorthDoors()
+    {
+        if (!HasNorthDoor())
+        {
+            Debug.LogError("GetNorthDoors: Getting an empty list");
+        }
+
+        return northDoors;
     }
 
     public bool HasEastDoor()
@@ -40,13 +57,23 @@ public class RoomInfo : MonoBehaviour
 
     public Transform GetEastDoor(int selection)
     {
-        if (selection > northDoors.Count)
+        if (selection > eastDoors.Count)
         {
             Debug.LogError("GetEastDoor: Index out of range");
             return null;
         }
 
-        return northDoors[selection];
+        return eastDoors[selection];
+    }
+
+    public List<Transform> GetEastDoors()
+    {
+        if (!HasEastDoor())
+        {
+            Debug.LogError("GetEastDoors: Getting an empty list");
+        }
+
+        return eastDoors;
     }
 
     public bool HasSouthDoor()
@@ -56,13 +83,23 @@ public class RoomInfo : MonoBehaviour
 
     public Transform GetSouthDoor(int selection)
     {
-        if (selection > northDoors.Count)
+        if (selection > southDoors.Count)
         {
             Debug.LogError("GetSouthDoor: Index out of range");
             return null;
         }
 
-        return northDoors[selection];
+        return southDoors[selection];
+    }
+
+    public List<Transform> GetSouthDoors()
+    {
+        if (!HasSouthDoor())
+        {
+            Debug.LogError("GetSouthDoors: Getting an empty list");
+        }
+
+        return southDoors;
     }
 
     public bool HasWestDoor()
@@ -72,13 +109,22 @@ public class RoomInfo : MonoBehaviour
 
     public Transform GetWestDoor(int selection)
     {
-        if (selection > northDoors.Count)
+        if (selection > westDoors.Count)
         {
             Debug.LogError("GetWestDoor: Index out of range");
             return null;
         }
 
-        return northDoors[selection];
+        return westDoors[selection];
     }
 
+    public List<Transform> GetWestDoors()
+    {
+        if (!HasWestDoor())
+        {
+            Debug.LogError("GetWestDoors: Getting an empty list");
+        }
+
+        return westDoors;
+    }
 }
