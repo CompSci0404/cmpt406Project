@@ -37,12 +37,10 @@ public class PlayerMovement : MonoBehaviour
         // update movement speed based on current player stat
         if (gameObject.transform.GetChild(0).gameObject.activeSelf)
         {
-            Debug.Log("p1");
             stats = gameObject.transform.GetChild(0).GetComponent<PlayerStats>();
         }
         else if (gameObject.transform.GetChild(1).gameObject.activeSelf)
         {
-            Debug.Log("p2");
             stats = gameObject.transform.GetChild(1).GetComponent<PlayerStats>();
         }
         //

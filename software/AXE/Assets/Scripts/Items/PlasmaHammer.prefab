@@ -97,11 +97,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Plasma Hammer
   itemDescription: 
-  myItemType: 0
-  ItemCooldown: 0
-  isIndicator: 0
-  spellIndicatior: {fileID: 3712351931161284613, guid: a6560efc44f009c4c8695e3d9b594b6c,
-    type: 3}
+  myItemType: 2
+  abilityCooldown: 0
+  itemDuration: 0
+  itemMultiplier: 0
+  spellIndicatior: {fileID: 0}
 --- !u!58 &6532614381103332673
 CircleCollider2D:
   m_ObjectHideFlags: 0

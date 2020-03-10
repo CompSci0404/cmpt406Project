@@ -20,17 +20,17 @@ public abstract class ItemClass : MonoBehaviour
     private int playerItemUsed;
     private bool usable;
 
-    [SerializeField] private int ItemCooldown;
+    [SerializeField] private int abilityCooldown;
+    private int cooldown;
     [SerializeField] private float itemDuration;
     [SerializeField] private float itemMultiplier;
     // if item or ability has an area indicator to show the player
-    [SerializeField] private GameObject spellIndicatior;
 
     // use any type of item with one function
     public delegate void ItemDelegate();
     public ItemDelegate itemEffect;
 
-
+    
     
     public void ItemActivate()
     {
@@ -54,8 +54,22 @@ public abstract class ItemClass : MonoBehaviour
         }
         else if (myItemType == ItemType.playerAbility)
         {
-            itemEffect();
+            if(cooldown == 0)
+            {
+                itemEffect();
+                cooldown = abilityCooldown;
+            }
+            else
+            {
+                Invoke("itemEffect", abilityCooldown);
+            }
+            
         }
+    }
+
+    public void TempTimer()
+    {
+        cooldown = 0;
     }
 
     public void setHasIndicator(bool boolIndicator)
@@ -105,5 +119,14 @@ public abstract class ItemClass : MonoBehaviour
     public bool GetUsable()
     {
         return usable;
+    }
+
+    public int GetAbilityCooldown()
+    {
+        return abilityCooldown;
+    }
+    public void setAbilityCooldown(int cooldown)
+    {
+        abilityCooldown = cooldown;
     }
 }

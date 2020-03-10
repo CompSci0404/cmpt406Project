@@ -279,15 +279,14 @@ public class MainControls : MonoBehaviour
             {
                 Debug.Log("NO ITEM");
             }
-            else { this.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>().ItemActivate(); }
+            else
+            {
+                this.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>().ItemActivate();
+            }
         }
         else if (controllerNumber == 2)
         {
-            if (GetComponent<Abilities>().aAvailable)
-            {
-                Debug.Log("NO ITEM");
-            }
-            else { this.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>().ItemActivate(); }
+            this.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>().ItemActivate();
         }
     }
 
