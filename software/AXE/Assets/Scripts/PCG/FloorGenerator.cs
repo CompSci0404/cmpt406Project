@@ -4,28 +4,6 @@ using UnityEngine;
 
 public class FloorGenerator : MonoBehaviour
 {
-    private struct RoomData
-    {
-        public int roomNumber;
-
-        public enum RoomType
-        {
-            Normal,     // 1x1 rooms
-            Large,      // lower part of 2x1 rooms
-            Extension,  // upper part of 2x1 rooms
-            Start,      // room in which player spawns
-            Boss        // room in which boss and exit appears
-        }
-        RoomType roomType;
-
-        public RoomData(int roomNumber, RoomType roomType)
-        {
-            this.roomNumber = roomNumber;
-
-            this.roomType = roomType;
-        }
-    }
-
     [SerializeField]
     List<GameObject> roomPrefabs;
 
@@ -54,49 +32,7 @@ public class FloorGenerator : MonoBehaviour
     {
         Dictionary<Vector2Int, RoomData> tempModel = new Dictionary<Vector2Int, RoomData>();
 
-        // TODO: replace with variables / non-magic numbers
-        int width = 7;
-        int height = 7;
 
-        Vector2Int StartingPosition()
-        {
-            Vector2Int pos = new Vector2Int();
-
-            int border = Random.Range(0, 4);
-            if (border == 0)
-            {
-                pos.y = 0;
-                pos.x = Random.Range(0, width);
-            }
-            else if (border == 1)
-            {
-                pos.x = 0;
-                pos.y = Random.Range(0, height);
-            }
-            else if (border == 2)
-            {
-                pos.y = height - 1;
-                pos.x = Random.Range(0, width);
-            }
-            else if (border == 3)
-            {
-                pos.x = width - 1;
-                pos.y = Random.Range(0, height);
-            }
-
-            return pos;
-        }
-
-        Vector2Int curPos = StartingPosition();
-
-        bool RoomGeneration()
-        {
-
-
-
-
-            return false;
-        }
 
         return tempModel;
     }
