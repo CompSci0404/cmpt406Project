@@ -1631,6 +1631,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dimensions: {x: 1, y: 1}
+  northDoors:
+  - {fileID: 5045530206357861551}
+  eastDoors:
+  - {fileID: 5045530206457101194}
+  southDoors:
+  - {fileID: 5045530207557730418}
+  westDoors:
+  - {fileID: 5045530207590195001}
 --- !u!1 &7216634732361284139
 GameObject:
   m_ObjectHideFlags: 0
