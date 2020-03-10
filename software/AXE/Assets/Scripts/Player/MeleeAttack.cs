@@ -29,12 +29,12 @@ public class MeleeAttack : MonoBehaviour
         movement.x = Input.GetAxis("Horizontal");
         if (movement.x > 0)
         {
-            Vector2 weaponPosition = new Vector2(gameObject.transform.position.x + 1, gameObject.transform.position.y);
+            Vector2 weaponPosition = new Vector2(gameObject.transform.position.x + 0.5f, gameObject.transform.position.y);
             weaponPoint.transform.position = weaponPosition;
         }
         else if (movement.x < 0)
         {
-            Vector2 weaponPosition = new Vector2(gameObject.transform.position.x - 1, gameObject.transform.position.y);
+            Vector2 weaponPosition = new Vector2(gameObject.transform.position.x - 0.5f, gameObject.transform.position.y);
             weaponPoint.transform.position = weaponPosition;
         }
         

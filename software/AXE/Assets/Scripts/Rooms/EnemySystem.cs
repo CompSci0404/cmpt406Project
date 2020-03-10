@@ -16,8 +16,12 @@ public class EnemySystem : MonoBehaviour
 
     List<Transform> enemies;
 
+    DropSystem dropSystem;
+
     void Awake()
     {
+        dropSystem = FindObjectOfType<DropSystem>();
+        
         enemyCount = enemyParent.childCount;
 
         enemies = new List<Transform>();
@@ -41,6 +45,7 @@ public class EnemySystem : MonoBehaviour
     public void EnemyDestroyed(GameObject enemy)
     {
         enemies.Remove(enemy.transform);
+        dropSystem.DropFromPools(enemy.transform);
         Destroy(enemy);
     }
 

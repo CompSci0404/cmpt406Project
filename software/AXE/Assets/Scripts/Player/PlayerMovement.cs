@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame and gets users inputs
     void Update()
     {
+        moveSpeed = stats.GetMoveSpeed();
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
         if (movement.magnitude > 1)

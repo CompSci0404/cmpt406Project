@@ -119,6 +119,8 @@ public class PlayerStats : MonoBehaviour
         isInvincible = false;
         Hearts = FindObjectOfType<HeartDisplay>();
         HUD = FindObjectOfType<HUD>();
+        thorAnimation = GetComponentInParent<ThorAnimationInput>();
+        valkAnimation = GetComponentInParent<ValkAnimationInput>();
     }
 
     public int GetControllerNumber()
@@ -208,7 +210,12 @@ public class PlayerStats : MonoBehaviour
         SceneManager.LoadScene(2);
     }
 
-    private void ResetInvincibility()
+    public void MakeInvincible()
+    {
+        isInvincible = true;
+    }
+
+    public void ResetInvincibility()
     {
         isInvincible = false;
     }
