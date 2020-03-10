@@ -116,6 +116,9 @@ MonoBehaviour:
   itemDescription: Increase player's move and attack speed
   myItemType: 0
   ItemCooldown: 0
+  itemDuration: 10
+  itemMultiplier: 1.5
+  spellIndicatior: {fileID: 0}
 --- !u!58 &6947075294260642245
 CircleCollider2D:
   m_ObjectHideFlags: 0

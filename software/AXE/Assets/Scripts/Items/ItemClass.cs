@@ -17,10 +17,13 @@ public abstract class ItemClass : MonoBehaviour
     public string itemDescription;
     public ItemType myItemType;
     private bool hasIndicator;
+    private int playerItemUsed;
+    private bool usable;
 
     [SerializeField] private int ItemCooldown;
+    [SerializeField] private float itemDuration;
+    [SerializeField] private float itemMultiplier;
     // if item or ability has an area indicator to show the player
-    
     [SerializeField] private GameObject spellIndicatior;
 
     // use any type of item with one function
@@ -31,10 +34,19 @@ public abstract class ItemClass : MonoBehaviour
     
     public void ItemActivate()
     {
-        if(myItemType == ItemType.consumable)
+        if(myItemType == ItemType.consumable && usable)
         {
             itemEffect();
-            Destroy(this.gameObject);
+            usable = false;
+            if (itemName == "SwiftSauce")
+            {
+                Invoke("ResetSpeed", itemDuration);
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
+            
         }
         else if (myItemType == ItemType.swapAbility)
         {
@@ -51,4 +63,47 @@ public abstract class ItemClass : MonoBehaviour
         hasIndicator = boolIndicator;
     }
 
+    public float getItemMultiplier()
+    {
+        return itemMultiplier;
+    }
+    void ResetSpeed()
+    {
+        
+        GameObject player = GameObject.FindWithTag("Player").transform.GetChild(0).gameObject;
+        
+        if (playerItemUsed == 1)
+        {
+            Debug.Log("RESETTING 1");
+            float attackSpeed = player.GetComponent<PlayerStats>().GetAttackSpeed();
+            float moveSpeed = player.GetComponent<PlayerStats>().GetMoveSpeed();
+            player.GetComponent<PlayerStats>().SetAttackSpeed(attackSpeed / itemMultiplier);
+            player.GetComponent<PlayerStats>().SetMoveSpeed(moveSpeed / itemMultiplier);
+        }
+        
+        else if (playerItemUsed == 2)
+        {
+            Debug.Log("RESETTING 2");
+            player = GameObject.FindWithTag("Player").transform.GetChild(1).gameObject;
+            float attackSpeed2 = player.GetComponent<PlayerStats>().GetAttackSpeed();
+            float moveSpeed2 = player.GetComponent<PlayerStats>().GetMoveSpeed();
+            player.GetComponent<PlayerStats>().SetAttackSpeed(attackSpeed2 / itemMultiplier);
+            player.GetComponent<PlayerStats>().SetMoveSpeed(moveSpeed2 / itemMultiplier);
+        }
+        usable = true;
+        Destroy(this.gameObject);
+
+    }
+    public void SetPlayerItemUsed(int player)
+    {
+        playerItemUsed = player;
+    }
+    public void SetUsable(bool boolUsable)
+    {
+        usable = boolUsable;
+    }
+    public bool GetUsable()
+    {
+        return usable;
+    }
 }

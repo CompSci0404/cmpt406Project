@@ -62,6 +62,10 @@ public class Inventory : MonoBehaviour
                     }
                     else
                     {
+                        if (!upItem.transform.GetChild(0).gameObject.GetComponent<ItemClass>().GetUsable())
+                        {
+                            break;
+                        }
                         GameObject droppedUP = Instantiate(upItem.transform.GetChild(0).gameObject, playerRB.position, Quaternion.identity);
                         droppedUP.name = upItem.transform.GetChild(0).gameObject.name;
                         Destroy(upItem.transform.GetChild(0).gameObject);
@@ -85,6 +89,10 @@ public class Inventory : MonoBehaviour
                     }
                     else
                     {
+                        if (!leftItem.transform.GetChild(0).gameObject.GetComponent<ItemClass>().GetUsable())
+                        {
+                            break;
+                        }
                         GameObject droppedLeft = Instantiate(leftItem.transform.GetChild(0).gameObject, playerRB.position, Quaternion.identity);
                         droppedLeft.name = leftItem.transform.GetChild(0).gameObject.name;
                         Destroy(leftItem.transform.GetChild(0).gameObject);
@@ -107,6 +115,10 @@ public class Inventory : MonoBehaviour
                     }
                     else
                     {
+                        if (!rightItem.transform.GetChild(0).gameObject.GetComponent<ItemClass>().GetUsable())
+                        {
+                            break;
+                        }
                         GameObject droppedRight = Instantiate(rightItem.transform.GetChild(0).gameObject, playerRB.position, Quaternion.identity);
                         droppedRight.name = rightItem.transform.GetChild(0).gameObject.name;
                         Destroy(rightItem.transform.GetChild(0).gameObject);
@@ -129,6 +141,10 @@ public class Inventory : MonoBehaviour
                     }
                     else
                     {
+                        if (!downItem.transform.GetChild(0).gameObject.GetComponent<ItemClass>().GetUsable())
+                        {
+                            break;
+                        }
                         GameObject droppedDown = Instantiate(downItem.transform.GetChild(0).gameObject, playerRB.position, Quaternion.identity);
                         droppedDown.name = downItem.transform.GetChild(0).gameObject.name;
                         Destroy(downItem.transform.GetChild(0).gameObject);
