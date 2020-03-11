@@ -139,7 +139,7 @@ public class Abilities : MonoBehaviour
         }
     }
 
-    public GameObject getaAbility()
+    public GameObject GetActiveAbility()
     {
         return aAbility;
     }
