@@ -37,23 +37,14 @@ public class PlasmaHammer : ItemClass
         // box collider 2D Version
         angle = playerCont.GetComponent<MainControls>().getRSAngle();
         lookDirection = playerCont.GetComponent<MainControls>().getRSDirection();
-
         // ability indicator
-        GameObject indicator = Resources.Load("Prefabs/PlasmaHammerIndicator", typeof(GameObject)) as GameObject;
-        if (null != indicator)
-        {
-            GameObject laser = Instantiate(indicator, playerRB.transform.position, Quaternion.Euler(0, 0, angle));
+        GameObject laser = Instantiate((GameObject)Resources.Load("PlasmaHammerIndicator"), playerRB.transform.position, Quaternion.Euler(0, 0, angle)) as GameObject;
 
-            // remove the particle effect indicator
-            StartCoroutine(DeleteEffects(laser));
-        }
-        else
-        {
-            Debug.LogError("Unable to load Prefabs/PlasmaHammerIndicator.prefab from Resources");
-        }
+        // remove the particle effect indicator
+        StartCoroutine(deleteEffects(laser));
     }
 
-    IEnumerator DeleteEffects(GameObject effect)
+    IEnumerator deleteEffects(GameObject effect)
     {
         yield return new WaitForSeconds(1f);
         Destroy(effect);
