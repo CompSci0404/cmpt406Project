@@ -142,6 +142,8 @@ MonoBehaviour:
   tooCloseRange: 5
   velocityOfRangedAttack: 100
   rangedAttackCooldown: 3
+  ParticleDamage: {fileID: 6980632896635148368, guid: e01f146a534f643e3a8bec06f3966da9,
+    type: 3}
 --- !u!114 &315639154512859546
 MonoBehaviour:
   m_ObjectHideFlags: 0
