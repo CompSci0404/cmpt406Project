@@ -2188,6 +2188,11 @@ PrefabInstance:
       propertyPath: valkScore
       value: 
       objectReference: {fileID: 608948497}
+    - target: {fileID: 4479636796296197987, guid: 16c7e1f4973d0fb44910bce4460806f1,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 7600984664035167005, guid: 16c7e1f4973d0fb44910bce4460806f1,
         type: 3}
       propertyPath: thorScore

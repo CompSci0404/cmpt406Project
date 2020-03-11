@@ -16,7 +16,7 @@ public class MainControls : MonoBehaviour
 
     public bool justSwapped;
     TimeSlowSwap swapSlow;
-
+    
     private string horizontalAxis;
     private string verticalAxis;
     private string aButton;
@@ -102,7 +102,8 @@ public class MainControls : MonoBehaviour
                     HUD.ChangeCharacterIcon();
                     thorAnimation.SwapAnimTrigger();
                     stats.SetLives(stats.GetLives() - 1);
-                    Invoke("SwapPlayer", 1);
+                    this.GetComponent<PlayerMovement>().enabled = false;
+                    Invoke("SwapPlayer", 1.5f);
                 }
                 // if player 2 range
                 else if (controllerNumber == 2)
@@ -111,8 +112,8 @@ public class MainControls : MonoBehaviour
                     HUD.ChangeCharacterIcon();
                     valkAnimation.SwapAnimTrigger();
                     stats.SetLives(stats.GetLives() - 1);
-                    Invoke("SwapPlayer", 1);
-                    
+                    this.GetComponent<PlayerMovement>().enabled = false;
+                    Invoke("SwapPlayer", 1.5f);
                 }
             }
         }
@@ -176,6 +177,7 @@ public class MainControls : MonoBehaviour
         {
             this.GetComponent<Abilities>().GetSwapAbility().GetComponentInChildren<ItemClass>().ItemActivate();
         }
+        this.GetComponent<PlayerMovement>().enabled = true;
         Invoke("ResetSwap", 1);
     }
 
