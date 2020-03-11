@@ -22,7 +22,7 @@ public class BatteryBread : ItemClass
         else
         {
             // will not work until room cooldown is implemented
-            playerCont.GetComponent<Abilities>().GetActiveAbility().GetComponentInChildren<ItemClass>().setAbilityCooldown(0);
+            playerCont.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>().setAbilityCooldown(0);
         }
         
     }
