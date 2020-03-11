@@ -85,6 +85,12 @@ public class MainControls : MonoBehaviour
         // aim reticle
         reticle.transform.rotation = Quaternion.Euler(0, 0, rightStickAngle);
 
+        // Use the right trigger to attack 
+        if (Input.GetAxis(rightTrigger) > 0)
+        {
+            Attack();
+        }
+
         // wait for an input and set opposite player controller active
         if (Input.GetButtonDown(yButton)) {
             if (justSwapped)
