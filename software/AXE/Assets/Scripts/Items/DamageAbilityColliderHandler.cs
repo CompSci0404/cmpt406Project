@@ -17,7 +17,7 @@ public class DamageAbilityColliderHandler : MonoBehaviour
     [SerializeField] private float damageMultiplier;
     [SerializeField] private int duration;
 
-    private bool aoe;
+    private bool aoeDamageOn;
 
     private IEnumerator coroutine;
 
@@ -55,11 +55,17 @@ public class DamageAbilityColliderHandler : MonoBehaviour
         // damage over time
         else if (myDamageType == DamageType.damageOverTime)
         {
+            aoeDamageOn = true;
             StartCoroutine(doDamage(collision, duration));
-            Debug.Log("hiiiiiiiiiiiiiiiiiiiiii");
+            StartCoroutine(DestroyMe());
         }
         
         
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        aoeDamageOn = false;
     }
 
     IEnumerator doDamage(Collider2D collision, int n)
@@ -67,6 +73,14 @@ public class DamageAbilityColliderHandler : MonoBehaviour
         yield return new WaitForSeconds(1f);
         if (n == 0)
         {
+            if (playerCont.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>() != null)
+            {
+                if (playerCont.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>().GetHasDot())
+                {
+                    playerCont.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>().SetDoDot(true);
+                }
+                
+            }
             Destroy(this.gameObject);
         }
         if (collision != null)
@@ -77,32 +91,30 @@ public class DamageAbilityColliderHandler : MonoBehaviour
             }
         }
         // maybe return if ai dies;
-        coroutine = doDamage(collision, n - 1);
-        StartCoroutine(coroutine);
-
-    }
-    IEnumerator DamageOverTime(Collider2D collision, int n)
-    {
         
-        yield return new WaitForSeconds(1f);
-        if (collision.GetComponent<AIClass>() != null)
-        {
-            collision.GetComponent<AIClass>().Damage(stats.GetDamage() * damageMultiplier);
-        }
-        else
+        if (aoeDamageOn)
         {
             coroutine = doDamage(collision, n - 1);
             StartCoroutine(coroutine);
         }
-            
+
+        
     }
 
     IEnumerator DestroyMe()
     {
         yield return new WaitForSeconds(duration);
+        if (playerCont.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>() != null && myDamageType == DamageType.damageOverTime)
+        {
+            if (playerCont.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>().GetHasDot())
+            {
+                Debug.Log("do dot" + playerCont.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>().GetHasDot());
+                playerCont.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>().SetDoDot(true);
+            }
+
+        }
         Destroy(this.gameObject);
     }
-
 
 }
 
