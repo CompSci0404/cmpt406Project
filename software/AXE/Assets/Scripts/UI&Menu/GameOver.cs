@@ -28,7 +28,6 @@ public class GameOver : MonoBehaviour
     void Update()
     {
         float upDownMovement = Input.GetAxis("DPad Y");
-        Debug.Log(upDownMovement);
         if (Input.GetKeyDown(KeyCode.DownArrow) || upDownMovement >= -1 && upDownMovement < 0)
         { //Input telling it to go up or down.
             selectedOption += 1;
