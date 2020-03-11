@@ -15,6 +15,7 @@ public class MainControls : MonoBehaviour
     private ValkAnimationInput valkAnimation;
 
     public bool justSwapped;
+    TimeSlowSwap swapSlow;
 
     private string horizontalAxis;
     private string verticalAxis;
@@ -42,7 +43,7 @@ public class MainControls : MonoBehaviour
     {
         // set for testing
         //swapAbility = "ClusterBomb";
-
+        swapSlow = this.GetComponent<TimeSlowSwap>();
         lastDPadPressed = "up";
         HUD = FindObjectOfType<HUD>();
         players = new List<GameObject>();
@@ -93,6 +94,7 @@ public class MainControls : MonoBehaviour
             else
             {
                 justSwapped = true;
+                swapSlow.SlowForSwap();
 
                 if (controllerNumber == 1)
                 {
@@ -101,7 +103,6 @@ public class MainControls : MonoBehaviour
                     thorAnimation.SwapAnimTrigger();
                     stats.SetLives(stats.GetLives() - 1);
                     Invoke("SwapPlayer", 1);
-                    
                 }
                 // if player 2 range
                 else if (controllerNumber == 2)
@@ -171,7 +172,10 @@ public class MainControls : MonoBehaviour
         {
             Debug.Log("No Ability");
         }
-        else { this.GetComponent<Abilities>().GetSwapAbility().GetComponentInChildren<ItemClass>().ItemActivate(); }
+        else
+        {
+            this.GetComponent<Abilities>().GetSwapAbility().GetComponentInChildren<ItemClass>().ItemActivate();
+        }
         Invoke("ResetSwap", 1);
     }
 
