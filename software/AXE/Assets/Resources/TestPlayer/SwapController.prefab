@@ -295,6 +295,7 @@ GameObject:
   - component: {fileID: 8330869376092234921}
   - component: {fileID: 5291062775590370721}
   - component: {fileID: 8374656412407698382}
+  - component: {fileID: 354118581}
   m_Layer: 0
   m_Name: SwapController
   m_TagString: Player
@@ -599,6 +600,11 @@ MonoBehaviour:
   aAvailable: 0
   swapAvailable: 0
   abilitySlot: 
+  EnergyShield: {fileID: 0}
+  GodLaser: {fileID: 0}
+  PlasmaHammer: {fileID: 0}
+  ClusterBomb: {fileID: 0}
+  TimelineShifter: {fileID: 0}
 --- !u!114 &8374656412407698382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -613,6 +619,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 1
   screenDimmer: {fileID: 0}
+--- !u!114 &354118581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7600984664673736890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532550acc598c8342ab20958af6f2119, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7600984665031520794
 GameObject:
   m_ObjectHideFlags: 0
