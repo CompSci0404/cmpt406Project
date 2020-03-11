@@ -38,13 +38,21 @@ public class PlasmaHammer : ItemClass
         angle = playerCont.GetComponent<MainControls>().getRSAngle();
         lookDirection = playerCont.GetComponent<MainControls>().getRSDirection();
         // ability indicator
-        GameObject laser = Instantiate((GameObject)Resources.Load("PlasmaHammerIndicator"), playerRB.transform.position, Quaternion.Euler(0, 0, angle)) as GameObject;
+        GameObject indicator = Resources.Load("Prefabs/PlasmaHammerIndicator", typeof(GameObject)) as GameObject;
+        if (null != indicator)
+        {
+            GameObject laser = Instantiate(indicator, playerRB.transform.position, Quaternion.Euler(0, 0, angle));
 
-        // remove the particle effect indicator
-        StartCoroutine(deleteEffects(laser));
+            // remove the particle effect indicator
+            StartCoroutine(DeleteEffects(laser));
+        }
+        else
+        {
+            Debug.LogError("Unable to load Prefabs/PlasmaHammerIndicator.prefab from Resources");
+        }
     }
 
-    IEnumerator deleteEffects(GameObject effect)
+    IEnumerator DeleteEffects(GameObject effect)
     {
         yield return new WaitForSeconds(1f);
         Destroy(effect);
