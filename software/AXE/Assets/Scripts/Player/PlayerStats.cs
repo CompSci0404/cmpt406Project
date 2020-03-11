@@ -24,6 +24,7 @@ public class PlayerStats : MonoBehaviour
     private float attackSpeed;
     private int lives;
     private bool isInvincible;
+    public int coins;
 
     public float GetAttackSpeed()
     {
@@ -105,6 +106,16 @@ public class PlayerStats : MonoBehaviour
         lives = life;
     }
 
+    public int GetCoins()
+    {
+        return coins;
+    }
+
+    public void AddCoin(int coin)
+    {
+        coins += coin;
+    }
+
     void Awake()
     {
         // initialize stats
@@ -116,6 +127,7 @@ public class PlayerStats : MonoBehaviour
         currHearts = GetMaxHearts();
         attackSpeed = .25f;
         lives = 10;
+        coins = 0;
         isInvincible = false;
         Hearts = FindObjectOfType<HeartDisplay>();
         HUD = FindObjectOfType<HUD>();
