@@ -9,7 +9,6 @@ public class ClusterBomb : ItemClass
 {
     private MainControls swapCheck;
     GameObject player;
-    ParticleSystem explosion;
     SpriteRenderer sprite;
     float power = 5f;
     float radius = 1.5f;
@@ -21,7 +20,6 @@ public class ClusterBomb : ItemClass
         itemEffect = Detonate;
         swapCheck = FindObjectOfType<MainControls>();
         player = GameObject.FindGameObjectWithTag("Player");
-        explosion = gameObject.GetComponent<ParticleSystem>();
         sprite = gameObject.GetComponent<SpriteRenderer>();
     }
 
@@ -30,8 +28,7 @@ public class ClusterBomb : ItemClass
         if (swapCheck.justSwapped)
         {
             sprite.enabled = false;
-            explosion.transform.position = player.transform.position;
-            explosion.Play();
+            PlayExplosion();
             Vector2 bombPosition = player.transform.position;
             Collider2D[] colliders = Physics2D.OverlapCircleAll(bombPosition, radius);
 
@@ -55,5 +52,16 @@ public class ClusterBomb : ItemClass
         {
             return;
         }
+    }
+
+    private void PlayExplosion()
+    {
+        ParticleSystem explosion = gameObject.GetComponent<ParticleSystem>();
+        if (null != explosion)
+        {
+            explosion.transform.position = player.transform.position;
+            explosion.Play();
+        }
+
     }
 }
