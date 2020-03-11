@@ -15,7 +15,8 @@ public class MainControls : MonoBehaviour
     private ValkAnimationInput valkAnimation;
 
     public bool justSwapped;
-
+    TimeSlowSwap swapSlow;
+    
     private string horizontalAxis;
     private string verticalAxis;
     private string aButton;
@@ -23,6 +24,13 @@ public class MainControls : MonoBehaviour
     private string xButton;
     private string yButton;
     private int controllerNumber;
+
+    private string lbButton;
+
+    private string rightTrigger;
+    private GameObject reticle;
+    private float rightStickAngle;
+    private Vector2 rightStickDirection;
 
     private List<GameObject> players;
 
@@ -35,7 +43,7 @@ public class MainControls : MonoBehaviour
     {
         // set for testing
         //swapAbility = "ClusterBomb";
-
+        swapSlow = this.GetComponent<TimeSlowSwap>();
         lastDPadPressed = "up";
         HUD = FindObjectOfType<HUD>();
         players = new List<GameObject>();
@@ -46,20 +54,47 @@ public class MainControls : MonoBehaviour
             players.Add(transform.GetChild(i).gameObject);
         }
         SwapPlayer();
-    }
+        }
 
     // Update is called once per frame
     void Update()
     {
+        // update vector and angle for the right stick
+        rightStickDirection = new Vector2(Input.GetAxis("LookHorizontal"), Input.GetAxis("LookVertical")).normalized;
+        rightStickAngle = Mathf.Atan2(rightStickDirection.y, rightStickDirection.x) * Mathf.Rad2Deg - 180f;
+
+        if (reticle == null)
+        {
+            reticle = Instantiate((GameObject)Resources.Load("Reticle"), gameObject.transform.position,
+                Quaternion.Euler(0, 0, rightStickAngle)) as GameObject;
+            reticle.SetActive(false);
+        }
+        // update position of reticle
+        reticle.transform.localPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0);
+        
+        // take right stick to move reticle around player
+        if (Input.GetAxis(rightTrigger) > 0 && gameObject.GetComponent<Abilities>().isAbility())
+        {
+            // create player reticle
+            reticle.SetActive(true);
+        }
+        else if (Input.GetAxis(rightTrigger) <= 0 && gameObject.GetComponent<Abilities>().isAbility())
+        {
+            reticle.SetActive(false);
+        }
+        // aim reticle
+        reticle.transform.rotation = Quaternion.Euler(0, 0, rightStickAngle);
+
         // wait for an input and set opposite player controller active
         if (Input.GetButtonDown(yButton)) {
-            if(justSwapped)
+            if (justSwapped)
             {
                 //cannot switch yet
             }
             else
             {
                 justSwapped = true;
+                swapSlow.SlowForSwap();
 
                 if (controllerNumber == 1)
                 {
@@ -67,7 +102,8 @@ public class MainControls : MonoBehaviour
                     HUD.ChangeCharacterIcon();
                     thorAnimation.SwapAnimTrigger();
                     stats.SetLives(stats.GetLives() - 1);
-                    Invoke("SwapPlayer", 1);
+                    this.GetComponent<PlayerMovement>().enabled = false;
+                    Invoke("SwapPlayer", 1.5f);
                 }
                 // if player 2 range
                 else if (controllerNumber == 2)
@@ -76,21 +112,18 @@ public class MainControls : MonoBehaviour
                     HUD.ChangeCharacterIcon();
                     valkAnimation.SwapAnimTrigger();
                     stats.SetLives(stats.GetLives() - 1);
-                    Invoke("SwapPlayer", 1);
+                    this.GetComponent<PlayerMovement>().enabled = false;
+                    Invoke("SwapPlayer", 1.5f);
                 }
             }
         }
 
         else if (Input.GetButtonDown(bButton))
         {
-            Attack();
-            
-
+            Attack();       
         }
         else if (Input.GetButtonDown(aButton))
         {
-            // The use item should be used by the DPad
-            //UseItem();
             UseAbility();
         }
         else if (Input.GetButtonDown(xButton))
@@ -120,6 +153,10 @@ public class MainControls : MonoBehaviour
             lastDPadPressed = "right";
             Debug.Log("last pressed right");
         }
+        else if (Input.GetButtonDown(lbButton))
+        {
+            UseItem();
+        }
         // player has a method that activates when it becomes active and sends its stats to this class
     }
 
@@ -136,8 +173,11 @@ public class MainControls : MonoBehaviour
         {
             Debug.Log("No Ability");
         }
-        else { this.GetComponent<Abilities>().GetSwapAbility().GetComponentInChildren<ItemClass>().ItemActivate(); }
-
+        else
+        {
+            this.GetComponent<Abilities>().GetSwapAbility().GetComponentInChildren<ItemClass>().ItemActivate();
+        }
+        this.GetComponent<PlayerMovement>().enabled = true;
         Invoke("ResetSwap", 1);
     }
 
@@ -243,17 +283,31 @@ public class MainControls : MonoBehaviour
         {
             if (GetComponent<Abilities>().aAvailable)
             {
-                Debug.Log("NO ITEM");
+                Debug.Log("NO ABILITY");
             }
-            else { this.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>().ItemActivate(); }
+            else if (!this.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>().GetAbilityJustUsed())
+            {
+                this.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>().ItemActivate();
+            }
+            else
+            {
+                Debug.Log("ABILITY ON COOLDOWN");
+            }
         }
         else if (controllerNumber == 2)
         {
             if (GetComponent<Abilities>().aAvailable)
             {
-                Debug.Log("NO ITEM");
+                Debug.Log("NO ABILITY");
             }
-            else { this.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>().ItemActivate(); }
+            else if (!this.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>().GetAbilityJustUsed())
+            {
+                this.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>().ItemActivate();
+            }
+            else
+            {
+                Debug.Log("ABILITY ON COOLDOWN");
+            }
         }
     }
 
@@ -288,6 +342,8 @@ public class MainControls : MonoBehaviour
         bButton = "J" + controllerNumber + "B";
         xButton = "J" + controllerNumber + "X";
         yButton = "J" + controllerNumber + "Y";
+        lbButton = "LeftBumper";
+        rightTrigger = "RightTrigger";
     }
 
     // get dpad last position
@@ -304,5 +360,14 @@ public class MainControls : MonoBehaviour
     public string GetSwapAbility()
     {
         return swapAbility;
+    }
+    public Vector2 getRSDirection()
+    {
+        return rightStickDirection;
+    }
+
+    public float getRSAngle()
+    {
+        return rightStickAngle;
     }
 }

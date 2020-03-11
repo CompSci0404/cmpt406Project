@@ -62,10 +62,15 @@ public class Inventory : MonoBehaviour
                     }
                     else
                     {
+                        if (!upItem.transform.GetChild(0).gameObject.GetComponent<ItemClass>().GetUsable())
+                        {
+                            break;
+                        }
                         GameObject droppedUP = Instantiate(upItem.transform.GetChild(0).gameObject, playerRB.position, Quaternion.identity);
                         droppedUP.name = upItem.transform.GetChild(0).gameObject.name;
                         Destroy(upItem.transform.GetChild(0).gameObject);
                         GameObject UP = Instantiate(ItemsInRange[i].gameObject, upItem.transform, false);
+                        UP.transform.localPosition = new Vector3(0f, 0.065f, 0f);
                         UP.name = ItemsInRange[i].gameObject.name;
                         Destroy(ItemsInRange[i].gameObject);
                         break;
@@ -77,17 +82,22 @@ public class Inventory : MonoBehaviour
                     if (isLeftItem())
                     {
                         GameObject Left = Instantiate(ItemsInRange[i].gameObject, leftItem.transform, false);
-                        Left.transform.localPosition = new Vector3(-1.44f, -1.33f, 0f);
+                        Left.transform.localPosition = new Vector3(0f, 0.065f, 0f);
                         Left.name = ItemsInRange[i].gameObject.name;
                         Destroy(ItemsInRange[i].gameObject);
                         break;
                     }
                     else
                     {
+                        if (!leftItem.transform.GetChild(0).gameObject.GetComponent<ItemClass>().GetUsable())
+                        {
+                            break;
+                        }
                         GameObject droppedLeft = Instantiate(leftItem.transform.GetChild(0).gameObject, playerRB.position, Quaternion.identity);
                         droppedLeft.name = leftItem.transform.GetChild(0).gameObject.name;
                         Destroy(leftItem.transform.GetChild(0).gameObject);
                         GameObject Left = Instantiate(ItemsInRange[i].gameObject, leftItem.transform, false);
+                        Left.transform.localPosition = new Vector3(0f, 0.065f, 0f);
                         Left.name = ItemsInRange[i].gameObject.name;
                         Destroy(ItemsInRange[i].gameObject);
                         break;
@@ -98,17 +108,22 @@ public class Inventory : MonoBehaviour
                     if (isRightItem())
                     {
                         GameObject Right = Instantiate(ItemsInRange[i].gameObject, rightItem.transform, false);
-                        Right.transform.localPosition = new Vector3(1.33f, -1.33f, 0f);
+                        Right.transform.localPosition = new Vector3(0f, 0.065f, 0f);
                         Right.name = ItemsInRange[i].gameObject.name;
                         Destroy(ItemsInRange[i].gameObject);
                         break;
                     }
                     else
                     {
+                        if (!rightItem.transform.GetChild(0).gameObject.GetComponent<ItemClass>().GetUsable())
+                        {
+                            break;
+                        }
                         GameObject droppedRight = Instantiate(rightItem.transform.GetChild(0).gameObject, playerRB.position, Quaternion.identity);
                         droppedRight.name = rightItem.transform.GetChild(0).gameObject.name;
                         Destroy(rightItem.transform.GetChild(0).gameObject);
                         GameObject Right = Instantiate(ItemsInRange[i].gameObject, rightItem.transform, false);
+                        Right.transform.localPosition = new Vector3(0f, 0.065f, 0f);
                         Right.name = ItemsInRange[i].gameObject.name;
                         Destroy(ItemsInRange[i].gameObject);
                         break;
@@ -119,17 +134,22 @@ public class Inventory : MonoBehaviour
                     if (isDownItem())
                     {
                         GameObject Down = Instantiate(ItemsInRange[i].gameObject, downItem.transform, false);
-                        Down.transform.localPosition = new Vector3(-0.04f, -2.7f, 0f);
+                        Down.transform.localPosition = new Vector3(-0.06f, 0.065f, 0f);
                         Down.name = ItemsInRange[i].gameObject.name;
                         Destroy(ItemsInRange[i].gameObject);
                         break;
                     }
                     else
                     {
+                        if (!downItem.transform.GetChild(0).gameObject.GetComponent<ItemClass>().GetUsable())
+                        {
+                            break;
+                        }
                         GameObject droppedDown = Instantiate(downItem.transform.GetChild(0).gameObject, playerRB.position, Quaternion.identity);
                         droppedDown.name = downItem.transform.GetChild(0).gameObject.name;
                         Destroy(downItem.transform.GetChild(0).gameObject);
                         GameObject Down = Instantiate(ItemsInRange[i].gameObject, downItem.transform, false);
+                        Down.transform.localPosition = new Vector3(-0.06f, 0.065f, 0f);
                         Down.name = ItemsInRange[i].gameObject.name;
                         Destroy(ItemsInRange[i].gameObject);
                         break;

@@ -1,5 +1,52 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &913332102
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 913332103}
+  - component: {fileID: 913332104}
+  m_Layer: 0
+  m_Name: CoinMagnet
+  m_TagString: CoinMagnet
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &913332103
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 913332102}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7600984664035167000}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &913332104
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 913332102}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.25
 --- !u!1 &2058283858
 GameObject:
   m_ObjectHideFlags: 0
@@ -30,6 +77,53 @@ Transform:
   m_Father: {fileID: 7600984664035167000}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -68.004005}
+--- !u!1 &1035664564396241740
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4338721776303765773}
+  - component: {fileID: 4226478218358810048}
+  m_Layer: 0
+  m_Name: CoinMagnet (1)
+  m_TagString: CoinMagnet
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4338721776303765773
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035664564396241740}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7600984665031520795}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &4226478218358810048
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035664564396241740}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.25
 --- !u!1 &7600984664035167004
 GameObject:
   m_ObjectHideFlags: 0
@@ -63,6 +157,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2058283859}
+  - {fileID: 913332103}
   m_Father: {fileID: 7600984664673736887}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -141,7 +236,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thorAnimation: {fileID: 0}
   valkAnimation: {fileID: 0}
+  thorScore: {fileID: 0}
+  valkScore: {fileID: 0}
   controllerNumber: 1
+  coins: 0
 --- !u!114 &801095915342241112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,6 +294,7 @@ GameObject:
   - component: {fileID: 109676076239904554}
   - component: {fileID: 8330869376092234921}
   - component: {fileID: 5291062775590370721}
+  - component: {fileID: 8374656412407698382}
   m_Layer: 0
   m_Name: SwapController
   m_TagString: Player
@@ -500,6 +599,20 @@ MonoBehaviour:
   aAvailable: 0
   swapAvailable: 0
   abilitySlot: 
+--- !u!114 &8374656412407698382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7600984664673736890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8a500805cbadf24dbfef3c6fe8f6c42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 1
+  screenDimmer: {fileID: 0}
 --- !u!1 &7600984665031520794
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,7 +644,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4338721776303765773}
   m_Father: {fileID: 7600984664673736887}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -609,9 +723,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d53f9f5b2fd233f4ab34f7f1fea2f6ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thorAnimation: {fileID: 0}
-  valkAnimation: {fileID: 0}
+  thorAnimation: {fileID: 895764767}
+  valkAnimation: {fileID: 109676076239904554}
+  thorScore: {fileID: 0}
+  valkScore: {fileID: 0}
   controllerNumber: 2
+  coins: 0
 --- !u!114 &6502305135600347040
 MonoBehaviour:
   m_ObjectHideFlags: 0

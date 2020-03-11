@@ -191,18 +191,18 @@ public abstract class AIClass : MonoBehaviour
             this.gameObject.GetComponent<enemyAnim>().updateCurrentAct(currentAct);
             teleportCoolDown = teleportTimerSet;
 
-            StartCoroutine(playAnim());
+            StartCoroutine(PlayAnim());
 
         }
 
     }
 
 
-    private IEnumerator playAnim()
+    private IEnumerator PlayAnim()
     {
             
         yield return new WaitForSeconds(2.0f);
-        print("after courtiune");
+        Debug.Log("after teleport coroutine");
         this.transform.position = -(Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime));
 
     }
@@ -225,7 +225,7 @@ public abstract class AIClass : MonoBehaviour
         this.speed = 0f;
     }
 
-    public string returnCurrentAct()
+    public string ReturnCurrentAct()
     {
         return this.currentAct;
     }
