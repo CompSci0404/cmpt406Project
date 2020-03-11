@@ -61,7 +61,7 @@ public class Abilities : MonoBehaviour
                 {
                     GameObject A = Instantiate(AbilitiesInRange[i].gameObject, aAbility.transform, false);
                     A.transform.localPosition = new Vector3(0.033f, -0.025f, -1f);
-                    Vector3 scaleChange = new Vector3(-0.2f, -0.2f, 0f);
+                    Vector3 scaleChange = new Vector3(-0.1f, -0.1f, 0f);
                     A.transform.localScale += scaleChange;
                     A.name = AbilitiesInRange[i].gameObject.name;
                     Destroy(AbilitiesInRange[i].gameObject);

@@ -8,7 +8,9 @@ using UnityEngine;
 public class ClusterBomb : ItemClass
 {
     private MainControls swapCheck;
-    public GameObject bomb;
+    GameObject player;
+    ParticleSystem explosion;
+    SpriteRenderer sprite;
     float power = 5f;
     float radius = 1.5f;
     float damage = 5f;
@@ -16,19 +18,22 @@ public class ClusterBomb : ItemClass
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.SetActive(true);
-        gameObject.GetComponent<ParticleSystem>().Stop();
         itemEffect = Detonate;
         swapCheck = FindObjectOfType<MainControls>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        explosion = gameObject.GetComponent<ParticleSystem>();
+        sprite = gameObject.GetComponent<SpriteRenderer>();
     }
 
     void Detonate()
     {
-        if(swapCheck.justSwapped)
+        if (swapCheck.justSwapped)
         {
-            gameObject.GetComponent<ParticleSystem>().Play();
-            Vector2 explosionPosition = bomb.transform.position;
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(explosionPosition, radius);
+            sprite.enabled = false;
+            explosion.transform.position = player.transform.position;
+            explosion.Play();
+            Vector2 bombPosition = player.transform.position;
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(bombPosition, radius);
 
             foreach (Collider2D hit in colliders)
             {
@@ -41,9 +46,10 @@ public class ClusterBomb : ItemClass
                 if (rBody != null)
                 {
                     Vector2 force = new Vector2(1, 1);
-                    rBody.AddForceAtPosition(force, explosionPosition);
+                    rBody.AddForceAtPosition(force, bombPosition);
                 }
             }
+
         }
         else
         {
