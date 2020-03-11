@@ -13,6 +13,7 @@ public class OdinAle: ItemClass
     {
         itemEffect = AddHealth;
         playerCont = GameObject.FindWithTag("Player");
+        SetUsable(true);
     }
 
     void AddHealth()

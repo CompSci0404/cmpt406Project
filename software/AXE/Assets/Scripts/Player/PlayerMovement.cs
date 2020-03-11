@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     float moveSpeed;
 
     private PlayerStats stats;
+    private PlayerMovement pMovement;
 
     [SerializeField]
     private ThorAnimationInput thorAnimation;
@@ -22,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         stats = this.GetComponentInChildren<PlayerStats>();
+
         rBody = gameObject.GetComponent<Rigidbody2D>();
         movement = new Vector2();
         lookDirection = new Vector2();
@@ -31,6 +33,18 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame and gets users inputs
     void Update()
     {
+
+        // update movement speed based on current player stat
+        if (gameObject.transform.GetChild(0).gameObject.activeSelf)
+        {
+            stats = gameObject.transform.GetChild(0).GetComponent<PlayerStats>();
+        }
+        else if (gameObject.transform.GetChild(1).gameObject.activeSelf)
+        {
+            stats = gameObject.transform.GetChild(1).GetComponent<PlayerStats>();
+        }
+        //
+
         moveSpeed = stats.GetMoveSpeed();
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");

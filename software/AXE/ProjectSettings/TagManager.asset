@@ -18,6 +18,7 @@ TagManager:
   - Ability
   - Message
   - SwapAbility
+  - CoinMagnet
   layers:
   - Default
   - TransparentFX
