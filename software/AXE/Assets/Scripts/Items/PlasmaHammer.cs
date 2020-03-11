@@ -44,7 +44,7 @@ public class PlasmaHammer : ItemClass
             GameObject laser = Instantiate(indicator, playerRB.transform.position, Quaternion.Euler(0, 0, angle));
 
             // remove the particle effect indicator
-            StartCoroutine(deleteEffects(laser));
+            StartCoroutine(DeleteEffects(laser));
         }
         else
         {
@@ -52,7 +52,7 @@ public class PlasmaHammer : ItemClass
         }
     }
 
-    IEnumerator deleteEffects(GameObject effect)
+    IEnumerator DeleteEffects(GameObject effect)
     {
         yield return new WaitForSeconds(1f);
         Destroy(effect);
