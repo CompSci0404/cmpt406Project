@@ -9,7 +9,7 @@ public class Abilities : MonoBehaviour
 {
     // UI ability location 
     [SerializeField]
-    private GameObject aAbility;
+    private GameObject activeAbility;
     [SerializeField]
     private GameObject swapAbility;
 
@@ -59,7 +59,7 @@ public class Abilities : MonoBehaviour
 
                 if (aAvailable)
                 {
-                    GameObject A = Instantiate(AbilitiesInRange[i].gameObject, aAbility.transform, false);
+                    GameObject A = Instantiate(AbilitiesInRange[i].gameObject, activeAbility.transform, false);
                     A.transform.localPosition = new Vector3(0.033f, -0.025f, -1f);
                     Vector3 scaleChange = new Vector3(-0.1f, -0.1f, 0f);
                     A.transform.localScale += scaleChange;
@@ -71,7 +71,7 @@ public class Abilities : MonoBehaviour
                 else
                 {
                     // removed 'rBody.position =' before new Vecotr2(rBody.pos... in dropA second param
-                    GameObject dropA = Instantiate(aAbility.transform.GetChild(0).gameObject,
+                    GameObject dropA = Instantiate(activeAbility.transform.GetChild(0).gameObject,
                     new Vector2(rBody.position.x + 0.5f, rBody.position.y + -0.5f) ,Quaternion.identity);
 
                     // changes
@@ -79,9 +79,9 @@ public class Abilities : MonoBehaviour
                     dropA.transform.localScale -= scaleChange;
                     //
 
-                    dropA.name = aAbility.transform.GetChild(0).gameObject.name;
-                    Destroy(aAbility.transform.GetChild(0).gameObject);
-                    GameObject A = Instantiate(AbilitiesInRange[i].gameObject, aAbility.transform, false);
+                    dropA.name = activeAbility.transform.GetChild(0).gameObject.name;
+                    Destroy(activeAbility.transform.GetChild(0).gameObject);
+                    GameObject A = Instantiate(AbilitiesInRange[i].gameObject, activeAbility.transform, false);
 
                     // changes
                     A.transform.localPosition = new Vector3(0.033f, -0.025f, -1f);
@@ -141,7 +141,7 @@ public class Abilities : MonoBehaviour
 
     public GameObject GetActiveAbility()
     {
-        return aAbility;
+        return activeAbility;
     }
 
     public GameObject GetSwapAbility()
@@ -151,7 +151,7 @@ public class Abilities : MonoBehaviour
 
     public bool isAbility()
     {
-        return aAbility.GetComponentInChildren<ItemClass>() != null;
+        return activeAbility.GetComponentInChildren<ItemClass>() != null;
     }
 
     public Vector3 VectorFromAngle(float angle)
