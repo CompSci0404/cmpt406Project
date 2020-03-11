@@ -105,6 +105,8 @@ MonoBehaviour:
   tooCloseRange: 0
   velocityOfRangedAttack: 0
   rangedAttackCooldown: 0
+  ParticleDamage: {fileID: 6980632896635148368, guid: e01f146a534f643e3a8bec06f3966da9,
+    type: 3}
 --- !u!61 &8473600148024395765
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -122,7 +124,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.6666667, y: 2.6666667}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
