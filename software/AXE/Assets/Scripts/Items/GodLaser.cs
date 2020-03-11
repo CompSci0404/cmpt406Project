@@ -38,7 +38,7 @@ public class GodLaser : ItemClass
         angle = playerCont.GetComponent<MainControls>().getRSAngle();
         lookDirection = playerCont.GetComponent<MainControls>().getRSDirection();
         // ability indicator
-        GameObject laser = Instantiate((GameObject)Resources.Load("GodLaserIndicator"), playerRB.transform.position, Quaternion.Euler(0, 0, angle)) as GameObject;
+        GameObject laser = Instantiate((GameObject)Resources.Load("Ability/GodLaserIndicator"), playerRB.transform.position, Quaternion.Euler(0, 0, angle)) as GameObject;
 
         // GodLaser Raycast Version
         // con is not very accurate because of the controls
@@ -59,16 +59,17 @@ public class GodLaser : ItemClass
          }*/
 
         // remove the particle effect indicator
-        StartCoroutine(deleteEffects(laser));
+        //StartCoroutine(deleteEffects(laser));
 
     }
 
+    /*
     IEnumerator deleteEffects(GameObject effect)
     {
         yield return new WaitForSeconds(1f);
         Destroy(effect);
     }
-
+    */
     
     /*
     //private void OnDrawGizmos()

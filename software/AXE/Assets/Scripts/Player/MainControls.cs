@@ -27,6 +27,8 @@ public class MainControls : MonoBehaviour
     private string lbButton;
 
     private string rightTrigger;
+    private string leftTrigger;
+
     private GameObject reticle;
     private float rightStickAngle;
     private Vector2 rightStickDirection;
@@ -62,100 +64,93 @@ public class MainControls : MonoBehaviour
         rightStickDirection = new Vector2(Input.GetAxis("LookHorizontal"), Input.GetAxis("LookVertical")).normalized;
         rightStickAngle = Mathf.Atan2(rightStickDirection.y, rightStickDirection.x) * Mathf.Rad2Deg - 180f;
 
-        if (reticle == null)
+        if (Input.GetAxis(leftTrigger) > 0)
         {
-            reticle = Instantiate((GameObject)Resources.Load("Reticle"), gameObject.transform.position,
-                Quaternion.Euler(0, 0, rightStickAngle)) as GameObject;
-            reticle.SetActive(false);
+            ItemInspector();
         }
-        // update position of reticle
-        reticle.transform.localPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0);
-        
-        // take right stick to move reticle around player
-        if (Input.GetAxis(rightTrigger) > 0 && gameObject.GetComponent<Abilities>().isAbility())
+        else
         {
-            // create player reticle
-            reticle.SetActive(true);
-        }
-        else if (Input.GetAxis(rightTrigger) <= 0 && gameObject.GetComponent<Abilities>().isAbility())
-        {
-            reticle.SetActive(false);
-        }
-        // aim reticle
-        reticle.transform.rotation = Quaternion.Euler(0, 0, rightStickAngle);
+            // deactivate UI
 
-        // wait for an input and set opposite player controller active
-        if (Input.GetButtonDown(yButton)) {
-            if (justSwapped)
-            {
-                //cannot switch yet
-            }
-            else
-            {
-                justSwapped = true;
+            // shows reticle
+            ShowReticle();
 
-                if (controllerNumber == 1)
+            // wait for an input and set opposite player controller active
+            if (Input.GetButtonDown(yButton))
+            {
+                if (justSwapped)
                 {
-                    HUD.ThorSwitch = true;
-                    HUD.ChangeCharacterIcon();
-                    thorAnimation.SwapAnimTrigger();
-                    stats.SetLives(stats.GetLives() - 1);
-                    Invoke("SwapPlayer", 1);
-                    
+                    //cannot switch yet
                 }
-                // if player 2 range
-                else if (controllerNumber == 2)
+                else
                 {
-                    HUD.ValkSwitch = true;
-                    HUD.ChangeCharacterIcon();
-                    valkAnimation.SwapAnimTrigger();
-                    stats.SetLives(stats.GetLives() - 1);
-                    Invoke("SwapPlayer", 1);
-                    
+                    justSwapped = true;
+
+                    if (controllerNumber == 1)
+                    {
+                        HUD.ThorSwitch = true;
+                        HUD.ChangeCharacterIcon();
+                        thorAnimation.SwapAnimTrigger();
+                        stats.SetLives(stats.GetLives() - 1);
+                        Invoke("SwapPlayer", 1);
+
+                    }
+                    // if player 2 range
+                    else if (controllerNumber == 2)
+                    {
+                        HUD.ValkSwitch = true;
+                        HUD.ChangeCharacterIcon();
+                        valkAnimation.SwapAnimTrigger();
+                        stats.SetLives(stats.GetLives() - 1);
+                        Invoke("SwapPlayer", 1);
+
+                    }
                 }
             }
+
+            else if (Input.GetButtonDown(bButton))
+            {
+                Attack();
+            }
+            else if (Input.GetButtonDown(aButton))
+            {
+                UseAbility();
+            }
+            else if (Input.GetButtonDown(xButton))
+            {
+                PickUpItem();
+                PickUpAbility();
+            }
+
+            // DPad presses
+            else if (DPad.IsUp)
+            {
+                lastDPadPressed = "up";
+                Debug.Log("last pressed up");
+            }
+            else if (DPad.IsDown)
+            {
+                lastDPadPressed = "down";
+                Debug.Log("last pressed down");
+            }
+            else if (DPad.IsLeft)
+            {
+                lastDPadPressed = "left";
+                Debug.Log("last pressed left");
+            }
+            else if (DPad.IsRight)
+            {
+                lastDPadPressed = "right";
+                Debug.Log("last pressed right");
+            }
+            else if (Input.GetButtonDown(lbButton))
+            {
+                UseItem();
+            }
+            // player has a method that activates when it becomes active and sends its stats to this class
         }
 
-        else if (Input.GetButtonDown(bButton))
-        {
-            Attack();       
-        }
-        else if (Input.GetButtonDown(aButton))
-        {
-            UseAbility();
-        }
-        else if (Input.GetButtonDown(xButton))
-        {
-            PickUpItem();
-            PickUpAbility();
-        }
 
-        // DPad presses
-        else if (DPad.IsUp)
-        {
-            lastDPadPressed = "up";
-            Debug.Log("last pressed up");
-        }
-        else if (DPad.IsDown)
-        {
-            lastDPadPressed = "down";
-            Debug.Log("last pressed down");
-        }
-        else if (DPad.IsLeft)
-        {
-            lastDPadPressed = "left";
-            Debug.Log("last pressed left");
-        }
-        else if (DPad.IsRight)
-        {
-            lastDPadPressed = "right";
-            Debug.Log("last pressed right");
-        }
-        else if (Input.GetButtonDown(lbButton))
-        {
-            UseItem();
-        }
-        // player has a method that activates when it becomes active and sends its stats to this class
     }
 
     private void SwapPlayer()
@@ -338,6 +333,7 @@ public class MainControls : MonoBehaviour
         yButton = "J" + controllerNumber + "Y";
         lbButton = "LeftBumper";
         rightTrigger = "RightTrigger";
+        leftTrigger = "LeftTrigger";
     }
 
     // get dpad last position
@@ -363,5 +359,103 @@ public class MainControls : MonoBehaviour
     public float getRSAngle()
     {
         return rightStickAngle;
+    }
+
+    public void ItemInspector()
+    {
+        if (Input.GetAxis(leftTrigger) > 0)
+        {
+            // activate UI for item ability infos 
+            // or instantiate one
+
+            // if else does is check input then check location if there is an item bound and if there is 
+            // give info of the item if not does nothing
+            if (Input.GetButtonDown(yButton))
+            {
+                // when there is an actual ui we will just change the properties of that UI based on the button pressed
+                if (gameObject.GetComponent<Abilities>().isSwapAbility())
+                {
+                    Debug.Log("Item Name: " + gameObject.GetComponent<Abilities>().GetSwapAbility().GetComponentInChildren<ItemClass>().itemName);
+                    Debug.Log("Item Description: " + gameObject.GetComponent<Abilities>().GetSwapAbility().GetComponentInChildren<ItemClass>().itemDescription);
+                }
+            }
+            else if (Input.GetButtonDown(aButton))
+            {
+                if (gameObject.GetComponent<Abilities>().isAbility())
+                {
+                    Debug.Log("Item Name: " + gameObject.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>().itemName);
+                    Debug.Log("Item Description: " + gameObject.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>().itemDescription);
+                }
+            }
+            else if (DPad.IsUp)
+            {
+                if (!this.GetComponent<Inventory>().isUpItem())
+                {
+                    Debug.Log("Item Name: " + gameObject.GetComponent<Inventory>().getUpItem().GetComponentInChildren<ItemClass>().itemName);
+                    Debug.Log("Item Description: " + gameObject.GetComponent<Inventory>().getUpItem().GetComponentInChildren<ItemClass>().itemDescription);
+                }
+            }
+            else if (DPad.IsDown)
+            {
+                if (!this.GetComponent<Inventory>().isDownItem())
+                {
+                    Debug.Log("Item Name: " + gameObject.GetComponent<Inventory>().getDownItem().GetComponentInChildren<ItemClass>().itemName);
+                    Debug.Log("Item Description: " + gameObject.GetComponent<Inventory>().getDownItem().GetComponentInChildren<ItemClass>().itemDescription);
+                }
+            }
+            else if (DPad.IsLeft)
+            {
+                if (!this.GetComponent<Inventory>().isLeftItem())
+                {
+                    Debug.Log("Item Name: " + gameObject.GetComponent<Inventory>().getLeftItem().GetComponentInChildren<ItemClass>().itemName);
+                    Debug.Log("Item Description: " + gameObject.GetComponent<Inventory>().getLeftItem().GetComponentInChildren<ItemClass>().itemDescription);
+                }
+            }
+            else if (DPad.IsRight)
+            {
+                if (!this.GetComponent<Inventory>().isRightItem())
+                {
+                    Debug.Log("Item Name: " + gameObject.GetComponent<Inventory>().getRightItem().GetComponentInChildren<ItemClass>().itemName);
+                    Debug.Log("Item Description: " + gameObject.GetComponent<Inventory>().getRightItem().GetComponentInChildren<ItemClass>().itemDescription);
+                }
+            }
+            
+            if (Input.GetAxis(rightTrigger) > 0)
+            {
+                reticle.SetActive(false);
+            }
+
+        }
+        // left trigger not being pressed deactivate UI
+        else if (Input.GetAxis(leftTrigger) <= 0)
+        {
+            // deactivate UI
+        }
+
+    }
+
+    public void ShowReticle()
+    {
+        if (reticle == null)
+        {
+            reticle = Instantiate((GameObject)Resources.Load("Ability/Reticle"), gameObject.transform.position,
+                Quaternion.Euler(0, 0, rightStickAngle)) as GameObject;
+            reticle.SetActive(false);
+        }
+        // update position of reticle
+        reticle.transform.localPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0);
+
+        // take right stick to move reticle around player
+        if (Input.GetAxis(rightTrigger) > 0)
+        {
+            // create player reticle
+            reticle.SetActive(true);
+        }
+        else if (Input.GetAxis(rightTrigger) <= 0)
+        {
+            reticle.SetActive(false);
+        }
+        // aim reticle
+        reticle.transform.rotation = Quaternion.Euler(0, 0, rightStickAngle);
     }
 }

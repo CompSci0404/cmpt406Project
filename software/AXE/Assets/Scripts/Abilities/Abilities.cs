@@ -153,6 +153,10 @@ public class Abilities : MonoBehaviour
     {
         return aAbility.GetComponentInChildren<ItemClass>() != null;
     }
+    public bool isSwapAbility()
+    {
+        return swapAbility.GetComponentInChildren<ItemClass>() != null;
+    }
 
     public Vector3 VectorFromAngle(float angle)
     {

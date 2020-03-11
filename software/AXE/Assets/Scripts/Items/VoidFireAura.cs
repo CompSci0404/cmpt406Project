@@ -2,22 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AbilityColliderHandler : MonoBehaviour
+public class VoidFireAura : ItemClass
 {
-    private PlayerStats stats;
     private GameObject playerCont;
     private GameObject curPlayCont;
-    [SerializeField] private float damageMultiplier;
+    private Rigidbody2D playerRB;
+    private PlayerStats stats;
 
     // Start is called before the first frame update
     void Start()
     {
+        itemEffect = UseVoidFireAura;
         playerCont = GameObject.FindWithTag("Player");
+        playerRB = playerCont.GetComponent<Rigidbody2D>();
+        setAbilityCooldown(0);
     }
 
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void UseVoidFireAura()
     {
+        // make sure we have the right player stat
         if (playerCont.GetComponent<MainControls>().getControllerNumber() == 1)
         {
             stats = GameObject.FindWithTag("Thor").GetComponent<PlayerStats>();
@@ -26,12 +29,12 @@ public class AbilityColliderHandler : MonoBehaviour
         {
             stats = GameObject.FindWithTag("Type2").GetComponent<PlayerStats>();
         }
-        Debug.Log("something");
-        if (collision.GetComponent<AIClass>() != null)
-        {
-            Debug.Log(collision.name);
-            collision.GetComponent<AIClass>().Damage(stats.GetDamage() * damageMultiplier);
-        }
-    }
-}
 
+        // ability indicator
+        GameObject aura = Instantiate((GameObject)Resources.Load("Ability/VoidFireAuraIndicator"), playerRB.transform.position, Quaternion.identity) as GameObject;
+        aura.transform.localPosition = new Vector3(playerRB.transform.position.x, playerRB.transform.position.y, 0);
+    }
+
+
+
+}
