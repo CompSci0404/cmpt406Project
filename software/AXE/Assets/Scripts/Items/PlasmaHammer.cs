@@ -38,7 +38,7 @@ public class PlasmaHammer : ItemClass
         angle = playerCont.GetComponent<MainControls>().getRSAngle();
         lookDirection = playerCont.GetComponent<MainControls>().getRSDirection();
         // ability indicator
-        GameObject laser = Instantiate((GameObject)Resources.Load("PlasmaHammerIndicator"), playerRB.transform.position, Quaternion.Euler(0, 0, angle)) as GameObject;
+        GameObject laser = Instantiate((GameObject)Resources.Load("Prefabs/PlasmaHammerIndicator"), playerRB.transform.position, Quaternion.Euler(0, 0, angle)) as GameObject;
 
         // remove the particle effect indicator
         StartCoroutine(deleteEffects(laser));
