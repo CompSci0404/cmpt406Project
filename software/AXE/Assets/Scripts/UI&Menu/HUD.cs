@@ -100,7 +100,7 @@ public class HUD : MonoBehaviour
             }
             foreach (var Hrt in ValkHealth)
             {
-                Hrt.GetComponent<Renderer>().sortingOrder = 1;
+                Hrt.GetComponent<Renderer>().sortingOrder = 0;
             }
             ThorSwitch = false;
         }
@@ -116,7 +116,7 @@ public class HUD : MonoBehaviour
             }
             foreach (var Hrt in ThorHealth)
             {
-                Hrt.GetComponent<Renderer>().sortingOrder = 1;
+                Hrt.GetComponent<Renderer>().sortingOrder = 0;
             }
             ValkSwitch = false;
         }
