@@ -236,6 +236,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thorAnimation: {fileID: 0}
   valkAnimation: {fileID: 0}
+  thorScore: {fileID: 0}
+  valkScore: {fileID: 0}
   controllerNumber: 1
   coins: 0
 --- !u!114 &801095915342241112
@@ -723,6 +725,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thorAnimation: {fileID: 895764767}
   valkAnimation: {fileID: 109676076239904554}
+  thorScore: {fileID: 0}
+  valkScore: {fileID: 0}
   controllerNumber: 2
   coins: 0
 --- !u!114 &6502305135600347040

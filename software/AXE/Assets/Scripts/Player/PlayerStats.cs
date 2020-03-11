@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public class PlayerStats : MonoBehaviour
     private ThorAnimationInput thorAnimation;
     [SerializeField]
     private ValkAnimationInput valkAnimation;
+    [SerializeField]
+    private TextMeshProUGUI thorScore;
+    [SerializeField]
+    private TextMeshProUGUI valkScore;
 
     public int controllerNumber;
     private float moveSpeed;
@@ -114,6 +119,10 @@ public class PlayerStats : MonoBehaviour
     public void AddCoin(int coin)
     {
         coins += coin;
+        if (controllerNumber == 1)
+            valkScore.SetText("Valkyrie Score: " + coins.ToString());
+        else
+            thorScore.SetText("Thor Score: " + coins.ToString());
     }
 
     void Awake()
