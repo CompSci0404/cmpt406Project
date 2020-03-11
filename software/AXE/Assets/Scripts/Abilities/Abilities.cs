@@ -110,19 +110,19 @@ public class Abilities : MonoBehaviour
                     if (CurrentA.GetComponent<EnergyShield>())
                     {
                         //remove from UI
-                        EnergyShield.GetComponent<Renderer>().sortingOrder = 0;
+                        EnergyShield.GetComponent<Renderer>().sortingOrder = -1;
                         CurrentA.transform.position = new Vector2(rBody.transform.position.x, rBody.transform.position.y-1);
                     }
                     else if (CurrentA.GetComponent<GodLaser>())
                     {
                         //remove from UI
-                        GodLaser.GetComponent<Renderer>().sortingOrder = 0;
+                        GodLaser.GetComponent<Renderer>().sortingOrder = -1;
                         CurrentA.transform.position = new Vector2(rBody.transform.position.x, rBody.transform.position.y - 1);
                     }
                     else if (CurrentA.GetComponent<PlasmaHammer>())
                     {
                         //remove from UI
-                        PlasmaHammer.GetComponent<Renderer>().sortingOrder = 0;
+                        PlasmaHammer.GetComponent<Renderer>().sortingOrder = -1;
                         CurrentA.transform.position = new Vector2(rBody.transform.position.x, rBody.transform.position.y - 1);
                     }
 
