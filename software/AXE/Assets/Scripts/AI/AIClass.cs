@@ -69,11 +69,15 @@ public abstract class AIClass : MonoBehaviour
         Debug.Log( "AI Health: " + health);
         //
         Instantiate(ParticleDamage, transform.position, Quaternion.identity);
-        if (health <= 0) { Die(); }
+        if (health <= 0) {
+            this.gameObject.GetComponent<enemyAnim>().death();
+            StartCoroutine(Die());
+        }
     }
 
-    public void Die()
+    public IEnumerator Die()
     {
+        yield return new WaitForSeconds(1.0f);
         SendMessageUpwards("EnemyDestroyed", gameObject, SendMessageOptions.RequireReceiver);
         Destroy(this.gameObject);
     }

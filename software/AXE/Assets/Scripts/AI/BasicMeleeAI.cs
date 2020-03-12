@@ -8,7 +8,7 @@ public class BasicMeleeAI : AIClass
     {
         if(collision.gameObject.tag == "Player")
         {
-            this.gameObject.GetComponent<enemyAnim>().updateCurrentAct("attack");
+            this.gameObject.GetComponent<enemyAnim>().attack();
             collision.gameObject.GetComponentInChildren<PlayerStats>().DamagePlayer(this.atkDamage); 
         }
     }
