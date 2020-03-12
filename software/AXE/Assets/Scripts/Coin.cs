@@ -35,6 +35,7 @@ public class Coin : MonoBehaviour
         if (col.CompareTag("Player"))
         {
             col.GetComponentInChildren<PlayerStats>().AddCoin(1);
+            FindObjectOfType<AudioManager>().PlaySound("Coins");
             Destroy(gameObject);
         }
     }

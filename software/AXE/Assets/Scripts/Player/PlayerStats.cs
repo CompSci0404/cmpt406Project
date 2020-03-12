@@ -187,12 +187,14 @@ public class PlayerStats : MonoBehaviour
         if (controllerNumber == 1)
         {
             HUD.ThorHealth[GetCurrHearts()].GetComponent<HeartDisplay>().isShown = false;
+            FindObjectOfType<AudioManager>().PlaySound("PlayerHit");
             Instantiate(ParticleDamage, transform.position, Quaternion.identity);
 
         }
         if (controllerNumber == 2)
         {
             HUD.ValkHealth[GetCurrHearts()].GetComponent<HeartDisplay>().isShown = false;
+            FindObjectOfType<AudioManager>().PlaySound("PlayerHit");
             Instantiate(ParticleDamage, transform.position, Quaternion.identity);
         }
     }

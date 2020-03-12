@@ -68,6 +68,7 @@ public abstract class AIClass : MonoBehaviour
         health -= damage;
         Debug.Log( "AI Health: " + health);
         //
+        FindObjectOfType<AudioManager>().PlaySound("EnemyHit");
         Instantiate(ParticleDamage, transform.position, Quaternion.identity);
         if (health <= 0) { Die(); }
     }
