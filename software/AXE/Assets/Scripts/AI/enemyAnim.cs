@@ -128,7 +128,7 @@ public class enemyAnim : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
 
         if(!dead) playAnim();
