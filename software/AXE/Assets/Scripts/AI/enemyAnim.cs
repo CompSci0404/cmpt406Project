@@ -8,6 +8,7 @@ public class enemyAnim : MonoBehaviour
     public bool isCyberWizard;
     public bool isDragur;
     public bool isNanoGhost;
+    private bool dead;
 
     private Animator ani; 
     private string oldAct;
@@ -20,6 +21,11 @@ public class enemyAnim : MonoBehaviour
     {
         this.currentAct = updatedAct;
         //print(currentAct + "we in this");
+    }
+    public void death()
+    {
+        dead = true;
+        ani.SetTrigger("Death");
     }
 
     public void playAnim() {
@@ -58,19 +64,19 @@ public class enemyAnim : MonoBehaviour
                 } else if (currentAct.Equals("move"))
                 {
                     // left: 
-                    if (oldPos < this.transform.position.y)
+                    if (oldPos < this.transform.position.x)
                     {
 
                         ani.SetFloat("Speed", 0.02f );
                     }
 
                     // right
-                    if (oldPos > this.transform.position.y)
+                    if (oldPos > this.transform.position.x)
                     {
 
                         ani.SetFloat("Speed", -0.02f);
                     }
-                    oldPos = this.transform.position.y; 
+                    oldPos = this.transform.position.x; 
                 }      
             }
             else if (isNanoGhost)
@@ -91,18 +97,18 @@ public class enemyAnim : MonoBehaviour
                 {
                     ani.SetBool("Attacking", false);
                     // left: 
-                    if (oldPos < this.transform.position.y)
+                    if (oldPos < this.transform.position.x)
                     {
 
                         ani.SetFloat("Speed", 0.02f);
                     }
 
-                    if (oldPos > this.transform.position.y)
+                    if (oldPos > this.transform.position.x)
                     {
 
                         ani.SetFloat("Speed", -0.02f);
                     }
-                    oldPos = this.transform.position.y;
+                    oldPos = this.transform.position.x;
                 }
 
         }
@@ -117,14 +123,15 @@ public class enemyAnim : MonoBehaviour
         currentAct = "";
         oldAct = "";
 
-        this.oldPos = this.transform.position.y;
+        this.oldPos = this.transform.position.x;
+        dead = false;
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        playAnim();
+        if(!dead) playAnim();
         //print(currentAct);
     }
 }
