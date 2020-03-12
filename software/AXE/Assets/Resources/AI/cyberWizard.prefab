@@ -105,6 +105,7 @@ MonoBehaviour:
   tooCloseRange: 0
   velocityOfRangedAttack: 100
   rangedAttackCooldown: 2
+  nameRngGameObject: FireProjectile
 --- !u!60 &5544134512873333584
 PolygonCollider2D:
   m_ObjectHideFlags: 0

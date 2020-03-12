@@ -21,8 +21,11 @@ public abstract class AIClass : MonoBehaviour
     public float tooCloseRange;             /*only enforced when this unit is retreating*/
     public float velocityOfRangedAttack;    /*the speed of how fast a bullet can leave from a AI.*/
     public float rangedAttackCooldown;      /*the cool down before a Range AI can fire again.*/
+    public GameObject[]  spawnPoints; 
+
 
     protected DecisionTree rootOfTree;      /*this is the root of the tree. for the decision tree. All classes extended from this super class have access to this function call.*/
+  
 
     private float saveSpeed;                /*The inital speed a AI originally had.*/
     private GameObject player;
@@ -32,7 +35,10 @@ public abstract class AIClass : MonoBehaviour
     private float teleportCoolDown = 0;     /*cool down before AI can teleport.*/
     private float teleportTimerSet = 3;     /*^*/
     private RaycastHit2D hit;               /*used in AI teleporation, a ray cast to determine if the AI is going to teleport out of a wall.*/
-
+    private int rangePrefabIndex;           /*the index for range projetcile gameobject.*/
+    private int enemySpawnIndex;            /*index of wanted enemy to spawn.*/
+    private List<GameObject> AIPrefabs; 
+    
 
     //---[[pre-setup calls (call these before building the decision tree in start.)]]---//
 
@@ -81,7 +87,9 @@ public abstract class AIClass : MonoBehaviour
     /// <returns>nothing</returns>
     public void BuildRangePrefabs()
     {
-        rangePrefabs = new List<GameObject>(); 
+        rangePrefabs = new List<GameObject>();
+        AIPrefabs = new List<GameObject>();
+
 
         object[] prefabs;
         int counter = 0; 
@@ -96,6 +104,69 @@ public abstract class AIClass : MonoBehaviour
 
             counter++; 
         }
+
+        counter = 0;
+        object[] AI;
+
+        AI = Resources.LoadAll("AI", typeof(GameObject)); 
+
+        while(counter < AI.Length)
+        {
+            GameObject enemy = (GameObject)AI[counter];
+
+
+            AIPrefabs.Add(enemy); 
+            counter++; 
+        }
+
+    }
+
+
+
+    public void findProj(string nameRngGameObject)
+    {
+        int counter = 0; 
+
+        while(counter < rangePrefabs.Count)
+        {
+
+            if (rangePrefabs[counter].name.Equals(nameRngGameObject))
+            {
+
+                this.rangePrefabIndex = counter;
+                return;
+            } 
+
+            counter++; 
+        }
+
+
+        Debug.LogError("You have not correctly setup this AI, ensure you entered the correct name" +
+            " of the projectile. You entered: \n "+ nameRngGameObject);
+
+    }
+
+    public void findAIPrefab(string aiName)
+    {
+
+        int counter = 0; 
+
+        while(counter < AIPrefabs.Count)
+        {
+
+            if (AIPrefabs[counter].name.Equals(aiName))
+            {
+
+                this.enemySpawnIndex = counter;
+                return;
+            }
+
+            counter++; 
+        }
+
+        Debug.LogError("You have not correctly setup this AI, ensure you entered the correct name" +
+           " of the enemyAI . You entered: \n " + aiName);
+
     }
 
     // --- [[ Damage to AI: ]] ---//
@@ -157,7 +228,7 @@ public abstract class AIClass : MonoBehaviour
             // direction that AI is currently facing is where we want to shoot our object!
             Vector2 direction = (player.transform.position - this.transform.position).normalized;
 
-            GameObject newProjectile = Instantiate(rangePrefabs[0], this.transform.position, Quaternion.identity);
+            GameObject newProjectile = Instantiate(rangePrefabs[this.rangePrefabIndex], this.transform.position, Quaternion.identity);
 
             float Angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
@@ -232,6 +303,30 @@ public abstract class AIClass : MonoBehaviour
     }
 
 
+
+    public bool canSpawn()
+    {
+        bool canSpawnYet = false;
+
+        StartCoroutine(spawnTimer(canSpawnYet));
+
+        Debug.Log("we are truning canSpawnyet: " + canSpawnYet);
+
+        if (canSpawnYet) return true;
+
+        return false; 
+    }
+
+
+    private IEnumerator spawnTimer(bool canSpawnYet)
+    {
+
+        yield return new WaitForSeconds(3.0f);
+
+        Debug.Log("we are truning canSpawnyetinto True:: " + canSpawnYet); 
+        canSpawnYet = true; 
+    }
+
     //---[[Movement Actions!]]---//
 
         /// <summary>
@@ -302,7 +397,6 @@ public abstract class AIClass : MonoBehaviour
         this.hit = Physics2D.Raycast(this.transform.position, randomPosition);
         //Debug.DrawLine(, hit.point,Color.green);
 
-        print("we getting in here?");
 
         // as long as it does not hit a wall, we are good to teleport to a new location. 
         if(hit.collider != null)
@@ -337,6 +431,28 @@ public abstract class AIClass : MonoBehaviour
 
 
     }
+
+
+
+    public void spawnUnits()
+    {
+
+        int counter = 0;
+
+        int randomNumSpawns = UnityEngine.Random.Range(0, spawnPoints.Length);
+
+        while (counter < randomNumSpawns)
+        {
+            int randomLocation = UnityEngine.Random.Range(0, spawnPoints.Length-1);
+
+            GameObject newEnemy = Instantiate(this.AIPrefabs[this.enemySpawnIndex], spawnPoints[randomLocation].transform.position, Quaternion.identity);
+         
+            counter++;
+        }
+
+
+    }
+
 
     /// <summary>
     /// <c>MoveAwayFromPlayer</c>
