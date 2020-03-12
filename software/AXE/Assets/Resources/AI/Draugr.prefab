@@ -105,6 +105,8 @@ MonoBehaviour:
   tooCloseRange: 0
   velocityOfRangedAttack: 0
   rangedAttackCooldown: 0
+  ParticleDamage: {fileID: 6980632896635148368, guid: e01f146a534f643e3a8bec06f3966da9,
+    type: 3}
 --- !u!61 &8473600148024395765
 BoxCollider2D:
   m_ObjectHideFlags: 0

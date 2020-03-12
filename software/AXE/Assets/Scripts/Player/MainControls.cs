@@ -298,9 +298,9 @@ public class MainControls : MonoBehaviour
             {
                 Debug.Log("NO ABILITY");
             }
-            else if (!this.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>().GetAbilityJustUsed())
+            else if (!this.GetComponent<Abilities>().GetActiveAbility().GetComponentInChildren<ItemClass>().GetAbilityJustUsed())
             {
-                this.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>().ItemActivate();
+                this.GetComponent<Abilities>().GetActiveAbility().GetComponentInChildren<ItemClass>().ItemActivate();
             }
             else
             {
@@ -313,9 +313,9 @@ public class MainControls : MonoBehaviour
             {
                 Debug.Log("NO ABILITY");
             }
-            else if (!this.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>().GetAbilityJustUsed())
+            else if (!this.GetComponent<Abilities>().GetActiveAbility().GetComponentInChildren<ItemClass>().GetAbilityJustUsed())
             {
-                this.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>().ItemActivate();
+                this.GetComponent<Abilities>().GetActiveAbility().GetComponentInChildren<ItemClass>().ItemActivate();
             }
             else
             {

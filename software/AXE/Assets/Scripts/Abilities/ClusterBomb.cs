@@ -65,6 +65,10 @@ public class ClusterBomb : ItemClass
             explosion.transform.position = player.transform.position;
             explosion.Play();
         }
+        else
+        {
+            Debug.LogError("Unable to retrieve ParticleSystem from " + gameObject.name);
+        }
 
     }
 }

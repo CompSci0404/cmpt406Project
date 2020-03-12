@@ -12,7 +12,8 @@ public abstract class AIClass : MonoBehaviour
     public int atkDamage = 1;
     public float tooCloseRange;    /*only enforced when this unit is retreating*/
     public float velocityOfRangedAttack;
-    public float rangedAttackCooldown; 
+    public float rangedAttackCooldown;
+    public GameObject ParticleDamage;
 
     protected DecisionTree rootOfTree;
 
@@ -66,6 +67,8 @@ public abstract class AIClass : MonoBehaviour
     {
         health -= damage;
         Debug.Log( "AI Health: " + health);
+        //
+        Instantiate(ParticleDamage, transform.position, Quaternion.identity);
         if (health <= 0) { Die(); }
     }
 
@@ -95,6 +98,8 @@ public abstract class AIClass : MonoBehaviour
             this.currentAct = "attack";
 
             this.gameObject.GetComponent<enemyAnim>().updateCurrentAct(currentAct);
+
+            FindObjectOfType<AudioManager>().PlaySound("NanoShot");
 
             // direction that AI is currently facing is where we want to shoot our object!
             Vector2 direction = (player.transform.position - this.transform.position).normalized;

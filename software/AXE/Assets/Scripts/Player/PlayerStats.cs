@@ -20,6 +20,8 @@ public class PlayerStats : MonoBehaviour
     private TextMeshProUGUI valkScore;
 
     public int controllerNumber;
+    //particle effect when damaged
+    public GameObject ParticleDamage;
     private float moveSpeed;
     private float range;
     private float atkForce;
@@ -185,10 +187,13 @@ public class PlayerStats : MonoBehaviour
         if (controllerNumber == 1)
         {
             HUD.ThorHealth[GetCurrHearts()].GetComponent<HeartDisplay>().isShown = false;
+            Instantiate(ParticleDamage, transform.position, Quaternion.identity);
+
         }
         if (controllerNumber == 2)
         {
             HUD.ValkHealth[GetCurrHearts()].GetComponent<HeartDisplay>().isShown = false;
+            Instantiate(ParticleDamage, transform.position, Quaternion.identity);
         }
     }
 
