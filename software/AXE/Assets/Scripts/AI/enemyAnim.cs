@@ -28,6 +28,12 @@ public class enemyAnim : MonoBehaviour
         ani.SetTrigger("Death");
     }
 
+    // For Draugr attack trigger only!
+    public void attack()
+    {
+        if (!dead) ani.SetTrigger("Attack");
+    }
+
     public void playAnim() {
         
                 
@@ -53,13 +59,8 @@ public class enemyAnim : MonoBehaviour
             } 
             else if (isDragur)
             {
-                if (currentAct.Equals("attack"))
+                if (currentAct.Equals("idle"))
                 {
-                    ani.SetTrigger("Attack");
-                }  
-                else if (currentAct.Equals("idle"))
-                {
-
                     ani.SetFloat("Speed", 0.0f);
                 } else if (currentAct.Equals("move"))
                 {
@@ -130,7 +131,6 @@ public class enemyAnim : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-
         if(!dead) playAnim();
         //print(currentAct);
     }
