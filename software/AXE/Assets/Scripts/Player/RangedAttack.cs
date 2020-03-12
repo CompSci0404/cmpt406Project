@@ -57,6 +57,8 @@ public class RangedAttack: MonoBehaviour
         GameObject arrow = Instantiate(arrowPrefab, rBody.position, Quaternion.AngleAxis(angle, Vector3.forward));
         arrow.transform.Translate(Vector3.up * 0.5f);
 
+        FindObjectOfType<AudioManager>().PlaySound("ValkShot");
+
         arrow.GetComponent<Arrow>().SetDamage(stats.GetDamage());
 
         Vector2 arrowForce = (Vector2)(arrow.transform.up * stats.GetAtkForce()) + rBody.velocity / 2;

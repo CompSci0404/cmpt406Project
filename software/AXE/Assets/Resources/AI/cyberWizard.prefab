@@ -105,7 +105,8 @@ MonoBehaviour:
   tooCloseRange: 0
   velocityOfRangedAttack: 100
   rangedAttackCooldown: 2
-  nameRngGameObject: FireProjectile
+  ParticleDamage: {fileID: 6980632896635148368, guid: e01f146a534f643e3a8bec06f3966da9,
+    type: 3}
 --- !u!60 &5544134512873333584
 PolygonCollider2D:
   m_ObjectHideFlags: 0

@@ -21,8 +21,8 @@ public abstract class AIClass : MonoBehaviour
     public float tooCloseRange;             /*only enforced when this unit is retreating*/
     public float velocityOfRangedAttack;    /*the speed of how fast a bullet can leave from a AI.*/
     public float rangedAttackCooldown;      /*the cool down before a Range AI can fire again.*/
-    public GameObject[]  spawnPoints; 
-
+    public GameObject[]  spawnPoints;
+    public GameObject ParticleDamage;
 
     protected DecisionTree rootOfTree;      /*this is the root of the tree. for the decision tree. All classes extended from this super class have access to this function call.*/
   
@@ -183,6 +183,8 @@ public abstract class AIClass : MonoBehaviour
     {
         health -= damage;
         Debug.Log( "AI Health: " + health);
+        //
+        Instantiate(ParticleDamage, transform.position, Quaternion.identity);
         if (health <= 0) { Die(); }
     }
 
@@ -224,6 +226,8 @@ public abstract class AIClass : MonoBehaviour
             this.currentAct = "attack";
 
             this.gameObject.GetComponent<enemyAnim>().updateCurrentAct(currentAct);
+
+            FindObjectOfType<AudioManager>().PlaySound("NanoShot");
 
             // direction that AI is currently facing is where we want to shoot our object!
             Vector2 direction = (player.transform.position - this.transform.position).normalized;
@@ -427,9 +431,6 @@ public abstract class AIClass : MonoBehaviour
                 this.transform.position = randomPosition;
             }
         }
-                
-
-
     }
 
 
@@ -489,7 +490,7 @@ public abstract class AIClass : MonoBehaviour
     /// post: returns the current action this AI is doing.
     /// </summary>
     /// <returns>string containing action.</returns>
-    public string returnCurrentAct()
+    public string ReturnCurrentAct()
     {
         return this.currentAct;
     }
