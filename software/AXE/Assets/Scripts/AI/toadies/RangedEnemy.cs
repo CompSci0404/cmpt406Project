@@ -18,6 +18,8 @@ public class RangedEnemy : AIClass
         this.FindPlayer();
         this.SetCooldown();
         this.BuildRangePrefabs();
+        this.findProj("FireProjectile"); 
+
 
         DecisionTree enemySpotted = new DecisionTree();
 
