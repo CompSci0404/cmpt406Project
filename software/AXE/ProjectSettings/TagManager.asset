@@ -18,6 +18,8 @@ TagManager:
   - Ability
   - Message
   - SwapAbility
+  - Spawnpoint
+  - Rooms
   layers:
   - Default
   - TransparentFX
