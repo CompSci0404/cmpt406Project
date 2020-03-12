@@ -77,7 +77,7 @@ public abstract class AIClass : MonoBehaviour
 
     public IEnumerator Die()
     {
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(1.0f);
         SendMessageUpwards("EnemyDestroyed", gameObject, SendMessageOptions.RequireReceiver);
         Destroy(this.gameObject);
     }
