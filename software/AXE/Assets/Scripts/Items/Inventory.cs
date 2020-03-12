@@ -10,6 +10,15 @@ public class Inventory : MonoBehaviour
     [SerializeField] private GameObject rightItem;
     [SerializeField] private GameObject downItem;
 
+    private GameObject OdinAle;
+    private GameObject BatteryBread;
+    private GameObject SwiftSauce;
+
+    private GameObject CurrentUp;
+    private GameObject CurrentLeft;
+    private GameObject CurrentRight;
+    private GameObject CurrentDown;
+
     private Transform myPosition;
     private Rigidbody2D playerRB;
 
@@ -22,6 +31,8 @@ public class Inventory : MonoBehaviour
 
     // check for swap abilities
     private GameObject swapAbility;
+
+
     private void Start()
     {
         playerRB = GetComponent<Rigidbody2D>();
@@ -35,11 +46,9 @@ public class Inventory : MonoBehaviour
     public void PickUpItem()
     {
         // get all item in range for pickup
-
         Collider2D[] ItemsInRange = Physics2D.OverlapCircleAll(myPosition.position, 1);
         for (int i = 0; i < ItemsInRange.Length; i++)
         {
-            
             if (ItemsInRange[i].CompareTag("Item"))
             {
                 // check if a dpad direction is empty
@@ -52,54 +61,177 @@ public class Inventory : MonoBehaviour
                 {
                     if (isUpItem())
                     {
-                        GameObject UP = Instantiate(ItemsInRange[i].gameObject, upItem.transform, false);
-                        UP.transform.localPosition = new Vector3(-0.04f, 0.065f, 0f);
-                        UP.name = ItemsInRange[i].gameObject.name;
-                        //handleIfSwap(ItemsInRange[i].gameObject, UP);
-                        Destroy(ItemsInRange[i].gameObject);
-                        break;
-
+                        if (ItemsInRange[i].GetComponent<OdinAle>())
+                        {
+                            OdinAle = GameObject.Find("OA_UI");
+                            OdinAle.transform.position = upItem.transform.position;
+                            OdinAle.GetComponent<Renderer>().sortingOrder = 1;
+                            upItem = ItemsInRange[i].gameObject;
+                            CurrentUp = ItemsInRange[i].gameObject;
+                            CurrentUp.transform.position = new Vector2(0, -1000);
+                        }
+                        else if (ItemsInRange[i].GetComponent<BatteryBread>())
+                        {
+                            BatteryBread = GameObject.Find("BB_UI");
+                            BatteryBread.transform.position = upItem.transform.position;
+                            BatteryBread.GetComponent<Renderer>().sortingOrder = 1;
+                            upItem = ItemsInRange[i].gameObject;
+                            CurrentUp = ItemsInRange[i].gameObject;
+                            CurrentUp.transform.position = new Vector2(0, -1000);
+                        }
+                        else if (ItemsInRange[i].GetComponent<SwiftSauce>())
+                        {
+                            SwiftSauce = GameObject.Find("SS_UI");
+                            SwiftSauce.transform.position = upItem.transform.position;
+                            SwiftSauce.GetComponent<Renderer>().sortingOrder = 1;
+                            upItem = ItemsInRange[i].gameObject;
+                            CurrentUp = ItemsInRange[i].gameObject;
+                            CurrentUp.transform.position = new Vector2(0, -1000);
+                        }
                     }
                     else
                     {
-                        if (!upItem.transform.GetChild(0).gameObject.GetComponent<ItemClass>().GetUsable())
+                        //if (!upItem.transform.GetChild(0).gameObject.GetComponent<ItemClass>().GetUsable())
+                        //{
+                        //    break;
+                        //}
+                        // check our current item
+                        if (CurrentUp.GetComponent<OdinAle>())
                         {
-                            break;
+                            //remove from UI
+                            OdinAle.GetComponent<Renderer>().sortingOrder = -1;
+                            CurrentUp.transform.position = new Vector2(playerRB.transform.position.x, playerRB.transform.position.y - 1);
                         }
-                        GameObject droppedUP = Instantiate(upItem.transform.GetChild(0).gameObject, playerRB.position, Quaternion.identity);
-                        droppedUP.name = upItem.transform.GetChild(0).gameObject.name;
-                        Destroy(upItem.transform.GetChild(0).gameObject);
-                        GameObject UP = Instantiate(ItemsInRange[i].gameObject, upItem.transform, false);
-                        UP.transform.localPosition = new Vector3(0f, 0.065f, 0f);
-                        UP.name = ItemsInRange[i].gameObject.name;
-                        Destroy(ItemsInRange[i].gameObject);
-                        break;
-                    }
+                        else if (CurrentUp.GetComponent<BatteryBread>())
+                        {
+                            //remove from UI
+                            BatteryBread.GetComponent<Renderer>().sortingOrder = -1;
+                            CurrentUp.transform.position = new Vector2(playerRB.transform.position.x, playerRB.transform.position.y - 1);
+                        }
+                        else if (CurrentUp.GetComponent<SwiftSauce>())
+                        {
+                            //remove from UI
+                            SwiftSauce.GetComponent<Renderer>().sortingOrder = -1;
+                            CurrentUp.transform.position = new Vector2(playerRB.transform.position.x, playerRB.transform.position.y - 1);
+                        }
 
+                        // Pick up new item
+                        if (ItemsInRange[i].GetComponent<OdinAle>())
+                        {
+                            OdinAle = GameObject.Find("OA_UI");
+                            OdinAle.transform.position = upItem.transform.position;
+                            OdinAle.GetComponent<Renderer>().sortingOrder = 1;
+                            upItem = ItemsInRange[i].gameObject;
+                            CurrentUp = ItemsInRange[i].gameObject;
+                            CurrentUp.transform.position = new Vector2(0, -1000);
+                        }
+                        else if (ItemsInRange[i].GetComponent<BatteryBread>())
+                        {
+                            BatteryBread = GameObject.Find("BB_UI");
+                            BatteryBread.transform.position = upItem.transform.position;
+                            BatteryBread.GetComponent<Renderer>().sortingOrder = 1;
+                            upItem = ItemsInRange[i].gameObject;
+                            CurrentUp = ItemsInRange[i].gameObject;
+                            CurrentUp.transform.position = new Vector2(0, -1000);
+                        }
+                        else if (ItemsInRange[i].GetComponent<SwiftSauce>())
+                        {
+                            SwiftSauce = GameObject.Find("SS_UI");
+                            SwiftSauce.transform.position = upItem.transform.position;
+                            SwiftSauce.GetComponent<Renderer>().sortingOrder = 1;
+                            upItem = ItemsInRange[i].gameObject;
+                            CurrentUp = ItemsInRange[i].gameObject;
+                            CurrentUp.transform.position = new Vector2(0, -1000);
+                        }
+                    }
                 }
                 else if (curDPad == "left")
                 {
                     if (isLeftItem())
                     {
-                        GameObject Left = Instantiate(ItemsInRange[i].gameObject, leftItem.transform, false);
-                        Left.transform.localPosition = new Vector3(0f, 0.065f, 0f);
-                        Left.name = ItemsInRange[i].gameObject.name;
-                        Destroy(ItemsInRange[i].gameObject);
+                        if (ItemsInRange[i].GetComponent<OdinAle>())
+                        {
+                            OdinAle = GameObject.Find("OA_UI");
+                            OdinAle.transform.position = leftItem.transform.position;
+                            OdinAle.GetComponent<Renderer>().sortingOrder = 1;
+                            leftItem = ItemsInRange[i].gameObject;
+                            CurrentLeft = ItemsInRange[i].gameObject;
+                            CurrentLeft.transform.position = new Vector2(0, -1000);
+                        }
+                        else if (ItemsInRange[i].GetComponent<BatteryBread>())
+                        {
+                            BatteryBread = GameObject.Find("BB_UI");
+                            BatteryBread.transform.position = leftItem.transform.position;
+                            BatteryBread.GetComponent<Renderer>().sortingOrder = 1;
+                            leftItem = ItemsInRange[i].gameObject;
+                            CurrentLeft = ItemsInRange[i].gameObject;
+                            CurrentLeft.transform.position = new Vector2(0, -1000);
+                        }
+                        else if (ItemsInRange[i].GetComponent<SwiftSauce>())
+                        {
+                            SwiftSauce = GameObject.Find("SS_UI");
+                            SwiftSauce.transform.position = leftItem.transform.position;
+                            SwiftSauce.GetComponent<Renderer>().sortingOrder = 1;
+                            leftItem = ItemsInRange[i].gameObject;
+                            CurrentLeft = ItemsInRange[i].gameObject;
+                            CurrentLeft.transform.position = new Vector2(0, -1000);
+                        }
                         break;
                     }
                     else
                     {
-                        if (!leftItem.transform.GetChild(0).gameObject.GetComponent<ItemClass>().GetUsable())
+                        //if (!leftItem.transform.GetChild(0).gameObject.GetComponent<ItemClass>().GetUsable())
+                        //{
+                        //    break;
+                        //}
+                        // check our current item
+                        if (CurrentLeft.GetComponent<OdinAle>())
                         {
-                            break;
+                            //remove from UI
+                            OdinAle.GetComponent<Renderer>().sortingOrder = -1;
+                            CurrentLeft.transform.position = new Vector2(playerRB.transform.position.x, playerRB.transform.position.y - 1);
                         }
-                        GameObject droppedLeft = Instantiate(leftItem.transform.GetChild(0).gameObject, playerRB.position, Quaternion.identity);
-                        droppedLeft.name = leftItem.transform.GetChild(0).gameObject.name;
-                        Destroy(leftItem.transform.GetChild(0).gameObject);
-                        GameObject Left = Instantiate(ItemsInRange[i].gameObject, leftItem.transform, false);
-                        Left.transform.localPosition = new Vector3(0f, 0.065f, 0f);
-                        Left.name = ItemsInRange[i].gameObject.name;
-                        Destroy(ItemsInRange[i].gameObject);
+                        else if (CurrentLeft.GetComponent<BatteryBread>())
+                        {
+                            //remove from UI
+                            BatteryBread.GetComponent<Renderer>().sortingOrder = -1;
+                            CurrentLeft.transform.position = new Vector2(playerRB.transform.position.x, playerRB.transform.position.y - 1);
+                        }
+                        else if (CurrentLeft.GetComponent<SwiftSauce>())
+                        {
+                            //remove from UI
+                            SwiftSauce.GetComponent<Renderer>().sortingOrder = -1;
+                            CurrentLeft.transform.position = new Vector2(playerRB.transform.position.x, playerRB.transform.position.y - 1);
+                        }
+
+                        // Pick up new item
+                        if (ItemsInRange[i].GetComponent<OdinAle>())
+                        {
+                            OdinAle = GameObject.Find("OA_UI");
+                            OdinAle.transform.position = leftItem.transform.position;
+                            OdinAle.GetComponent<Renderer>().sortingOrder = 1;
+                            leftItem = ItemsInRange[i].gameObject;
+                            CurrentLeft = ItemsInRange[i].gameObject;
+                            CurrentLeft.transform.position = new Vector2(0, -1000);
+                        }
+                        else if (ItemsInRange[i].GetComponent<BatteryBread>())
+                        {
+                            BatteryBread = GameObject.Find("BB_UI");
+                            BatteryBread.transform.position = leftItem.transform.position;
+                            BatteryBread.GetComponent<Renderer>().sortingOrder = 1;
+                            leftItem = ItemsInRange[i].gameObject;
+                            CurrentLeft = ItemsInRange[i].gameObject;
+                            CurrentLeft.transform.position = new Vector2(0, -1000);
+                        }
+                        else if (ItemsInRange[i].GetComponent<SwiftSauce>())
+                        {
+                            SwiftSauce = GameObject.Find("SS_UI");
+                            SwiftSauce.transform.position = leftItem.transform.position;
+                            SwiftSauce.GetComponent<Renderer>().sortingOrder = 1;
+                            leftItem = ItemsInRange[i].gameObject;
+                            CurrentLeft = ItemsInRange[i].gameObject;
+                            CurrentLeft.transform.position = new Vector2(0, -1000);
+                        }
                         break;
                     }
                 }
@@ -107,25 +239,88 @@ public class Inventory : MonoBehaviour
                 {
                     if (isRightItem())
                     {
-                        GameObject Right = Instantiate(ItemsInRange[i].gameObject, rightItem.transform, false);
-                        Right.transform.localPosition = new Vector3(0f, 0.065f, 0f);
-                        Right.name = ItemsInRange[i].gameObject.name;
-                        Destroy(ItemsInRange[i].gameObject);
-                        break;
-                    }
+                        if (ItemsInRange[i].GetComponent<OdinAle>())
+                        {
+                            OdinAle = GameObject.Find("OA_UI");
+                            OdinAle.transform.position = rightItem.transform.position;
+                            OdinAle.GetComponent<Renderer>().sortingOrder = 1;
+                            rightItem = ItemsInRange[i].gameObject;
+                            CurrentRight = ItemsInRange[i].gameObject;
+                            CurrentRight.transform.position = new Vector2(0, -1000);
+                        }
+                        else if (ItemsInRange[i].GetComponent<BatteryBread>())
+                        {
+                            BatteryBread = GameObject.Find("BB_UI");
+                            BatteryBread.transform.position = rightItem.transform.position;
+                            BatteryBread.GetComponent<Renderer>().sortingOrder = 1;
+                            rightItem = ItemsInRange[i].gameObject;
+                            CurrentRight = ItemsInRange[i].gameObject;
+                            CurrentRight.transform.position = new Vector2(0, -1000);
+                        }
+                        else if (ItemsInRange[i].GetComponent<SwiftSauce>())
+                        {
+                            SwiftSauce = GameObject.Find("SS_UI");
+                            SwiftSauce.transform.position = rightItem.transform.position;
+                            SwiftSauce.GetComponent<Renderer>().sortingOrder = 1;
+                            rightItem = ItemsInRange[i].gameObject;
+                            CurrentRight = ItemsInRange[i].gameObject;
+                            CurrentRight.transform.position = new Vector2(0, -1000);
+                        }
+                        }
                     else
                     {
-                        if (!rightItem.transform.GetChild(0).gameObject.GetComponent<ItemClass>().GetUsable())
+                        //if (!rightItem.transform.GetChild(0).gameObject.GetComponent<ItemClass>().GetUsable())
+                        //{
+                        //    break;
+                        //}
+                        // check our current item
+                        if (CurrentRight.GetComponent<OdinAle>())
                         {
-                            break;
+                            //remove from UI
+                            OdinAle.GetComponent<Renderer>().sortingOrder = -1;
+                            CurrentRight.transform.position = new Vector2(playerRB.transform.position.x, playerRB.transform.position.y - 1);
                         }
-                        GameObject droppedRight = Instantiate(rightItem.transform.GetChild(0).gameObject, playerRB.position, Quaternion.identity);
-                        droppedRight.name = rightItem.transform.GetChild(0).gameObject.name;
-                        Destroy(rightItem.transform.GetChild(0).gameObject);
-                        GameObject Right = Instantiate(ItemsInRange[i].gameObject, rightItem.transform, false);
-                        Right.transform.localPosition = new Vector3(0f, 0.065f, 0f);
-                        Right.name = ItemsInRange[i].gameObject.name;
-                        Destroy(ItemsInRange[i].gameObject);
+                        else if (CurrentRight.GetComponent<BatteryBread>())
+                        {
+                            //remove from UI
+                            BatteryBread.GetComponent<Renderer>().sortingOrder = -1;
+                            CurrentRight.transform.position = new Vector2(playerRB.transform.position.x, playerRB.transform.position.y - 1);
+                        }
+                        else if (CurrentRight.GetComponent<SwiftSauce>())
+                        {
+                            //remove from UI
+                            SwiftSauce.GetComponent<Renderer>().sortingOrder = -1;
+                            CurrentRight.transform.position = new Vector2(playerRB.transform.position.x, playerRB.transform.position.y - 1);
+                        }
+
+                        // Pick up new item
+                        if (ItemsInRange[i].GetComponent<OdinAle>())
+                        {
+                            OdinAle = GameObject.Find("OA_UI");
+                            OdinAle.transform.position = rightItem.transform.position;
+                            OdinAle.GetComponent<Renderer>().sortingOrder = 1;
+                            rightItem = ItemsInRange[i].gameObject;
+                            CurrentRight = ItemsInRange[i].gameObject;
+                            CurrentRight.transform.position = new Vector2(0, -1000);
+                        }
+                        else if (ItemsInRange[i].GetComponent<BatteryBread>())
+                        {
+                            BatteryBread = GameObject.Find("BB_UI");
+                            BatteryBread.transform.position = rightItem.transform.position;
+                            BatteryBread.GetComponent<Renderer>().sortingOrder = 1;
+                            rightItem = ItemsInRange[i].gameObject;
+                            CurrentRight = ItemsInRange[i].gameObject;
+                            CurrentRight.transform.position = new Vector2(0, -1000);
+                        }
+                        else if (ItemsInRange[i].GetComponent<SwiftSauce>())
+                        {
+                            SwiftSauce = GameObject.Find("SS_UI");
+                            SwiftSauce.transform.position = rightItem.transform.position;
+                            SwiftSauce.GetComponent<Renderer>().sortingOrder = 1;
+                            rightItem = ItemsInRange[i].gameObject;
+                            CurrentRight = ItemsInRange[i].gameObject;
+                            CurrentRight.transform.position = new Vector2(0, -1000);
+                        }
                         break;
                     }
                 }
@@ -133,29 +328,91 @@ public class Inventory : MonoBehaviour
                 {
                     if (isDownItem())
                     {
-                        GameObject Down = Instantiate(ItemsInRange[i].gameObject, downItem.transform, false);
-                        Down.transform.localPosition = new Vector3(-0.06f, 0.065f, 0f);
-                        Down.name = ItemsInRange[i].gameObject.name;
-                        Destroy(ItemsInRange[i].gameObject);
-                        break;
+                        if (ItemsInRange[i].GetComponent<OdinAle>())
+                        {
+                            OdinAle = GameObject.Find("OA_UI");
+                            OdinAle.transform.position = downItem.transform.position;
+                            OdinAle.GetComponent<Renderer>().sortingOrder = 1;
+                            downItem = ItemsInRange[i].gameObject;
+                            CurrentDown = ItemsInRange[i].gameObject;
+                            CurrentDown.transform.position = new Vector2(0, -1000);
+                        }
+                        else if (ItemsInRange[i].GetComponent<BatteryBread>())
+                        {
+                            BatteryBread = GameObject.Find("BB_UI");
+                            BatteryBread.transform.position = downItem.transform.position;
+                            BatteryBread.GetComponent<Renderer>().sortingOrder = 1;
+                            downItem = ItemsInRange[i].gameObject;
+                            CurrentDown = ItemsInRange[i].gameObject;
+                            CurrentDown.transform.position = new Vector2(0, -1000);
+                        }
+                        else if (ItemsInRange[i].GetComponent<SwiftSauce>())
+                        {
+                            SwiftSauce = GameObject.Find("SS_UI");
+                            SwiftSauce.transform.position = downItem.transform.position;
+                            SwiftSauce.GetComponent<Renderer>().sortingOrder = 1;
+                            downItem = ItemsInRange[i].gameObject;
+                            CurrentDown = ItemsInRange[i].gameObject;
+                            CurrentDown.transform.position = new Vector2(0, -1000);
+                        }
                     }
                     else
                     {
-                        if (!downItem.transform.GetChild(0).gameObject.GetComponent<ItemClass>().GetUsable())
+                        //if (!downItem.transform.GetChild(0).gameObject.GetComponent<ItemClass>().GetUsable())
+                        //{
+                        //    break;
+                        //}
+                        // check our current item
+                        if (CurrentDown.GetComponent<OdinAle>())
                         {
-                            break;
+                            //remove from UI
+                            OdinAle.GetComponent<Renderer>().sortingOrder = -1;
+                            CurrentDown.transform.position = new Vector2(playerRB.transform.position.x, playerRB.transform.position.y - 1);
                         }
-                        GameObject droppedDown = Instantiate(downItem.transform.GetChild(0).gameObject, playerRB.position, Quaternion.identity);
-                        droppedDown.name = downItem.transform.GetChild(0).gameObject.name;
-                        Destroy(downItem.transform.GetChild(0).gameObject);
-                        GameObject Down = Instantiate(ItemsInRange[i].gameObject, downItem.transform, false);
-                        Down.transform.localPosition = new Vector3(-0.06f, 0.065f, 0f);
-                        Down.name = ItemsInRange[i].gameObject.name;
-                        Destroy(ItemsInRange[i].gameObject);
+                        else if (CurrentDown.GetComponent<BatteryBread>())
+                        {
+                            //remove from UI
+                            BatteryBread.GetComponent<Renderer>().sortingOrder = -1;
+                            CurrentDown.transform.position = new Vector2(playerRB.transform.position.x, playerRB.transform.position.y - 1);
+                        }
+                        else if (CurrentDown.GetComponent<SwiftSauce>())
+                        {
+                            //remove from UI
+                            SwiftSauce.GetComponent<Renderer>().sortingOrder = -1;
+                            CurrentDown.transform.position = new Vector2(playerRB.transform.position.x, playerRB.transform.position.y - 1);
+                        }
+
+                        // Pick up new item
+                        if (ItemsInRange[i].GetComponent<OdinAle>())
+                        {
+                            OdinAle = GameObject.Find("OA_UI");
+                            OdinAle.transform.position = downItem.transform.position;
+                            OdinAle.GetComponent<Renderer>().sortingOrder = 1;
+                            downItem = ItemsInRange[i].gameObject;
+                            CurrentDown = ItemsInRange[i].gameObject;
+                            CurrentDown.transform.position = new Vector2(0, -1000);
+                        }
+                        else if (ItemsInRange[i].GetComponent<BatteryBread>())
+                        {
+                            BatteryBread = GameObject.Find("BB_UI");
+                            BatteryBread.transform.position = downItem.transform.position;
+                            BatteryBread.GetComponent<Renderer>().sortingOrder = 1;
+                            downItem = ItemsInRange[i].gameObject;
+                            CurrentDown = ItemsInRange[i].gameObject;
+                            CurrentDown.transform.position = new Vector2(0, -1000);
+                        }
+                        else if (ItemsInRange[i].GetComponent<SwiftSauce>())
+                        {
+                            SwiftSauce = GameObject.Find("SS_UI");
+                            SwiftSauce.transform.position = downItem.transform.position;
+                            SwiftSauce.GetComponent<Renderer>().sortingOrder = 1;
+                            downItem = ItemsInRange[i].gameObject;
+                            CurrentDown = ItemsInRange[i].gameObject;
+                            CurrentDown.transform.position = new Vector2(0, -1000);
+                        }
                         break;
                     }
                 }
-                
             }
         }
     }
@@ -181,7 +438,6 @@ public class Inventory : MonoBehaviour
     {
         if (upItem.GetComponentInChildren<ItemClass>() == null)
         {
-            Debug.Log("Up avail");
             return true;
         }
         else
@@ -229,5 +485,4 @@ public class Inventory : MonoBehaviour
             swapAbility = DPadPos;
         }
     }
-
 }

@@ -85,6 +85,12 @@ public class MainControls : MonoBehaviour
         // aim reticle
         reticle.transform.rotation = Quaternion.Euler(0, 0, rightStickAngle);
 
+        // Use the right trigger to attack 
+        if (Input.GetAxis(rightTrigger) > 0)
+        {
+            Attack();
+        }
+
         // wait for an input and set opposite player controller active
         if (Input.GetButtonDown(yButton)) {
             if (justSwapped)
@@ -101,6 +107,14 @@ public class MainControls : MonoBehaviour
                     HUD.ThorSwitch = true;
                     HUD.ChangeCharacterIcon();
                     thorAnimation.SwapAnimTrigger();
+                    if (swapAbility.Equals(""))
+                    {
+                        Debug.Log("No Ability");
+                    }
+                    else
+                    {
+                        this.GetComponent<Abilities>().GetSwapAbility().GetComponentInChildren<ItemClass>().ItemActivate();
+                    }
                     stats.SetLives(stats.GetLives() - 1);
                     this.GetComponent<PlayerMovement>().enabled = false;
                     Invoke("SwapPlayer", 1.5f);
@@ -111,6 +125,14 @@ public class MainControls : MonoBehaviour
                     HUD.ValkSwitch = true;
                     HUD.ChangeCharacterIcon();
                     valkAnimation.SwapAnimTrigger();
+                    if (swapAbility.Equals(""))
+                    {
+                        Debug.Log("No Ability");
+                    }
+                    else
+                    {
+                        this.GetComponent<Abilities>().GetSwapAbility().GetComponentInChildren<ItemClass>().ItemActivate();
+                    }
                     stats.SetLives(stats.GetLives() - 1);
                     this.GetComponent<PlayerMovement>().enabled = false;
                     Invoke("SwapPlayer", 1.5f);
@@ -169,14 +191,6 @@ public class MainControls : MonoBehaviour
         players.Remove(nextPlayer);
         players.Add(nextPlayer);
 
-        if (swapAbility.Equals(""))
-        {
-            Debug.Log("No Ability");
-        }
-        else
-        {
-            this.GetComponent<Abilities>().GetSwapAbility().GetComponentInChildren<ItemClass>().ItemActivate();
-        }
         this.GetComponent<PlayerMovement>().enabled = true;
         Invoke("ResetSwap", 1);
     }
@@ -189,7 +203,6 @@ public class MainControls : MonoBehaviour
     // Normal Attack
     private void Attack()
     {
-        
         // if player 1 melee
         if (controllerNumber == 1)
         {
