@@ -18,8 +18,14 @@ public abstract class ItemClass : MonoBehaviour
     public ItemType myItemType;
     private bool hasIndicator;
     private int playerItemUsed;
+
+    // for abilities. handles when abilities can be used
     private bool usable;
     private bool abilityJustUsed;
+
+    // for Damage Over Time abilities
+    private bool hasDot;
+    private bool doDot;
 
     [SerializeField] private int abilityCooldown;
     private int curAbilityCooldown;
@@ -88,6 +94,8 @@ public abstract class ItemClass : MonoBehaviour
     {
         return itemMultiplier;
     }
+
+    // swift sauce reset 
     void ResetSpeed()
     {
         
@@ -115,6 +123,9 @@ public abstract class ItemClass : MonoBehaviour
         Destroy(this.gameObject);
 
     }
+    //
+
+    // item cooldowns
     public void SetPlayerItemUsed(int player)
     {
         playerItemUsed = player;
@@ -127,7 +138,9 @@ public abstract class ItemClass : MonoBehaviour
     {
         return usable;
     }
+    //
 
+    // ability cooldowns
     public int GetCurAbilityCooldown()
     {
         return curAbilityCooldown;
@@ -140,4 +153,26 @@ public abstract class ItemClass : MonoBehaviour
     {
         return abilityJustUsed;
     }
+    //
+
+    // Ability Damage Over Time
+
+    public void SetHasDot(bool boolDot)
+    {
+        hasDot = boolDot;
+    }
+    public bool GetHasDot()
+    {
+        return hasDot;
+    }
+    public void SetDoDot(bool boolDot)
+    {
+        doDot = boolDot;
+    }
+    public bool GetDoDot()
+    {
+        return doDot;
+    }
+    //
+
 }
