@@ -28,6 +28,7 @@ public class Abilities : MonoBehaviour
     public GameObject EnergyShield;
     public GameObject GodLaser;
     public GameObject PlasmaHammer;
+    public GameObject VoidFireAura;
     public GameObject ClusterBomb;
     public GameObject TimelineShifter;
 
@@ -109,8 +110,8 @@ public class Abilities : MonoBehaviour
                     }
                     else if (AbilitiesInRange[i].GetComponent<VoidFireAura>())
                     {
-                        PlasmaHammer = GameObject.Find("PH_UI");
-                        PlasmaHammer.GetComponent<Renderer>().sortingOrder = 1;
+                        VoidFireAura = GameObject.Find("VFA_UI");
+                        VoidFireAura.GetComponent<Renderer>().sortingOrder = 1;
                         aAbility = AbilitiesInRange[i].gameObject;
                         CurrentA = AbilitiesInRange[i].gameObject;
                         CurrentA.transform.position = new Vector2(0, -1000);
@@ -146,6 +147,12 @@ public class Abilities : MonoBehaviour
                         PlasmaHammer.GetComponent<Renderer>().sortingOrder = -1;
                         CurrentA.transform.position = new Vector2(rBody.transform.position.x, rBody.transform.position.y - 1);
                     }
+                    else if (CurrentA.GetComponent<VoidFireAura>())
+                    {
+                        //remove from UI
+                        VoidFireAura.GetComponent<Renderer>().sortingOrder = -1;
+                        CurrentA.transform.position = new Vector2(rBody.transform.position.x, rBody.transform.position.y - 1);
+                    }
 
                     // Pick up new item
                     if (AbilitiesInRange[i].GetComponent<EnergyShield>())
@@ -172,7 +179,14 @@ public class Abilities : MonoBehaviour
                         CurrentA = AbilitiesInRange[i].gameObject;
                         CurrentA.transform.position = new Vector2(0, -1000);
                     }
-
+                    else if (AbilitiesInRange[i].GetComponent<VoidFireAura>())
+                    {
+                        VoidFireAura = GameObject.Find("VFA_UI");
+                        VoidFireAura.GetComponent<Renderer>().sortingOrder = 1;
+                        aAbility = AbilitiesInRange[i].gameObject;
+                        CurrentA = AbilitiesInRange[i].gameObject;
+                        CurrentA.transform.position = new Vector2(0, -1000);
+                    }
 
                     //// removed 'rBody.position =' before new Vecotr2(rBody.pos... in dropA second param
                     //GameObject dropA = Instantiate(aAbility.transform.GetChild(0).gameObject,
