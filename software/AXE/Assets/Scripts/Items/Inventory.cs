@@ -51,6 +51,18 @@ public class Inventory : MonoBehaviour
         {
             if (ItemsInRange[i].CompareTag("Item"))
             {
+                // every item starts as GetNeedCoin false
+                // if vendor spawn the item getNeedcoin is true
+                // so you have to buy it but once you bought it needCoin is false
+                if (ItemsInRange[i].GetComponent<ItemClass>().GetNeedCoin())
+                {
+                    ItemsInRange[i].GetComponent<ItemClass>().BuyItem();
+                }
+                // second time checking if item was bought if not then cant pick it up
+                if (ItemsInRange[i].GetComponent<ItemClass>().GetNeedCoin())
+                {
+                    break;
+                }
                 // check if a dpad direction is empty
                 // if it is pick up item and add it to inventory UI
                 // also change name to prevent repetitive adition of clone in name
@@ -485,4 +497,5 @@ public class Inventory : MonoBehaviour
             swapAbility = DPadPos;
         }
     }
+
 }

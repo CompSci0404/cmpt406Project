@@ -62,6 +62,19 @@ public class Abilities : MonoBehaviour
         {
             if (AbilitiesInRange[i].CompareTag("Ability"))
             {
+                // every item starts as GetNeedCoin false
+                // if vendor spawn the item getNeedcoin is true
+                // so you have to buy it but once you bought it needCoin is false
+                if (AbilitiesInRange[i].GetComponent<ItemClass>().GetNeedCoin())
+                {
+                    AbilitiesInRange[i].GetComponent<ItemClass>().BuyItem();
+                }
+                // second time checking if item was bought if not then cant pick it up
+                if (AbilitiesInRange[i].GetComponent<ItemClass>().GetNeedCoin())
+                {
+                    break;
+                }
+
                 // check if a button is empty
                 // if it is pick up ability and add it to ability UI
                 // disable button (for now)
@@ -87,6 +100,14 @@ public class Abilities : MonoBehaviour
                         CurrentA.transform.position = new Vector2(0, -1000);
                     }
                     else if (AbilitiesInRange[i].GetComponent<PlasmaHammer>())
+                    {
+                        PlasmaHammer = GameObject.Find("PH_UI");
+                        PlasmaHammer.GetComponent<Renderer>().sortingOrder = 1;
+                        aAbility = AbilitiesInRange[i].gameObject;
+                        CurrentA = AbilitiesInRange[i].gameObject;
+                        CurrentA.transform.position = new Vector2(0, -1000);
+                    }
+                    else if (AbilitiesInRange[i].GetComponent<VoidFireAura>())
                     {
                         PlasmaHammer = GameObject.Find("PH_UI");
                         PlasmaHammer.GetComponent<Renderer>().sortingOrder = 1;
@@ -179,6 +200,19 @@ public class Abilities : MonoBehaviour
 
             else if (AbilitiesInRange[i].CompareTag("SwapAbility"))
             {
+                // every item starts as GetNeedCoin false
+                // if vendor spawn the item getNeedcoin is true
+                // so you have to buy it but once you bought it needCoin is false
+                if (AbilitiesInRange[i].GetComponent<ItemClass>().GetNeedCoin())
+                {
+                    AbilitiesInRange[i].GetComponent<ItemClass>().BuyItem();
+                }
+                // second time checking if item was bought if not then cant pick it up
+                if (AbilitiesInRange[i].GetComponent<ItemClass>().GetNeedCoin())
+                {
+                    break;
+                }
+
                 abilitySlot = "Swap";
 
                 if (swapAvailable)

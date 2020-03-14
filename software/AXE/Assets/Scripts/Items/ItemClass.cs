@@ -16,6 +16,10 @@ public abstract class ItemClass : MonoBehaviour
     public string itemName;
     public string itemDescription;
     public ItemType myItemType;
+    [SerializeField] int price;
+    private bool needCoin;
+
+
     private bool hasIndicator;
     private int playerItemUsed;
 
@@ -175,4 +179,38 @@ public abstract class ItemClass : MonoBehaviour
     }
     //
 
+    public void SetNeedCoin(bool coins)
+    {
+        needCoin = coins;
+    }
+
+    public bool GetNeedCoin()
+    {
+        return needCoin;
+    }
+
+    public int GetPrice()
+    {
+        return price;
+    }
+    public void BuyItem()
+    {
+        GameObject playerCont =  GameObject.FindWithTag("Player");
+        PlayerStats stats;
+        if (playerCont.GetComponent<MainControls>().getControllerNumber() == 1)
+        {
+            stats = GameObject.FindWithTag("Thor").GetComponent<PlayerStats>();
+        }
+        else
+        {
+            stats = GameObject.FindWithTag("Type2").GetComponent<PlayerStats>();
+        }
+
+        if (price <= stats.GetCoins())
+        {
+            stats.UseCoins(price);
+            needCoin = false;
+        }
+
+    }
 }

@@ -73,11 +73,11 @@ public class DamageAbilityColliderHandler : MonoBehaviour
         yield return new WaitForSeconds(1f);
         if (n == 0)
         {
-            if (playerCont.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>() != null)
+            if (playerCont.GetComponent<Abilities>().GetActiveAbility().GetComponentInChildren<ItemClass>() != null)
             {
-                if (playerCont.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>().GetHasDot())
+                if (playerCont.GetComponent<Abilities>().GetActiveAbility().GetComponentInChildren<ItemClass>().GetHasDot())
                 {
-                    playerCont.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>().SetDoDot(true);
+                    playerCont.GetComponent<Abilities>().GetActiveAbility().GetComponentInChildren<ItemClass>().SetDoDot(true);
                 }
                 
             }
@@ -104,12 +104,12 @@ public class DamageAbilityColliderHandler : MonoBehaviour
     IEnumerator DestroyMe()
     {
         yield return new WaitForSeconds(duration);
-        if (playerCont.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>() != null && myDamageType == DamageType.damageOverTime)
+        if (playerCont.GetComponent<Abilities>().GetActiveAbility().GetComponentInChildren<ItemClass>() != null && myDamageType == DamageType.damageOverTime)
         {
-            if (playerCont.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>().GetHasDot())
+            if (playerCont.GetComponent<Abilities>().GetActiveAbility().GetComponentInChildren<ItemClass>().GetHasDot())
             {
-                Debug.Log("do dot" + playerCont.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>().GetHasDot());
-                playerCont.GetComponent<Abilities>().getaAbility().GetComponentInChildren<ItemClass>().SetDoDot(true);
+                Debug.Log("do dot" + playerCont.GetComponent<Abilities>().GetActiveAbility().GetComponentInChildren<ItemClass>().GetHasDot());
+                playerCont.GetComponent<Abilities>().GetActiveAbility().GetComponentInChildren<ItemClass>().SetDoDot(true);
             }
 
         }

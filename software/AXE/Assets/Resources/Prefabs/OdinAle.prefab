@@ -98,6 +98,7 @@ MonoBehaviour:
   itemName: 
   itemDescription: 
   myItemType: 0
+  price: 1
   abilityCooldown: 0
   itemDuration: 0
   itemMultiplier: 0

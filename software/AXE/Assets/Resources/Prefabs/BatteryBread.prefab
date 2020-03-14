@@ -114,6 +114,7 @@ MonoBehaviour:
   itemName: Battery Bread
   itemDescription: Instantly recharges item ability
   myItemType: 0
+  price: 1
   abilityCooldown: 0
   itemDuration: 0
   itemMultiplier: 0

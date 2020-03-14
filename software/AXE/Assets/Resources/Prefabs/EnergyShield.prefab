@@ -100,7 +100,10 @@ MonoBehaviour:
   itemDescription: A shield of barely contained transparent energy enveloping the
     user; blocks one blow then detonates pushing back any nearby enemies.
   myItemType: 2
-  ItemCooldown: 5
+  price: 1
+  abilityCooldown: 0
+  itemDuration: 0
+  itemMultiplier: 0
 --- !u!114 &3957668712458354571
 MonoBehaviour:
   m_ObjectHideFlags: 0

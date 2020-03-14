@@ -150,6 +150,7 @@ public class MainControls : MonoBehaviour
         }
         else if (Input.GetButtonDown(xButton))
         {
+            
             PickUpItem();
             PickUpAbility();
         }
