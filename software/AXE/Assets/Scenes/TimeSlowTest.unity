@@ -783,6 +783,75 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &448111089
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5347585470377366956, guid: aa57772490282464c9f45f1749d0677e,
+        type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5347585470377366959, guid: aa57772490282464c9f45f1749d0677e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5347585470377366959, guid: aa57772490282464c9f45f1749d0677e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5347585470377366959, guid: aa57772490282464c9f45f1749d0677e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5347585470377366959, guid: aa57772490282464c9f45f1749d0677e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5347585470377366959, guid: aa57772490282464c9f45f1749d0677e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5347585470377366959, guid: aa57772490282464c9f45f1749d0677e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5347585470377366959, guid: aa57772490282464c9f45f1749d0677e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5347585470377366959, guid: aa57772490282464c9f45f1749d0677e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5347585470377366959, guid: aa57772490282464c9f45f1749d0677e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5347585470377366959, guid: aa57772490282464c9f45f1749d0677e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5347585470377366959, guid: aa57772490282464c9f45f1749d0677e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: aa57772490282464c9f45f1749d0677e, type: 3}
 --- !u!1001 &487843443
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2861,6 +2930,12 @@ PrefabInstance:
       propertyPath: valkScore
       value: 
       objectReference: {fileID: 608948497}
+    - target: {fileID: 7600984664035167005, guid: 16c7e1f4973d0fb44910bce4460806f1,
+        type: 3}
+      propertyPath: ParticleDamage
+      value: 
+      objectReference: {fileID: 957760211153635426, guid: 2b6962467de2746849af8d94507a8946,
+        type: 3}
     - target: {fileID: 7600984665031520788, guid: 16c7e1f4973d0fb44910bce4460806f1,
         type: 3}
       propertyPath: thorScore
@@ -2871,6 +2946,12 @@ PrefabInstance:
       propertyPath: valkScore
       value: 
       objectReference: {fileID: 608948497}
+    - target: {fileID: 7600984665031520788, guid: 16c7e1f4973d0fb44910bce4460806f1,
+        type: 3}
+      propertyPath: ParticleDamage
+      value: 
+      objectReference: {fileID: 8927798025064241273, guid: d8f29ed5cb48345e2b0e7f013c7a083c,
+        type: 3}
     - target: {fileID: 8374656412407698382, guid: 16c7e1f4973d0fb44910bce4460806f1,
         type: 3}
       propertyPath: screenDimmer

@@ -44,10 +44,15 @@ public class DropSystem : MonoBehaviour
     }
 
     // Drop a coin
-    public void DropCoin(Transform t)
+    public void DropCoins(Transform t)
     {
         Quaternion rotation = Quaternion.AngleAxis(0f, Vector3.forward);
-        GameObject coin = Instantiate(coinObject, t.position, rotation);
+        int numCoins = Random.Range(0, 5);
+        for (int i = 0; i < numCoins; i++)
+        {
+            GameObject coin = Instantiate(coinObject, t.position, rotation);
+            coin.transform.position = new Vector2(t.position.x + (numCoins / 5), t.position.y + (numCoins / 5));
+        }
     }
 
     // Called by an enemy to get a chance to drop an item
@@ -56,15 +61,15 @@ public class DropSystem : MonoBehaviour
         int randInt = Random.Range(0, 101);
         print(randInt);
 
-        if (randInt <= dropChance)
-            DropSwap(t);
-        else if (randInt > dropChance && randInt <= dropChance + dropChance)
-            DropItem(t);
-        else if (randInt > dropChance + dropChance && randInt <= dropChance + dropChance + dropChance)
-            DropConsumable(t);
-        else if (randInt > dropChance + dropChance + dropChance && randInt <= dropChance + dropChance + dropChance + dropChance + dropChance + dropChance)
+        //if (randInt <= dropChance)
+        //    DropSwap(t);
+        //else if (randInt > dropChance && randInt <= dropChance + dropChance)
+        //    DropItem(t);
+        //else if (randInt > dropChance + dropChance && randInt <= dropChance + dropChance + dropChance)
+        //    DropConsumable(t);
+        if (randInt <= dropChance * 5)
         {
-            DropCoin(t);
+            DropCoins(t);
         }
         else
             return;

@@ -37,5 +37,7 @@ public class Coin : MonoBehaviour
             col.GetComponentInChildren<PlayerStats>().AddCoin(1);
             Destroy(gameObject);
         }
+        else
+        { }
     }
 }
