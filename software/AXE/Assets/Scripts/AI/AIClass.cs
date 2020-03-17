@@ -37,8 +37,13 @@ public abstract class AIClass : MonoBehaviour
     private RaycastHit2D hit;               /*used in AI teleporation, a ray cast to determine if the AI is going to teleport out of a wall.*/
     private int rangePrefabIndex;           /*the index for range projetcile gameobject.*/
     private int enemySpawnIndex;            /*index of wanted enemy to spawn.*/
-    private List<GameObject> AIPrefabs; 
-    
+    private List<GameObject> AIPrefabs;
+
+    // spawn:
+
+    private float spawnTimer = 5;
+    private float spawnCoolDown = 0; 
+
 
     //---[[pre-setup calls (call these before building the decision tree in start.)]]---//
 
@@ -227,7 +232,7 @@ public abstract class AIClass : MonoBehaviour
 
             this.gameObject.GetComponent<enemyAnim>().updateCurrentAct(currentAct);
 
-            FindObjectOfType<AudioManager>().PlaySound("NanoShot");
+            //FindObjectOfType<AudioManager>().PlaySound("NanoShot");
 
             // direction that AI is currently facing is where we want to shoot our object!
             Vector2 direction = (player.transform.position - this.transform.position).normalized;
@@ -310,36 +315,48 @@ public abstract class AIClass : MonoBehaviour
 
     public bool canSpawn()
     {
-        bool canSpawnYet = false;
 
-        StartCoroutine(spawnTimer(canSpawnYet));
+        if (this.spawnCoolDown > 0)
+        {
 
-        Debug.Log("we are truning canSpawnyet: " + canSpawnYet);
+            this.spawnCoolDown = this.spawnCoolDown - Time.deltaTime; 
 
-        if (canSpawnYet) return true;
+
+            if(this.spawnCoolDown <= 0)
+            {
+
+                this.spawnCoolDown = 0; 
+            }
+
+            return false; 
+
+        } 
+        
+        if(this.spawnCoolDown == 0)
+        {
+
+            this.spawnCoolDown = this.spawnTimer;
+
+            return true; 
+
+        }
+
 
         return false; 
+     
+
     }
 
-
-    private IEnumerator spawnTimer(bool canSpawnYet)
-    {
-
-        yield return new WaitForSeconds(3.0f);
-
-        Debug.Log("we are truning canSpawnyetinto True:: " + canSpawnYet); 
-        canSpawnYet = true; 
-    }
 
     //---[[Movement Actions!]]---//
 
-        /// <summary>
-        /// <c>MoveTowrdsPlayer</c>
-        /// 
-        /// pre: must have a decision hooked up to it.
-        /// post: move ai towards the player.
-        /// 
-        /// </summary>
+    /// <summary>
+    /// <c>MoveTowrdsPlayer</c>
+    /// 
+    /// pre: must have a decision hooked up to it.
+    /// post: move ai towards the player.
+    /// 
+    /// </summary>
     public void MoveTowardsPlayer()
     {
         speed = saveSpeed;
