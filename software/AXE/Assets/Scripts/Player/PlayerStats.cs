@@ -127,6 +127,11 @@ public class PlayerStats : MonoBehaviour
             thorScore.SetText("Thor Score: " + coins.ToString());
     }
 
+    public void UseCoins (int numCoin)
+    {
+        coins -= numCoin;
+    }
+
     void Awake()
     {
         // initialize stats

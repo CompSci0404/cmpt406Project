@@ -117,6 +117,7 @@ MonoBehaviour:
   itemDescription: A cluster of powerful micro explosives is released in a large radius
     around the character who switched out, damaging all enemies caught in the blast.
   myItemType: 1
+  price: 1
   abilityCooldown: 0
   itemDuration: 0
   itemMultiplier: 0

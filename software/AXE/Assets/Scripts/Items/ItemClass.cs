@@ -16,10 +16,20 @@ public abstract class ItemClass : MonoBehaviour
     public string itemName;
     public string itemDescription;
     public ItemType myItemType;
+    [SerializeField] int price;
+    private bool needCoin;
+
+
     private bool hasIndicator;
     private int playerItemUsed;
+
+    // for abilities. handles when abilities can be used
     private bool usable;
     private bool abilityJustUsed;
+
+    // for Damage Over Time abilities
+    private bool hasDot;
+    private bool doDot;
 
     [SerializeField] private int abilityCooldown;
     private int curAbilityCooldown;
@@ -88,6 +98,8 @@ public abstract class ItemClass : MonoBehaviour
     {
         return itemMultiplier;
     }
+
+    // swift sauce reset 
     void ResetSpeed()
     {
         
@@ -115,6 +127,9 @@ public abstract class ItemClass : MonoBehaviour
         Destroy(this.gameObject);
 
     }
+    //
+
+    // item cooldowns
     public void SetPlayerItemUsed(int player)
     {
         playerItemUsed = player;
@@ -127,7 +142,9 @@ public abstract class ItemClass : MonoBehaviour
     {
         return usable;
     }
+    //
 
+    // ability cooldowns
     public int GetCurAbilityCooldown()
     {
         return curAbilityCooldown;
@@ -139,5 +156,61 @@ public abstract class ItemClass : MonoBehaviour
     public bool GetAbilityJustUsed()
     {
         return abilityJustUsed;
+    }
+    //
+
+    // Ability Damage Over Time
+
+    public void SetHasDot(bool boolDot)
+    {
+        hasDot = boolDot;
+    }
+    public bool GetHasDot()
+    {
+        return hasDot;
+    }
+    public void SetDoDot(bool boolDot)
+    {
+        doDot = boolDot;
+    }
+    public bool GetDoDot()
+    {
+        return doDot;
+    }
+    //
+
+    public void SetNeedCoin(bool coins)
+    {
+        needCoin = coins;
+    }
+
+    public bool GetNeedCoin()
+    {
+        return needCoin;
+    }
+
+    public int GetPrice()
+    {
+        return price;
+    }
+    public void BuyItem()
+    {
+        GameObject playerCont =  GameObject.FindWithTag("Player");
+        PlayerStats stats;
+        if (playerCont.GetComponent<MainControls>().getControllerNumber() == 1)
+        {
+            stats = GameObject.FindWithTag("Thor").GetComponent<PlayerStats>();
+        }
+        else
+        {
+            stats = GameObject.FindWithTag("Type2").GetComponent<PlayerStats>();
+        }
+
+        if (price <= stats.GetCoins())
+        {
+            stats.UseCoins(price);
+            needCoin = false;
+        }
+
     }
 }
