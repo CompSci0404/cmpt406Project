@@ -231,7 +231,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 40868615}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.047, y: -0.034, z: -8099.9985}
+  m_LocalPosition: {x: 0.047, y: -0.034, z: 0}
   m_LocalScale: {x: 0.44999993, y: 0.44999993, z: 89.999985}
   m_Children: []
   m_Father: {fileID: 1580185234}
@@ -3633,6 +3633,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5792350533046689760, guid: 2bc8f96bef461314cb74bb1bb0c14a02,
+        type: 3}
+      propertyPath: m_Name
+      value: PlasmaHammer
+      objectReference: {fileID: 0}
     - target: {fileID: 174484869702994913, guid: 2bc8f96bef461314cb74bb1bb0c14a02,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3687,11 +3692,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5792350533046689760, guid: 2bc8f96bef461314cb74bb1bb0c14a02,
-        type: 3}
-      propertyPath: m_Name
-      value: PlasmaHammer
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2bc8f96bef461314cb74bb1bb0c14a02, type: 3}
@@ -5473,7 +5473,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1572381290}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.041, y: -0.033, z: -8099.9985}
+  m_LocalPosition: {x: 0.041, y: -0.033, z: 0}
   m_LocalScale: {x: 0.44999993, y: 0.44999993, z: 89.999985}
   m_Children: []
   m_Father: {fileID: 1580185234}
@@ -5925,6 +5925,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6723162061165601016, guid: b872448cfcc5bb14c8a517ce8ff345d9,
+        type: 3}
+      propertyPath: m_Name
+      value: SwiftSauce
+      objectReference: {fileID: 0}
     - target: {fileID: 647726501005128684, guid: b872448cfcc5bb14c8a517ce8ff345d9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5980,11 +5985,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6723162061165601016, guid: b872448cfcc5bb14c8a517ce8ff345d9,
-        type: 3}
-      propertyPath: m_Name
-      value: SwiftSauce
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b872448cfcc5bb14c8a517ce8ff345d9, type: 3}
 --- !u!1001 &1743271275
@@ -5998,21 +5998,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Main Camera
-      objectReference: {fileID: 0}
-    - target: {fileID: 1339121233795500158, guid: ef76e0bb95b296148b550416ba30668a,
-        type: 3}
-      propertyPath: m_BackGroundColor.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1339121233795500158, guid: ef76e0bb95b296148b550416ba30668a,
-        type: 3}
-      propertyPath: m_BackGroundColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1339121233795500158, guid: ef76e0bb95b296148b550416ba30668a,
-        type: 3}
-      propertyPath: m_BackGroundColor.b
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1339121233795500153, guid: ef76e0bb95b296148b550416ba30668a,
         type: 3}
@@ -6067,6 +6052,21 @@ PrefabInstance:
     - target: {fileID: 1339121233795500153, guid: ef76e0bb95b296148b550416ba30668a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1339121233795500158, guid: ef76e0bb95b296148b550416ba30668a,
+        type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1339121233795500158, guid: ef76e0bb95b296148b550416ba30668a,
+        type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1339121233795500158, guid: ef76e0bb95b296148b550416ba30668a,
+        type: 3}
+      propertyPath: m_BackGroundColor.b
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3965496771861986589, guid: ef76e0bb95b296148b550416ba30668a,
@@ -6419,6 +6419,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5267318244921707893, guid: 5e1b17fae340c9e47990b4ba3ebf21bf,
+        type: 3}
+      propertyPath: m_Name
+      value: OdinAle (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267318244921707893, guid: 5e1b17fae340c9e47990b4ba3ebf21bf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5267318244921707889, guid: 5e1b17fae340c9e47990b4ba3ebf21bf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6472,16 +6482,6 @@ PrefabInstance:
     - target: {fileID: 5267318244921707889, guid: 5e1b17fae340c9e47990b4ba3ebf21bf,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5267318244921707893, guid: 5e1b17fae340c9e47990b4ba3ebf21bf,
-        type: 3}
-      propertyPath: m_Name
-      value: OdinAle (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5267318244921707893, guid: 5e1b17fae340c9e47990b4ba3ebf21bf,
-        type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -6912,6 +6912,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5267318244921707893, guid: 5e1b17fae340c9e47990b4ba3ebf21bf,
+        type: 3}
+      propertyPath: m_Name
+      value: OdinAle
+      objectReference: {fileID: 0}
     - target: {fileID: 5267318244921707889, guid: 5e1b17fae340c9e47990b4ba3ebf21bf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6966,11 +6971,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5267318244921707893, guid: 5e1b17fae340c9e47990b4ba3ebf21bf,
-        type: 3}
-      propertyPath: m_Name
-      value: OdinAle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e1b17fae340c9e47990b4ba3ebf21bf, type: 3}
@@ -7681,11 +7681,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5341226369764321133, guid: 7bc42996060cb484cb72c9258c753a32,
-        type: 3}
-      propertyPath: m_Name
-      value: VoidFireAura
-      objectReference: {fileID: 0}
     - target: {fileID: 5341226369764321123, guid: 7bc42996060cb484cb72c9258c753a32,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7740,6 +7735,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5341226369764321133, guid: 7bc42996060cb484cb72c9258c753a32,
+        type: 3}
+      propertyPath: m_Name
+      value: VoidFireAura
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7bc42996060cb484cb72c9258c753a32, type: 3}
