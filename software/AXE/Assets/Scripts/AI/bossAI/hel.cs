@@ -7,7 +7,7 @@ public class hel : AIClass
 
     private bool phaseTwo; 
 
-    public void phaseCheck()
+    public void PhaseCheck()
     {
         // we will rebuild decision trees when it comes time to switching to phase 2.
         if(phaseTwo == false)
@@ -17,11 +17,11 @@ public class hel : AIClass
             enemySpotted.BuildDecision(this.EnemySpotted);
 
             DecisionTree canSpawnChoice = new DecisionTree();
-            canSpawnChoice.BuildDecision(this.canSpawn);
+            canSpawnChoice.BuildDecision(this.CanSpawn);
 
             DecisionTree spawnUnit = new DecisionTree();
 
-            spawnUnit.BuildAction(this.spawnUnits);
+            spawnUnit.BuildAction(this.SpawnUnits);
 
             DecisionTree rngAttack = new DecisionTree();
 
@@ -40,8 +40,6 @@ public class hel : AIClass
 
         }
         // later for when we want to do phase2. 
-
-
     }
 
 
@@ -54,18 +52,16 @@ public class hel : AIClass
         this.FindPlayer();
         this.SetCooldown();
         this.BuildRangePrefabs();
-        this.findProj("helLaser");
-        this.findAIPrefab("Draugr");
+        this.FindProj("helLaser");
+        this.FindAIPrefab("Draugr");
 
-        phaseCheck(); 
+        PhaseCheck(); 
 
     }
 
     // Update is called once per frame
     void Update()
     {
-
         this.rootOfTree.Search(); 
-        
     }
 }

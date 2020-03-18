@@ -8,9 +8,6 @@ using UnityEngine;
 /// </summary>
 public class RangedEnemy : AIClass
 {
-
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +15,7 @@ public class RangedEnemy : AIClass
         this.FindPlayer();
         this.SetCooldown();
         this.BuildRangePrefabs();
-        this.findProj("FireProjectile"); 
+        this.FindProj("FireProjectile"); 
 
 
         DecisionTree enemySpotted = new DecisionTree();
