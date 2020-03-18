@@ -30,6 +30,7 @@ public class Abilities : MonoBehaviour
     public GameObject PlasmaHammer;
     public GameObject ClusterBomb;
     public GameObject TimelineShifter;
+    public GameObject Berserk;
 
     private GameObject CurrentA;
     private GameObject CurrentSwap;
@@ -170,6 +171,14 @@ public class Abilities : MonoBehaviour
                         CurrentSwap = AbilitiesInRange[i].gameObject;
                         CurrentSwap.transform.position = new Vector2(0, -1000);
                     }
+                    else if (AbilitiesInRange[i].GetComponent<Berserk>())
+                    {
+                        Berserk = GameObject.Find("B_UI");
+                        Berserk.GetComponent<Renderer>().sortingOrder = 1;
+                        swapAbility = AbilitiesInRange[i].gameObject;
+                        CurrentSwap = AbilitiesInRange[i].gameObject;
+                        CurrentSwap.transform.position = new Vector2(0, -1000);
+                    }
                     swapAvailable = false;
                     controls.swapAbility = "YES";
                     break;
@@ -189,6 +198,12 @@ public class Abilities : MonoBehaviour
                         TimelineShifter.GetComponent<Renderer>().sortingOrder = -1;
                         CurrentSwap.transform.position = new Vector2(rBody.transform.position.x, rBody.transform.position.y - 1);
                     }
+                    else if (CurrentSwap.GetComponent<Berserk>())
+                    {
+                        //remove from UI
+                        Berserk.GetComponent<Renderer>().sortingOrder = -1;
+                        CurrentSwap.transform.position = new Vector2(rBody.transform.position.x, rBody.transform.position.y - 1);
+                    }
 
                     // pick up new item
                     if (AbilitiesInRange[i].GetComponent<ClusterBomb>())
@@ -203,6 +218,14 @@ public class Abilities : MonoBehaviour
                     {
                         TimelineShifter = GameObject.Find("TS_UI");
                         TimelineShifter.GetComponent<Renderer>().sortingOrder = 1;
+                        swapAbility = AbilitiesInRange[i].gameObject;
+                        CurrentSwap = AbilitiesInRange[i].gameObject;
+                        CurrentSwap.transform.position = new Vector2(0, -1000);
+                    }
+                    else if (AbilitiesInRange[i].GetComponent<Berserk>())
+                    {
+                        Berserk = GameObject.Find("B_UI");
+                        Berserk.GetComponent<Renderer>().sortingOrder = 1;
                         swapAbility = AbilitiesInRange[i].gameObject;
                         CurrentSwap = AbilitiesInRange[i].gameObject;
                         CurrentSwap.transform.position = new Vector2(0, -1000);
