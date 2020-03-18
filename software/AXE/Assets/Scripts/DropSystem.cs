@@ -59,7 +59,6 @@ public class DropSystem : MonoBehaviour
     public void DropFromPools(Transform t)
     {
         int randInt = Random.Range(0, 101);
-        print(randInt);
 
         //if (randInt <= dropChance)
         //    DropSwap(t);

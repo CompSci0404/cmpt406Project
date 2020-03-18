@@ -26,7 +26,6 @@ public class AbilityColliderHandler : MonoBehaviour
         {
             stats = GameObject.FindWithTag("Type2").GetComponent<PlayerStats>();
         }
-        Debug.Log("something");
         if (collision.GetComponent<AIClass>() != null)
         {
             Debug.Log(collision.name);
