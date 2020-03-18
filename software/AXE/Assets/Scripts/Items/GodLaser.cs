@@ -19,7 +19,7 @@ public class GodLaser : ItemClass
         itemEffect = UseGodLaser;
         playerCont = GameObject.FindWithTag("Player");
         playerRB = playerCont.GetComponent<Rigidbody2D>();
-        setAbilityCooldown(0);
+        SetAbilityCooldown(0);
     }
 
     public void UseGodLaser()

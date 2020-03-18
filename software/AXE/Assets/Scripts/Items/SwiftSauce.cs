@@ -7,12 +7,12 @@ public class SwiftSauce : ItemClass
     private GameObject playerCont;
     void Start()
     {
-        itemEffect = increaseSpeed;
+        itemEffect = IncreaseSpeed;
         playerCont = GameObject.FindWithTag("Player");
         SetUsable(true);
     }
 
-    public void increaseSpeed()
+    public void IncreaseSpeed()
     {
         float attackSpeed;
         float moveSpeed;
@@ -27,8 +27,8 @@ public class SwiftSauce : ItemClass
             moveSpeed = player.GetComponent<PlayerStats>().GetMoveSpeed();
             Debug.Log(attackSpeed + " " + moveSpeed);
 
-            player.GetComponent<PlayerStats>().SetAttackSpeed(attackSpeed * getItemMultiplier());
-            player.GetComponent<PlayerStats>().SetMoveSpeed(moveSpeed * getItemMultiplier());
+            player.GetComponent<PlayerStats>().SetAttackSpeed(attackSpeed * GetItemMultiplier());
+            player.GetComponent<PlayerStats>().SetMoveSpeed(moveSpeed * GetItemMultiplier());
             Debug.Log(player.GetComponent<PlayerStats>().GetAttackSpeed() + " " + player.GetComponent<PlayerStats>().GetMoveSpeed());
             SetPlayerItemUsed(1);
         }
@@ -39,8 +39,8 @@ public class SwiftSauce : ItemClass
             float attackSpeed2 = player.GetComponent<PlayerStats>().GetAttackSpeed();
             float moveSpeed2 = player.GetComponent<PlayerStats>().GetMoveSpeed();
             Debug.Log(attackSpeed2 + " " + moveSpeed2);
-            player.GetComponent<PlayerStats>().SetAttackSpeed(attackSpeed2 * getItemMultiplier());
-            player.GetComponent<PlayerStats>().SetMoveSpeed(moveSpeed2 * getItemMultiplier());
+            player.GetComponent<PlayerStats>().SetAttackSpeed(attackSpeed2 * GetItemMultiplier());
+            player.GetComponent<PlayerStats>().SetMoveSpeed(moveSpeed2 * GetItemMultiplier());
             Debug.Log(player.GetComponent<PlayerStats>().GetAttackSpeed() + " " + player.GetComponent<PlayerStats>().GetMoveSpeed());
             SetPlayerItemUsed(2);
         }

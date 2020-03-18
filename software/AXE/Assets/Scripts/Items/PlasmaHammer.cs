@@ -19,7 +19,7 @@ public class PlasmaHammer : ItemClass
     {
         itemEffect = UsePlasmaHammer;
         playerCont = GameObject.FindWithTag("Player");
-        setHasIndicator(true);
+        SetHasIndicator(true);
         playerRB = playerCont.GetComponent<Rigidbody2D>();
     }
     public void UsePlasmaHammer()
@@ -37,6 +37,7 @@ public class PlasmaHammer : ItemClass
         // box collider 2D Version
         angle = playerCont.GetComponent<MainControls>().GetRSAngle();
         lookDirection = playerCont.GetComponent<MainControls>().GetRSDirection();
+
         // ability indicator
         GameObject indicator = Resources.Load("Prefabs/PlasmaHammerIndicator", typeof(GameObject)) as GameObject;
         if (null != indicator)
