@@ -18,7 +18,7 @@ public class SwiftSauce : ItemClass
         float moveSpeed;
         GameObject player;
 
-        if (playerCont.GetComponent<MainControls>().getControllerNumber() == 1)
+        if (playerCont.GetComponent<MainControls>().GetControllerNumber() == 1)
         {
             Debug.Log("increasing p1");
             player = GameObject.FindWithTag("Player").transform.GetChild(0).gameObject;
@@ -32,7 +32,7 @@ public class SwiftSauce : ItemClass
             Debug.Log(player.GetComponent<PlayerStats>().GetAttackSpeed() + " " + player.GetComponent<PlayerStats>().GetMoveSpeed());
             SetPlayerItemUsed(1);
         }
-        else if (playerCont.GetComponent<MainControls>().getControllerNumber() == 2)
+        else if (playerCont.GetComponent<MainControls>().GetControllerNumber() == 2)
         {
             Debug.Log("increasing p2");
             player = GameObject.FindWithTag("Player").transform.GetChild(1).gameObject;

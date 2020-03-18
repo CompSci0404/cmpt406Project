@@ -24,10 +24,9 @@ public class MainControls : MonoBehaviour
     private string xButton;
     private string yButton;
     private int controllerNumber;
-
     private string lbButton;
-
     private string rightTrigger;
+
     private GameObject reticle;
     private float rightStickAngle;
     private Vector2 rightStickDirection;
@@ -41,8 +40,6 @@ public class MainControls : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        // set for testing
-        //swapAbility = "ClusterBomb";
         swapSlow = this.GetComponent<TimeSlowSwap>();
         lastDPadPressed = "up";
         HUD = FindObjectOfType<HUD>();
@@ -179,7 +176,6 @@ public class MainControls : MonoBehaviour
         {
             UseItem();
         }
-        // player has a method that activates when it becomes active and sends its stats to this class
     }
 
     private void SwapPlayer()
@@ -206,14 +202,13 @@ public class MainControls : MonoBehaviour
         // if player 1 melee
         if (controllerNumber == 1)
         {
-            Debug.Log("Player 1 Melee Attacking");
             thorAnimation.AttackAnimTrigger();
             this.GetComponentInChildren<MeleeAttack>().MeleeAtt();
         }
         // if player 2 range
         else if (controllerNumber == 2)
         {
-            Debug.Log("Player 2 Range Attacking");
+            // All code for player two shooting is in the ranged attack script
         }
     }
 
@@ -270,7 +265,6 @@ public class MainControls : MonoBehaviour
         // if player 2 use P2 A1
     }
 
-    // Ability 2
     private void PickUpItem()
     {
         // if player 1 use P1 A2
@@ -289,7 +283,6 @@ public class MainControls : MonoBehaviour
         // if player 2 use P2 A2
     }
 
-    // Ability 1
     private void UseAbility()
     {
         if (controllerNumber == 1)
@@ -360,12 +353,12 @@ public class MainControls : MonoBehaviour
     }
 
     // get dpad last position
-    public string getDPadLastPos()
+    public string GetDPadLastPos()
     {
         return lastDPadPressed;
     }
 
-    public int getControllerNumber()
+    public int GetControllerNumber()
     {
         return controllerNumber;
     }
@@ -374,12 +367,12 @@ public class MainControls : MonoBehaviour
     {
         return swapAbility;
     }
-    public Vector2 getRSDirection()
+    public Vector2 GetRSDirection()
     {
         return rightStickDirection;
     }
 
-    public float getRSAngle()
+    public float GetRSAngle()
     {
         return rightStickAngle;
     }

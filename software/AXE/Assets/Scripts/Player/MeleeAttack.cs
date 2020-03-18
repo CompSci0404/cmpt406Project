@@ -6,12 +6,13 @@ public class MeleeAttack : MonoBehaviour
 {
     private PlayerStats stats;
     public LayerMask enemyLayers;
+
     private float attackTime;
     Vector2 lookDirection;
     Vector2 movement;
     Rigidbody2D rBody;
-    [SerializeField] private Transform weaponPoint;
 
+    [SerializeField] private Transform weaponPoint;
 
     private bool canAttack;
 
@@ -22,8 +23,8 @@ public class MeleeAttack : MonoBehaviour
         attackTime = 0f;
         weaponPoint.transform.position = gameObject.transform.position;
     }
-    // Update is called once per frame
 
+    // Update is called once per frame
     void Update()
     {
         movement.x = Input.GetAxis("Horizontal");
@@ -37,7 +38,6 @@ public class MeleeAttack : MonoBehaviour
             Vector2 weaponPosition = new Vector2(gameObject.transform.position.x - 0.5f, gameObject.transform.position.y);
             weaponPoint.transform.position = weaponPosition;
         }
-        
 
         // used canAttack bool so MeleeAttack updates correctly
         if (attackTime <= 0)
@@ -49,15 +49,14 @@ public class MeleeAttack : MonoBehaviour
         {
             attackTime -= Time.deltaTime;
         }
-        
     }
+
     // Melee attack of character
     // used in MainControls
     public void MeleeAtt()
     {
         if (canAttack)
         { 
-
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(weaponPoint.position, stats.GetRange() / 3, enemyLayers);
             Debug.Log(hitEnemies.Length);
             for( int i = 0; i < hitEnemies.Length; i++ )
@@ -67,17 +66,8 @@ public class MeleeAttack : MonoBehaviour
                     hitEnemies[i].GetComponent<AIClass>().Damage(stats.GetDamage());
                     Debug.Log("Player 1 Melee Attacking Enemy");
                 }
-                
             }
             canAttack = false;
-        }
-        
+        }  
     }
-
-    //// attack range arch
-    //void OnDrawGizmosSelected()
-    //{
-    //    Gizmos.DrawWireSphere(weaponPoint.position, stats.GetRange() / 3);
-    //}
-    
 }

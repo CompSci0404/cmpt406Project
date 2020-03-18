@@ -41,7 +41,7 @@ public class Inventory : MonoBehaviour
     }
     public void Update()
     {
-        curDPad = GetComponentInParent<MainControls>().getDPadLastPos();
+        curDPad = GetComponentInParent<MainControls>().GetDPadLastPos();
     }
     public void PickUpItem()
     {

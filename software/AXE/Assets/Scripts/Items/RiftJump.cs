@@ -21,8 +21,8 @@ public class RiftJump : ItemClass
 
     public void UseRiftJump()
     {
-        angle = playerCont.GetComponent<MainControls>().getRSAngle();
-        lookDirection = playerCont.GetComponent<MainControls>().getRSDirection();
+        angle = playerCont.GetComponent<MainControls>().GetRSAngle();
+        lookDirection = playerCont.GetComponent<MainControls>().GetRSDirection();
         GameObject jump = Instantiate((GameObject)Resources.Load("RiftJumpLocation"), playerRB.transform.position, Quaternion.Euler(0, 0, angle)) as GameObject;
 
         Vector2 jumpForce = (Vector2)(jump.transform.up * 50f) + playerRB.velocity / 2;
