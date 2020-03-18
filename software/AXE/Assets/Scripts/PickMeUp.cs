@@ -7,12 +7,14 @@ using UnityEngine;
 /// </summary>
 public class PickMeUp : MonoBehaviour
 {
-    GameObject[] GameObjects;
-    GameObject pickupMessage;
+    static GameObject pickupMessage;
 
     private void Awake()
     {
-        pickupMessage = GameObject.FindGameObjectsWithTag("Message")[0];
+        if (null == pickupMessage)
+        {
+            pickupMessage = GameObject.FindGameObjectsWithTag("Message")[0];
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
