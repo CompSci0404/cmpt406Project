@@ -26,6 +26,7 @@ public class MainControls : MonoBehaviour
     private int controllerNumber;
     private string lbButton;
     private string rightTrigger;
+    private string leftTrigger;
 
     private GameObject reticle;
     private float rightStickAngle;
@@ -141,7 +142,7 @@ public class MainControls : MonoBehaviour
         {
             Attack();       
         }
-        else if (Input.GetButtonDown(aButton))
+        else if (Input.GetButtonDown(aButton) || Input.GetAxis(leftTrigger) > 0)
         {
             UseAbility();
         }
@@ -350,6 +351,7 @@ public class MainControls : MonoBehaviour
         yButton = "J" + controllerNumber + "Y";
         lbButton = "LeftBumper";
         rightTrigger = "RightTrigger";
+        leftTrigger = "LeftTrigger";
     }
 
     // get dpad last position
