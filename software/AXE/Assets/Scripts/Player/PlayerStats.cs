@@ -166,8 +166,6 @@ public class PlayerStats : MonoBehaviour
 
             SetCurrHearts(heart);
 
-            Debug.Log("Player was hit for " + damage + " damage!");
-
             RemoveHeart();
 
             if (GetCurrHearts() <= 0 && GetLives() <= 0)
@@ -183,7 +181,7 @@ public class PlayerStats : MonoBehaviour
 
     private void RemoveHeart()
     {
-        Debug.Log("RemoveHeart");
+        //Debug.Log("RemoveHeart");
         if (controllerNumber == 1)
         {
             HUD.ThorHealth[GetCurrHearts()].GetComponent<HeartDisplay>().isShown = false;
@@ -240,9 +238,7 @@ public class PlayerStats : MonoBehaviour
     // Full death of player
     public void Death()
     {
-        // this will destroy the SwapContoller Object (this can be final death) 
         Destroy(this.gameObject, .5f);
-        // create Game Over Screen
         SceneManager.LoadScene(2);
     }
 

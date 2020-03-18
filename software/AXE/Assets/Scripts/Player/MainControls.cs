@@ -56,31 +56,31 @@ public class MainControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // update vector and angle for the right stick
-        rightStickDirection = new Vector2(Input.GetAxis("LookHorizontal"), Input.GetAxis("LookVertical")).normalized;
-        rightStickAngle = Mathf.Atan2(rightStickDirection.y, rightStickDirection.x) * Mathf.Rad2Deg - 180f;
+            // update vector and angle for the right stick
+            rightStickDirection = new Vector2(Input.GetAxis("LookHorizontal"), Input.GetAxis("LookVertical")).normalized;
+            rightStickAngle = Mathf.Atan2(rightStickDirection.y, rightStickDirection.x) * Mathf.Rad2Deg - 180f;
 
-        if (reticle == null)
-        {
-            reticle = Instantiate((GameObject)Resources.Load("Reticle"), gameObject.transform.position,
-                Quaternion.Euler(0, 0, rightStickAngle)) as GameObject;
-            reticle.SetActive(false);
-        }
-        // update position of reticle
-        reticle.transform.localPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0);
+            if (reticle == null)
+            {
+                reticle = Instantiate((GameObject)Resources.Load("Reticle"), gameObject.transform.position,
+                    Quaternion.Euler(0, 0, rightStickAngle)) as GameObject;
+                reticle.SetActive(false);
+            }
+            // update position of reticle
+            reticle.transform.localPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0);
         
-        // take right stick to move reticle around player
-        if (Input.GetAxis(rightTrigger) > 0 && gameObject.GetComponent<Abilities>().IsAbility())
-        {
-            // create player reticle
-            reticle.SetActive(true);
-        }
-        else if (Input.GetAxis(rightTrigger) <= 0 && gameObject.GetComponent<Abilities>().IsAbility())
-        {
-            reticle.SetActive(false);
-        }
-        // aim reticle
-        reticle.transform.rotation = Quaternion.Euler(0, 0, rightStickAngle);
+            // take right stick to move reticle around player
+            if (Input.GetAxis(rightTrigger) > 0 && gameObject.GetComponent<Abilities>().IsAbility())
+            {
+                // create player reticle
+                reticle.SetActive(true);
+            }
+            else if (Input.GetAxis(rightTrigger) <= 0 && gameObject.GetComponent<Abilities>().IsAbility())
+            {
+                reticle.SetActive(false);
+            }
+            // aim reticle
+            reticle.transform.rotation = Quaternion.Euler(0, 0, rightStickAngle);
 
         // Use the right trigger to attack 
         if (Input.GetAxis(rightTrigger) > 0)

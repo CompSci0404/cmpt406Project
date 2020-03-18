@@ -58,7 +58,6 @@ public class MeleeAttack : MonoBehaviour
         if (canAttack)
         { 
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(weaponPoint.position, stats.GetRange() / 3, enemyLayers);
-            Debug.Log(hitEnemies.Length);
             for( int i = 0; i < hitEnemies.Length; i++ )
             {
                 if (hitEnemies[i].CompareTag("BaseEnemy"))

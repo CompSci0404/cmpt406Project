@@ -31,13 +31,6 @@ public class HUD : MonoBehaviour
 
         ThorHealth = GameObject.FindGameObjectsWithTag("ThorHrt");
         ValkHealth = GameObject.FindGameObjectsWithTag("ValkHrt");
-
-        //for (int i = 0; i < stats.GetCurrHearts(); i++)
-        //{
-        //    heartSpaces = GameObject.Find("HeartSpaces").transform.Find("HeartSpace"+ i.ToString()).gameObject;
-        //    BuildHeartPrefabs();
-        //    HeartOnHUD(heartSpaces);
-        //}
     }
 
     // Create our heart prefab to be used by our hud.
@@ -65,11 +58,6 @@ public class HUD : MonoBehaviour
         Debug.Log(hearts.ToString());
     }
 
-    private void Update()
-    {
-
-    }
-
     // Remove a heart from the HUD when damage is taken.
     public void RemoveHUDHeart()
     {
@@ -79,14 +67,6 @@ public class HUD : MonoBehaviour
     // Method will play an animation to switch the character icons in the HUD. 
     public void ChangeCharacterIcon()
     {
-        // Change sprite from 0- 20 to go through the swap.
-        //if (stats.controllerNumber == 1)
-        //    switcher.ThorSwitch = true;
-        //else
-        //{
-        //    switcher.ValkSwitch = true;
-        //
-
         //temporary if statements
         if (ThorSwitch)
         {
