@@ -265,8 +265,8 @@ public abstract class AIClass : MonoBehaviour
             if(this.oldLaserObject != null)
             {
                 oldLaserObject.transform.RotateAround(new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y, this.gameObject.transform.position.z), Vector3.forward, speed * Time.deltaTime);
-
-
+                Debug.Log("yeet");
+                    
             }
 
             if (this.cooldown <= 0)
@@ -282,11 +282,16 @@ public abstract class AIClass : MonoBehaviour
                 this.currentAct = "attack";
 
                 this.cooldown = this.rangedAttackCooldown;
-                
 
+                Vector2 moveLaserDown = new Vector2(this.gameObject.transform.position.x, this.gameObject.transform.position.y - 2);
                 GameObject newProjectile = Instantiate(rangePrefabs[this.rangePrefabIndex], this.transform.position, Quaternion.identity);
 
+                newProjectile.transform.position = moveLaserDown; 
+
                 Physics2D.IgnoreCollision(newProjectile.GetComponent<PolygonCollider2D>(), this.gameObject.GetComponent<PolygonCollider2D>(), true);
+
+                
+                
 
                 oldLaserObject = newProjectile;
 
