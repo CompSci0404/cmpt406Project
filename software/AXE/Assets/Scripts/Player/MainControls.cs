@@ -70,12 +70,12 @@ public class MainControls : MonoBehaviour
         reticle.transform.localPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0);
         
         // take right stick to move reticle around player
-        if (Input.GetAxis(rightTrigger) > 0 && gameObject.GetComponent<Abilities>().isAbility())
+        if (Input.GetAxis(rightTrigger) > 0 && gameObject.GetComponent<Abilities>().IsAbility())
         {
             // create player reticle
             reticle.SetActive(true);
         }
-        else if (Input.GetAxis(rightTrigger) <= 0 && gameObject.GetComponent<Abilities>().isAbility())
+        else if (Input.GetAxis(rightTrigger) <= 0 && gameObject.GetComponent<Abilities>().IsAbility())
         {
             reticle.SetActive(false);
         }
