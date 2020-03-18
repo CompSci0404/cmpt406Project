@@ -38,7 +38,9 @@ public abstract class AIClass : MonoBehaviour
     private int rangePrefabIndex;           /*the index for range projetcile gameobject.*/
     private int enemySpawnIndex;            /*index of wanted enemy to spawn.*/
     private List<GameObject> AIPrefabs;
-
+    
+    private GameObject oldLaserObject;
+    private bool laserSpawned;
     // spawn:
 
     private float spawnTimer = 5;
@@ -94,7 +96,7 @@ public abstract class AIClass : MonoBehaviour
     {
         rangePrefabs = new List<GameObject>();
         AIPrefabs = new List<GameObject>();
-
+        oldLaserObject = null; 
 
         object[] prefabs;
         int counter = 0; 
@@ -251,6 +253,49 @@ public abstract class AIClass : MonoBehaviour
 
             Destroy(newProjectile, 3.0f); 
         }
+    }
+
+    public void laserBeamAttack()
+    {
+
+        if(cooldown != 0)
+        {
+            this.cooldown -= Time.deltaTime; 
+
+            if(this.oldLaserObject != null)
+            {
+                oldLaserObject.transform.RotateAround(new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y, this.gameObject.transform.position.z), Vector3.forward, speed * Time.deltaTime);
+
+
+            }
+
+            if (this.cooldown <= 0)
+            {
+
+                this.cooldown = 0; 
+            }
+        }
+
+        if(cooldown == 0)
+        {
+
+                this.currentAct = "attack";
+
+                this.cooldown = this.rangedAttackCooldown;
+                
+
+                GameObject newProjectile = Instantiate(rangePrefabs[this.rangePrefabIndex], this.transform.position, Quaternion.identity);
+
+                Physics2D.IgnoreCollision(newProjectile.GetComponent<PolygonCollider2D>(), this.gameObject.GetComponent<PolygonCollider2D>(), true);
+
+                oldLaserObject = newProjectile;
+
+                Destroy(newProjectile, 5.0f);
+
+        }
+        
+
+
     }
 
     //---[[Movement Decisions]]---//
@@ -470,6 +515,8 @@ public abstract class AIClass : MonoBehaviour
 
 
     }
+
+    
 
 
     /// <summary>

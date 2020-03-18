@@ -25,7 +25,7 @@ public class hel : AIClass
 
             DecisionTree rngAttack = new DecisionTree();
 
-            rngAttack.BuildAction(this.RangedAttack);
+            rngAttack.BuildAction(this.laserBeamAttack);
 
             DecisionTree idleChoice = new DecisionTree();
 
