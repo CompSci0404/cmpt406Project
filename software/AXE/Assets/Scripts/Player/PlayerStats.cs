@@ -11,6 +11,8 @@ public class PlayerStats : MonoBehaviour
     private HUD HUD;
 
     [SerializeField]
+    private GameObject PlayerInvincibilitySprite;
+    [SerializeField]
     private ThorAnimationInput thorAnimation;
     [SerializeField]
     private ValkAnimationInput valkAnimation;
@@ -200,6 +202,7 @@ public class PlayerStats : MonoBehaviour
     private void Respawn()
     {
         // Death animation && give invincibility
+        isInvincible = true;
         if (controllerNumber == 1) thorAnimation.DeathAnimTrigger();
         if (controllerNumber == 2) valkAnimation.DeathAnimTrigger();
         DontMove();
@@ -207,7 +210,7 @@ public class PlayerStats : MonoBehaviour
         Debug.Log("Player lost a life, lives remaining:" + GetLives().ToString());
         SetCurrHearts(GetMaxHearts());
         ResetHearts();
-        isInvincible = true;
+        PlayerInvincibilitySprite.SetActive(true);
         Invoke("Move", 1.25f);
         Invoke("ResetInvincibility", 1);
     }
@@ -244,12 +247,14 @@ public class PlayerStats : MonoBehaviour
 
     public void MakeInvincible()
     {
+        PlayerInvincibilitySprite.SetActive(true);
         isInvincible = true;
     }
 
     public void ResetInvincibility()
     {
         isInvincible = false;
+        PlayerInvincibilitySprite.SetActive(false);
     }
 
 }
