@@ -39,11 +39,11 @@ public abstract class AIClass : MonoBehaviour
     private int enemySpawnIndex;            /*index of wanted enemy to spawn.*/
     private List<GameObject> AIPrefabs;
     
+    /*Hel*/
     private GameObject oldLaserObject;
     private bool laserSpawned;
-    // spawn:
-
-    private float spawnTimer = 5;
+    private float laserSpeed = 20;
+    private float spawnTimer = 15;
     private float spawnCoolDown = 0; 
 
 
@@ -228,7 +228,7 @@ public abstract class AIClass : MonoBehaviour
 
             this.gameObject.GetComponent<EnemyAnim>().UpdateCurrentAct(currentAct);
 
-            //FindObjectOfType<AudioManager>().PlaySound("NanoShot");
+            FindObjectOfType<AudioManager>().PlaySound("NanoShot");
 
             // direction that AI is currently facing is where we want to shoot our object!
             Vector2 direction = (player.transform.position - this.transform.position).normalized;
@@ -258,8 +258,7 @@ public abstract class AIClass : MonoBehaviour
 
             if(this.oldLaserObject != null)
             {
-                oldLaserObject.transform.RotateAround(new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y, this.gameObject.transform.position.z), Vector3.forward, speed * Time.deltaTime);
-                Debug.Log("yeet");
+                oldLaserObject.transform.RotateAround(new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y, this.gameObject.transform.position.z), Vector3.forward, laserSpeed * Time.deltaTime); ;
                     
             }
 

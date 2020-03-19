@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 16a82a57a87a74d4399ff235a2e3593a
   - enabled: 1
-    path: Assets/Scenes/TimeSlowTest.unity
-    guid: 670573d7143d1024693895f27df3ebc8
+    path: Assets/Scenes/FinalScene/BetaScene.unity
+    guid: b8fa886dba3aca542b9564eff6dfbcfd
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: e48a08d0d3a0e1443936dc96e2d43eb3
