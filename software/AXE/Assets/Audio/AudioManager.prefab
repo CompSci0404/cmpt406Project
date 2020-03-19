@@ -46,11 +46,11 @@ MonoBehaviour:
   sounds:
   - name: NanoShot
     clip: {fileID: 8300000, guid: 5fb519d3519c44c19aafa32521e89ca5, type: 3}
-    volume: 0
-    pitch: 0
+    volume: 0.2
+    pitch: 1
     source: {fileID: 0}
   - name: ValkShot
     clip: {fileID: 8300000, guid: 5cee3b98a0a6946ca9d39bddf43b20b2, type: 3}
-    volume: 0
-    pitch: 0
+    volume: 0.2
+    pitch: 1
     source: {fileID: 0}
