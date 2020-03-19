@@ -10512,22 +10512,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6195670622094939823, guid: 40b3262e5b893d54591715b89629170d,
-        type: 3}
-      propertyPath: m_SpriteTilingProperty.pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6195670622094939822, guid: 40b3262e5b893d54591715b89629170d,
-        type: 3}
-      propertyPath: destination
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6195670622094939820, guid: 40b3262e5b893d54591715b89629170d,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: a172f7e0744c8e744b664d68cfaa4b6a,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40b3262e5b893d54591715b89629170d, type: 3}
 --- !u!4 &6753262203029654871 stripped
@@ -10678,22 +10662,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1534275463597094283, guid: 9270bf7475820f842b2c1a73cf59166a,
-        type: 3}
-      propertyPath: m_SpriteTilingProperty.pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1534275463597094282, guid: 9270bf7475820f842b2c1a73cf59166a,
-        type: 3}
-      propertyPath: destination
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1534275463597094280, guid: 9270bf7475820f842b2c1a73cf59166a,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: be4bd54aa84ff8d4ea3a3150dfee87d5,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9270bf7475820f842b2c1a73cf59166a, type: 3}
 --- !u!4 &2092430878784897249 stripped
@@ -10709,6 +10677,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8967187351011587412}
     m_Modifications:
+    - target: {fileID: 4765365889482919742, guid: 2cecd1ab7c4812140ac96cd2009c59a7,
+        type: 3}
+      propertyPath: m_Name
+      value: DoorSouth
+      objectReference: {fileID: 0}
     - target: {fileID: 4765365889482919738, guid: 2cecd1ab7c4812140ac96cd2009c59a7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10763,22 +10736,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4765365889482919742, guid: 2cecd1ab7c4812140ac96cd2009c59a7,
-        type: 3}
-      propertyPath: m_Name
-      value: DoorSouth
-      objectReference: {fileID: 0}
-    - target: {fileID: 4765365889482919739, guid: 2cecd1ab7c4812140ac96cd2009c59a7,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: be4bd54aa84ff8d4ea3a3150dfee87d5,
-        type: 3}
-    - target: {fileID: 4765365889482919736, guid: 2cecd1ab7c4812140ac96cd2009c59a7,
-        type: 3}
-      propertyPath: m_SpriteTilingProperty.pivot.y
-      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cecd1ab7c4812140ac96cd2009c59a7, type: 3}
