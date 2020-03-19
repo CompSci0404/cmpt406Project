@@ -148,6 +148,7 @@ public class MainControls : MonoBehaviour
         }
         else if (Input.GetButtonDown(xButton))
         {
+            
             PickUpItem();
             PickUpAbility();
         }
@@ -223,18 +224,22 @@ public class MainControls : MonoBehaviour
             if (lastDPadPressed == "up" && !this.GetComponent<Inventory>().isUpItem())
             {
                 this.GetComponent<Inventory>().getUpItem().GetComponentInChildren<ItemClass>().ItemActivate();
+                this.GetComponent<Inventory>().SetUpUsed();
             }
             else if (lastDPadPressed == "left" && !this.GetComponent<Inventory>().isLeftItem())
             {
                 this.GetComponent<Inventory>().getLeftItem().GetComponentInChildren<ItemClass>().ItemActivate();
+                this.GetComponent<Inventory>().SetLeftUsed();
             }
             else if (lastDPadPressed == "right" && !this.GetComponent<Inventory>().isRightItem())
             {
                 this.GetComponent<Inventory>().getRightItem().GetComponentInChildren<ItemClass>().ItemActivate();
+                this.GetComponent<Inventory>().SetRightUsed();
             }
             else if (lastDPadPressed == "down" && !this.GetComponent<Inventory>().isDownItem())
             {
                 this.GetComponent<Inventory>().getDownItem().GetComponentInChildren<ItemClass>().ItemActivate();
+                this.GetComponent<Inventory>().SetDownUsed();
             }
             else
             {
@@ -249,18 +254,22 @@ public class MainControls : MonoBehaviour
             if (lastDPadPressed == "up" && !this.GetComponent<Inventory>().isUpItem())
             {
                 this.GetComponent<Inventory>().getUpItem().GetComponentInChildren<ItemClass>().ItemActivate();
+                this.GetComponent<Inventory>().SetUpUsed();
             }
             else if (lastDPadPressed == "left" && !this.GetComponent<Inventory>().isLeftItem())
             {
                 this.GetComponent<Inventory>().getLeftItem().GetComponentInChildren<ItemClass>().ItemActivate();
+                this.GetComponent<Inventory>().SetLeftUsed();
             }
             else if (lastDPadPressed == "right" && !this.GetComponent<Inventory>().isRightItem())
             {
                 this.GetComponent<Inventory>().getRightItem().GetComponentInChildren<ItemClass>().ItemActivate();
+                this.GetComponent<Inventory>().SetRightUsed();
             }
             else if (lastDPadPressed == "down" && !this.GetComponent<Inventory>().isDownItem())
             {
                 this.GetComponent<Inventory>().getDownItem().GetComponentInChildren<ItemClass>().ItemActivate();
+                this.GetComponent<Inventory>().SetDownUsed();
             }
         }
         // if player 2 use P2 A1

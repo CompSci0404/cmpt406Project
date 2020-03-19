@@ -10,6 +10,16 @@ public class Inventory : MonoBehaviour
     [SerializeField] private GameObject rightItem;
     [SerializeField] private GameObject downItem;
 
+    private GameObject upItemTemp;
+    private GameObject leftItemTemp;
+    private GameObject rightItemTemp;
+    private GameObject downItemTemp;
+
+    private bool upItemUsed;
+    private bool leftItemUsed;
+    private bool rightItemUsed;
+    private bool downItemUsed;
+
     private GameObject OdinAle;
     private GameObject BatteryBread;
     private GameObject SwiftSauce;
@@ -18,6 +28,11 @@ public class Inventory : MonoBehaviour
     private GameObject CurrentLeft;
     private GameObject CurrentRight;
     private GameObject CurrentDown;
+
+    private bool isUp;
+    private bool isDown;
+    private bool isLeft;
+    private bool isRight;
 
     private Transform myPosition;
     private Rigidbody2D playerRB;
@@ -36,12 +51,92 @@ public class Inventory : MonoBehaviour
     private void Start()
     {
         playerRB = GetComponent<Rigidbody2D>();
-        
         myPosition = gameObject.transform;
+        isUp = true;
+        isDown = true;
+        isRight = true;
+        isLeft = true;
     }
     public void Update()
     {
         curDPad = GetComponentInParent<MainControls>().GetDPadLastPos();
+
+        if (upItemUsed && CurrentUp != null)
+        {
+            if (CurrentUp.GetComponent<OdinAle>())
+            {
+                //remove from UI
+                OdinAle.GetComponent<Renderer>().sortingOrder = -1;
+            }
+            else if (CurrentUp.GetComponent<BatteryBread>())
+            {
+                //remove from UI
+                BatteryBread.GetComponent<Renderer>().sortingOrder = -1;
+            }
+            else if (CurrentUp.GetComponent<SwiftSauce>())
+            {
+                //remove from UI
+                SwiftSauce.GetComponent<Renderer>().sortingOrder = -1;
+            }
+            upItemUsed = false;
+        }
+        if (leftItemUsed && CurrentLeft != null)
+        {
+            if (CurrentLeft.GetComponent<OdinAle>())
+            {
+                //remove from UI
+                OdinAle.GetComponent<Renderer>().sortingOrder = -1;
+            }
+            else if (CurrentLeft.GetComponent<BatteryBread>())
+            {
+                //remove from UI
+                BatteryBread.GetComponent<Renderer>().sortingOrder = -1;
+            }
+            else if (CurrentLeft.GetComponent<SwiftSauce>())
+            {
+                //remove from UI
+                SwiftSauce.GetComponent<Renderer>().sortingOrder = -1;
+            }
+            leftItemUsed = false;
+        }
+        if (rightItemUsed && CurrentRight != null)
+        {
+            if (CurrentRight.GetComponent<OdinAle>())
+            {
+                //remove from UI
+                OdinAle.GetComponent<Renderer>().sortingOrder = -1;
+            }
+            else if (CurrentRight.GetComponent<BatteryBread>())
+            {
+                //remove from UI
+                BatteryBread.GetComponent<Renderer>().sortingOrder = -1;
+            }
+            else if (CurrentRight.GetComponent<SwiftSauce>())
+            {
+                //remove from UI
+                SwiftSauce.GetComponent<Renderer>().sortingOrder = -1;
+            }
+            rightItemUsed = false;
+        }
+        if (downItemUsed && CurrentRight != null)
+        {
+            if (CurrentDown.GetComponent<OdinAle>())
+            {
+                //remove from UI
+                OdinAle.GetComponent<Renderer>().sortingOrder = -1;
+            }
+            else if (CurrentDown.GetComponent<BatteryBread>())
+            {
+                //remove from UI
+                BatteryBread.GetComponent<Renderer>().sortingOrder = -1;
+            }
+            else if (CurrentDown.GetComponent<SwiftSauce>())
+            {
+                //remove from UI
+                SwiftSauce.GetComponent<Renderer>().sortingOrder = -1;
+            }
+            downItemUsed = false;
+        }
     }
     public void PickUpItem()
     {
@@ -51,6 +146,18 @@ public class Inventory : MonoBehaviour
         {
             if (ItemsInRange[i].CompareTag("Item"))
             {
+                // every item starts as GetNeedCoin false
+                // if vendor spawn the item getNeedcoin is true
+                // so you have to buy it but once you bought it needCoin is false
+                if (ItemsInRange[i].GetComponent<ItemClass>().GetNeedCoin())
+                {
+                    ItemsInRange[i].GetComponent<ItemClass>().BuyItem();
+                }
+                // second time checking if item was bought if not then cant pick it up
+                if (ItemsInRange[i].GetComponent<ItemClass>().GetNeedCoin())
+                {
+                    break;
+                }
                 // check if a dpad direction is empty
                 // if it is pick up item and add it to inventory UI
                 // also change name to prevent repetitive adition of clone in name
@@ -59,14 +166,14 @@ public class Inventory : MonoBehaviour
                 
                 if (curDPad == "up")
                 {
-                    if (isUpItem())
+                    if (isUp)
                     {
                         if (ItemsInRange[i].GetComponent<OdinAle>())
                         {
                             OdinAle = GameObject.Find("OA_UI");
                             OdinAle.transform.position = upItem.transform.position;
                             OdinAle.GetComponent<Renderer>().sortingOrder = 1;
-                            upItem = ItemsInRange[i].gameObject;
+                            upItemTemp = ItemsInRange[i].gameObject;
                             CurrentUp = ItemsInRange[i].gameObject;
                             CurrentUp.transform.position = new Vector2(0, -1000);
                         }
@@ -75,7 +182,7 @@ public class Inventory : MonoBehaviour
                             BatteryBread = GameObject.Find("BB_UI");
                             BatteryBread.transform.position = upItem.transform.position;
                             BatteryBread.GetComponent<Renderer>().sortingOrder = 1;
-                            upItem = ItemsInRange[i].gameObject;
+                            upItemTemp = ItemsInRange[i].gameObject;
                             CurrentUp = ItemsInRange[i].gameObject;
                             CurrentUp.transform.position = new Vector2(0, -1000);
                         }
@@ -84,10 +191,12 @@ public class Inventory : MonoBehaviour
                             SwiftSauce = GameObject.Find("SS_UI");
                             SwiftSauce.transform.position = upItem.transform.position;
                             SwiftSauce.GetComponent<Renderer>().sortingOrder = 1;
-                            upItem = ItemsInRange[i].gameObject;
+                            upItemTemp = ItemsInRange[i].gameObject;
                             CurrentUp = ItemsInRange[i].gameObject;
                             CurrentUp.transform.position = new Vector2(0, -1000);
                         }
+                        isUp = false;
+                        break;
                     }
                     else
                     {
@@ -121,7 +230,7 @@ public class Inventory : MonoBehaviour
                             OdinAle = GameObject.Find("OA_UI");
                             OdinAle.transform.position = upItem.transform.position;
                             OdinAle.GetComponent<Renderer>().sortingOrder = 1;
-                            upItem = ItemsInRange[i].gameObject;
+                            upItemTemp = ItemsInRange[i].gameObject;
                             CurrentUp = ItemsInRange[i].gameObject;
                             CurrentUp.transform.position = new Vector2(0, -1000);
                         }
@@ -130,7 +239,7 @@ public class Inventory : MonoBehaviour
                             BatteryBread = GameObject.Find("BB_UI");
                             BatteryBread.transform.position = upItem.transform.position;
                             BatteryBread.GetComponent<Renderer>().sortingOrder = 1;
-                            upItem = ItemsInRange[i].gameObject;
+                            upItemTemp = ItemsInRange[i].gameObject;
                             CurrentUp = ItemsInRange[i].gameObject;
                             CurrentUp.transform.position = new Vector2(0, -1000);
                         }
@@ -139,22 +248,23 @@ public class Inventory : MonoBehaviour
                             SwiftSauce = GameObject.Find("SS_UI");
                             SwiftSauce.transform.position = upItem.transform.position;
                             SwiftSauce.GetComponent<Renderer>().sortingOrder = 1;
-                            upItem = ItemsInRange[i].gameObject;
+                            upItemTemp = ItemsInRange[i].gameObject;
                             CurrentUp = ItemsInRange[i].gameObject;
                             CurrentUp.transform.position = new Vector2(0, -1000);
                         }
                     }
+                    break;
                 }
                 else if (curDPad == "left")
                 {
-                    if (isLeftItem())
+                    if (isLeft)
                     {
                         if (ItemsInRange[i].GetComponent<OdinAle>())
                         {
                             OdinAle = GameObject.Find("OA_UI");
                             OdinAle.transform.position = leftItem.transform.position;
                             OdinAle.GetComponent<Renderer>().sortingOrder = 1;
-                            leftItem = ItemsInRange[i].gameObject;
+                            leftItemTemp = ItemsInRange[i].gameObject;
                             CurrentLeft = ItemsInRange[i].gameObject;
                             CurrentLeft.transform.position = new Vector2(0, -1000);
                         }
@@ -163,7 +273,7 @@ public class Inventory : MonoBehaviour
                             BatteryBread = GameObject.Find("BB_UI");
                             BatteryBread.transform.position = leftItem.transform.position;
                             BatteryBread.GetComponent<Renderer>().sortingOrder = 1;
-                            leftItem = ItemsInRange[i].gameObject;
+                            leftItemTemp = ItemsInRange[i].gameObject;
                             CurrentLeft = ItemsInRange[i].gameObject;
                             CurrentLeft.transform.position = new Vector2(0, -1000);
                         }
@@ -172,10 +282,11 @@ public class Inventory : MonoBehaviour
                             SwiftSauce = GameObject.Find("SS_UI");
                             SwiftSauce.transform.position = leftItem.transform.position;
                             SwiftSauce.GetComponent<Renderer>().sortingOrder = 1;
-                            leftItem = ItemsInRange[i].gameObject;
+                            leftItemTemp = ItemsInRange[i].gameObject;
                             CurrentLeft = ItemsInRange[i].gameObject;
                             CurrentLeft.transform.position = new Vector2(0, -1000);
                         }
+                        isLeft = false;
                         break;
                     }
                     else
@@ -210,7 +321,7 @@ public class Inventory : MonoBehaviour
                             OdinAle = GameObject.Find("OA_UI");
                             OdinAle.transform.position = leftItem.transform.position;
                             OdinAle.GetComponent<Renderer>().sortingOrder = 1;
-                            leftItem = ItemsInRange[i].gameObject;
+                            leftItemTemp = ItemsInRange[i].gameObject;
                             CurrentLeft = ItemsInRange[i].gameObject;
                             CurrentLeft.transform.position = new Vector2(0, -1000);
                         }
@@ -219,7 +330,7 @@ public class Inventory : MonoBehaviour
                             BatteryBread = GameObject.Find("BB_UI");
                             BatteryBread.transform.position = leftItem.transform.position;
                             BatteryBread.GetComponent<Renderer>().sortingOrder = 1;
-                            leftItem = ItemsInRange[i].gameObject;
+                            leftItemTemp = ItemsInRange[i].gameObject;
                             CurrentLeft = ItemsInRange[i].gameObject;
                             CurrentLeft.transform.position = new Vector2(0, -1000);
                         }
@@ -228,7 +339,7 @@ public class Inventory : MonoBehaviour
                             SwiftSauce = GameObject.Find("SS_UI");
                             SwiftSauce.transform.position = leftItem.transform.position;
                             SwiftSauce.GetComponent<Renderer>().sortingOrder = 1;
-                            leftItem = ItemsInRange[i].gameObject;
+                            leftItemTemp = ItemsInRange[i].gameObject;
                             CurrentLeft = ItemsInRange[i].gameObject;
                             CurrentLeft.transform.position = new Vector2(0, -1000);
                         }
@@ -237,14 +348,14 @@ public class Inventory : MonoBehaviour
                 }
                 else if (curDPad == "right")
                 {
-                    if (isRightItem())
+                    if (isRight)
                     {
                         if (ItemsInRange[i].GetComponent<OdinAle>())
                         {
                             OdinAle = GameObject.Find("OA_UI");
                             OdinAle.transform.position = rightItem.transform.position;
                             OdinAle.GetComponent<Renderer>().sortingOrder = 1;
-                            rightItem = ItemsInRange[i].gameObject;
+                            rightItemTemp = ItemsInRange[i].gameObject;
                             CurrentRight = ItemsInRange[i].gameObject;
                             CurrentRight.transform.position = new Vector2(0, -1000);
                         }
@@ -253,7 +364,7 @@ public class Inventory : MonoBehaviour
                             BatteryBread = GameObject.Find("BB_UI");
                             BatteryBread.transform.position = rightItem.transform.position;
                             BatteryBread.GetComponent<Renderer>().sortingOrder = 1;
-                            rightItem = ItemsInRange[i].gameObject;
+                            rightItemTemp = ItemsInRange[i].gameObject;
                             CurrentRight = ItemsInRange[i].gameObject;
                             CurrentRight.transform.position = new Vector2(0, -1000);
                         }
@@ -262,11 +373,13 @@ public class Inventory : MonoBehaviour
                             SwiftSauce = GameObject.Find("SS_UI");
                             SwiftSauce.transform.position = rightItem.transform.position;
                             SwiftSauce.GetComponent<Renderer>().sortingOrder = 1;
-                            rightItem = ItemsInRange[i].gameObject;
+                            rightItemTemp = ItemsInRange[i].gameObject;
                             CurrentRight = ItemsInRange[i].gameObject;
                             CurrentRight.transform.position = new Vector2(0, -1000);
                         }
-                        }
+                        isRight = false;
+                        break;
+                    }
                     else
                     {
                         //if (!rightItem.transform.GetChild(0).gameObject.GetComponent<ItemClass>().GetUsable())
@@ -299,7 +412,7 @@ public class Inventory : MonoBehaviour
                             OdinAle = GameObject.Find("OA_UI");
                             OdinAle.transform.position = rightItem.transform.position;
                             OdinAle.GetComponent<Renderer>().sortingOrder = 1;
-                            rightItem = ItemsInRange[i].gameObject;
+                            rightItemTemp = ItemsInRange[i].gameObject;
                             CurrentRight = ItemsInRange[i].gameObject;
                             CurrentRight.transform.position = new Vector2(0, -1000);
                         }
@@ -308,7 +421,7 @@ public class Inventory : MonoBehaviour
                             BatteryBread = GameObject.Find("BB_UI");
                             BatteryBread.transform.position = rightItem.transform.position;
                             BatteryBread.GetComponent<Renderer>().sortingOrder = 1;
-                            rightItem = ItemsInRange[i].gameObject;
+                            rightItemTemp = ItemsInRange[i].gameObject;
                             CurrentRight = ItemsInRange[i].gameObject;
                             CurrentRight.transform.position = new Vector2(0, -1000);
                         }
@@ -317,7 +430,7 @@ public class Inventory : MonoBehaviour
                             SwiftSauce = GameObject.Find("SS_UI");
                             SwiftSauce.transform.position = rightItem.transform.position;
                             SwiftSauce.GetComponent<Renderer>().sortingOrder = 1;
-                            rightItem = ItemsInRange[i].gameObject;
+                            rightItemTemp = ItemsInRange[i].gameObject;
                             CurrentRight = ItemsInRange[i].gameObject;
                             CurrentRight.transform.position = new Vector2(0, -1000);
                         }
@@ -326,14 +439,14 @@ public class Inventory : MonoBehaviour
                 }
                 else if (curDPad == "down")
                 {
-                    if (isDownItem())
+                    if (isDown)
                     {
                         if (ItemsInRange[i].GetComponent<OdinAle>())
                         {
                             OdinAle = GameObject.Find("OA_UI");
                             OdinAle.transform.position = downItem.transform.position;
                             OdinAle.GetComponent<Renderer>().sortingOrder = 1;
-                            downItem = ItemsInRange[i].gameObject;
+                            downItemTemp = ItemsInRange[i].gameObject;
                             CurrentDown = ItemsInRange[i].gameObject;
                             CurrentDown.transform.position = new Vector2(0, -1000);
                         }
@@ -342,7 +455,7 @@ public class Inventory : MonoBehaviour
                             BatteryBread = GameObject.Find("BB_UI");
                             BatteryBread.transform.position = downItem.transform.position;
                             BatteryBread.GetComponent<Renderer>().sortingOrder = 1;
-                            downItem = ItemsInRange[i].gameObject;
+                            downItemTemp = ItemsInRange[i].gameObject;
                             CurrentDown = ItemsInRange[i].gameObject;
                             CurrentDown.transform.position = new Vector2(0, -1000);
                         }
@@ -351,10 +464,12 @@ public class Inventory : MonoBehaviour
                             SwiftSauce = GameObject.Find("SS_UI");
                             SwiftSauce.transform.position = downItem.transform.position;
                             SwiftSauce.GetComponent<Renderer>().sortingOrder = 1;
-                            downItem = ItemsInRange[i].gameObject;
+                            downItemTemp = ItemsInRange[i].gameObject;
                             CurrentDown = ItemsInRange[i].gameObject;
                             CurrentDown.transform.position = new Vector2(0, -1000);
                         }
+                        isDown = false;
+                        break;
                     }
                     else
                     {
@@ -388,7 +503,7 @@ public class Inventory : MonoBehaviour
                             OdinAle = GameObject.Find("OA_UI");
                             OdinAle.transform.position = downItem.transform.position;
                             OdinAle.GetComponent<Renderer>().sortingOrder = 1;
-                            downItem = ItemsInRange[i].gameObject;
+                            downItemTemp = ItemsInRange[i].gameObject;
                             CurrentDown = ItemsInRange[i].gameObject;
                             CurrentDown.transform.position = new Vector2(0, -1000);
                         }
@@ -397,7 +512,7 @@ public class Inventory : MonoBehaviour
                             BatteryBread = GameObject.Find("BB_UI");
                             BatteryBread.transform.position = downItem.transform.position;
                             BatteryBread.GetComponent<Renderer>().sortingOrder = 1;
-                            downItem = ItemsInRange[i].gameObject;
+                            downItemTemp = ItemsInRange[i].gameObject;
                             CurrentDown = ItemsInRange[i].gameObject;
                             CurrentDown.transform.position = new Vector2(0, -1000);
                         }
@@ -406,7 +521,7 @@ public class Inventory : MonoBehaviour
                             SwiftSauce = GameObject.Find("SS_UI");
                             SwiftSauce.transform.position = downItem.transform.position;
                             SwiftSauce.GetComponent<Renderer>().sortingOrder = 1;
-                            downItem = ItemsInRange[i].gameObject;
+                            downItemTemp = ItemsInRange[i].gameObject;
                             CurrentDown = ItemsInRange[i].gameObject;
                             CurrentDown.transform.position = new Vector2(0, -1000);
                         }
@@ -419,24 +534,24 @@ public class Inventory : MonoBehaviour
 
     public GameObject getUpItem()
     {
-        return upItem;
+        return upItemTemp;
     }
     public GameObject getLeftItem()
     {
-        return leftItem;
+        return leftItemTemp;
     }
     public GameObject getRightItem()
     {
-        return rightItem;
+        return rightItemTemp;
     }
     public GameObject getDownItem()
     {
-        return downItem;
+        return downItemTemp;
     }
 
     public bool isUpItem()
     {
-        if (upItem.GetComponentInChildren<ItemClass>() == null)
+        if (upItemTemp == null)
         {
             return true;
         }
@@ -447,7 +562,7 @@ public class Inventory : MonoBehaviour
     }
     public bool isLeftItem()
     {
-        if (leftItem.GetComponentInChildren<ItemClass>() == null)
+        if (leftItemTemp == null)
         {
             return true;
         }
@@ -458,7 +573,7 @@ public class Inventory : MonoBehaviour
     }
     public bool isRightItem()
     {
-        if (rightItem.GetComponentInChildren<ItemClass>() == null)
+        if (rightItemTemp == null)
         {
             return true;
         }
@@ -469,7 +584,7 @@ public class Inventory : MonoBehaviour
     }
     public bool isDownItem()
     {
-        if (downItem.GetComponentInChildren<ItemClass>() == null)
+        if (downItemTemp == null)
         {
             return true;
         }
@@ -485,4 +600,28 @@ public class Inventory : MonoBehaviour
             swapAbility = DPadPos;
         }
     }
+
+    public void SetUpUsed()
+    {
+        upItemUsed = true;
+        isUp = true;
+    }
+    public void SetLeftUsed()
+    {
+        leftItemUsed = true;
+        isLeft = true;
+    }
+    public void SetRightUsed()
+    {
+        rightItemUsed = true;
+        isRight = true;
+    }
+    public void SetDownUsed()
+    {
+        downItemUsed = true;
+        isDown = true;
+    }
+
+    
+
 }

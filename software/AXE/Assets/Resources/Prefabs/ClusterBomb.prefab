@@ -53,7 +53,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -117,10 +117,10 @@ MonoBehaviour:
   itemDescription: A cluster of powerful micro explosives is released in a large radius
     around the character who switched out, damaging all enemies caught in the blast.
   myItemType: 1
+  price: 1
   abilityCooldown: 0
   itemDuration: 0
   itemMultiplier: 0
-  bomb: {fileID: 2783781131979127740}
 --- !u!58 &1084346653074080943
 CircleCollider2D:
   m_ObjectHideFlags: 0
