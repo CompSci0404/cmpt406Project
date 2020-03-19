@@ -5104,22 +5104,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6195670622094939823, guid: 40b3262e5b893d54591715b89629170d,
-        type: 3}
-      propertyPath: m_SpriteTilingProperty.pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6195670622094939822, guid: 40b3262e5b893d54591715b89629170d,
-        type: 3}
-      propertyPath: destination
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6195670622094939820, guid: 40b3262e5b893d54591715b89629170d,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: a172f7e0744c8e744b664d68cfaa4b6a,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40b3262e5b893d54591715b89629170d, type: 3}
 --- !u!4 &6195670621141838767 stripped
@@ -5205,6 +5189,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5045530207557730418}
     m_Modifications:
+    - target: {fileID: 4765365889482919742, guid: 2cecd1ab7c4812140ac96cd2009c59a7,
+        type: 3}
+      propertyPath: m_Name
+      value: DoorSouth
+      objectReference: {fileID: 0}
     - target: {fileID: 4765365889482919738, guid: 2cecd1ab7c4812140ac96cd2009c59a7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5260,27 +5249,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4765365889482919742, guid: 2cecd1ab7c4812140ac96cd2009c59a7,
-        type: 3}
-      propertyPath: m_Name
-      value: DoorSouth
-      objectReference: {fileID: 0}
-    - target: {fileID: 4765365889482919739, guid: 2cecd1ab7c4812140ac96cd2009c59a7,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: be4bd54aa84ff8d4ea3a3150dfee87d5,
-        type: 3}
-    - target: {fileID: 4765365889482919737, guid: 2cecd1ab7c4812140ac96cd2009c59a7,
-        type: 3}
-      propertyPath: destination
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4765365889482919736, guid: 2cecd1ab7c4812140ac96cd2009c59a7,
-        type: 3}
-      propertyPath: m_SpriteTilingProperty.pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cecd1ab7c4812140ac96cd2009c59a7, type: 3}
 --- !u!4 &4765365889132803643 stripped
@@ -5296,6 +5264,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5045530208280593306}
     m_Modifications:
+    - target: {fileID: 5496353517097811149, guid: 1e805b34a416f8240bcf991cd8de289e,
+        type: 3}
+      propertyPath: m_Name
+      value: RoomLights
+      objectReference: {fileID: 0}
     - target: {fileID: 2710257697514936067, guid: 1e805b34a416f8240bcf991cd8de289e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5350,11 +5323,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5496353517097811149, guid: 1e805b34a416f8240bcf991cd8de289e,
-        type: 3}
-      propertyPath: m_Name
-      value: RoomLights
       objectReference: {fileID: 0}
     - target: {fileID: 8912536130453562556, guid: 1e805b34a416f8240bcf991cd8de289e,
         type: 3}

@@ -124,9 +124,9 @@ public class PlayerStats : MonoBehaviour
     {
         coins += coin;
         if (controllerNumber == 1)
-            valkScore.SetText("Valkyrie Score: " + coins.ToString());
+            valkScore.SetText(coins.ToString());
         else
-            thorScore.SetText("Thor Score: " + coins.ToString());
+            thorScore.SetText(coins.ToString());
     }
 
     public void UseCoins (int numCoin)
