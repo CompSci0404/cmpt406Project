@@ -10,7 +10,6 @@ public class TimeSlowSwap : MonoBehaviour
 
     public void SlowForSwap()
     {
-        Debug.Log("IN SLOW SWAP");
         screenDimmer.SetActive(true);
         Time.timeScale = .5f;
         Time.fixedDeltaTime = 0.02f * Time.timeScale;

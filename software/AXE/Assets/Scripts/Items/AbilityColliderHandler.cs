@@ -18,15 +18,14 @@ public class AbilityColliderHandler : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (playerCont.GetComponent<MainControls>().getControllerNumber() == 1)
+        if (playerCont.GetComponent<MainControls>().GetControllerNumber() == 1)
         {
             stats = GameObject.FindWithTag("Thor").GetComponent<PlayerStats>();
         }
-        else if (playerCont.GetComponent<MainControls>().getControllerNumber() == 2)
+        else if (playerCont.GetComponent<MainControls>().GetControllerNumber() == 2)
         {
             stats = GameObject.FindWithTag("Type2").GetComponent<PlayerStats>();
         }
-        Debug.Log("something");
         if (collision.GetComponent<AIClass>() != null)
         {
             Debug.Log(collision.name);

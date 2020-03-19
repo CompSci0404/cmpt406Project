@@ -37,8 +37,15 @@ public abstract class AIClass : MonoBehaviour
     private RaycastHit2D hit;               /*used in AI teleporation, a ray cast to determine if the AI is going to teleport out of a wall.*/
     private int rangePrefabIndex;           /*the index for range projetcile gameobject.*/
     private int enemySpawnIndex;            /*index of wanted enemy to spawn.*/
-    private List<GameObject> AIPrefabs; 
+    private List<GameObject> AIPrefabs;
     
+    private GameObject oldLaserObject;
+    private bool laserSpawned;
+    // spawn:
+
+    private float spawnTimer = 5;
+    private float spawnCoolDown = 0; 
+
 
     //---[[pre-setup calls (call these before building the decision tree in start.)]]---//
 
@@ -89,7 +96,7 @@ public abstract class AIClass : MonoBehaviour
     {
         rangePrefabs = new List<GameObject>();
         AIPrefabs = new List<GameObject>();
-
+        oldLaserObject = null; 
 
         object[] prefabs;
         int counter = 0; 
@@ -121,9 +128,7 @@ public abstract class AIClass : MonoBehaviour
 
     }
 
-
-
-    public void findProj(string nameRngGameObject)
+    public void FindProj(string nameRngGameObject)
     {
         int counter = 0; 
 
@@ -146,7 +151,7 @@ public abstract class AIClass : MonoBehaviour
 
     }
 
-    public void findAIPrefab(string aiName)
+    public void FindAIPrefab(string aiName)
     {
 
         int counter = 0; 
@@ -182,11 +187,9 @@ public abstract class AIClass : MonoBehaviour
     public void Damage(float damage)
     {
         health -= damage;
-        Debug.Log( "AI Health: " + health);
-        //
         Instantiate(ParticleDamage, transform.position, Quaternion.identity);
         if (health <= 0) {
-            this.gameObject.GetComponent<enemyAnim>().death();
+            this.gameObject.GetComponent<EnemyAnim>().Death();
             StartCoroutine(Die());
         }
     }
@@ -210,7 +213,6 @@ public abstract class AIClass : MonoBehaviour
     /// <returns>nothing</returns>
     public void RangedAttack()
     {
-
         if (cooldown != 0)
         {
             this.cooldown -= Time.deltaTime;
@@ -222,12 +224,11 @@ public abstract class AIClass : MonoBehaviour
         }
         else if (cooldown == 0)
         {
-
             this.currentAct = "attack";
 
-            this.gameObject.GetComponent<enemyAnim>().updateCurrentAct(currentAct);
+            this.gameObject.GetComponent<EnemyAnim>().UpdateCurrentAct(currentAct);
 
-            FindObjectOfType<AudioManager>().PlaySound("NanoShot");
+            //FindObjectOfType<AudioManager>().PlaySound("NanoShot");
 
             // direction that AI is currently facing is where we want to shoot our object!
             Vector2 direction = (player.transform.position - this.transform.position).normalized;
@@ -246,6 +247,54 @@ public abstract class AIClass : MonoBehaviour
 
             Destroy(newProjectile, 3.0f); 
         }
+    }
+
+    public void LaserBeamAttack()
+    {
+
+        if(cooldown != 0)
+        {
+            this.cooldown -= Time.deltaTime; 
+
+            if(this.oldLaserObject != null)
+            {
+                oldLaserObject.transform.RotateAround(new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y, this.gameObject.transform.position.z), Vector3.forward, speed * Time.deltaTime);
+                Debug.Log("yeet");
+                    
+            }
+
+            if (this.cooldown <= 0)
+            {
+
+                this.cooldown = 0; 
+            }
+        }
+
+        if(cooldown == 0)
+        {
+
+                this.currentAct = "attack";
+
+                this.cooldown = this.rangedAttackCooldown;
+
+                Vector2 moveLaserDown = new Vector2(this.gameObject.transform.position.x, this.gameObject.transform.position.y - 2);
+                GameObject newProjectile = Instantiate(rangePrefabs[this.rangePrefabIndex], this.transform.position, Quaternion.identity);
+
+                newProjectile.transform.position = moveLaserDown; 
+
+                Physics2D.IgnoreCollision(newProjectile.GetComponent<PolygonCollider2D>(), this.gameObject.GetComponent<PolygonCollider2D>(), true);
+
+                
+                
+
+                oldLaserObject = newProjectile;
+
+                Destroy(newProjectile, 5.0f);
+
+        }
+        
+
+
     }
 
     //---[[Movement Decisions]]---//
@@ -282,7 +331,6 @@ public abstract class AIClass : MonoBehaviour
         }
         else
         {
-
             return false; 
         }
     }
@@ -307,44 +355,55 @@ public abstract class AIClass : MonoBehaviour
     }
 
 
-
-    public bool canSpawn()
+    public bool CanSpawn()
     {
-        bool canSpawnYet = false;
 
-        StartCoroutine(spawnTimer(canSpawnYet));
+        if (this.spawnCoolDown > 0)
+        {
 
-        Debug.Log("we are truning canSpawnyet: " + canSpawnYet);
+            this.spawnCoolDown = this.spawnCoolDown - Time.deltaTime; 
 
-        if (canSpawnYet) return true;
+
+            if(this.spawnCoolDown <= 0)
+            {
+
+                this.spawnCoolDown = 0; 
+            }
+
+            return false; 
+
+        } 
+        
+        if(this.spawnCoolDown == 0)
+        {
+
+            this.spawnCoolDown = this.spawnTimer;
+
+            return true; 
+
+        }
+
 
         return false; 
+     
+
     }
 
-
-    private IEnumerator spawnTimer(bool canSpawnYet)
-    {
-
-        yield return new WaitForSeconds(3.0f);
-
-        Debug.Log("we are truning canSpawnyetinto True:: " + canSpawnYet); 
-        canSpawnYet = true; 
-    }
 
     //---[[Movement Actions!]]---//
 
-        /// <summary>
-        /// <c>MoveTowrdsPlayer</c>
-        /// 
-        /// pre: must have a decision hooked up to it.
-        /// post: move ai towards the player.
-        /// 
-        /// </summary>
+    /// <summary>
+    /// <c>MoveTowrdsPlayer</c>
+    /// 
+    /// pre: must have a decision hooked up to it.
+    /// post: move ai towards the player.
+    /// 
+    /// </summary>
     public void MoveTowardsPlayer()
     {
         speed = saveSpeed;
         this.currentAct = "move";
-        this.gameObject.GetComponent<enemyAnim>().updateCurrentAct(currentAct);
+        this.gameObject.GetComponent<EnemyAnim>().UpdateCurrentAct(currentAct);
         this.transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
     }
 
@@ -371,25 +430,22 @@ public abstract class AIClass : MonoBehaviour
         {
             speed = saveSpeed;
             this.currentAct = "move";
-            this.gameObject.GetComponent<enemyAnim>().updateCurrentAct(currentAct);
+            this.gameObject.GetComponent<EnemyAnim>().UpdateCurrentAct(currentAct);
             teleportCoolDown = teleportTimerSet;
 
-            StartCoroutine(playTeleportAnim());
-
+            StartCoroutine(PlayTeleportAnim());
         }
-
     }
 
     /// <summary>
-    /// <c>playTeleportAnim</c>
+    /// <c>PlayTeleportAnim</c>
     /// 
     /// Coroutine function, used to ensure the animation fully plays out.
     /// 
     /// </summary>
     /// <returns> return how much time until this function called again.</returns>
-    private IEnumerator playTeleportAnim()
+    private IEnumerator PlayTeleportAnim()
     {
-            
         yield return new WaitForSeconds(2.0f);
 
         bool hitWall = false;
@@ -401,12 +457,9 @@ public abstract class AIClass : MonoBehaviour
         this.hit = Physics2D.Raycast(this.transform.position, randomPosition);
         //Debug.DrawLine(, hit.point,Color.green);
 
-
         // as long as it does not hit a wall, we are good to teleport to a new location. 
         if(hit.collider != null)
         {
-            print("teleporting!");
-
             Vector2 posAwayFromWall = new Vector2(0.0f,0.0f); 
 
             while(hit.transform.gameObject.layer == LayerMask.NameToLayer("wall"))
@@ -433,11 +486,8 @@ public abstract class AIClass : MonoBehaviour
         }
     }
 
-
-
-    public void spawnUnits()
+    public void SpawnUnits()
     {
-
         int counter = 0;
 
         int randomNumSpawns = UnityEngine.Random.Range(0, spawnPoints.Length);
@@ -450,9 +500,9 @@ public abstract class AIClass : MonoBehaviour
          
             counter++;
         }
-
-
     }
+
+    
 
 
     /// <summary>
@@ -464,11 +514,10 @@ public abstract class AIClass : MonoBehaviour
     {
         speed = saveSpeed;
         this.currentAct = "move";
-        this.gameObject.GetComponent<enemyAnim>().updateCurrentAct(currentAct);
+        this.gameObject.GetComponent<EnemyAnim>().UpdateCurrentAct(currentAct);
         Vector2 direction = this.gameObject.transform.position - player.transform.position;
 
         transform.Translate(direction.normalized * speed * Time.deltaTime); 
-
     }
 
     /// <summary>
@@ -481,7 +530,7 @@ public abstract class AIClass : MonoBehaviour
     public void Idle()
     {
         this.currentAct = "idle";
-        this.gameObject.GetComponent<enemyAnim>().updateCurrentAct(currentAct);
+        this.gameObject.GetComponent<EnemyAnim>().UpdateCurrentAct(currentAct);
         this.speed = 0f;
     }
 
@@ -494,6 +543,4 @@ public abstract class AIClass : MonoBehaviour
     {
         return this.currentAct;
     }
-
-
 }

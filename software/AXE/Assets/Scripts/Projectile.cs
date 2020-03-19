@@ -6,12 +6,6 @@ public class Projectile : MonoBehaviour
 {
     public int damage;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        // Grab enemy type damage
-    }
-
     // collided with something
     private void OnCollisionEnter2D(Collision2D collision)
     {

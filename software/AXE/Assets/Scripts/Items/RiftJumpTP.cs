@@ -7,6 +7,7 @@ public class RiftJumpTP : MonoBehaviour
     private Rigidbody2D playerRB;
     private GameObject playerCont;
     private Rigidbody2D projectileRB;
+
     // Start is called before the first frame update
     private void Start()
     {

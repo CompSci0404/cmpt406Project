@@ -18,7 +18,7 @@ public class OdinAle: ItemClass
 
     void AddHealth()
     {
-        if (playerCont.GetComponent<MainControls>().getControllerNumber() == 1)
+        if (playerCont.GetComponent<MainControls>().GetControllerNumber() == 1)
         {
             playerCont = GameObject.FindWithTag("Thor");
         }

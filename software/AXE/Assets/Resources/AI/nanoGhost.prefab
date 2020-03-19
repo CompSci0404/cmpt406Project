@@ -211,7 +211,7 @@ MonoBehaviour:
   health: 10
   atkDamage: 1
   tooCloseRange: 5
-  velocityOfRangedAttack: 100
+  velocityOfRangedAttack: 50
   rangedAttackCooldown: 3
   spawnPoints: []
   ParticleDamage: {fileID: 6980632896635148368, guid: e01f146a534f643e3a8bec06f3966da9,

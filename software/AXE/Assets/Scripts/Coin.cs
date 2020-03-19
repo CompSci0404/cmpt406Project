@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Coin will fly to player when close and add currency to the opposite player
+/// </summary>
 public class Coin : MonoBehaviour
 {
     Rigidbody2D rBody;
@@ -37,5 +40,7 @@ public class Coin : MonoBehaviour
             col.GetComponentInChildren<PlayerStats>().AddCoin(1);
             Destroy(gameObject);
         }
+        else
+        { }
     }
 }
