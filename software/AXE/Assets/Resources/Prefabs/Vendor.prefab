@@ -50,7 +50,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -100,12 +100,13 @@ MonoBehaviour:
   - {fileID: 6723162061165601016, guid: b872448cfcc5bb14c8a517ce8ff345d9, type: 3}
   swapAbilities:
   - {fileID: 664688373117898064, guid: b24533ff8fb454e41bfc9c2eb89c7d2e, type: 3}
-  - {fileID: 2783781131979127740, guid: b9b934d4c1928e2439df0557178c5db4, type: 3}
+  - {fileID: 1294559909591138003, guid: 3e241543db8a6b34d9fbc4dd772176a0, type: 3}
+  - {fileID: 2537310658430278246, guid: 8d33091d2c1583b4cb63b91e6370ebd0, type: 3}
   playerAbilities:
   - {fileID: 5792350533046689760, guid: 2bc8f96bef461314cb74bb1bb0c14a02, type: 3}
   - {fileID: 3744995540914543573, guid: 42893adbd0198a647ba6932fb58a5265, type: 3}
   - {fileID: 8265659140601263921, guid: 0690e459da1b5ed40a71bb027533a113, type: 3}
-  mySpawnType: 1
+  mySpawnType: 2
 --- !u!1 &2327703489330218467
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,7 +234,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -283,7 +284,8 @@ MonoBehaviour:
   - {fileID: 6723162061165601016, guid: b872448cfcc5bb14c8a517ce8ff345d9, type: 3}
   swapAbilities:
   - {fileID: 664688373117898064, guid: b24533ff8fb454e41bfc9c2eb89c7d2e, type: 3}
-  - {fileID: 2783781131979127740, guid: b9b934d4c1928e2439df0557178c5db4, type: 3}
+  - {fileID: 1294559909591138003, guid: 3e241543db8a6b34d9fbc4dd772176a0, type: 3}
+  - {fileID: 2537310658430278246, guid: 8d33091d2c1583b4cb63b91e6370ebd0, type: 3}
   playerAbilities:
   - {fileID: 5792350533046689760, guid: 2bc8f96bef461314cb74bb1bb0c14a02, type: 3}
   - {fileID: 3744995540914543573, guid: 42893adbd0198a647ba6932fb58a5265, type: 3}
@@ -558,6 +560,7 @@ GameObject:
   - component: {fileID: 2327703490208133626}
   - component: {fileID: 2327703490208133605}
   - component: {fileID: 2327703490208133604}
+  - component: {fileID: 6079583265083031150}
   m_Layer: 0
   m_Name: Vendor
   m_TagString: Untagged
@@ -597,7 +600,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -659,6 +662,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vendorUI: {fileID: 0}
   thingsOnSale: []
+--- !u!61 &6079583265083031150
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2327703490208133607}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &2327703490378416931
 GameObject:
   m_ObjectHideFlags: 0
@@ -709,7 +738,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -759,12 +788,13 @@ MonoBehaviour:
   - {fileID: 6723162061165601016, guid: b872448cfcc5bb14c8a517ce8ff345d9, type: 3}
   swapAbilities:
   - {fileID: 664688373117898064, guid: b24533ff8fb454e41bfc9c2eb89c7d2e, type: 3}
-  - {fileID: 2783781131979127740, guid: b9b934d4c1928e2439df0557178c5db4, type: 3}
+  - {fileID: 1294559909591138003, guid: 3e241543db8a6b34d9fbc4dd772176a0, type: 3}
+  - {fileID: 2537310658430278246, guid: 8d33091d2c1583b4cb63b91e6370ebd0, type: 3}
   playerAbilities:
   - {fileID: 5792350533046689760, guid: 2bc8f96bef461314cb74bb1bb0c14a02, type: 3}
   - {fileID: 3744995540914543573, guid: 42893adbd0198a647ba6932fb58a5265, type: 3}
   - {fileID: 8265659140601263921, guid: 0690e459da1b5ed40a71bb027533a113, type: 3}
-  mySpawnType: 0
+  mySpawnType: 1
 --- !u!1 &2327703490498671042
 GameObject:
   m_ObjectHideFlags: 0
@@ -892,7 +922,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -942,7 +972,8 @@ MonoBehaviour:
   - {fileID: 6723162061165601016, guid: b872448cfcc5bb14c8a517ce8ff345d9, type: 3}
   swapAbilities:
   - {fileID: 664688373117898064, guid: b24533ff8fb454e41bfc9c2eb89c7d2e, type: 3}
-  - {fileID: 2783781131979127740, guid: b9b934d4c1928e2439df0557178c5db4, type: 3}
+  - {fileID: 1294559909591138003, guid: 3e241543db8a6b34d9fbc4dd772176a0, type: 3}
+  - {fileID: 2537310658430278246, guid: 8d33091d2c1583b4cb63b91e6370ebd0, type: 3}
   playerAbilities:
   - {fileID: 5792350533046689760, guid: 2bc8f96bef461314cb74bb1bb0c14a02, type: 3}
   - {fileID: 3744995540914543573, guid: 42893adbd0198a647ba6932fb58a5265, type: 3}
@@ -998,7 +1029,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1048,12 +1079,13 @@ MonoBehaviour:
   - {fileID: 6723162061165601016, guid: b872448cfcc5bb14c8a517ce8ff345d9, type: 3}
   swapAbilities:
   - {fileID: 664688373117898064, guid: b24533ff8fb454e41bfc9c2eb89c7d2e, type: 3}
-  - {fileID: 2783781131979127740, guid: b9b934d4c1928e2439df0557178c5db4, type: 3}
+  - {fileID: 1294559909591138003, guid: 3e241543db8a6b34d9fbc4dd772176a0, type: 3}
+  - {fileID: 2537310658430278246, guid: 8d33091d2c1583b4cb63b91e6370ebd0, type: 3}
   playerAbilities:
   - {fileID: 5792350533046689760, guid: 2bc8f96bef461314cb74bb1bb0c14a02, type: 3}
   - {fileID: 3744995540914543573, guid: 42893adbd0198a647ba6932fb58a5265, type: 3}
   - {fileID: 8265659140601263921, guid: 0690e459da1b5ed40a71bb027533a113, type: 3}
-  mySpawnType: 2
+  mySpawnType: 3
 --- !u!1 &2327703490712798901
 GameObject:
   m_ObjectHideFlags: 0
