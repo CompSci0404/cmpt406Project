@@ -59,7 +59,7 @@ public class Inventory : MonoBehaviour
     }
     public void Update()
     {
-        curDPad = GetComponentInParent<MainControls>().getDPadLastPos();
+        curDPad = GetComponentInParent<MainControls>().GetDPadLastPos();
 
         if (upItemUsed && CurrentUp != null)
         {

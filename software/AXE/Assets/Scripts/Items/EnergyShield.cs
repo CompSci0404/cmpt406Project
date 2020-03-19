@@ -13,25 +13,33 @@ public class EnergyShield : ItemClass
 
     private GameObject playerCont;
 
+    private PlayerStats stats;
+
+
+    [SerializeField]
+    private GameObject ShieldSprite;
+
     // Start is called before the first frame update
     void Start()
     {
         itemEffect = SpawnShield;
         energyShield = this.gameObject;
         playerCont = GameObject.FindWithTag("Player");
+        stats = playerCont.GetComponentInChildren<PlayerStats>();
     }
 
     void SpawnShield()
     {
         this.gameObject.GetComponent<CircleCollider2D>().enabled = false;
-        Instantiate(energyShield, playerCont.transform);
+        stats.MakeInvincible();
+        ShieldSprite.SetActive(true);
+        Invoke("FadeShield", 10);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    void FadeShield()
     {
-        if (collision.gameObject.CompareTag("Projectile") || collision.gameObject.CompareTag("BaseEnemy"))
-        {
-            Destroy(this.gameObject);
-        }
+        ShieldSprite.SetActive(false);
+        stats.ResetInvincibility();
     }
+
 }

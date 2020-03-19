@@ -18,7 +18,7 @@ public class VoidFireAura : ItemClass
         itemEffect = UseVoidFireAura;
         playerCont = GameObject.FindWithTag("Player");
         playerRB = playerCont.GetComponent<Rigidbody2D>();
-        setAbilityCooldown(0);
+        SetAbilityCooldown(0);
         SetHasDot(true);
         SetDoDot(true);
 
@@ -29,19 +29,19 @@ public class VoidFireAura : ItemClass
         if (aura != null)
         {
             
-            if (playerCont.GetComponent<MainControls>().getControllerNumber() == 1 && playerUsed == 2)
+            if (playerCont.GetComponent<MainControls>().GetControllerNumber() == 1 && playerUsed == 2)
             {
                 aura.transform.localPosition = new Vector3(playerRB.transform.position.x, playerRB.transform.position.y + 1000, 0);
             }
-            else if (playerCont.GetComponent<MainControls>().getControllerNumber() == 2 && playerUsed == 1)
+            else if (playerCont.GetComponent<MainControls>().GetControllerNumber() == 2 && playerUsed == 1)
             {
                 aura.transform.localPosition = new Vector3(playerRB.transform.position.x, playerRB.transform.position.y + 1000, 0);
             }
-            else if (playerCont.GetComponent<MainControls>().getControllerNumber() == 1 && playerUsed == 1)
+            else if (playerCont.GetComponent<MainControls>().GetControllerNumber() == 1 && playerUsed == 1)
             {
                 aura.transform.localPosition = new Vector3(playerRB.transform.position.x, playerRB.transform.position.y, 0);
             }
-            else if (playerCont.GetComponent<MainControls>().getControllerNumber() == 2 && playerUsed == 2)
+            else if (playerCont.GetComponent<MainControls>().GetControllerNumber() == 2 && playerUsed == 2)
             {
                 aura.transform.localPosition = new Vector3(playerRB.transform.position.x, playerRB.transform.position.y, 0);
             }
@@ -56,11 +56,11 @@ public class VoidFireAura : ItemClass
         // ability indicator
         if (GetDoDot())
         {
-            if (playerCont.GetComponent<MainControls>().getControllerNumber() == 1)
+            if (playerCont.GetComponent<MainControls>().GetControllerNumber() == 1)
             {
                 playerUsed = 1;
             }
-            else if (playerCont.GetComponent<MainControls>().getControllerNumber() == 2)
+            else if (playerCont.GetComponent<MainControls>().GetControllerNumber() == 2)
             {
                 playerUsed = 2;
             }

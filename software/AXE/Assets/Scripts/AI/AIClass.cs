@@ -121,9 +121,7 @@ public abstract class AIClass : MonoBehaviour
 
     }
 
-
-
-    public void findProj(string nameRngGameObject)
+    public void FindProj(string nameRngGameObject)
     {
         int counter = 0; 
 
@@ -146,7 +144,7 @@ public abstract class AIClass : MonoBehaviour
 
     }
 
-    public void findAIPrefab(string aiName)
+    public void FindAIPrefab(string aiName)
     {
 
         int counter = 0; 
@@ -182,11 +180,9 @@ public abstract class AIClass : MonoBehaviour
     public void Damage(float damage)
     {
         health -= damage;
-        Debug.Log( "AI Health: " + health);
-        //
         Instantiate(ParticleDamage, transform.position, Quaternion.identity);
         if (health <= 0) {
-            this.gameObject.GetComponent<enemyAnim>().death();
+            this.gameObject.GetComponent<EnemyAnim>().Death();
             StartCoroutine(Die());
         }
     }
@@ -210,7 +206,6 @@ public abstract class AIClass : MonoBehaviour
     /// <returns>nothing</returns>
     public void RangedAttack()
     {
-
         if (cooldown != 0)
         {
             this.cooldown -= Time.deltaTime;
@@ -222,10 +217,9 @@ public abstract class AIClass : MonoBehaviour
         }
         else if (cooldown == 0)
         {
-
             this.currentAct = "attack";
 
-            this.gameObject.GetComponent<enemyAnim>().updateCurrentAct(currentAct);
+            this.gameObject.GetComponent<EnemyAnim>().UpdateCurrentAct(currentAct);
 
             FindObjectOfType<AudioManager>().PlaySound("NanoShot");
 
@@ -282,7 +276,6 @@ public abstract class AIClass : MonoBehaviour
         }
         else
         {
-
             return false; 
         }
     }
@@ -307,12 +300,11 @@ public abstract class AIClass : MonoBehaviour
     }
 
 
-
-    public bool canSpawn()
+    public bool CanSpawn()
     {
         bool canSpawnYet = false;
 
-        StartCoroutine(spawnTimer(canSpawnYet));
+        StartCoroutine(SpawnTimer(canSpawnYet));
 
         Debug.Log("we are truning canSpawnyet: " + canSpawnYet);
 
@@ -322,7 +314,7 @@ public abstract class AIClass : MonoBehaviour
     }
 
 
-    private IEnumerator spawnTimer(bool canSpawnYet)
+    private IEnumerator SpawnTimer(bool canSpawnYet)
     {
 
         yield return new WaitForSeconds(3.0f);
@@ -344,7 +336,7 @@ public abstract class AIClass : MonoBehaviour
     {
         speed = saveSpeed;
         this.currentAct = "move";
-        this.gameObject.GetComponent<enemyAnim>().updateCurrentAct(currentAct);
+        this.gameObject.GetComponent<EnemyAnim>().UpdateCurrentAct(currentAct);
         this.transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
     }
 
@@ -371,25 +363,22 @@ public abstract class AIClass : MonoBehaviour
         {
             speed = saveSpeed;
             this.currentAct = "move";
-            this.gameObject.GetComponent<enemyAnim>().updateCurrentAct(currentAct);
+            this.gameObject.GetComponent<EnemyAnim>().UpdateCurrentAct(currentAct);
             teleportCoolDown = teleportTimerSet;
 
-            StartCoroutine(playTeleportAnim());
-
+            StartCoroutine(PlayTeleportAnim());
         }
-
     }
 
     /// <summary>
-    /// <c>playTeleportAnim</c>
+    /// <c>PlayTeleportAnim</c>
     /// 
     /// Coroutine function, used to ensure the animation fully plays out.
     /// 
     /// </summary>
     /// <returns> return how much time until this function called again.</returns>
-    private IEnumerator playTeleportAnim()
+    private IEnumerator PlayTeleportAnim()
     {
-            
         yield return new WaitForSeconds(2.0f);
 
         bool hitWall = false;
@@ -401,12 +390,9 @@ public abstract class AIClass : MonoBehaviour
         this.hit = Physics2D.Raycast(this.transform.position, randomPosition);
         //Debug.DrawLine(, hit.point,Color.green);
 
-
         // as long as it does not hit a wall, we are good to teleport to a new location. 
         if(hit.collider != null)
         {
-            print("teleporting!");
-
             Vector2 posAwayFromWall = new Vector2(0.0f,0.0f); 
 
             while(hit.transform.gameObject.layer == LayerMask.NameToLayer("wall"))
@@ -433,11 +419,8 @@ public abstract class AIClass : MonoBehaviour
         }
     }
 
-
-
-    public void spawnUnits()
+    public void SpawnUnits()
     {
-
         int counter = 0;
 
         int randomNumSpawns = UnityEngine.Random.Range(0, spawnPoints.Length);
@@ -450,8 +433,6 @@ public abstract class AIClass : MonoBehaviour
          
             counter++;
         }
-
-
     }
 
 
@@ -464,11 +445,10 @@ public abstract class AIClass : MonoBehaviour
     {
         speed = saveSpeed;
         this.currentAct = "move";
-        this.gameObject.GetComponent<enemyAnim>().updateCurrentAct(currentAct);
+        this.gameObject.GetComponent<EnemyAnim>().UpdateCurrentAct(currentAct);
         Vector2 direction = this.gameObject.transform.position - player.transform.position;
 
         transform.Translate(direction.normalized * speed * Time.deltaTime); 
-
     }
 
     /// <summary>
@@ -481,7 +461,7 @@ public abstract class AIClass : MonoBehaviour
     public void Idle()
     {
         this.currentAct = "idle";
-        this.gameObject.GetComponent<enemyAnim>().updateCurrentAct(currentAct);
+        this.gameObject.GetComponent<EnemyAnim>().UpdateCurrentAct(currentAct);
         this.speed = 0f;
     }
 
@@ -494,6 +474,4 @@ public abstract class AIClass : MonoBehaviour
     {
         return this.currentAct;
     }
-
-
 }

@@ -33,11 +33,11 @@ public class DamageAbilityColliderHandler : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // get correct stats 
-        if (playerCont.GetComponent<MainControls>().getControllerNumber() == 1)
+        if (playerCont.GetComponent<MainControls>().GetControllerNumber() == 1)
         {
             stats = GameObject.FindWithTag("Thor").GetComponent<PlayerStats>();
         }
-        else if (playerCont.GetComponent<MainControls>().getControllerNumber() == 2)
+        else if (playerCont.GetComponent<MainControls>().GetControllerNumber() == 2)
         {
             stats = GameObject.FindWithTag("Type2").GetComponent<PlayerStats>();
         }

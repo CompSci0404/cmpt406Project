@@ -19,6 +19,7 @@ TagManager:
   - Message
   - SwapAbility
   - CoinMagnet
+  - InvulnerableOutline
   layers:
   - Default
   - TransparentFX

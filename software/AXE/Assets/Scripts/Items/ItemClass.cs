@@ -40,8 +40,6 @@ public abstract class ItemClass : MonoBehaviour
     // use any type of item with one function
     public delegate void ItemDelegate();
     public ItemDelegate itemEffect;
-
-    
     
     public void ItemActivate()
     {
@@ -79,7 +77,6 @@ public abstract class ItemClass : MonoBehaviour
                 // just need room to call SetCurAbilityCooldown(abilityCooldown - 1) once a player finnish a room or once it calls roomClear()
                 Invoke("TempTimer", abilityCooldown);
             }
-            
         }
     }
 
@@ -89,12 +86,12 @@ public abstract class ItemClass : MonoBehaviour
         abilityJustUsed = false;
     }
 
-    public void setHasIndicator(bool boolIndicator)
+    public void SetHasIndicator(bool boolIndicator)
     {
         hasIndicator = boolIndicator;
     }
 
-    public float getItemMultiplier()
+    public float GetItemMultiplier()
     {
         return itemMultiplier;
     }
@@ -149,7 +146,7 @@ public abstract class ItemClass : MonoBehaviour
     {
         return curAbilityCooldown;
     }
-    public void setAbilityCooldown(int cooldown)
+    public void SetAbilityCooldown(int cooldown)
     {
         curAbilityCooldown = cooldown;
     }
@@ -197,7 +194,7 @@ public abstract class ItemClass : MonoBehaviour
     {
         GameObject playerCont =  GameObject.FindWithTag("Player");
         PlayerStats stats;
-        if (playerCont.GetComponent<MainControls>().getControllerNumber() == 1)
+        if (playerCont.GetComponent<MainControls>().GetControllerNumber() == 1)
         {
             stats = GameObject.FindWithTag("Thor").GetComponent<PlayerStats>();
         }

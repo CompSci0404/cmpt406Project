@@ -19,24 +19,25 @@ public class PlasmaHammer : ItemClass
     {
         itemEffect = UsePlasmaHammer;
         playerCont = GameObject.FindWithTag("Player");
-        setHasIndicator(true);
+        SetHasIndicator(true);
         playerRB = playerCont.GetComponent<Rigidbody2D>();
     }
     public void UsePlasmaHammer()
     {
         // make sure we have the right player stat
-        if (playerCont.GetComponent<MainControls>().getControllerNumber() == 1)
+        if (playerCont.GetComponent<MainControls>().GetControllerNumber() == 1)
         {
             stats = GameObject.FindWithTag("Thor").GetComponent<PlayerStats>();
         }
-        else if (playerCont.GetComponent<MainControls>().getControllerNumber() == 2)
+        else if (playerCont.GetComponent<MainControls>().GetControllerNumber() == 2)
         {
             stats = GameObject.FindWithTag("Type2").GetComponent<PlayerStats>();
         }
 
         // box collider 2D Version
-        angle = playerCont.GetComponent<MainControls>().getRSAngle();
-        lookDirection = playerCont.GetComponent<MainControls>().getRSDirection();
+        angle = playerCont.GetComponent<MainControls>().GetRSAngle();
+        lookDirection = playerCont.GetComponent<MainControls>().GetRSDirection();
+
         // ability indicator
         GameObject indicator = Resources.Load("Prefabs/PlasmaHammerIndicator", typeof(GameObject)) as GameObject;
         if (null != indicator)

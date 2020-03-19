@@ -25,11 +25,11 @@ public class Vendor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerCont.GetComponent<MainControls>().getControllerNumber() == 1)
+        if (playerCont.GetComponent<MainControls>().GetControllerNumber() == 1)
         {
             stats = GameObject.FindWithTag("Thor").GetComponent<PlayerStats>();
         }
-        else if (playerCont.GetComponent<MainControls>().getControllerNumber() == 2)
+        else if (playerCont.GetComponent<MainControls>().GetControllerNumber() == 2)
         {
             stats = GameObject.FindWithTag("Type2").GetComponent<PlayerStats>();
         }

@@ -33,7 +33,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame and gets users inputs
     void Update()
     {
-
         // update movement speed based on current player stat
         if (gameObject.transform.GetChild(0).gameObject.activeSelf)
         {
@@ -43,7 +42,6 @@ public class PlayerMovement : MonoBehaviour
         {
             stats = gameObject.transform.GetChild(1).GetComponent<PlayerStats>();
         }
-        //
 
         moveSpeed = stats.GetMoveSpeed();
         movement.x = Input.GetAxis("Horizontal");
