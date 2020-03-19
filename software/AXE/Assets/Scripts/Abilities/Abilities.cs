@@ -84,7 +84,7 @@ public class Abilities : MonoBehaviour
 
                 if (aAvailable)
                 {
-                    if (AbilitiesInRange[i].GetComponent<EnergyShield>())
+                    if (null != AbilitiesInRange[i].GetComponent<EnergyShield>())
                     {
                         EnergyShield = GameObject.Find("ES_UI");
                         EnergyShield.GetComponent<Renderer>().sortingOrder = 1;
@@ -92,7 +92,7 @@ public class Abilities : MonoBehaviour
                         CurrentA = AbilitiesInRange[i].gameObject;
                         CurrentA.transform.position = new Vector2(0, -1000);
                     }
-                    else if (AbilitiesInRange[i].GetComponent<GodLaser>())
+                    else if (null != AbilitiesInRange[i].GetComponent<GodLaser>())
                     {
                         GodLaser = GameObject.Find("GL_UI");
                         GodLaser.GetComponent<Renderer>().sortingOrder = 1;
@@ -100,7 +100,7 @@ public class Abilities : MonoBehaviour
                         CurrentA = AbilitiesInRange[i].gameObject;
                         CurrentA.transform.position = new Vector2(0, -1000);
                     }
-                    else if (AbilitiesInRange[i].GetComponent<PlasmaHammer>())
+                    else if (null != AbilitiesInRange[i].GetComponent<PlasmaHammer>())
                     {
                         PlasmaHammer = GameObject.Find("PH_UI");
                         PlasmaHammer.GetComponent<Renderer>().sortingOrder = 1;
@@ -108,7 +108,7 @@ public class Abilities : MonoBehaviour
                         CurrentA = AbilitiesInRange[i].gameObject;
                         CurrentA.transform.position = new Vector2(0, -1000);
                     }
-                    else if (AbilitiesInRange[i].GetComponent<VoidFireAura>())
+                    else if (null != AbilitiesInRange[i].GetComponent<VoidFireAura>())
                     {
                         VoidFireAura = GameObject.Find("VFA_UI");
                         VoidFireAura.GetComponent<Renderer>().sortingOrder = 1;
@@ -129,25 +129,25 @@ public class Abilities : MonoBehaviour
                 else
                 {
                     // check our current item
-                    if (CurrentA.GetComponent<EnergyShield>())
+                    if (null != CurrentA.GetComponent<EnergyShield>())
                     {
                         //remove from UI
                         EnergyShield.GetComponent<Renderer>().sortingOrder = -1;
                         CurrentA.transform.position = new Vector2(rBody.transform.position.x, rBody.transform.position.y-1);
                     }
-                    else if (CurrentA.GetComponent<GodLaser>())
+                    else if (null != CurrentA.GetComponent<GodLaser>())
                     {
                         //remove from UI
                         GodLaser.GetComponent<Renderer>().sortingOrder = -1;
                         CurrentA.transform.position = new Vector2(rBody.transform.position.x, rBody.transform.position.y - 1);
                     }
-                    else if (CurrentA.GetComponent<PlasmaHammer>())
+                    else if (null != CurrentA.GetComponent<PlasmaHammer>())
                     {
                         //remove from UI
                         PlasmaHammer.GetComponent<Renderer>().sortingOrder = -1;
                         CurrentA.transform.position = new Vector2(rBody.transform.position.x, rBody.transform.position.y - 1);
                     }
-                    else if (CurrentA.GetComponent<VoidFireAura>())
+                    else if (null != CurrentA.GetComponent<VoidFireAura>())
                     {
                         //remove from UI
                         VoidFireAura.GetComponent<Renderer>().sortingOrder = -1;
@@ -155,7 +155,7 @@ public class Abilities : MonoBehaviour
                     }
 
                     // Pick up new item
-                    if (AbilitiesInRange[i].GetComponent<EnergyShield>())
+                    if (null != AbilitiesInRange[i].GetComponent<EnergyShield>())
                     {
                         EnergyShield = GameObject.Find("ES_UI");
                         EnergyShield.GetComponent<Renderer>().sortingOrder = 1;
@@ -163,7 +163,7 @@ public class Abilities : MonoBehaviour
                         CurrentA = AbilitiesInRange[i].gameObject;
                         CurrentA.transform.position = new Vector2(0, -1000);
                     }
-                    else if (AbilitiesInRange[i].GetComponent<GodLaser>())
+                    else if (null != AbilitiesInRange[i].GetComponent<GodLaser>())
                     {
                         GodLaser = GameObject.Find("GL_UI");
                         GodLaser.GetComponent<Renderer>().sortingOrder = 1;
@@ -171,7 +171,7 @@ public class Abilities : MonoBehaviour
                         CurrentA = AbilitiesInRange[i].gameObject;
                         CurrentA.transform.position = new Vector2(0, -1000);
                     }
-                    else if (AbilitiesInRange[i].GetComponent<PlasmaHammer>())
+                    else if (null != AbilitiesInRange[i].GetComponent<PlasmaHammer>())
                     {
                         PlasmaHammer = GameObject.Find("PH_UI");
                         PlasmaHammer.GetComponent<Renderer>().sortingOrder = 1;
@@ -179,7 +179,7 @@ public class Abilities : MonoBehaviour
                         CurrentA = AbilitiesInRange[i].gameObject;
                         CurrentA.transform.position = new Vector2(0, -1000);
                     }
-                    else if (AbilitiesInRange[i].GetComponent<VoidFireAura>())
+                    else if (null != AbilitiesInRange[i].GetComponent<VoidFireAura>())
                     {
                         VoidFireAura = GameObject.Find("VFA_UI");
                         VoidFireAura.GetComponent<Renderer>().sortingOrder = 1;
@@ -231,7 +231,7 @@ public class Abilities : MonoBehaviour
 
                 if (swapAvailable)
                 {
-                    if (AbilitiesInRange[i].GetComponent<ClusterBomb>())
+                    if (null != AbilitiesInRange[i].GetComponent<ClusterBomb>())
                     {
                         ClusterBomb = GameObject.Find("CB_UI");
                         ClusterBomb.GetComponent<Renderer>().sortingOrder = 1;
@@ -239,7 +239,7 @@ public class Abilities : MonoBehaviour
                         CurrentSwap = AbilitiesInRange[i].gameObject;
                         CurrentSwap.transform.position = new Vector2(0, -1000);
                     }
-                    else if (AbilitiesInRange[i].GetComponent<TimelineShifter>())
+                    else if (null != AbilitiesInRange[i].GetComponent<TimelineShifter>())
                     {
                         TimelineShifter = GameObject.Find("TS_UI");
                         TimelineShifter.GetComponent<Renderer>().sortingOrder = 1;
@@ -261,13 +261,13 @@ public class Abilities : MonoBehaviour
                 else
                 {
                     // check our current item
-                    if (CurrentSwap.GetComponent<ClusterBomb>())
+                    if (null != CurrentSwap.GetComponent<ClusterBomb>())
                     {
                         //remove from UI
                         ClusterBomb.GetComponent<Renderer>().sortingOrder = -1;
                         CurrentSwap.transform.position = new Vector2(rBody.transform.position.x, rBody.transform.position.y - 1);
                     }
-                    else if (CurrentSwap.GetComponent<TimelineShifter>())
+                    else if (null != CurrentSwap.GetComponent<TimelineShifter>())
                     {
                         //remove from UI
                         TimelineShifter.GetComponent<Renderer>().sortingOrder = -1;
@@ -275,7 +275,7 @@ public class Abilities : MonoBehaviour
                     }
 
                     // pick up new item
-                    if (AbilitiesInRange[i].GetComponent<ClusterBomb>())
+                    if (null != AbilitiesInRange[i].GetComponent<ClusterBomb>())
                     {
                         ClusterBomb = GameObject.Find("CB_UI");
                         ClusterBomb.GetComponent<Renderer>().sortingOrder = 1;
@@ -283,7 +283,7 @@ public class Abilities : MonoBehaviour
                         CurrentSwap = AbilitiesInRange[i].gameObject;
                         CurrentSwap.transform.position = new Vector2(0, -1000);
                     }
-                    else if (AbilitiesInRange[i].GetComponent<TimelineShifter>())
+                    else if (null != AbilitiesInRange[i].GetComponent<TimelineShifter>())
                     {
                         TimelineShifter = GameObject.Find("TS_UI");
                         TimelineShifter.GetComponent<Renderer>().sortingOrder = 1;
