@@ -40,12 +40,12 @@ public class Coin : MonoBehaviour
             if (player.GetComponent<MainControls>().GetControllerNumber() == 1)
             {
                 //PlayerStats stats = GameObject.FindWithTag("Type2").GetComponent<PlayerStats>();
-                col.GetComponentInChildren<PlayerStats>().AddCoin(1);
+                col.GetComponent<CoinStats>().AddValkCoin(1);
             }
             else
             {
                 //PlayerStats stats = GameObject.FindWithTag("Thor").GetComponent<PlayerStats>();
-                col.GetComponentInChildren<PlayerStats>().AddCoin(1);
+                col.GetComponent<CoinStats>().AddThorCoin(1);
             }
             Destroy(gameObject);
         }
