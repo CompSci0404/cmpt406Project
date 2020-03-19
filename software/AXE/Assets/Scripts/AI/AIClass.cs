@@ -37,8 +37,15 @@ public abstract class AIClass : MonoBehaviour
     private RaycastHit2D hit;               /*used in AI teleporation, a ray cast to determine if the AI is going to teleport out of a wall.*/
     private int rangePrefabIndex;           /*the index for range projetcile gameobject.*/
     private int enemySpawnIndex;            /*index of wanted enemy to spawn.*/
-    private List<GameObject> AIPrefabs; 
+    private List<GameObject> AIPrefabs;
     
+    private GameObject oldLaserObject;
+    private bool laserSpawned;
+    // spawn:
+
+    private float spawnTimer = 5;
+    private float spawnCoolDown = 0; 
+
 
     //---[[pre-setup calls (call these before building the decision tree in start.)]]---//
 
@@ -89,7 +96,7 @@ public abstract class AIClass : MonoBehaviour
     {
         rangePrefabs = new List<GameObject>();
         AIPrefabs = new List<GameObject>();
-
+        oldLaserObject = null; 
 
         object[] prefabs;
         int counter = 0; 
@@ -221,7 +228,7 @@ public abstract class AIClass : MonoBehaviour
 
             this.gameObject.GetComponent<EnemyAnim>().UpdateCurrentAct(currentAct);
 
-            FindObjectOfType<AudioManager>().PlaySound("NanoShot");
+            //FindObjectOfType<AudioManager>().PlaySound("NanoShot");
 
             // direction that AI is currently facing is where we want to shoot our object!
             Vector2 direction = (player.transform.position - this.transform.position).normalized;
@@ -240,6 +247,54 @@ public abstract class AIClass : MonoBehaviour
 
             Destroy(newProjectile, 3.0f); 
         }
+    }
+
+    public void LaserBeamAttack()
+    {
+
+        if(cooldown != 0)
+        {
+            this.cooldown -= Time.deltaTime; 
+
+            if(this.oldLaserObject != null)
+            {
+                oldLaserObject.transform.RotateAround(new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y, this.gameObject.transform.position.z), Vector3.forward, speed * Time.deltaTime);
+                Debug.Log("yeet");
+                    
+            }
+
+            if (this.cooldown <= 0)
+            {
+
+                this.cooldown = 0; 
+            }
+        }
+
+        if(cooldown == 0)
+        {
+
+                this.currentAct = "attack";
+
+                this.cooldown = this.rangedAttackCooldown;
+
+                Vector2 moveLaserDown = new Vector2(this.gameObject.transform.position.x, this.gameObject.transform.position.y - 2);
+                GameObject newProjectile = Instantiate(rangePrefabs[this.rangePrefabIndex], this.transform.position, Quaternion.identity);
+
+                newProjectile.transform.position = moveLaserDown; 
+
+                Physics2D.IgnoreCollision(newProjectile.GetComponent<PolygonCollider2D>(), this.gameObject.GetComponent<PolygonCollider2D>(), true);
+
+                
+                
+
+                oldLaserObject = newProjectile;
+
+                Destroy(newProjectile, 5.0f);
+
+        }
+        
+
+
     }
 
     //---[[Movement Decisions]]---//
@@ -302,36 +357,48 @@ public abstract class AIClass : MonoBehaviour
 
     public bool CanSpawn()
     {
-        bool canSpawnYet = false;
 
-        StartCoroutine(SpawnTimer(canSpawnYet));
+        if (this.spawnCoolDown > 0)
+        {
 
-        Debug.Log("we are truning canSpawnyet: " + canSpawnYet);
+            this.spawnCoolDown = this.spawnCoolDown - Time.deltaTime; 
 
-        if (canSpawnYet) return true;
+
+            if(this.spawnCoolDown <= 0)
+            {
+
+                this.spawnCoolDown = 0; 
+            }
+
+            return false; 
+
+        } 
+        
+        if(this.spawnCoolDown == 0)
+        {
+
+            this.spawnCoolDown = this.spawnTimer;
+
+            return true; 
+
+        }
+
 
         return false; 
+     
+
     }
 
-
-    private IEnumerator SpawnTimer(bool canSpawnYet)
-    {
-
-        yield return new WaitForSeconds(3.0f);
-
-        Debug.Log("we are truning canSpawnyetinto True:: " + canSpawnYet); 
-        canSpawnYet = true; 
-    }
 
     //---[[Movement Actions!]]---//
 
-        /// <summary>
-        /// <c>MoveTowrdsPlayer</c>
-        /// 
-        /// pre: must have a decision hooked up to it.
-        /// post: move ai towards the player.
-        /// 
-        /// </summary>
+    /// <summary>
+    /// <c>MoveTowrdsPlayer</c>
+    /// 
+    /// pre: must have a decision hooked up to it.
+    /// post: move ai towards the player.
+    /// 
+    /// </summary>
     public void MoveTowardsPlayer()
     {
         speed = saveSpeed;
@@ -434,6 +501,8 @@ public abstract class AIClass : MonoBehaviour
             counter++;
         }
     }
+
+    
 
 
     /// <summary>

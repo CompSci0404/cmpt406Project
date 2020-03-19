@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class HelAI : AIClass
 {
-
     private bool phaseTwo; 
 
     public void PhaseCheck()
@@ -14,22 +13,22 @@ public class HelAI : AIClass
         {
 
             DecisionTree enemySpotted = new DecisionTree();
-            enemySpotted.BuildDecision(this.EnemySpotted);
+            enemySpotted.BuildDecision(EnemySpotted);
 
             DecisionTree canSpawnChoice = new DecisionTree();
-            canSpawnChoice.BuildDecision(this.CanSpawn);
+            canSpawnChoice.BuildDecision(CanSpawn);
 
             DecisionTree spawnUnit = new DecisionTree();
 
-            spawnUnit.BuildAction(this.SpawnUnits);
+            spawnUnit.BuildAction(SpawnUnits);
 
             DecisionTree rngAttack = new DecisionTree();
 
-            rngAttack.BuildAction(this.RangedAttack);
+            rngAttack.BuildAction(LaserBeamAttack);
 
             DecisionTree idleChoice = new DecisionTree();
 
-            idleChoice.BuildAction(this.Idle);
+            idleChoice.BuildAction(Idle);
 
             enemySpotted.Right(canSpawnChoice);
             enemySpotted.Left(idleChoice);
@@ -42,26 +41,27 @@ public class HelAI : AIClass
         // later for when we want to do phase2. 
     }
 
-
     // Start is called before the first frame update
     void Start()
     {
-        this.phaseTwo = false;
+        phaseTwo = false;
 
-        this.SetSaveSpeed();
-        this.FindPlayer();
-        this.SetCooldown();
-        this.BuildRangePrefabs();
-        this.FindProj("helLaser");
-        this.FindAIPrefab("Draugr");
+        SetSaveSpeed();
+        FindPlayer();
+        SetCooldown();
+        BuildRangePrefabs();
+        FindProj("helLaser");
+        FindAIPrefab("Draugr");
 
-        PhaseCheck(); 
+        PhaseCheck();
 
     }
 
     // Update is called once per frame
     void Update()
     {
+
         this.rootOfTree.Search(); 
+        
     }
 }
