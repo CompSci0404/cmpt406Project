@@ -28,8 +28,10 @@ public class Abilities : MonoBehaviour
     public GameObject EnergyShield;
     public GameObject GodLaser;
     public GameObject PlasmaHammer;
+    public GameObject VoidFireAura;
     public GameObject ClusterBomb;
     public GameObject TimelineShifter;
+    public GameObject Berserk;
 
     private GameObject CurrentA;
     private GameObject CurrentSwap;
@@ -62,6 +64,19 @@ public class Abilities : MonoBehaviour
         {
             if (AbilitiesInRange[i].CompareTag("Ability"))
             {
+                // every item starts as GetNeedCoin false
+                // if vendor spawn the item getNeedcoin is true
+                // so you have to buy it but once you bought it needCoin is false
+                if (AbilitiesInRange[i].GetComponent<ItemClass>().GetNeedCoin())
+                {
+                    AbilitiesInRange[i].GetComponent<ItemClass>().BuyItem();
+                }
+                // second time checking if item was bought if not then cant pick it up
+                if (AbilitiesInRange[i].GetComponent<ItemClass>().GetNeedCoin())
+                {
+                    break;
+                }
+
                 // check if a button is empty
                 // if it is pick up ability and add it to ability UI
                 // disable button (for now)
@@ -90,6 +105,14 @@ public class Abilities : MonoBehaviour
                     {
                         PlasmaHammer = GameObject.Find("PH_UI");
                         PlasmaHammer.GetComponent<Renderer>().sortingOrder = 1;
+                        aAbility = AbilitiesInRange[i].gameObject;
+                        CurrentA = AbilitiesInRange[i].gameObject;
+                        CurrentA.transform.position = new Vector2(0, -1000);
+                    }
+                    else if (AbilitiesInRange[i].GetComponent<VoidFireAura>())
+                    {
+                        VoidFireAura = GameObject.Find("VFA_UI");
+                        VoidFireAura.GetComponent<Renderer>().sortingOrder = 1;
                         aAbility = AbilitiesInRange[i].gameObject;
                         CurrentA = AbilitiesInRange[i].gameObject;
                         CurrentA.transform.position = new Vector2(0, -1000);
@@ -125,6 +148,12 @@ public class Abilities : MonoBehaviour
                         PlasmaHammer.GetComponent<Renderer>().sortingOrder = -1;
                         CurrentA.transform.position = new Vector2(rBody.transform.position.x, rBody.transform.position.y - 1);
                     }
+                    else if (CurrentA.GetComponent<VoidFireAura>())
+                    {
+                        //remove from UI
+                        VoidFireAura.GetComponent<Renderer>().sortingOrder = -1;
+                        CurrentA.transform.position = new Vector2(rBody.transform.position.x, rBody.transform.position.y - 1);
+                    }
 
                     // Pick up new item
                     if (AbilitiesInRange[i].GetComponent<EnergyShield>())
@@ -151,7 +180,14 @@ public class Abilities : MonoBehaviour
                         CurrentA = AbilitiesInRange[i].gameObject;
                         CurrentA.transform.position = new Vector2(0, -1000);
                     }
-
+                    else if (AbilitiesInRange[i].GetComponent<VoidFireAura>())
+                    {
+                        VoidFireAura = GameObject.Find("VFA_UI");
+                        VoidFireAura.GetComponent<Renderer>().sortingOrder = 1;
+                        aAbility = AbilitiesInRange[i].gameObject;
+                        CurrentA = AbilitiesInRange[i].gameObject;
+                        CurrentA.transform.position = new Vector2(0, -1000);
+                    }
 
                     //// removed 'rBody.position =' before new Vecotr2(rBody.pos... in dropA second param
                     //GameObject dropA = Instantiate(aAbility.transform.GetChild(0).gameObject,
@@ -179,6 +215,19 @@ public class Abilities : MonoBehaviour
 
             else if (AbilitiesInRange[i].CompareTag("SwapAbility"))
             {
+                // every item starts as GetNeedCoin false
+                // if vendor spawn the item getNeedcoin is true
+                // so you have to buy it but once you bought it needCoin is false
+                if (AbilitiesInRange[i].GetComponent<ItemClass>().GetNeedCoin())
+                {
+                    AbilitiesInRange[i].GetComponent<ItemClass>().BuyItem();
+                }
+                // second time checking if item was bought if not then cant pick it up
+                if (AbilitiesInRange[i].GetComponent<ItemClass>().GetNeedCoin())
+                {
+                    break;
+                }
+
                 abilitySlot = "Swap";
 
                 if (swapAvailable)
@@ -199,13 +248,14 @@ public class Abilities : MonoBehaviour
                         CurrentSwap = AbilitiesInRange[i].gameObject;
                         CurrentSwap.transform.position = new Vector2(0, -1000);
                     }
-
-                    //GameObject Swap = Instantiate(AbilitiesInRange[i].gameObject, swapAbility.transform, false);
-                    //Swap.transform.localPosition = new Vector3(0.046f, -0.029f, 0f);
-                    //Vector3 scaleChange = new Vector3(-0.1f, -0.1f, 0f);
-                    //Swap.transform.localScale += scaleChange;
-                    //Swap.name = AbilitiesInRange[i].gameObject.name;
-                    //Destroy(AbilitiesInRange[i].gameObject);
+                    else if (AbilitiesInRange[i].GetComponent<Berserk>())
+                    {
+                        Berserk = GameObject.Find("B_UI");
+                        Berserk.GetComponent<Renderer>().sortingOrder = 1;
+                        swapAbility = AbilitiesInRange[i].gameObject;
+                        CurrentSwap = AbilitiesInRange[i].gameObject;
+                        CurrentSwap.transform.position = new Vector2(0, -1000);
+                    }
                     swapAvailable = false;
                     controls.swapAbility = "YES";
                     break;
@@ -223,6 +273,12 @@ public class Abilities : MonoBehaviour
                     {
                         //remove from UI
                         TimelineShifter.GetComponent<Renderer>().sortingOrder = -1;
+                        CurrentSwap.transform.position = new Vector2(rBody.transform.position.x, rBody.transform.position.y - 1);
+                    }
+                    else if (CurrentSwap.GetComponent<Berserk>())
+                    {
+                        //remove from UI
+                        Berserk.GetComponent<Renderer>().sortingOrder = -1;
                         CurrentSwap.transform.position = new Vector2(rBody.transform.position.x, rBody.transform.position.y - 1);
                     }
 
@@ -243,28 +299,14 @@ public class Abilities : MonoBehaviour
                         CurrentSwap = AbilitiesInRange[i].gameObject;
                         CurrentSwap.transform.position = new Vector2(0, -1000);
                     }
-
-                    ////rBody.position = new Vector2(rBody.position.x + 1, rBody.position.y + 1);
-                    //// removed 'rBody.position =' before new Vecotr2(rBody.pos... in dropSwap second param
-                    //GameObject dropSwap = Instantiate(swapAbility.transform.GetChild(0).gameObject, 
-                    //new Vector2(rBody.position.x + 0.5f, rBody.position.y + -0.5f), Quaternion.identity);
-
-                    //// changes
-                    //Vector3 scaleChange = new Vector3(-0.1f, -0.1f, 0f);
-                    //dropSwap.transform.localScale -= scaleChange;
-                    ////
-
-                    //dropSwap.name = swapAbility.transform.GetChild(0).gameObject.name;
-                    //Destroy(swapAbility.transform.GetChild(0).gameObject);
-                    //GameObject Swap = Instantiate(AbilitiesInRange[i].gameObject, swapAbility.transform, false);
-
-                    //// changes
-                    //Swap.transform.localPosition = new Vector3(0.033f, -0.025f, -1f);
-                    //Swap.transform.localScale += scaleChange;
-                    ////
-
-                    //Swap.name = AbilitiesInRange[i].gameObject.name;
-                    //Destroy(AbilitiesInRange[i].gameObject);
+                    else if (AbilitiesInRange[i].GetComponent<Berserk>())
+                    {
+                        Berserk = GameObject.Find("B_UI");
+                        Berserk.GetComponent<Renderer>().sortingOrder = 1;
+                        swapAbility = AbilitiesInRange[i].gameObject;
+                        CurrentSwap = AbilitiesInRange[i].gameObject;
+                        CurrentSwap.transform.position = new Vector2(0, -1000);
+                    }
                     break;
                 }
             }
@@ -281,7 +323,7 @@ public class Abilities : MonoBehaviour
         return swapAbility;
     }
 
-    public bool isAbility()
+    public bool IsAbility()
     {
         return aAbility.GetComponentInChildren<ItemClass>() != null;
     }

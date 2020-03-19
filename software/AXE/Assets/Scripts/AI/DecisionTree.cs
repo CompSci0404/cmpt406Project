@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class DecisionTree
 {
-
     // delegates:
 
     public delegate bool Decision(); // every function that is a decision must be a boolean.
     public delegate void Action(); // every function that is a Action MUST be a void.
-
-
 
     Action action; // I can create varaibles for each of my Delegates.
     Decision decision;
@@ -19,12 +16,10 @@ public class DecisionTree
 
     public DecisionTree()
     {
-
         this.action = null;
         this.decision = null;
         this.leftNode = null;
         this.rightNode = null;
-
     }
 
     /**
@@ -39,10 +34,7 @@ public class DecisionTree
 
     public void BuildDecision(Decision aiChoice)
     {
-
         this.decision = aiChoice;
-
-
     }
 
     /**
@@ -54,13 +46,9 @@ public class DecisionTree
 	 * return Nothing
 	 * 
 	 */
-
-
     public void BuildAction(Action aiAction)
     {
-
         this.action = aiAction;
-
     }
 
     /**
@@ -72,14 +60,9 @@ public class DecisionTree
 	 * return Nothing
 	 * 
 	 */
-
-
     public void Left(DecisionTree leftNode)
     {
-
-
         this.leftNode = leftNode;
-
     }
 
 
@@ -94,7 +77,6 @@ public class DecisionTree
 	 */
     public void Right(DecisionTree rightNode)
     {
-
         this.rightNode = rightNode;
     }
 
@@ -103,27 +85,17 @@ public class DecisionTree
 	 */
     public void Search()
     {
-
         if (action != null)
         {
-
             action();
-
-
         }
         else if (this.decision())
         {
-
             rightNode.Search();
-
         }
         else
         {
             leftNode.Search();
         }
-
-
     }
-
-
 }

@@ -11,6 +11,8 @@ public class PlayerStats : MonoBehaviour
     private HUD HUD;
 
     [SerializeField]
+    private GameObject PlayerInvincibilitySprite;
+    [SerializeField]
     private ThorAnimationInput thorAnimation;
     [SerializeField]
     private ValkAnimationInput valkAnimation;
@@ -127,6 +129,11 @@ public class PlayerStats : MonoBehaviour
             thorScore.SetText("Thor Score: " + coins.ToString());
     }
 
+    public void UseCoins (int numCoin)
+    {
+        coins -= numCoin;
+    }
+
     void Awake()
     {
         // initialize stats
@@ -166,8 +173,6 @@ public class PlayerStats : MonoBehaviour
 
             SetCurrHearts(heart);
 
-            Debug.Log("Player was hit for " + damage + " damage!");
-
             RemoveHeart();
 
             if (GetCurrHearts() <= 0 && GetLives() <= 0)
@@ -183,7 +188,7 @@ public class PlayerStats : MonoBehaviour
 
     private void RemoveHeart()
     {
-        Debug.Log("RemoveHeart");
+        //Debug.Log("RemoveHeart");
         if (controllerNumber == 1)
         {
             HUD.ThorHealth[GetCurrHearts()].GetComponent<HeartDisplay>().isShown = false;
@@ -202,6 +207,7 @@ public class PlayerStats : MonoBehaviour
     private void Respawn()
     {
         // Death animation && give invincibility
+        isInvincible = true;
         if (controllerNumber == 1) thorAnimation.DeathAnimTrigger();
         if (controllerNumber == 2) valkAnimation.DeathAnimTrigger();
         DontMove();
@@ -209,7 +215,7 @@ public class PlayerStats : MonoBehaviour
         Debug.Log("Player lost a life, lives remaining:" + GetLives().ToString());
         SetCurrHearts(GetMaxHearts());
         ResetHearts();
-        isInvincible = true;
+        PlayerInvincibilitySprite.SetActive(true);
         Invoke("Move", 1.25f);
         Invoke("ResetInvincibility", 1);
     }
@@ -240,20 +246,20 @@ public class PlayerStats : MonoBehaviour
     // Full death of player
     public void Death()
     {
-        // this will destroy the SwapContoller Object (this can be final death) 
         Destroy(this.gameObject, .5f);
-        // create Game Over Screen
         SceneManager.LoadScene(2);
     }
 
     public void MakeInvincible()
     {
+        PlayerInvincibilitySprite.SetActive(true);
         isInvincible = true;
     }
 
     public void ResetInvincibility()
     {
         isInvincible = false;
+        PlayerInvincibilitySprite.SetActive(false);
     }
 
 }

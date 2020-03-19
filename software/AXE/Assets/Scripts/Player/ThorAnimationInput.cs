@@ -12,12 +12,6 @@ public class ThorAnimationInput : MonoBehaviour, AnimationInput
     private Vector2 movement;
     private Vector2 lookDirection;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     public void SetMovement(Vector2 move)
     {
         movement = move;
@@ -40,7 +34,6 @@ public class ThorAnimationInput : MonoBehaviour, AnimationInput
 
     public void SwapAnimTrigger()
     {
-        //Debug.Log("Thor swap trigger");
         thorAnimator.SetTrigger("Swap");
     }
 
