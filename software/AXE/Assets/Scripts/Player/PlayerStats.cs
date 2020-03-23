@@ -3,13 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PlayerStats : MonoBehaviour
 {
     private HeartDisplay Hearts;
     private HUD HUD;
 
+    [SerializeField]
+    private GameObject PlayerInvincibilitySprite;
+    [SerializeField]
+    private ThorAnimationInput thorAnimation;
+    [SerializeField]
+    private ValkAnimationInput valkAnimation;
+
     public int controllerNumber;
+    //particle effect when damaged
+    public GameObject ParticleDamage;
     private float moveSpeed;
     private float range;
     private float atkForce;
@@ -114,6 +124,8 @@ public class PlayerStats : MonoBehaviour
         isInvincible = false;
         Hearts = FindObjectOfType<HeartDisplay>();
         HUD = FindObjectOfType<HUD>();
+        thorAnimation = GetComponentInParent<ThorAnimationInput>();
+        valkAnimation = GetComponentInParent<ValkAnimationInput>();
     }
 
     public int GetControllerNumber()
@@ -136,8 +148,6 @@ public class PlayerStats : MonoBehaviour
 
             SetCurrHearts(heart);
 
-            Debug.Log("Player was hit for " + damage + " damage!");
-
             RemoveHeart();
 
             if (GetCurrHearts() <= 0 && GetLives() <= 0)
@@ -153,14 +163,17 @@ public class PlayerStats : MonoBehaviour
 
     private void RemoveHeart()
     {
-        Debug.Log("RemoveHeart");
+        //Debug.Log("RemoveHeart");
         if (controllerNumber == 1)
         {
             HUD.ThorHealth[GetCurrHearts()].GetComponent<HeartDisplay>().isShown = false;
+            Instantiate(ParticleDamage, transform.position, Quaternion.identity);
+
         }
         if (controllerNumber == 2)
         {
             HUD.ValkHealth[GetCurrHearts()].GetComponent<HeartDisplay>().isShown = false;
+            Instantiate(ParticleDamage, transform.position, Quaternion.identity);
         }
     }
 
@@ -169,12 +182,28 @@ public class PlayerStats : MonoBehaviour
     private void Respawn()
     {
         // Death animation && give invincibility
+        isInvincible = true;
+        if (controllerNumber == 1) thorAnimation.DeathAnimTrigger();
+        if (controllerNumber == 2) valkAnimation.DeathAnimTrigger();
+        DontMove();
         SetLives(GetLives() - 1);
         Debug.Log("Player lost a life, lives remaining:" + GetLives().ToString());
         SetCurrHearts(GetMaxHearts());
         ResetHearts();
-        isInvincible = true;
+        PlayerInvincibilitySprite.SetActive(true);
+        Invoke("Move", 1.25f);
         Invoke("ResetInvincibility", 1);
+    }
+
+    private void DontMove()
+    {
+        this.GetComponentInParent<PlayerMovement>().enabled = false;
+    }
+
+    private void Move()
+    {
+        this.GetComponentInParent<PlayerMovement>().enabled = true;
+
     }
 
     private void ResetHearts()
@@ -192,17 +221,20 @@ public class PlayerStats : MonoBehaviour
     // Full death of player
     public void Death()
     {
-        Debug.Log("Wah I am dead :(");
-
-        // this will destroy the SwapContoller Object (this can be final death) 
         Destroy(this.gameObject, .5f);
-        // create Game Over Screen
         SceneManager.LoadScene(2);
     }
 
-    private void ResetInvincibility()
+    public void MakeInvincible()
+    {
+        PlayerInvincibilitySprite.SetActive(true);
+        isInvincible = true;
+    }
+
+    public void ResetInvincibility()
     {
         isInvincible = false;
+        PlayerInvincibilitySprite.SetActive(false);
     }
 
 }

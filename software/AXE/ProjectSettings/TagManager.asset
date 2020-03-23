@@ -13,6 +13,14 @@ TagManager:
   - Arrow
   - ThorHrt
   - ValkHrt
+  - Thor
+  - Item
+  - Ability
+  - Message
+  - SwapAbility
+  - CoinMagnet
+  - InvulnerableOutline
+  - Pit
   layers:
   - Default
   - TransparentFX
@@ -23,7 +31,7 @@ TagManager:
   - 
   - 
   - enemy
-  - 
+  - wall
   - 
   - 
   - 
