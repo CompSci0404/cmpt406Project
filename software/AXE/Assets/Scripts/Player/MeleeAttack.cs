@@ -74,7 +74,6 @@ public class MeleeAttack : MonoBehaviour
                 if (hitEnemies[i].CompareTag("BaseEnemy"))
                 {
                     hitEnemies[i].GetComponent<AIClass>().Damage(stats.GetDamage());
-                    Debug.Log("Player 1 Melee Attacking Enemy");
                 }
             }
             canAttack = false;
