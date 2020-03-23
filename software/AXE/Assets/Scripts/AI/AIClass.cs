@@ -39,11 +39,11 @@ public abstract class AIClass : MonoBehaviour
     private int enemySpawnIndex;            /*index of wanted enemy to spawn.*/
     private List<GameObject> AIPrefabs;
     
+    /*Hel*/
     private GameObject oldLaserObject;
     private bool laserSpawned;
-    // spawn:
-
-    private float spawnTimer = 5;
+    private float laserSpeed = 20;
+    private float spawnTimer = 15;
     private float spawnCoolDown = 0; 
 
 
@@ -228,7 +228,7 @@ public abstract class AIClass : MonoBehaviour
 
             this.gameObject.GetComponent<EnemyAnim>().UpdateCurrentAct(currentAct);
 
-            //FindObjectOfType<AudioManager>().PlaySound("NanoShot");
+            FindObjectOfType<AudioManager>().PlaySound("NanoShot");
 
             // direction that AI is currently facing is where we want to shoot our object!
             Vector2 direction = (player.transform.position - this.transform.position).normalized;
@@ -251,23 +251,27 @@ public abstract class AIClass : MonoBehaviour
 
     public void LaserBeamAttack()
     {
+
         if(cooldown != 0)
         {
             this.cooldown -= Time.deltaTime; 
 
             if(this.oldLaserObject != null)
             {
-                oldLaserObject.transform.RotateAround(new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y, this.gameObject.transform.position.z), Vector3.forward, speed * Time.deltaTime);
-                Debug.Log("yeet");
+                oldLaserObject.transform.RotateAround(new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y, this.gameObject.transform.position.z), Vector3.forward, laserSpeed * Time.deltaTime); ;
+                    
             }
 
             if (this.cooldown <= 0)
             {
+
                 this.cooldown = 0; 
             }
         }
+
         if(cooldown == 0)
         {
+
                 this.currentAct = "attack";
 
                 this.cooldown = this.rangedAttackCooldown;
@@ -279,10 +283,17 @@ public abstract class AIClass : MonoBehaviour
 
                 Physics2D.IgnoreCollision(newProjectile.GetComponent<PolygonCollider2D>(), this.gameObject.GetComponent<PolygonCollider2D>(), true);
 
+                
+                
+
                 oldLaserObject = newProjectile;
 
                 Destroy(newProjectile, 5.0f);
+
         }
+        
+
+
     }
 
     //---[[Movement Decisions]]---//
@@ -345,25 +356,36 @@ public abstract class AIClass : MonoBehaviour
 
     public bool CanSpawn()
     {
+
         if (this.spawnCoolDown > 0)
         {
+
             this.spawnCoolDown = this.spawnCoolDown - Time.deltaTime; 
+
 
             if(this.spawnCoolDown <= 0)
             {
 
                 this.spawnCoolDown = 0; 
             }
-            return false; 
-        }
 
-        if (this.spawnCoolDown == 0)
+            return false; 
+
+        } 
+        
+        if(this.spawnCoolDown == 0)
         {
+
             this.spawnCoolDown = this.spawnTimer;
 
             return true; 
+
         }
+
+
         return false; 
+     
+
     }
 
 
@@ -392,6 +414,7 @@ public abstract class AIClass : MonoBehaviour
     /// </summary>
     public void Teleport()
     {
+
         // teleport cooldown.
         if (teleportCoolDown != 0)
         {
@@ -445,6 +468,7 @@ public abstract class AIClass : MonoBehaviour
                 posAwayFromWall = new Vector2(player.transform.position.x -5, player.transform.position.y -5);
 
                 this.hit = Physics2D.Raycast(this.transform.position, posAwayFromWall); 
+
             }
 
             if (hitWall)
@@ -455,6 +479,7 @@ public abstract class AIClass : MonoBehaviour
             }
             else
             {
+
                 this.transform.position = randomPosition;
             }
         }
@@ -475,6 +500,9 @@ public abstract class AIClass : MonoBehaviour
             counter++;
         }
     }
+
+    
+
 
     /// <summary>
     /// <c>MoveAwayFromPlayer</c>
