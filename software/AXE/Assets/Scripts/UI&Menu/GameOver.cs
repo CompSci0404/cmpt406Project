@@ -92,7 +92,8 @@ public class GameOver : MonoBehaviour
     // Start Scene
     public void RestartGame()
     {
-        SceneManager.LoadScene(1);
+        int rand = Random.Range(1,3);
+        SceneManager.LoadScene(rand);
         Time.timeScale = 1f;
         PauseMenu.GameIsPaused = false;
     }
