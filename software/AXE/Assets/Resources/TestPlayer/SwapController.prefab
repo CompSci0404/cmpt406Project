@@ -59,7 +59,7 @@ GameObject:
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -378,12 +378,9 @@ MonoBehaviour:
   PlayerInvincibilitySprite: {fileID: 0}
   thorAnimation: {fileID: 895764767}
   valkAnimation: {fileID: 109676076239904554}
-  thorScore: {fileID: 0}
-  valkScore: {fileID: 0}
   controllerNumber: 1
   ParticleDamage: {fileID: 957760211153635426, guid: 2b6962467de2746849af8d94507a8946,
     type: 3}
-  coins: 0
 --- !u!114 &801095915342241112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -511,10 +508,10 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: -0.023128673, y: 0.5142987}
-      - {x: -0.46535558, y: 0.054602593}
+      - {x: -0.27902305, y: 0.121682316}
       - {x: -0.26398444, y: -0.4158308}
       - {x: 0.24085599, y: -0.41583067}
-      - {x: 0.39596975, y: 0.12398797}
+      - {x: 0.25435674, y: 0.12398797}
 --- !u!114 &7600984664673736880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -792,7 +789,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thorCoins: 0
   valkCoins: 0
-  controllerNumber: 0
   thorScore: {fileID: 0}
   valkScore: {fileID: 0}
 --- !u!1 &7600984665031520794
@@ -909,12 +905,9 @@ MonoBehaviour:
   PlayerInvincibilitySprite: {fileID: 0}
   thorAnimation: {fileID: 895764767}
   valkAnimation: {fileID: 109676076239904554}
-  thorScore: {fileID: 0}
-  valkScore: {fileID: 0}
   controllerNumber: 2
   ParticleDamage: {fileID: 8927798025064241273, guid: d8f29ed5cb48345e2b0e7f013c7a083c,
     type: 3}
-  coins: 0
 --- !u!114 &6502305135600347040
 MonoBehaviour:
   m_ObjectHideFlags: 0
