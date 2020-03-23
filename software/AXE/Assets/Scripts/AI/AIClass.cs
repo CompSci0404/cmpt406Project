@@ -251,7 +251,6 @@ public abstract class AIClass : MonoBehaviour
 
     public void LaserBeamAttack()
     {
-
         if(cooldown != 0)
         {
             this.cooldown -= Time.deltaTime; 
@@ -260,19 +259,15 @@ public abstract class AIClass : MonoBehaviour
             {
                 oldLaserObject.transform.RotateAround(new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y, this.gameObject.transform.position.z), Vector3.forward, speed * Time.deltaTime);
                 Debug.Log("yeet");
-                    
             }
 
             if (this.cooldown <= 0)
             {
-
                 this.cooldown = 0; 
             }
         }
-
         if(cooldown == 0)
         {
-
                 this.currentAct = "attack";
 
                 this.cooldown = this.rangedAttackCooldown;
@@ -284,17 +279,10 @@ public abstract class AIClass : MonoBehaviour
 
                 Physics2D.IgnoreCollision(newProjectile.GetComponent<PolygonCollider2D>(), this.gameObject.GetComponent<PolygonCollider2D>(), true);
 
-                
-                
-
                 oldLaserObject = newProjectile;
 
                 Destroy(newProjectile, 5.0f);
-
         }
-        
-
-
     }
 
     //---[[Movement Decisions]]---//
@@ -357,36 +345,25 @@ public abstract class AIClass : MonoBehaviour
 
     public bool CanSpawn()
     {
-
         if (this.spawnCoolDown > 0)
         {
-
             this.spawnCoolDown = this.spawnCoolDown - Time.deltaTime; 
-
 
             if(this.spawnCoolDown <= 0)
             {
 
                 this.spawnCoolDown = 0; 
             }
-
             return false; 
+        }
 
-        } 
-        
-        if(this.spawnCoolDown == 0)
+        if (this.spawnCoolDown == 0)
         {
-
             this.spawnCoolDown = this.spawnTimer;
 
             return true; 
-
         }
-
-
         return false; 
-     
-
     }
 
 
@@ -415,7 +392,6 @@ public abstract class AIClass : MonoBehaviour
     /// </summary>
     public void Teleport()
     {
-
         // teleport cooldown.
         if (teleportCoolDown != 0)
         {
@@ -469,7 +445,6 @@ public abstract class AIClass : MonoBehaviour
                 posAwayFromWall = new Vector2(player.transform.position.x -5, player.transform.position.y -5);
 
                 this.hit = Physics2D.Raycast(this.transform.position, posAwayFromWall); 
-
             }
 
             if (hitWall)
@@ -480,7 +455,6 @@ public abstract class AIClass : MonoBehaviour
             }
             else
             {
-
                 this.transform.position = randomPosition;
             }
         }
@@ -501,9 +475,6 @@ public abstract class AIClass : MonoBehaviour
             counter++;
         }
     }
-
-    
-
 
     /// <summary>
     /// <c>MoveAwayFromPlayer</c>

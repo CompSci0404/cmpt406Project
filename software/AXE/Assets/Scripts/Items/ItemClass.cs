@@ -193,21 +193,24 @@ public abstract class ItemClass : MonoBehaviour
     public void BuyItem()
     {
         GameObject playerCont =  GameObject.FindWithTag("Player");
-        PlayerStats stats;
+        CoinStats stats;
         if (playerCont.GetComponent<MainControls>().GetControllerNumber() == 1)
         {
-            stats = GameObject.FindWithTag("Thor").GetComponent<PlayerStats>();
+            stats = playerCont.GetComponent<CoinStats>();
+            if (price <= stats.GetThorCoins())
+            {
+                stats.UseThorCoins(price);
+                needCoin = false;
+            }
         }
         else
         {
-            stats = GameObject.FindWithTag("Type2").GetComponent<PlayerStats>();
+            stats = playerCont.GetComponent<CoinStats>();
+            if (price <= stats.GetValkCoins())
+            {
+                stats.UseValkCoins(price);
+                needCoin = false;
+            }
         }
-
-        if (price <= stats.GetCoins())
-        {
-            stats.UseCoins(price);
-            needCoin = false;
-        }
-
     }
 }

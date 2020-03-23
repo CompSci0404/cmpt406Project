@@ -53,7 +53,8 @@ MonoBehaviour:
   abilityCooldown: 0
   itemDuration: 10
   itemMultiplier: 0
-  DoubleDamageSprite: {fileID: 0}
+  DoubleDamageSprite: {fileID: 8028848318687978143, guid: a7e0087306b1107458af3c5ef668fcc0,
+    type: 3}
 --- !u!212 &2537310658430278245
 SpriteRenderer:
   m_ObjectHideFlags: 0

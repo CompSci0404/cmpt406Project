@@ -20,6 +20,7 @@ TagManager:
   - SwapAbility
   - CoinMagnet
   - InvulnerableOutline
+  - Pit
   layers:
   - Default
   - TransparentFX
