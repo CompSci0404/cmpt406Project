@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class MainControls : MonoBehaviour
 {
+    private CoinStats coins;
     private PlayerStats stats;
     public HUD HUD;
 
@@ -44,6 +45,7 @@ public class MainControls : MonoBehaviour
         swapSlow = this.GetComponent<TimeSlowSwap>();
         lastDPadPressed = "up";
         HUD = FindObjectOfType<HUD>();
+        coins = FindObjectOfType<CoinStats>();
         players = new List<GameObject>();
         int count = transform.childCount;
         // Get movement script from this object
@@ -57,31 +59,31 @@ public class MainControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-            // update vector and angle for the right stick
-            rightStickDirection = new Vector2(Input.GetAxis("LookHorizontal"), Input.GetAxis("LookVertical")).normalized;
-            rightStickAngle = Mathf.Atan2(rightStickDirection.y, rightStickDirection.x) * Mathf.Rad2Deg - 180f;
+        // update vector and angle for the right stick
+        rightStickDirection = new Vector2(Input.GetAxis("LookHorizontal"), Input.GetAxis("LookVertical")).normalized;
+        rightStickAngle = Mathf.Atan2(rightStickDirection.y, rightStickDirection.x) * Mathf.Rad2Deg - 180f;
 
-            if (reticle == null)
-            {
-                reticle = Instantiate((GameObject)Resources.Load("Reticle"), gameObject.transform.position,
-                    Quaternion.Euler(0, 0, rightStickAngle)) as GameObject;
-                reticle.SetActive(false);
-            }
-            // update position of reticle
-            reticle.transform.localPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0);
-        
-            // take right stick to move reticle around player
-            if (Input.GetAxis(rightTrigger) > 0 && gameObject.GetComponent<Abilities>().IsAbility())
-            {
-                // create player reticle
-                reticle.SetActive(true);
-            }
-            else if (Input.GetAxis(rightTrigger) <= 0 && gameObject.GetComponent<Abilities>().IsAbility())
-            {
-                reticle.SetActive(false);
-            }
-            // aim reticle
-            reticle.transform.rotation = Quaternion.Euler(0, 0, rightStickAngle);
+        if (reticle == null)
+        {
+            reticle = Instantiate((GameObject)Resources.Load("Reticle"), gameObject.transform.position,
+                Quaternion.Euler(0, 0, rightStickAngle)) as GameObject;
+            reticle.SetActive(false);
+        }
+        // update position of reticle
+        reticle.transform.localPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0);
+
+        // take right stick to move reticle around player
+        if (Input.GetAxis(rightTrigger) > 0 && gameObject.GetComponent<Abilities>().IsAbility())
+        {
+            // create player reticle
+            reticle.SetActive(true);
+        }
+        else if (Input.GetAxis(rightTrigger) <= 0 && gameObject.GetComponent<Abilities>().IsAbility())
+        {
+            reticle.SetActive(false);
+        }
+        // aim reticle
+        reticle.transform.rotation = Quaternion.Euler(0, 0, rightStickAngle);
 
         // Use the right trigger to attack 
         if (Input.GetAxis(rightTrigger) > 0)
@@ -90,7 +92,8 @@ public class MainControls : MonoBehaviour
         }
 
         // wait for an input and set opposite player controller active
-        if (Input.GetButtonDown(yButton)) {
+        if (Input.GetButtonDown(yButton))
+        {
             if (justSwapped)
             {
                 //cannot switch yet
@@ -140,7 +143,7 @@ public class MainControls : MonoBehaviour
 
         else if (Input.GetButtonDown(bButton))
         {
-            Attack();       
+            Attack();
         }
         else if (Input.GetButtonDown(aButton) || Input.GetAxis(leftTrigger) > 0)
         {
@@ -148,7 +151,7 @@ public class MainControls : MonoBehaviour
         }
         else if (Input.GetButtonDown(xButton))
         {
-            
+
             PickUpItem();
             PickUpAbility();
         }
@@ -177,6 +180,11 @@ public class MainControls : MonoBehaviour
         else if (Input.GetButtonDown(lbButton))
         {
             UseItem();
+        }
+
+        if (coins.thorCoins > 3 || coins.valkCoins > 3)
+        {
+            // create a portal at their location
         }
     }
 

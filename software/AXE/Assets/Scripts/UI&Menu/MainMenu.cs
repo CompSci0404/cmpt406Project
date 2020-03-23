@@ -110,7 +110,8 @@ public class MainMenu : MonoBehaviour
     // Start Scene
     public void StartGame()
     {
-        SceneManager.LoadScene(1);
+        int rand = Random.Range(1, 4);
+        SceneManager.LoadScene(rand);
         Time.timeScale = 1f;
         PauseMenu.GameIsPaused = false;
     }
