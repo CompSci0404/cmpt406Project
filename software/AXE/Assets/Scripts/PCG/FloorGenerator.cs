@@ -5,6 +5,8 @@ using UnityEngine;
 public class FloorGenerator : MonoBehaviour
 {
     [SerializeField]
+    GameObject startingRoomPrefab;
+    [SerializeField]
     List<GameObject> roomPrefabs;
 
     private Dictionary<Vector2Int, GameObject> rooms;

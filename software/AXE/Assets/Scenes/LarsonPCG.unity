@@ -163,6 +163,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2587a283f19bd4749b5c6508ddb628a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingRoomPrefab: {fileID: 6202419709121153713, guid: dc3e8c58f6b604c4d82a70fa4b01c177,
+    type: 3}
   roomPrefabs:
   - {fileID: 6202419709121153713, guid: dc3e8c58f6b604c4d82a70fa4b01c177, type: 3}
   - {fileID: 3195853378678862212, guid: b31949b2153b9124e9f84874c6079345, type: 3}
@@ -171,6 +173,11 @@ MonoBehaviour:
   - {fileID: 6036235635365845433, guid: e5bc2e7ddf83bdc4c98d7df88bb3b1e9, type: 3}
   - {fileID: 5045530208280593307, guid: a6ef77d204bf33c46888667211f80b46, type: 3}
   - {fileID: 8048478916067418019, guid: f09dc25c3c4932b45bf596d25330db6a, type: 3}
+  - {fileID: 1486849557861402348, guid: 82e870f9fc41c18468fc3413da0c3aea, type: 3}
+  - {fileID: 2817297930607019789, guid: a70d7cf201462054aa4d9214693c6d41, type: 3}
+  - {fileID: 1973139830747356542, guid: dfb8c10c41eaa2d4cbaeca22ca7783dc, type: 3}
+  - {fileID: 2081015284250086735, guid: be4178f76a40f1c44a3539a0f98a66f4, type: 3}
+  - {fileID: 8512336683188426146, guid: 95b1bd65e43221543bb382e7b9fa57f7, type: 3}
   - {fileID: 1486849557861402348, guid: 016089c4f441d1145a57df7e501f23c7, type: 3}
 --- !u!1 &1816882118
 GameObject:
