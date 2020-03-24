@@ -50,22 +50,18 @@ public class RoomSystem : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject obj = collision.gameObject;
-        if (!obj.CompareTag("Player"))
+        if (obj.CompareTag("Player"))
         {
-            return;
+            SendMessage("PlayerEnter");
         }
-
-        SendMessage("PlayerEnter");
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         GameObject obj = collision.gameObject;
-        if (!obj.CompareTag("Player"))
+        if (obj.CompareTag("Player"))
         {
-            return;
+            SendMessage("PlayerExit");
         }
-
-        SendMessage("PlayerExit");
     }
 }
