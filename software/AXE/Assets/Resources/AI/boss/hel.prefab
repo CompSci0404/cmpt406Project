@@ -196,6 +196,7 @@ MonoBehaviour:
   isCyberWizard: 0
   isDragur: 0
   isNanoGhost: 0
+  isHel: 1
 --- !u!95 &-7636871738530424163
 Animator:
   serializedVersion: 3
@@ -206,7 +207,7 @@ Animator:
   m_GameObject: {fileID: 8307796573444514920}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 02c3d4ab8fa925f4da6b37eb2104bd69, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2e72ebab66d308c409e1e19d8f97fff7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
