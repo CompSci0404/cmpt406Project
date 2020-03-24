@@ -39,6 +39,7 @@ public class EnemySystem : MonoBehaviour
         if (isActive && enemies.Count <= 0)
         {
             SendMessage("RoomClear");
+            this.enabled = false;
         }
     }
 

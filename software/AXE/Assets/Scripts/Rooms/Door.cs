@@ -17,6 +17,15 @@ public class Door : MonoBehaviour
     [SerializeField]
     private Door destination;
 
+    private void Start()
+    {
+        if (null == destination)
+        {
+            Debug.Log("Door removed due to no destination");
+            Destroy(gameObject);
+        }
+    }
+
     // Get relative position on a room-sized grid (bottom left: 0,0)
     public Vector2Int GetPosition()
     {

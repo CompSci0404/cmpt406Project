@@ -6,33 +6,17 @@ public class RoomSystem : MonoBehaviour
 {
     bool isClear = false;
 
-    List<Transform> doors;
-
     [SerializeField]
     Transform doorParent;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        doors = new List<Transform>();
-
-        for (int i = 0; i < doorParent.childCount; i++)
-        {
-            Transform door = doorParent.GetChild(i);
-
-            if (door.childCount > 0)
-            {
-                doors.Add(door.GetChild(0));
-            }
-        }
-    }
 
     void PlayerEnter()
     {
         if (!isClear)
         {
-            foreach (Transform door in doors)
+            for (int i = 0; i < doorParent.childCount; i++)
             {
+                Transform door = doorParent.GetChild(i);
+
                 door.gameObject.SetActive(false);
             }
         }
@@ -41,8 +25,10 @@ public class RoomSystem : MonoBehaviour
     void RoomClear()
     {
         isClear = true;
-        foreach (Transform door in doors)
+        for (int i = 0; i < doorParent.childCount; i++)
         {
+            Transform door = doorParent.GetChild(i);
+
             door.gameObject.SetActive(true);
         }
     }
