@@ -27,11 +27,6 @@ public class RoomSystem : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
     void PlayerEnter()
     {
         if (!isClear)

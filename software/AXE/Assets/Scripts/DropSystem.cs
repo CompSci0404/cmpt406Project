@@ -13,6 +13,8 @@ public class DropSystem : MonoBehaviour
     public GameObject[] itemAbilities;
     [SerializeField]
     public GameObject[] consumableItem;
+    [SerializeField]
+    public GameObject coinObject;
     
     // Each set has a 10% chance to drop
     public float dropChance = 10.0f;
@@ -41,18 +43,33 @@ public class DropSystem : MonoBehaviour
         GameObject consumable = Instantiate(consumableItem[consumableIndex], t.position, rotation);
     }
 
+    // Drop a coin
+    public void DropCoins(Transform t)
+    {
+        Quaternion rotation = Quaternion.AngleAxis(0f, Vector3.forward);
+        int numCoins = Random.Range(0, 5);
+        for (int i = 0; i < numCoins; i++)
+        {
+            GameObject coin = Instantiate(coinObject, t.position, rotation);
+            coin.transform.position = new Vector2(t.position.x + (numCoins / 5), t.position.y + (numCoins / 5));
+        }
+    }
+
     // Called by an enemy to get a chance to drop an item
     public void DropFromPools(Transform t)
     {
         int randInt = Random.Range(0, 101);
-        print(randInt);
 
-        if (randInt <= dropChance)
-            DropSwap(t);
-        else if (randInt > dropChance && randInt <= dropChance + dropChance)
-            DropItem(t);
-        else if (randInt > dropChance + dropChance && randInt <= dropChance + dropChance + dropChance)
-            DropConsumable(t);
+        //if (randInt <= dropChance)
+        //    DropSwap(t);
+        //else if (randInt > dropChance && randInt <= dropChance + dropChance)
+        //    DropItem(t);
+        //else if (randInt > dropChance + dropChance && randInt <= dropChance + dropChance + dropChance)
+        //    DropConsumable(t);
+        if (randInt <= dropChance * 5)
+        {
+            DropCoins(t);
+        }
         else
             return;
     }

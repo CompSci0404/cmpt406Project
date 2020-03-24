@@ -16,6 +16,7 @@ public class RangedAttack: MonoBehaviour
     private float timer = 0f;
     private PlayerStats stats;
 
+    private string rightTrigger;
 
     // Start is called before the first frame update
     void Start()
@@ -24,17 +25,12 @@ public class RangedAttack: MonoBehaviour
         camera = FindObjectOfType<Camera>();
         rBody = parent.GetComponent<Rigidbody2D>();
         stats = GetComponent<PlayerStats>();
+        rightTrigger = "RightTrigger";
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Calculate direction of shot
-        //Vector2 mousePos = camera.ScreenToWorldPoint(Input.mousePosition);
-
-        //Vector2 target = mousePos - rBody.position;
-        //float angle = Mathf.Atan2(target.y, target.x) * Mathf.Rad2Deg - 90f;
-        
         // Contoller Inputs
         lookDirection = new Vector2(Input.GetAxis("LookHorizontal"), Input.GetAxis("LookVertical"));
         Vector2 target = lookDirection - rBody.position;
@@ -44,7 +40,7 @@ public class RangedAttack: MonoBehaviour
         {
             timer = Mathf.Max(0, timer - Time.deltaTime);
         }
-        else if (Input.GetButtonDown("J2B"))
+        else if (Input.GetButtonDown("J2B") || Input.GetAxis(rightTrigger) > 0)
         {
             ShootArrow(angle);
             timer = stats.GetAttackSpeed();
@@ -56,6 +52,8 @@ public class RangedAttack: MonoBehaviour
     {
         GameObject arrow = Instantiate(arrowPrefab, rBody.position, Quaternion.AngleAxis(angle, Vector3.forward));
         arrow.transform.Translate(Vector3.up * 0.5f);
+
+        FindObjectOfType<AudioManager>().PlaySound("ValkShot");
 
         arrow.GetComponent<Arrow>().SetDamage(stats.GetDamage());
 

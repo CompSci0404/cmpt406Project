@@ -28,7 +28,7 @@ public class EnemySystem : MonoBehaviour
 
         for (int i=0; i < enemyParent.childCount; i++)
         {
-            Debug.Log("Enemy counted");
+            //Debug.Log("Enemy counted");
             enemies.Add(enemyParent.GetChild(i));
         }
     }
@@ -56,7 +56,7 @@ public class EnemySystem : MonoBehaviour
 
     void PlayerEnter()
     {
-        Debug.Log("Player entered room");
+        //Debug.Log("Player entered room");
 
         isActive = true;
         if (!isClear)
@@ -67,7 +67,7 @@ public class EnemySystem : MonoBehaviour
 
     void PlayerExit()
     {
-        Debug.Log("Player exited room");
+        //Debug.Log("Player exited room");
 
         isActive = false;
         if (!isClear)
@@ -78,11 +78,11 @@ public class EnemySystem : MonoBehaviour
 
     private void SpawnEnemies()
     {
-        Debug.Log("Spawning enemies");
+        //Debug.Log("Spawning enemies");
         enemyParent.gameObject.SetActive(true);
         for (int i=0; i < enemies.Count; i++)
         {
-            Debug.Log("Enemy Spawned");
+            //Debug.Log("Enemy Spawned");
             int spawnpoint = i % spawnParent.childCount;
             enemies[i].position = spawnParent.GetChild(spawnpoint).position;
         }
@@ -90,7 +90,7 @@ public class EnemySystem : MonoBehaviour
 
     private void DespawnEnemies()
     {
-        Debug.Log("Despawning enemies");
+        //Debug.Log("Despawning enemies");
         enemyParent.gameObject.SetActive(false);
         for (int i = 0; i < enemies.Count; i++)
         {

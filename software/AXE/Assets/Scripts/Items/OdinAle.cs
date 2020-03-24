@@ -13,11 +13,12 @@ public class OdinAle: ItemClass
     {
         itemEffect = AddHealth;
         playerCont = GameObject.FindWithTag("Player");
+        SetUsable(true);
     }
 
     void AddHealth()
     {
-        if (playerCont.GetComponent<MainControls>().getControllerNumber() == 1)
+        if (playerCont.GetComponent<MainControls>().GetControllerNumber() == 1)
         {
             playerCont = GameObject.FindWithTag("Thor");
         }

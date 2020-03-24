@@ -28,7 +28,7 @@ public class TimelineShifter : ItemClass
     {
         stats.MakeInvincible();
         Debug.Log("I AM INVINCIBLE!!!");
-        Invoke("StopInvincibility", 3);
+        Invoke("StopInvincibility", 4);
     }
 
     void StopInvincibility()
