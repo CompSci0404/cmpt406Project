@@ -69,7 +69,10 @@ public class Abilities : MonoBehaviour
                 // so you have to buy it but once you bought it needCoin is false
                 if (AbilitiesInRange[i].GetComponent<ItemClass>().GetNeedCoin())
                 {
-                    AbilitiesInRange[i].GetComponent<ItemClass>().BuyItem();
+                    if (AbilitiesInRange[i].GetComponent<ItemClass>().BuyItem())
+                    {
+                        AbilitiesInRange[i].transform.parent = null;
+                    }
                 }
                 // second time checking if item was bought if not then cant pick it up
                 if (AbilitiesInRange[i].GetComponent<ItemClass>().GetNeedCoin())
@@ -220,7 +223,10 @@ public class Abilities : MonoBehaviour
                 // so you have to buy it but once you bought it needCoin is false
                 if (AbilitiesInRange[i].GetComponent<ItemClass>().GetNeedCoin())
                 {
-                    AbilitiesInRange[i].GetComponent<ItemClass>().BuyItem();
+                    if (AbilitiesInRange[i].GetComponent<ItemClass>().BuyItem())
+                    {
+                        AbilitiesInRange[i].transform.parent = null;
+                    }
                 }
                 // second time checking if item was bought if not then cant pick it up
                 if (AbilitiesInRange[i].GetComponent<ItemClass>().GetNeedCoin())

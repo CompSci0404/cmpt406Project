@@ -8,9 +8,9 @@ public class Vendor : MonoBehaviour
 
     private PlayerStats stats;
 
-    [SerializeField] GameObject vendorUI;
+    [SerializeField] private int refreshPrice;
 
-    [SerializeField] List<GameObject> thingsOnSale;
+    private bool playerInRange;
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +36,10 @@ public class Vendor : MonoBehaviour
 
     public void VendorInteract()
     {
-        
+        if (playerInRange)
+        {
+            BuyRefresh();
+        }
 
 
     }
@@ -45,7 +48,7 @@ public class Vendor : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            //vendorUI.SetActive(true);
+            playerInRange = true;
         }
     }
 
@@ -53,7 +56,47 @@ public class Vendor : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-           // vendorUI.SetActive(false);
+            playerInRange = false;
         }
+    }
+
+    public bool GetPlayerInRangeVendor()
+    {
+        return playerInRange;
+    }
+    public void BuyRefresh()
+    {
+        GameObject playerCont = GameObject.FindWithTag("Player");
+        CoinStats stats;
+        if (playerCont.GetComponent<MainControls>().GetControllerNumber() == 1)
+        {
+            stats = playerCont.GetComponent<CoinStats>();
+            if (refreshPrice <= stats.GetThorCoins())
+            {
+                stats.UseThorCoins(refreshPrice);
+                for (int i = 0; i < 4; i++)
+                {
+                    this.transform.GetChild(0).transform.GetChild(0).transform.GetChild(i).GetComponent<VendorItemsSpawn>().Refresh();
+                    Debug.Log(this.transform.GetChild(0).transform.GetChild(0).transform.GetChild(i));
+                }
+            }
+        }
+        else
+        {
+            stats = playerCont.GetComponent<CoinStats>();
+            if (refreshPrice <= stats.GetValkCoins())
+            {
+                stats.UseValkCoins(refreshPrice);
+                for (int i = 0; i < 4; i++)
+                {
+                    this.transform.GetChild(0).transform.GetChild(0).transform.GetChild(i).GetComponent<VendorItemsSpawn>().Refresh();
+                    Debug.Log(this.transform.GetChild(0).transform.GetChild(0).transform.GetChild(i));
+                }
+            }
+        }
+
+        // refresh the items
+        
+        
     }
 }

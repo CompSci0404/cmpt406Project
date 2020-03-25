@@ -190,7 +190,7 @@ public abstract class ItemClass : MonoBehaviour
     {
         return price;
     }
-    public void BuyItem()
+    public bool BuyItem()
     {
         GameObject playerCont =  GameObject.FindWithTag("Player");
         CoinStats stats;
@@ -201,7 +201,10 @@ public abstract class ItemClass : MonoBehaviour
             {
                 stats.UseThorCoins(price);
                 needCoin = false;
+                return true;
             }
+            return false;
+
         }
         else
         {
@@ -210,7 +213,9 @@ public abstract class ItemClass : MonoBehaviour
             {
                 stats.UseValkCoins(price);
                 needCoin = false;
+                return true;
             }
+            return false;
         }
     }
 }

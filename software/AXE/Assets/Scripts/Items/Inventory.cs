@@ -172,7 +172,11 @@ public class Inventory : MonoBehaviour
                 // so you have to buy it but once you bought it needCoin is false
                 if (ItemsInRange[i].GetComponent<ItemClass>().GetNeedCoin())
                 {
-                    ItemsInRange[i].GetComponent<ItemClass>().BuyItem();
+                    if (ItemsInRange[i].GetComponent<ItemClass>().BuyItem())
+                    {
+                        ItemsInRange[i].transform.parent = null;
+                    }
+
                 }
                 // second time checking if item was bought if not then cant pick it up
                 if (ItemsInRange[i].GetComponent<ItemClass>().GetNeedCoin())

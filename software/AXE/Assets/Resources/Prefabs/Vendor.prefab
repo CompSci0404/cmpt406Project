@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1190571714624313073}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.76, z: 1}
+  m_LocalPosition: {x: -0.02, y: -2.23, z: 1}
   m_LocalScale: {x: 3.5, y: 3, z: 1}
   m_Children:
   - {fileID: 2327703490617607217}
@@ -275,7 +275,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -408,6 +408,7 @@ GameObject:
   - component: {fileID: 2327703490208133605}
   - component: {fileID: 2327703490208133604}
   - component: {fileID: 6079583265083031150}
+  - component: {fileID: 6810635225681028291}
   m_Layer: 0
   m_Name: Vendor
   m_TagString: Untagged
@@ -494,7 +495,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 0.8
 --- !u!114 &2327703490208133604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -507,8 +508,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 770df49e233b16746808c29ae3ea8ef7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vendorUI: {fileID: 0}
-  thingsOnSale: []
+  refreshPrice: 1
 --- !u!61 &6079583265083031150
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -535,6 +535,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &6810635225681028291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2327703490208133607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78daef5153bd0954895787f2419048d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2327703490378416931
 GameObject:
   m_ObjectHideFlags: 0
