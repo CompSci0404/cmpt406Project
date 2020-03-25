@@ -132,6 +132,7 @@ MonoBehaviour:
   - {fileID: 3902395430166007018, guid: 04d1bfbb08ba1334193b9566d4700972, type: 3}
   - {fileID: 5267318244921707893, guid: 5e1b17fae340c9e47990b4ba3ebf21bf, type: 3}
   - {fileID: 6723162061165601016, guid: b872448cfcc5bb14c8a517ce8ff345d9, type: 3}
+  - {fileID: 1871157228788203909, guid: f7f851bb7da76f748b95cd43fada9984, type: 3}
   swapAbilities:
   - {fileID: 664688373117898064, guid: b24533ff8fb454e41bfc9c2eb89c7d2e, type: 3}
   - {fileID: 1294559909591138003, guid: 3e241543db8a6b34d9fbc4dd772176a0, type: 3}
@@ -582,6 +583,7 @@ MonoBehaviour:
   - {fileID: 3902395430166007018, guid: 04d1bfbb08ba1334193b9566d4700972, type: 3}
   - {fileID: 5267318244921707893, guid: 5e1b17fae340c9e47990b4ba3ebf21bf, type: 3}
   - {fileID: 6723162061165601016, guid: b872448cfcc5bb14c8a517ce8ff345d9, type: 3}
+  - {fileID: 1871157228788203909, guid: f7f851bb7da76f748b95cd43fada9984, type: 3}
   swapAbilities:
   - {fileID: 664688373117898064, guid: b24533ff8fb454e41bfc9c2eb89c7d2e, type: 3}
   - {fileID: 1294559909591138003, guid: 3e241543db8a6b34d9fbc4dd772176a0, type: 3}
@@ -716,6 +718,7 @@ MonoBehaviour:
   - {fileID: 3902395430166007018, guid: 04d1bfbb08ba1334193b9566d4700972, type: 3}
   - {fileID: 5267318244921707893, guid: 5e1b17fae340c9e47990b4ba3ebf21bf, type: 3}
   - {fileID: 6723162061165601016, guid: b872448cfcc5bb14c8a517ce8ff345d9, type: 3}
+  - {fileID: 1871157228788203909, guid: f7f851bb7da76f748b95cd43fada9984, type: 3}
   swapAbilities:
   - {fileID: 664688373117898064, guid: b24533ff8fb454e41bfc9c2eb89c7d2e, type: 3}
   - {fileID: 1294559909591138003, guid: 3e241543db8a6b34d9fbc4dd772176a0, type: 3}
@@ -773,6 +776,7 @@ MonoBehaviour:
   - {fileID: 3902395430166007018, guid: 04d1bfbb08ba1334193b9566d4700972, type: 3}
   - {fileID: 5267318244921707893, guid: 5e1b17fae340c9e47990b4ba3ebf21bf, type: 3}
   - {fileID: 6723162061165601016, guid: b872448cfcc5bb14c8a517ce8ff345d9, type: 3}
+  - {fileID: 1871157228788203909, guid: f7f851bb7da76f748b95cd43fada9984, type: 3}
   swapAbilities:
   - {fileID: 664688373117898064, guid: b24533ff8fb454e41bfc9c2eb89c7d2e, type: 3}
   - {fileID: 1294559909591138003, guid: 3e241543db8a6b34d9fbc4dd772176a0, type: 3}
