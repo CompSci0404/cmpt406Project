@@ -18,6 +18,9 @@ public class SwiftSauce : ItemClass
         float moveSpeed;
         GameObject player;
 
+        //SoundEffect
+        FindObjectOfType<AudioManager>().PlaySound("itemConsumed");
+
         if (playerCont.GetComponent<MainControls>().GetControllerNumber() == 1)
         {
             Debug.Log("increasing p1");

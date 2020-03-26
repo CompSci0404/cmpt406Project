@@ -30,5 +30,8 @@ public class OdinAle: ItemClass
         stats = playerCont.GetComponent<PlayerStats>();
         int maxHearts = stats.GetMaxHearts();
         stats.SetCurrHearts(maxHearts);
+
+        //sound effect
+        FindObjectOfType<AudioManager>().PlaySound("itemConsumed");
     }
 }
