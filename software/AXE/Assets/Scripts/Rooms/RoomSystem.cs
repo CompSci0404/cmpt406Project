@@ -30,8 +30,8 @@ public class RoomSystem : MonoBehaviour
         {
             for (int i = 0; i < doorParent.childCount; i++)
             {
-                Transform door = doorParent.GetChild(i);
-                door.gameObject.SetActive(false);
+                Door door = doorParent.GetChild(i).GetComponent<Door>();
+                door.TurnOff();
             }
         }
         ChangeTrack();
@@ -42,30 +42,26 @@ public class RoomSystem : MonoBehaviour
         isClear = true;
         for (int i = 0; i < doorParent.childCount; i++)
         {
-            Transform door = doorParent.GetChild(i);
-            door.gameObject.SetActive(true);
+            Door door = doorParent.GetChild(i).GetComponent<Door>();
+            door.TurnOn();
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject obj = collision.gameObject;
-        if (!obj.CompareTag("Player"))
+        if (obj.CompareTag("Player"))
         {
-            return;
+            SendMessage("PlayerEnter");
         }
-
-        SendMessage("PlayerEnter");
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         GameObject obj = collision.gameObject;
-        if (!obj.CompareTag("Player"))
+        if (obj.CompareTag("Player"))
         {
-            return;
+            SendMessage("PlayerExit");
         }
-
-        SendMessage("PlayerExit");
     }
 }
