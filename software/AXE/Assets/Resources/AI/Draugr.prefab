@@ -172,7 +172,7 @@ MonoBehaviour:
   speed: 1
   fov: 5
   range: 0
-  health: 20
+  health: 40
   atkDamage: 1
   tooCloseRange: 0
   velocityOfRangedAttack: 0
@@ -221,6 +221,7 @@ MonoBehaviour:
   isCyberWizard: 0
   isDragur: 1
   isNanoGhost: 0
+  isHel: 0
 --- !u!95 &8473600148024395761
 Animator:
   serializedVersion: 3
