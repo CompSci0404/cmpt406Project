@@ -25,8 +25,8 @@ public abstract class AIClass : MonoBehaviour
     public GameObject ParticleDamage;
 
     protected DecisionTree rootOfTree;      /*this is the root of the tree. for the decision tree. All classes extended from this super class have access to this function call.*/
-  
 
+    private bool controlToPf = false;               /*Is Path finding needed? This will be set by code.*/
     private float saveSpeed;                /*The inital speed a AI originally had.*/
     private GameObject player;
     private List<GameObject> rangePrefabs;  /* all bullet prefabs for AI are stored in this list. */
@@ -84,6 +84,7 @@ public abstract class AIClass : MonoBehaviour
     {
         this.cooldown = 0; 
     }
+
 
     /// <summary>
     ///  <c>BuildRangePrefabs</c>
@@ -173,6 +174,8 @@ public abstract class AIClass : MonoBehaviour
            " of the enemyAI . You entered: \n " + aiName);
 
     }
+
+
 
     // --- [[ Damage to AI: ]] ---//
 
@@ -403,10 +406,18 @@ public abstract class AIClass : MonoBehaviour
     /// </summary>
     public void MoveTowardsPlayer()
     {
-        speed = saveSpeed;
-        this.currentAct = "move";
-        this.gameObject.GetComponent<EnemyAnim>().UpdateCurrentAct(currentAct);
-        this.transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
+        if (controlToPf == false)
+        {
+            speed = saveSpeed;
+            this.currentAct = "move";
+            this.gameObject.GetComponent<EnemyAnim>().UpdateCurrentAct(currentAct);
+            this.transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
+        } 
+        else
+        {
+            speed = saveSpeed;
+            this.GetComponent<pathFinding>().walkAroundObject(this.speed, this.player, this.gameObject);
+        }
     }
 
     
@@ -545,4 +556,18 @@ public abstract class AIClass : MonoBehaviour
     {
         return this.currentAct;
     }
+
+
+    public void giveControlToPF()
+    {
+        controlToPf = true; 
+
+    }
+
+    public void takeControlFromPF()
+    {
+        controlToPf = false; 
+
+    }
+
 }
