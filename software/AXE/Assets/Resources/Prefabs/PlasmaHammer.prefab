@@ -98,7 +98,7 @@ MonoBehaviour:
   itemName: Plasma Hammer
   itemDescription: Large area attack in front of the player, deals 300% player damage.
   myItemType: 2
-  price: 3
+  price: 10
   abilityCooldown: 2
   itemDuration: 0
   itemMultiplier: 3
