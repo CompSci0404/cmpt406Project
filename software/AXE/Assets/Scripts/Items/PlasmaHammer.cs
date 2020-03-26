@@ -33,6 +33,8 @@ public class PlasmaHammer : ItemClass
         {
             stats = GameObject.FindWithTag("Type2").GetComponent<PlayerStats>();
         }
+        //PlasmaHammer soundeffect
+        FindObjectOfType<AudioManager>().PlaySound("PlasmaHammer");
 
         // box collider 2D Version
         angle = playerCont.GetComponent<MainControls>().GetRSAngle();

@@ -4680,6 +4680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorParent: {fileID: 6036235634757873492}
+  newTrack: {fileID: 8300000, guid: bb5747eb7c357c746a221cb77bb3c66e, type: 3}
 --- !u!114 &1960567488208571329
 MonoBehaviour:
   m_ObjectHideFlags: 0

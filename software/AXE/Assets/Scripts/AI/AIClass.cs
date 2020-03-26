@@ -188,6 +188,9 @@ public abstract class AIClass : MonoBehaviour
     {
         health -= damage;
         Instantiate(ParticleDamage, transform.position, Quaternion.identity);
+        //sound Effect
+        FindObjectOfType<AudioManager>().PlaySound("enemyHit");
+
         if (health <= 0) {
             this.gameObject.GetComponent<EnemyAnim>().Death();
             StartCoroutine(Die());

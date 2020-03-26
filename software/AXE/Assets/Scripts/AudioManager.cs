@@ -26,6 +26,11 @@ public class AudioManager : MonoBehaviour
     {
         //find the sound with the name within the sounds[] that matches the name param
         SoundClass sFound = Array.Find(sounds, sound => sound.name == name);
+        if(sFound == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found!");
+            return;
+        }
         sFound.source.Play();
     }
 }

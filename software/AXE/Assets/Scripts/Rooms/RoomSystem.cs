@@ -11,6 +11,10 @@ public class RoomSystem : MonoBehaviour
     [SerializeField]
     Transform doorParent;
 
+    public AudioClip newTrack;
+
+    private MusicManager MManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +29,13 @@ public class RoomSystem : MonoBehaviour
                 doors.Add(door.GetChild(0));
             }
         }
+
+        MManager = FindObjectOfType<MusicManager>();
+    }
+
+    public void ChangeTrack()
+    {
+        MManager.ChangeMusic(newTrack);
     }
 
     void PlayerEnter()
@@ -36,6 +47,7 @@ public class RoomSystem : MonoBehaviour
                 door.gameObject.SetActive(false);
             }
         }
+        ChangeTrack();
     }
 
     void RoomClear()

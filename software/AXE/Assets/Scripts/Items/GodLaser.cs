@@ -38,6 +38,10 @@ public class GodLaser : ItemClass
         angle = playerCont.GetComponent<MainControls>().GetRSAngle();
         lookDirection = playerCont.GetComponent<MainControls>().GetRSDirection();
         // ability indicator
+
+        //Godlaser soundeffect
+        FindObjectOfType<AudioManager>().PlaySound("GodLaser");
+
         GameObject laser = Instantiate((GameObject)Resources.Load("GodLaserIndicator"), playerRB.transform.position, Quaternion.Euler(0, 0, angle)) as GameObject;
 
         // GodLaser Raycast Version

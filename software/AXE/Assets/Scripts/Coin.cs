@@ -48,6 +48,7 @@ public class Coin : MonoBehaviour
                 col.GetComponent<CoinStats>().AddThorCoin(1);
             }
             Destroy(gameObject);
+            FindObjectOfType<AudioManager>().PlaySound("CoinGrab");
         }
     }
 }

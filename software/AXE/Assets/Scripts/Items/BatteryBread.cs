@@ -16,6 +16,9 @@ public class BatteryBread : ItemClass
 
     public void UseBatteryBread()
     {
+        //sound effect
+        FindObjectOfType<AudioManager>().PlaySound("itemConsumed");
+
         if (playerCont.GetComponent<Abilities>().aAvailable)
         {
             Debug.Log("NO ABILITY");
