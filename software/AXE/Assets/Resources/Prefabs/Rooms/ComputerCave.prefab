@@ -7062,7 +7062,7 @@ GameObject:
   - component: {fileID: 2211425164697415917}
   - component: {fileID: 846939722832849572}
   - component: {fileID: 8613298742002672532}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pits
   m_TagString: Untagged
   m_Icon: {fileID: 0}

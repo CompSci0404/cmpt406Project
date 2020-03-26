@@ -21,9 +21,14 @@ public class Pit : MonoBehaviour
         }
         else if (collision.CompareTag("BaseEnemy"))
         {
+            Debug.Log("enemyHas been choosen!");
             if(collision.GetComponent<EnemyAnim>().isDragur)
             {
                 // floor enemies should avoid the pits at all costs    
+
+
+                collision.GetComponent<pathFinding>().setPitCollision(true, this.gameObject); 
+
                 print("Enemy is dragur");
             }
             else

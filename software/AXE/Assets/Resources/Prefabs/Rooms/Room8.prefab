@@ -6129,7 +6129,7 @@ GameObject:
   - component: {fileID: 253317150896988423}
   - component: {fileID: 9208608041984288823}
   - component: {fileID: 5371370932179425538}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pits
   m_TagString: Untagged
   m_Icon: {fileID: 0}

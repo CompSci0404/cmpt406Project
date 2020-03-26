@@ -85,6 +85,7 @@ GameObject:
   - component: {fileID: 5240349899102476966}
   - component: {fileID: 8473600148024395761}
   - component: {fileID: 4338684983844641417}
+  - component: {fileID: 2032338421}
   m_Layer: 8
   m_Name: Draugr
   m_TagString: BaseEnemy
@@ -260,3 +261,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &2032338421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8473600148024395775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3221ad1286999bd4ab4756f11f88183b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
