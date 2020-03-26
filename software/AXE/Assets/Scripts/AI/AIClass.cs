@@ -275,7 +275,7 @@ public abstract class AIClass : MonoBehaviour
         if(cooldown == 0)
         {
 
-                this.currentAct = "attack";
+                this.gameObject.GetComponent<EnemyAnim>().HelLaser();
 
                 this.cooldown = this.rangedAttackCooldown;
 

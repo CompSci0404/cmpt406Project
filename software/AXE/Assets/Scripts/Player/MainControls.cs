@@ -151,9 +151,17 @@ public class MainControls : MonoBehaviour
         }
         else if (Input.GetButtonDown(xButton))
         {
-
-            PickUpItem();
-            PickUpAbility();
+            if (GameObject.Find("Vendor").GetComponent<Vendor>().GetPlayerInRangeVendor())
+            {
+                // interact with vendor
+                InteractVendor();
+            }
+            else
+            {
+                PickUpItem();
+                PickUpAbility();
+            }
+            
         }
 
         // DPad presses
@@ -297,6 +305,21 @@ public class MainControls : MonoBehaviour
         {
             Debug.Log("Item Picked up goes to <" + lastDPadPressed + " DPad>");
             this.GetComponent<Inventory>().PickUpItem();
+        }
+        // if player 2 use P2 A2
+    }
+
+    private void InteractVendor()
+    {
+        // if player 1 use P1 A2
+        if (controllerNumber == 1)
+        {
+            GameObject.Find("Vendor").GetComponent<Vendor>().VendorInteract();
+        }
+        // if player 2 range
+        else if (controllerNumber == 2)
+        {
+            GameObject.Find("Vendor").GetComponent<Vendor>().VendorInteract();
         }
         // if player 2 use P2 A2
     }
