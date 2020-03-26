@@ -118,6 +118,8 @@ public class MainControls : MonoBehaviour
                     }
                     stats.SetLives(stats.GetLives() - 1);
                     this.GetComponent<PlayerMovement>().enabled = false;
+                    GameObject swapMessage = GameObject.FindGameObjectsWithTag("Message")[1];
+                    swapMessage.SetActive(false);
                     Invoke("SwapPlayer", 1.5f);
                 }
                 // if player 2 range
@@ -196,7 +198,7 @@ public class MainControls : MonoBehaviour
         }
     }
 
-    private void SwapPlayer()
+    public void SwapPlayer()
     {
         if (null != stats) stats.gameObject.SetActive(false);
         GameObject nextPlayer = players[0];
