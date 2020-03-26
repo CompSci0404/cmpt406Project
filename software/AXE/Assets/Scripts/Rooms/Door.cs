@@ -14,6 +14,17 @@ public class Door : MonoBehaviour
     [SerializeField]
     private Door destination;
 
+
+    private void Start()
+    {
+        if (null == destination)
+        {
+            Debug.Log("Door removed due to no destination");
+            Destroy(gameObject);
+        }
+    }
+
+
     public void AssignPartner(Door door)
     {
         destination = door;
