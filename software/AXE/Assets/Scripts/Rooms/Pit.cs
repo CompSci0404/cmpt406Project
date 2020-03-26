@@ -25,7 +25,8 @@ public class Pit : MonoBehaviour
             {
                 // Make Thor die 
                 stats.SetLives(stats.GetLives() - 1);
-                stats.DontMove();                
+                stats.DontMove();
+                FindObjectOfType<AudioManager>().PlaySound("FallScream");
                 // Switch to Valk to fly out
                 swapMessage.transform.position = new Vector2(collision.gameObject.transform.position.x, collision.gameObject.transform.position.y + 1);
                 swapMessage.SetActive(true);
