@@ -6,6 +6,9 @@ public class EnemySystem : MonoBehaviour
 {
     bool isClear = false;
     bool isActive = false;
+    // ability cooldowns
+    int firstClear = 0;
+    //
 
     [SerializeField]
     Transform enemyParent;
@@ -39,7 +42,20 @@ public class EnemySystem : MonoBehaviour
         if (isActive && enemies.Count <= 0)
         {
             SendMessage("RoomClear");
+            // ability cooldowns
+            firstClear += 1;
+            //
         }
+        // ability cooldowns
+        if (firstClear == 1)
+        {
+            Debug.Log("cleared");
+            if (GameObject.FindGameObjectWithTag("Player").GetComponent<Abilities>().IsAbility())
+            {
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Abilities>().GetActiveAbility().GetComponent<ItemClass>().ReduceAbilityCooldown();
+            }
+        }
+        //
     }
 
     public void EnemyDestroyed(GameObject enemy)
