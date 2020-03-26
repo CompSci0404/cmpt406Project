@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2281,12 +2281,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1486849557861402349, guid: 82e870f9fc41c18468fc3413da0c3aea,
     type: 3}
   m_PrefabInstance: {fileID: 1304823986}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &1322397923 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 6064305276922864396, guid: 030dbe44befba48afbc50b9c13a0a09e,
-    type: 3}
-  m_PrefabInstance: {fileID: 6064305275513874088}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1327029145 stripped
 MonoBehaviour:
@@ -4557,11 +4551,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2155138838672597880, guid: 030dbe44befba48afbc50b9c13a0a09e,
-        type: 3}
-      propertyPath: currentMusic
-      value: 
-      objectReference: {fileID: 1322397923}
-    m_RemovedComponents:
-    - {fileID: 6064305276922864395, guid: 030dbe44befba48afbc50b9c13a0a09e, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 030dbe44befba48afbc50b9c13a0a09e, type: 3}
