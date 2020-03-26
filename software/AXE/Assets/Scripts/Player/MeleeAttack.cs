@@ -12,7 +12,13 @@ public class MeleeAttack : MonoBehaviour
     Vector2 movement;
     Rigidbody2D rBody;
 
+    float thorAttackSpeed = .5f;
+    float thorAttackDamage = 2.5f;
+
     [SerializeField] private Transform weaponPoint;
+
+    [SerializeField]
+    private ThorAnimationInput thorAnimation;
 
     private bool canAttack;
 
@@ -54,7 +60,7 @@ public class MeleeAttack : MonoBehaviour
         if (attackTime <= 0)
         {
             canAttack = true;
-            attackTime = stats.GetAttackSpeed();
+            attackTime = stats.GetAttackSpeed() + thorAttackSpeed;
         }
         else
         {
@@ -67,13 +73,15 @@ public class MeleeAttack : MonoBehaviour
     public void MeleeAtt()
     {
         if (canAttack)
-        { 
+        {
+            thorAnimation.AttackAnimTrigger();
+            FindObjectOfType<AudioManager>().PlaySound("ThorSwing");
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(weaponPoint.position, stats.GetRange() / 3, enemyLayers);
             for( int i = 0; i < hitEnemies.Length; i++ )
             {
                 if (hitEnemies[i].CompareTag("BaseEnemy"))
                 {
-                    hitEnemies[i].GetComponent<AIClass>().Damage(stats.GetDamage());
+                    hitEnemies[i].GetComponent<AIClass>().Damage(stats.GetDamage() + thorAttackDamage);
                 }
             }
             canAttack = false;

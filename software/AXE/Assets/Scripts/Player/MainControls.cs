@@ -222,7 +222,6 @@ public class MainControls : MonoBehaviour
         // if player 1 melee
         if (controllerNumber == 1)
         {
-            thorAnimation.AttackAnimTrigger();
             this.GetComponentInChildren<MeleeAttack>().MeleeAtt();
         }
         // if player 2 range

@@ -397,6 +397,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   weaponPoint: {fileID: 2058283859}
+  thorAnimation: {fileID: 895764767}
 --- !u!95 &7300317345096882598
 Animator:
   serializedVersion: 3
