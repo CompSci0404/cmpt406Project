@@ -183,6 +183,7 @@ public class PlayerStats : MonoBehaviour
     {
         // Death animation && give invincibility
         isInvincible = true;
+        this.gameObject.GetComponentInParent<MainControls>().canAttack = false;
         if (controllerNumber == 1) thorAnimation.DeathAnimTrigger();
         if (controllerNumber == 2) valkAnimation.DeathAnimTrigger();
         DontMove();
@@ -203,7 +204,7 @@ public class PlayerStats : MonoBehaviour
     public void Move()
     {
         this.GetComponentInParent<PlayerMovement>().enabled = true;
-
+        this.gameObject.GetComponentInParent<MainControls>().canAttack = true;
     }
 
     private void ResetHearts()

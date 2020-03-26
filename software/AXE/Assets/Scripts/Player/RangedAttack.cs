@@ -42,8 +42,11 @@ public class RangedAttack: MonoBehaviour
         }
         else if (Input.GetButtonDown("J2B") || Input.GetAxis(rightTrigger) > 0)
         {
-            ShootArrow(angle);
-            timer = stats.GetAttackSpeed();
+            if (parent.GetComponent<MainControls>().canAttack)
+            {
+                ShootArrow(angle);
+                timer = stats.GetAttackSpeed();
+            }
         }
     }
 

@@ -16,6 +16,7 @@ public class MainControls : MonoBehaviour
     private ValkAnimationInput valkAnimation;
 
     public bool justSwapped;
+    public bool canAttack;
     TimeSlowSwap swapSlow;
     
     private string horizontalAxis;
@@ -49,6 +50,7 @@ public class MainControls : MonoBehaviour
         HUD = FindObjectOfType<HUD>();
         coins = FindObjectOfType<CoinStats>();
         players = new List<GameObject>();
+        canAttack = true;
         int count = transform.childCount;
         // Get movement script from this object
         for (int i = 0; i < count; i++)
@@ -90,7 +92,10 @@ public class MainControls : MonoBehaviour
         // Use the right trigger to attack 
         if (Input.GetAxis(rightTrigger) > 0)
         {
-            Attack();
+            if (canAttack)
+            {
+                Attack();
+            }
         }
 
         // wait for an input and set opposite player controller active
@@ -104,7 +109,7 @@ public class MainControls : MonoBehaviour
             {
                 justSwapped = true;
                 swapSlow.SlowForSwap();
-
+                canAttack = false;
                 if (controllerNumber == 1)
                 {
                     HUD.ThorSwitch = true;
@@ -154,7 +159,10 @@ public class MainControls : MonoBehaviour
 
         else if (Input.GetButtonDown(bButton))
         {
-            Attack();
+            if (canAttack)
+            {
+                Attack();
+            }
         }
         else if (Input.GetButtonDown(aButton) || Input.GetAxis(leftTrigger) > 0)
         {
@@ -217,6 +225,8 @@ public class MainControls : MonoBehaviour
         players.Add(nextPlayer);
 
         this.GetComponent<PlayerMovement>().enabled = true;
+
+        canAttack = true;
         Invoke("ResetSwap", 1);
     }
 
