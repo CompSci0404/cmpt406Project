@@ -39,6 +39,8 @@ public class MainControls : MonoBehaviour
 
     public string swapAbility;
 
+    public GameObject swapMessage;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -118,8 +120,15 @@ public class MainControls : MonoBehaviour
                     }
                     stats.SetLives(stats.GetLives() - 1);
                     this.GetComponent<PlayerMovement>().enabled = false;
-                    GameObject swapMessage = GameObject.FindGameObjectsWithTag("Message")[1];
-                    swapMessage.SetActive(false);
+                    //try
+                    //{
+                    //    GameObject swapMessage = GameObject.FindGameObjectsWithTag("Message")[1];
+                    //    swapMessage.SetActive(false);
+                    //}
+                    //catch (Exception e)
+                    //{
+                    //    print("Error, no message");
+                    //}
                     Invoke("SwapPlayer", 1.5f);
                 }
                 // if player 2 range

@@ -60,10 +60,7 @@ public class Pit : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             PlayerStats stats = collision.GetComponentInChildren<PlayerStats>();
-            if (stats.GetControllerNumber() == 1)
-            {
-                stats.DontMove();
-            }
+            swapMessage.SetActive(false);
         }
     }
 }
