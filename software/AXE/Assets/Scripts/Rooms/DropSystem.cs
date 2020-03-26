@@ -44,15 +44,10 @@ public class DropSystem : MonoBehaviour
     }
 
     // Drop a coin
-    public void DropCoins(Transform t)
+    public void DropCoin(Transform t)
     {
         Quaternion rotation = Quaternion.AngleAxis(0f, Vector3.forward);
-        int numCoins = Random.Range(0, 5);
-        for (int i = 0; i < numCoins; i++)
-        {
-            GameObject coin = Instantiate(coinObject, t.position, rotation);
-            coin.transform.position = new Vector2(t.position.x + (numCoins / 5), t.position.y + (numCoins / 5));
-        }
+        GameObject coin = Instantiate(coinObject, t.position, rotation);
     }
 
     // Called by an enemy to get a chance to drop an item
@@ -68,7 +63,32 @@ public class DropSystem : MonoBehaviour
         //    DropConsumable(t);
         if (randInt <= dropChance * 5)
         {
-            DropCoins(t);
+            int numCoins = Random.Range(1, 5);
+            for (int i = 0; i < numCoins; i++)
+            {
+                int spawnPlace = Random.Range(-1, 2);
+                if (i==0)
+                {
+                    DropCoin(t);
+                }
+                else if (i == 1)
+                {
+                    t.position = new Vector2(t.position.x - (numCoins * spawnPlace) / 5f, t.position.y + (numCoins * spawnPlace) / 5f);
+                }
+                else if (i == 2)
+                {
+                    t.position = new Vector2(t.position.x - (numCoins * spawnPlace) / 5f, t.position.y - (numCoins * spawnPlace) / 5f);
+                }
+                else if (i == 3)
+                {
+                    t.position = new Vector2(t.position.x + (numCoins * spawnPlace) / 5f, t.position.y - (numCoins * spawnPlace) / 5f);
+                }
+                else
+                {
+                    t.position = new Vector2(t.position.x + (numCoins * spawnPlace) / 5f, t.position.y + (numCoins * spawnPlace) / 5f);
+                    DropCoin(t);
+                }
+            }
         }
         else
             return;

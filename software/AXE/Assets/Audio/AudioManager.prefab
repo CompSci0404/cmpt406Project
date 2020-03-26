@@ -81,7 +81,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: ThorSwing
     clip: {fileID: 8300000, guid: c748ea8eaa467d44096678e61ebcb13c, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     source: {fileID: 0}
   - name: FallScream
