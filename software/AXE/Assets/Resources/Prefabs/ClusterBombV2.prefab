@@ -128,7 +128,7 @@ MonoBehaviour:
   itemName: Cluster Bomb
   itemDescription: Damages enemies on swap
   myItemType: 1
-  price: 5
+  price: 10
   abilityCooldown: 0
   itemDuration: 0
   itemMultiplier: 0
