@@ -179,10 +179,11 @@ public class PlayerStats : MonoBehaviour
 
     // Will have to set to other controller? 
     // Respawns the character with one less life
-    private void Respawn()
+    public void Respawn()
     {
         // Death animation && give invincibility
         isInvincible = true;
+        this.gameObject.GetComponentInParent<MainControls>().canAttack = false;
         if (controllerNumber == 1) thorAnimation.DeathAnimTrigger();
         if (controllerNumber == 2) valkAnimation.DeathAnimTrigger();
         DontMove();
@@ -195,15 +196,15 @@ public class PlayerStats : MonoBehaviour
         Invoke("ResetInvincibility", 1);
     }
 
-    private void DontMove()
+    public void DontMove()
     {
         this.GetComponentInParent<PlayerMovement>().enabled = false;
     }
 
-    private void Move()
+    public void Move()
     {
         this.GetComponentInParent<PlayerMovement>().enabled = true;
-
+        this.gameObject.GetComponentInParent<MainControls>().canAttack = true;
     }
 
     private void ResetHearts()
