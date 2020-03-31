@@ -46,36 +46,46 @@ MonoBehaviour:
   sounds:
   - name: NanoShot
     clip: {fileID: 8300000, guid: 5fb519d3519c44c19aafa32521e89ca5, type: 3}
-    volume: 0.094
+    volume: 0.25
     pitch: 1
     source: {fileID: 0}
   - name: ValkShot
     clip: {fileID: 8300000, guid: 5cee3b98a0a6946ca9d39bddf43b20b2, type: 3}
-    volume: 0.055
+    volume: 0.25
     pitch: 1
     source: {fileID: 0}
   - name: CoinGrab
     clip: {fileID: 8300000, guid: 44f70b8830f8a444dbbf68cbd0e2c46c, type: 3}
-    volume: 0.315
+    volume: 0.5
     pitch: 1
     source: {fileID: 0}
   - name: enemyHit
     clip: {fileID: 8300000, guid: 1ef7851a532ff4232a70adeb13658741, type: 3}
-    volume: 0.124
+    volume: 0.25
     pitch: 1
     source: {fileID: 0}
   - name: GodLaser
     clip: {fileID: 8300000, guid: 459f087659b0e4d49b967624c9144cbd, type: 3}
-    volume: 0.085
+    volume: 0.25
     pitch: 1
     source: {fileID: 0}
   - name: PlasmaHammer
     clip: {fileID: 8300000, guid: 89f2a272852754b39b6e0990771f4e2c, type: 3}
-    volume: 0.094
+    volume: 0.25
     pitch: 1
     source: {fileID: 0}
   - name: itemConsumed
     clip: {fileID: 8300000, guid: 1d5963bec87c5496c897d69dffd8134d, type: 3}
-    volume: 0.085
+    volume: 0.25
     pitch: 1
+    source: {fileID: 0}
+  - name: ThorSwing
+    clip: {fileID: 8300000, guid: c748ea8eaa467d44096678e61ebcb13c, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+  - name: FallScream
+    clip: {fileID: 8300000, guid: 22efb8433351aaf4884ace59426998ca, type: 3}
+    volume: 0.3
+    pitch: 0.69
     source: {fileID: 0}

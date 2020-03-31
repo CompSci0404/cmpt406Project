@@ -16,6 +16,7 @@ public class MainControls : MonoBehaviour
     private ValkAnimationInput valkAnimation;
 
     public bool justSwapped;
+    public bool canAttack;
     TimeSlowSwap swapSlow;
     
     private string horizontalAxis;
@@ -39,6 +40,8 @@ public class MainControls : MonoBehaviour
 
     public string swapAbility;
 
+    public GameObject swapMessage;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -47,6 +50,7 @@ public class MainControls : MonoBehaviour
         HUD = FindObjectOfType<HUD>();
         coins = FindObjectOfType<CoinStats>();
         players = new List<GameObject>();
+        canAttack = true;
         int count = transform.childCount;
         // Get movement script from this object
         for (int i = 0; i < count; i++)
@@ -88,7 +92,10 @@ public class MainControls : MonoBehaviour
         // Use the right trigger to attack 
         if (Input.GetAxis(rightTrigger) > 0)
         {
-            Attack();
+            if (canAttack)
+            {
+                Attack();
+            }
         }
 
         // wait for an input and set opposite player controller active
@@ -102,7 +109,7 @@ public class MainControls : MonoBehaviour
             {
                 justSwapped = true;
                 swapSlow.SlowForSwap();
-
+                canAttack = false;
                 if (controllerNumber == 1)
                 {
                     HUD.ThorSwitch = true;
@@ -118,6 +125,15 @@ public class MainControls : MonoBehaviour
                     }
                     stats.SetLives(stats.GetLives() - 1);
                     this.GetComponent<PlayerMovement>().enabled = false;
+                    //try
+                    //{
+                    //    GameObject swapMessage = GameObject.FindGameObjectsWithTag("Message")[1];
+                    //    swapMessage.SetActive(false);
+                    //}
+                    //catch (Exception e)
+                    //{
+                    //    print("Error, no message");
+                    //}
                     Invoke("SwapPlayer", 1.5f);
                 }
                 // if player 2 range
@@ -143,7 +159,10 @@ public class MainControls : MonoBehaviour
 
         else if (Input.GetButtonDown(bButton))
         {
-            Attack();
+            if (canAttack)
+            {
+                Attack();
+            }
         }
         else if (Input.GetButtonDown(aButton) || Input.GetAxis(leftTrigger) > 0)
         {
@@ -196,7 +215,7 @@ public class MainControls : MonoBehaviour
         }
     }
 
-    private void SwapPlayer()
+    public void SwapPlayer()
     {
         if (null != stats) stats.gameObject.SetActive(false);
         GameObject nextPlayer = players[0];
@@ -206,6 +225,8 @@ public class MainControls : MonoBehaviour
         players.Add(nextPlayer);
 
         this.GetComponent<PlayerMovement>().enabled = true;
+
+        canAttack = true;
         Invoke("ResetSwap", 1);
     }
 
@@ -220,7 +241,6 @@ public class MainControls : MonoBehaviour
         // if player 1 melee
         if (controllerNumber == 1)
         {
-            thorAnimation.AttackAnimTrigger();
             this.GetComponentInChildren<MeleeAttack>().MeleeAtt();
         }
         // if player 2 range
