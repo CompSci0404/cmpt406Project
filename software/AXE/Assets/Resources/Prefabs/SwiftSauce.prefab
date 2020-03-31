@@ -115,7 +115,7 @@ MonoBehaviour:
   itemName: SwiftSauce
   itemDescription: Increase player's move and attack speed
   myItemType: 0
-  price: 3
+  price: 5
   abilityCooldown: 0
   itemDuration: 10
   itemMultiplier: 1.5

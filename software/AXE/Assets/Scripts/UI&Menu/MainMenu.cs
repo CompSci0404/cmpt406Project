@@ -10,11 +10,20 @@ using TMPro;
  */
 public class MainMenu : MonoBehaviour
 {
+
+    [SerializeField]
+    Canvas MenuCanavs;
+
+    [SerializeField]
+    Canvas ControllerMapping;
+
     public Image pointer;
 
     public TextMeshProUGUI option1;
     public TextMeshProUGUI option2;
     public TextMeshProUGUI option3;
+
+    public Button playButton;
 
     private int numberOfOptions = 3;
 
@@ -96,7 +105,7 @@ public class MainMenu : MonoBehaviour
             switch (selectedOption) 
             {
                 case 1:
-                    StartGame();
+                    ControllerCanvas();
                     break;
                 case 2:
                     /*Do option two*/
@@ -106,7 +115,23 @@ public class MainMenu : MonoBehaviour
                     break;
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("StartButton"))
+        {
+            StartGame();
+        }
     }
+
+    public void ControllerCanvas()
+    {
+        MenuCanavs.enabled = false;
+        MenuCanavs.gameObject.SetActive(false);
+
+        ControllerMapping.enabled = true;
+        ControllerMapping.gameObject.SetActive(true);
+
+    }
+
     // Start Scene
     public void StartGame()
     {

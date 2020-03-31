@@ -115,7 +115,7 @@ MonoBehaviour:
   itemName: TimelineShifter
   itemDescription: Player is invincible for a limited period of time
   myItemType: 1
-  price: 6
+  price: 10
   abilityCooldown: 0
   itemDuration: 0
   itemMultiplier: 0
