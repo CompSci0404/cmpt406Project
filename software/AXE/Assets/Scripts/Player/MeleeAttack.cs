@@ -13,7 +13,7 @@ public class MeleeAttack : MonoBehaviour
     Rigidbody2D rBody;
 
     float thorAttackSpeed = .5f;
-    float thorAttackDamage = 2.5f;
+    float thorAttackDamage = 5f;
 
     [SerializeField] private Transform weaponPoint;
 
@@ -76,7 +76,7 @@ public class MeleeAttack : MonoBehaviour
         {
             thorAnimation.AttackAnimTrigger();
             FindObjectOfType<AudioManager>().PlaySound("ThorSwing");
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(weaponPoint.position, stats.GetRange() / 3, enemyLayers);
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(weaponPoint.position, stats.GetRange() / 2 , enemyLayers);
             for( int i = 0; i < hitEnemies.Length; i++ )
             {
                 if (hitEnemies[i].CompareTag("BaseEnemy"))

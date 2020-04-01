@@ -378,6 +378,7 @@ MonoBehaviour:
   PlayerInvincibilitySprite: {fileID: 0}
   thorAnimation: {fileID: 895764767}
   valkAnimation: {fileID: 109676076239904554}
+  myDamage: 10
   controllerNumber: 1
   ParticleDamage: {fileID: 957760211153635426, guid: 2b6962467de2746849af8d94507a8946,
     type: 3}
@@ -669,7 +670,9 @@ MonoBehaviour:
   thorAnimation: {fileID: 895764767}
   valkAnimation: {fileID: 109676076239904554}
   justSwapped: 0
+  canAttack: 0
   swapAbility: 
+  swapMessage: {fileID: 0}
 --- !u!114 &4479636796296197987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -906,6 +909,7 @@ MonoBehaviour:
   PlayerInvincibilitySprite: {fileID: 0}
   thorAnimation: {fileID: 895764767}
   valkAnimation: {fileID: 109676076239904554}
+  myDamage: 5
   controllerNumber: 2
   ParticleDamage: {fileID: 8927798025064241273, guid: d8f29ed5cb48345e2b0e7f013c7a083c,
     type: 3}
