@@ -83,6 +83,10 @@ public class MeleeAttack : MonoBehaviour
                 {
                     hitEnemies[i].GetComponent<AIClass>().Damage(stats.GetDamage() + thorAttackDamage);
                 }
+                else if (hitEnemies[i].CompareTag("Destructibles"))
+                {
+                    hitEnemies[i].GetComponent<Destructibles>().Damage(stats.GetDamage() + thorAttackDamage);
+                }
             }
             canAttack = false;
         }  

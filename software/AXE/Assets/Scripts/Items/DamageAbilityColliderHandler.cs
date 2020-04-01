@@ -51,6 +51,11 @@ public class DamageAbilityColliderHandler : MonoBehaviour
                 collision.GetComponent<AIClass>().Damage(stats.GetDamage() * damageMultiplier);
                 StartCoroutine(DestroyMe());
             }
+            else if (collision.GetComponent<Destructibles>() != null)
+            {
+                collision.GetComponent<Destructibles>().Damage(stats.GetDamage() * damageMultiplier);
+                StartCoroutine(DestroyMe());
+            }
         }
         // damage over time
         else if (myDamageType == DamageType.damageOverTime)
@@ -88,6 +93,10 @@ public class DamageAbilityColliderHandler : MonoBehaviour
             if (collision.GetComponent<AIClass>() != null)
             {
                 collision.GetComponent<AIClass>().Damage(stats.GetDamage() * damageMultiplier);
+            }
+            else if (collision.GetComponent<Destructibles>() != null)
+            {
+                collision.GetComponent<Destructibles>().Damage(stats.GetDamage() * damageMultiplier);
             }
         }
         // maybe return if ai dies;

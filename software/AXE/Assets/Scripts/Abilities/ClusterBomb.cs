@@ -48,6 +48,10 @@ public class ClusterBomb : ItemClass
                     Vector2 force = new Vector2(1, 1);
                     rBody.AddForceAtPosition(force, bombPosition);
                 }
+                if (hit.CompareTag("Destructibles"))
+                {
+                    hit.GetComponent<Destructibles>().Damage(damage);
+                }
             }
 
         }

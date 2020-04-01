@@ -38,5 +38,10 @@ public class Arrow : MonoBehaviour
             obj.GetComponent<AIClass>().Damage(arrowDamage);
             return;
         }
+        if (obj.CompareTag("Destructibles"))
+        {
+            obj.GetComponent<Destructibles>().Damage(arrowDamage);
+            return;
+        }
     }
 }
