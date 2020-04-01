@@ -6,17 +6,16 @@ public class VendorRefreshPopUp : MonoBehaviour
 {
     static GameObject newPop;
     private bool doable;
+
     private void Awake()
     {
-
         if (null == newPop)
         {
-            if (GameObject.FindGameObjectsWithTag("Message").Length == 2)
+            if (GameObject.FindGameObjectsWithTag("Message").Length == 3)
             {
                 doable = true;
-                newPop = GameObject.FindGameObjectsWithTag("Message")[1];
+                newPop = GameObject.FindGameObjectsWithTag("Message")[2];
             }
-            
         }
     }
 
