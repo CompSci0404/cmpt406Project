@@ -5,13 +5,41 @@ using UnityEngine.SceneManagement;
 
 public class StartGame : MonoBehaviour
 {
+    [SerializeField]
+    Canvas ControllerCanvas;
+
+    [SerializeField]
+    Canvas UIHelper;
+
+    bool pastController;
+
+    private void Start()
+    {
+        pastController = false;
+    }
+
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("StartButton"))
         {
-            StartScene();
+            if (pastController)
+            {
+                StartScene();
+            }
+            else
+            {
+                UICanvas();
+                pastController = true;
+            }
         }
+    }
+
+    public void UICanvas()
+    {
+        //ControllerCanvas.enabled = false;
+        //ControllerCanvas.gameObject.SetActive(false);
+        UIHelper.sortingOrder = 1;
     }
 
     // Start Scene
