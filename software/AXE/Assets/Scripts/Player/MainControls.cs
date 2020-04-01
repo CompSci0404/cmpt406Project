@@ -217,7 +217,10 @@ public class MainControls : MonoBehaviour
 
     public void SwapPlayer()
     {
-        if (null != stats) stats.gameObject.SetActive(false);
+        if (null != stats)
+        {
+            stats.gameObject.SetActive(false);
+        }
         GameObject nextPlayer = players[0];
         nextPlayer.SetActive(true);
 
