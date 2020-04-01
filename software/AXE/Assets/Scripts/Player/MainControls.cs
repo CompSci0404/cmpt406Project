@@ -123,7 +123,6 @@ public class MainControls : MonoBehaviour
                     thorAnimation.SwapAnimTrigger();
                     if (swapAbility.Equals(""))
                     {
-                        Debug.Log("No Ability");
                     }
                     else
                     {

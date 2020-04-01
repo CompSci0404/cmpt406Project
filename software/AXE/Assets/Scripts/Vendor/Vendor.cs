@@ -61,7 +61,6 @@ public class Vendor : MonoBehaviour
                 for (int i = 0; i < 4; i++)
                 {
                     this.transform.GetChild(0).transform.GetChild(0).transform.GetChild(i).GetComponent<VendorItemsSpawn>().Refresh();
-                    Debug.Log(this.transform.GetChild(0).transform.GetChild(0).transform.GetChild(i));
                 }
             }
         }
@@ -74,7 +73,6 @@ public class Vendor : MonoBehaviour
                 for (int i = 0; i < 4; i++)
                 {
                     this.transform.GetChild(0).transform.GetChild(0).transform.GetChild(i).GetComponent<VendorItemsSpawn>().Refresh();
-                    Debug.Log(this.transform.GetChild(0).transform.GetChild(0).transform.GetChild(i));
                 }
             }
         }
