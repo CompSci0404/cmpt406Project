@@ -9,6 +9,11 @@ public class Teleport : MonoBehaviour
     CoinStats coins;
     GameObject Teleporter;
 
+    [SerializeField]
+    PolygonCollider2D collider;
+    [SerializeField]
+    SpriteRenderer sprite;
+
     private void Start()
     {
         teleportFrom = this.gameObject.transform.position;
@@ -27,7 +32,7 @@ public class Teleport : MonoBehaviour
                 // teleport back
                 collision.transform.position = teleportFrom;
                 teleportUsed = false;
-                Destroy(this.gameObject);
+                TurnOff();
             }
             else
             {
@@ -45,8 +50,20 @@ public class Teleport : MonoBehaviour
         GameObject portal = Instantiate(Teleporter, this.transform); // teleporterLocation
     }
 
-public void DestroyTeleporter()
+    public void DestroyTeleporter()
     {
         // May have to destroy, maybe not. 
+    }
+
+    public void TurnOn()
+    {
+        GetComponent<PolygonCollider2D>().enabled = true;
+        sprite.enabled = true;
+    }
+
+    public void TurnOff()
+    {
+        GetComponent<PolygonCollider2D>().enabled = false;
+        sprite.enabled = false;
     }
 }

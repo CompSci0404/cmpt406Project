@@ -9,6 +9,9 @@ public class RoomSystem : MonoBehaviour
     [SerializeField]
     Transform doorParent;
 
+    [SerializeField]
+    GameObject Teleporter;
+
     public AudioClip newTrack;
 
     private MusicManager MManager;
@@ -33,6 +36,10 @@ public class RoomSystem : MonoBehaviour
                 Door door = doorParent.GetChild(i).GetComponent<Door>();
                 door.TurnOff();
             }
+            if (Teleporter.TryGetComponent(out Teleport teleportScript))
+            {
+                teleportScript.TurnOff();
+            }
         }
         ChangeTrack();
     }
@@ -41,9 +48,13 @@ public class RoomSystem : MonoBehaviour
     {
         isClear = true;
         for (int i = 0; i < doorParent.childCount; i++)
-        {
+        { 
             Door door = doorParent.GetChild(i).GetComponent<Door>();
             door.TurnOn();
+        }
+        if (Teleporter.TryGetComponent(out Teleport teleportScript))
+        {
+            teleportScript.TurnOn();
         }
     }
 
