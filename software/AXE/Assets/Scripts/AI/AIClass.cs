@@ -416,7 +416,7 @@ public abstract class AIClass : MonoBehaviour
         else
         {
             speed = saveSpeed;
-            this.GetComponent<pathFinding>().walkAroundObject(this.speed, this.player, this.gameObject);
+            this.GetComponent<PathFinding>().WalkAroundObject(this.speed, this.player, this.gameObject);
         }
     }
 

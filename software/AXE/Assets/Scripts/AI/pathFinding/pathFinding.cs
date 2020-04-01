@@ -10,7 +10,7 @@ using UnityEngine;
 /// 
 /// 
 /// </summary>
-public class pathFinding : MonoBehaviour
+public class PathFinding : MonoBehaviour
 {
     private float timer = 0;
     private float coolDown = 2f; 
@@ -19,22 +19,19 @@ public class pathFinding : MonoBehaviour
     private RaycastHit2D hit; 
 
 
-    public void setPitCollision(bool hitPit, GameObject collidedItem)
+    public void SetPitCollision(bool hitPit, GameObject collidedItem)
     {
         pitHit = hitPit;
         itemHit = collidedItem;
         this.gameObject.GetComponent<AIClass>().giveControlToPF();
         timer = coolDown;
-
-        Debug.Log("we have successfully transfered control over to PF");
     }
 
-    public void walkAroundObject(float speed, GameObject player, GameObject ai)
+    public void WalkAroundObject(float speed, GameObject player, GameObject ai)
     {
-        
-        Debug.Log("pathing away from pit.");
+        //Debug.Log("pathing away from pit.");
         hit = Physics2D.Raycast(this.transform.position, player.transform.position);
-        Debug.Log(hit.transform.gameObject.tag);
+        //Debug.Log(hit.transform.gameObject.tag);
         
         if(timer == 0)
         {
@@ -50,17 +47,8 @@ public class pathFinding : MonoBehaviour
 
                 timer = 0;
             }
-
         }
-       
-            this.transform.position = Vector2.MoveTowards(this.transform.position, Vector2.down, speed * Time.deltaTime);  
 
-           // }
-       // }
-
-
+        this.transform.position = Vector2.MoveTowards(this.transform.position, Vector2.down, speed * Time.deltaTime);  
     } 
-
-
-
 }
