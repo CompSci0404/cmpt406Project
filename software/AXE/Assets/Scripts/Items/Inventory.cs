@@ -735,29 +735,29 @@ public class Inventory : MonoBehaviour
     {
         if (DPad.Equals(upItem))
         {
-            downItem.GetComponent<SpriteRenderer>().enabled = false;
-            leftItem.GetComponent<SpriteRenderer>().enabled = false;
-            rightItem.GetComponent<SpriteRenderer>().enabled = false;
+            downItem.GetComponent<SpriteRenderer>().sortingOrder = -1;
+            leftItem.GetComponent<SpriteRenderer>().sortingOrder = -1;
+            rightItem.GetComponent<SpriteRenderer>().sortingOrder = -1;
         }
         else if (DPad.Equals(downItem))
         {
-            upItem.GetComponent<SpriteRenderer>().enabled = false;
-            leftItem.GetComponent<SpriteRenderer>().enabled = false;
-            rightItem.GetComponent<SpriteRenderer>().enabled = false;
+            upItem.GetComponent<SpriteRenderer>().sortingOrder = -1;
+            leftItem.GetComponent<SpriteRenderer>().sortingOrder = -1;
+            rightItem.GetComponent<SpriteRenderer>().sortingOrder = -1;
         }
         else if (DPad.Equals(leftItem))
         {
-            upItem.GetComponent<SpriteRenderer>().enabled = false;
-            downItem.GetComponent<SpriteRenderer>().enabled = false;
-            rightItem.GetComponent<SpriteRenderer>().enabled = false;
+            upItem.GetComponent<SpriteRenderer>().sortingOrder = -1;
+            downItem.GetComponent<SpriteRenderer>().sortingOrder = -1;
+            rightItem.GetComponent<SpriteRenderer>().sortingOrder = -1;
         }
         else if (DPad.Equals(rightItem))
         {
-            upItem.GetComponent<SpriteRenderer>().enabled = false;
-            leftItem.GetComponent<SpriteRenderer>().enabled = false;
-            downItem.GetComponent<SpriteRenderer>().enabled = false;
+            upItem.GetComponent<SpriteRenderer>().sortingOrder = -1;
+            leftItem.GetComponent<SpriteRenderer>().sortingOrder = -1;
+            downItem.GetComponent<SpriteRenderer>().sortingOrder = -1;
         }
-        DPad.GetComponent<SpriteRenderer>().enabled = true;
+        DPad.GetComponent<SpriteRenderer>().sortingOrder = 1;
 
     }
 
