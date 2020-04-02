@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  fov: 5
+  fov: 20
   range: 0
   health: 40
   atkDamage: 1
