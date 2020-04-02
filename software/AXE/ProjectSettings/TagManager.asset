@@ -21,6 +21,7 @@ TagManager:
   - CoinMagnet
   - InvulnerableOutline
   - Pit
+  - rngBlock
   layers:
   - Default
   - TransparentFX
