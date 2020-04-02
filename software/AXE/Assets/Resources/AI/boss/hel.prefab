@@ -148,14 +148,14 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 10
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Constraints: 4
 --- !u!114 &8307796573444514921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,8 +168,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2440417434237354bb965c3992cdcd08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
-  fov: 10
+  speed: 3
+  fov: 1000
   range: 10
   health: 100
   atkDamage: 1
@@ -180,7 +180,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  ParticleDamage: {fileID: 0}
+  ParticleDamage: {fileID: 6980632896635148368, guid: e01f146a534f643e3a8bec06f3966da9,
+    type: 3}
+  helShield: {fileID: 21300000, guid: 718f165a050fbb64da71703fa1cde81b, type: 3}
 --- !u!114 &8307796573444514930
 MonoBehaviour:
   m_ObjectHideFlags: 0

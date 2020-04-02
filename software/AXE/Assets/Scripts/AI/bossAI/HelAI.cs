@@ -4,13 +4,76 @@ using UnityEngine;
 
 public class HelAI : AIClass
 {
-    private bool phaseTwo; 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            this.gameObject.GetComponent<EnemyAnim>().Attack();
+            collision.gameObject.GetComponentInChildren<PlayerStats>().DamagePlayer(this.atkDamage);
+        }
+    }
+
 
     public void PhaseCheck()
     {
         // we will rebuild decision trees when it comes time to switching to phase 2.
-        if(phaseTwo == false)
+        if(returnPhase() == false)
         {
+
+            Debug.Log("We have built the first tree");
+            SetSaveSpeed();
+            findHalfedHealth();
+            FindPlayer();
+            SetCooldown();
+            BuildRangePrefabs();
+            FindProj("helLaser");
+            FindAIPrefab("Draugr");
+
+            DecisionTree enemySpotted = new DecisionTree();
+            enemySpotted.BuildDecision(EnemySpotted);
+
+            DecisionTree hpGanging = new DecisionTree();
+            hpGanging.BuildDecision(checkHPHalfed);
+
+            DecisionTree canSpawnChoice = new DecisionTree();
+            canSpawnChoice.BuildDecision(CanSpawn);
+
+            DecisionTree spawnUnit = new DecisionTree();
+            spawnUnit.BuildAction(SpawnUnits);
+
+            DecisionTree rngAttack = new DecisionTree();
+            rngAttack.BuildAction(LaserBeamAttack);
+
+            DecisionTree idleChoice = new DecisionTree();
+            idleChoice.BuildAction(Idle);
+
+            DecisionTree phaseActivate = new DecisionTree();
+            phaseActivate.BuildAction(activatePhase2);
+
+            enemySpotted.Right(hpGanging);
+            enemySpotted.Left(idleChoice);
+
+            hpGanging.Right(canSpawnChoice);
+            hpGanging.Left(phaseActivate);
+
+            canSpawnChoice.Right(spawnUnit);
+            canSpawnChoice.Left(rngAttack);
+            this.rootOfTree = enemySpotted; 
+
+        } 
+        else
+        {
+
+            Debug.Log("We have built the second tree");
+
+            SetSaveSpeed();
+            findHalfedHealth();
+            FindPlayer();
+            SetCooldown();
+            BuildRangePrefabs();
+            FindProj("helLaser");
+            FindAIPrefab("shadowSpawn");
+
 
             DecisionTree enemySpotted = new DecisionTree();
             enemySpotted.BuildDecision(EnemySpotted);
@@ -20,11 +83,11 @@ public class HelAI : AIClass
 
             DecisionTree spawnUnit = new DecisionTree();
 
-            spawnUnit.BuildAction(SpawnUnits);
+            spawnUnit.BuildAction(createIllusions);
 
-            DecisionTree rngAttack = new DecisionTree();
+            DecisionTree argAttack = new DecisionTree();
 
-            rngAttack.BuildAction(LaserBeamAttack);
+            argAttack.BuildAction(shieldedAtkMove);
 
             DecisionTree idleChoice = new DecisionTree();
 
@@ -34,8 +97,9 @@ public class HelAI : AIClass
             enemySpotted.Left(idleChoice);
 
             canSpawnChoice.Right(spawnUnit);
-            canSpawnChoice.Left(rngAttack);
-            this.rootOfTree = enemySpotted; 
+            canSpawnChoice.Left(argAttack);
+
+            this.rootOfTree = enemySpotted;
 
         }
         // later for when we want to do phase2. 
@@ -44,16 +108,10 @@ public class HelAI : AIClass
     // Start is called before the first frame update
     void Start()
     {
-        phaseTwo = false;
-
-        SetSaveSpeed();
-        FindPlayer();
-        SetCooldown();
-        BuildRangePrefabs();
-        FindProj("helLaser");
-        FindAIPrefab("Draugr");
 
         PhaseCheck();
+
+        
 
     }
 
