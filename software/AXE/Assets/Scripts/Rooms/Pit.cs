@@ -24,7 +24,6 @@ public class Pit : MonoBehaviour
             if (stats.GetControllerNumber() == 1)
             {
                 // Make Thor die 
-                stats.SetLives(stats.GetLives() - 1);
                 stats.DontMove();
                 FindObjectOfType<AudioManager>().PlaySound("FallScream");
                 // Switch to Valk to fly out
