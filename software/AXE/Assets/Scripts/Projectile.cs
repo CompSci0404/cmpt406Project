@@ -9,16 +9,19 @@ public class Projectile : MonoBehaviour
     // collided with something
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        GameObject other = collision.gameObject;
+
+        if (other.tag == "Player")
         {
             // Add player damage
-            collision.gameObject.GetComponentInChildren<PlayerStats>().DamagePlayer(damage);
+            other.GetComponentInChildren<PlayerStats>().DamagePlayer(damage);
             Destroy(gameObject);
         }
-        else if(collision.gameObject.tag == "Projectile" ||
-            collision.gameObject.tag == "Type2Enemy")
+        else if(other.tag == "Projectile" ||
+            other.tag == "BaseEnemy" || 
+            other.tag == "Arrow")
         {
-      
+            // do nothing
         }
         else
         {
