@@ -22,7 +22,7 @@ public class Teleport : MonoBehaviour
             Vector2 playerPosition = collision.transform.position;
 
             // Player is at shop
-            if (playerPosition.x < 1 && playerPosition.x > 0 && playerPosition.y < 1 && playerPosition.y > 0 && teleportUsed)
+            if (playerPosition.x < 5 && playerPosition.x > -5 && playerPosition.y < 5 && playerPosition.y > -5 && teleportUsed)
             {
                 // teleport back
                 collision.transform.position = teleportFrom;
@@ -45,8 +45,21 @@ public class Teleport : MonoBehaviour
         GameObject portal = Instantiate(Teleporter, this.transform); // teleporterLocation
     }
 
-public void DestroyTeleporter()
+    public void DestroyTeleporter()
     {
         // May have to destroy, maybe not. 
     }
+
+    public void TurnOff()
+    {
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<Collider2D>().enabled = false;
+    }
+
+    public void TurnOn()
+    {
+        GetComponent<SpriteRenderer>().enabled = true;
+        GetComponent<Collider2D>().enabled = true;
+    }
+
 }

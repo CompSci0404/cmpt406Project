@@ -30,8 +30,8 @@ public class RoomSystem : MonoBehaviour
         {
             for (int i = 0; i < doorParent.childCount; i++)
             {
-                Door door = doorParent.GetChild(i).GetComponent<Door>();
-                door.TurnOff();
+                Transform door = doorParent.GetChild(i);
+                door.SendMessage("TurnOff");
             }
         }
         ChangeTrack();
@@ -42,8 +42,8 @@ public class RoomSystem : MonoBehaviour
         isClear = true;
         for (int i = 0; i < doorParent.childCount; i++)
         {
-            Door door = doorParent.GetChild(i).GetComponent<Door>();
-            door.TurnOn();
+            Transform door = doorParent.GetChild(i);
+            door.SendMessage("TurnOn");
         }
     }
 
