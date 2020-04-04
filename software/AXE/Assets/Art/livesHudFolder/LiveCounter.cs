@@ -13,7 +13,12 @@ public class LiveCounter : MonoBehaviour
 
     public void UpdateLives(int NewTotal)
     {
-        lives[NewTotal-2].GetComponent<Renderer>().sortingOrder = -1;
+        // life up to correctly update the life
+        if (NewTotal > 1)
+        {
+            lives[NewTotal - 2].GetComponent<Renderer>().sortingOrder = -1;
+        }
+        
 
         if(NewTotal > lives.Length)
         {

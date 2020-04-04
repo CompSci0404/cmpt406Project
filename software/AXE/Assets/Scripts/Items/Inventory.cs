@@ -103,7 +103,7 @@ public class Inventory : MonoBehaviour
                 //remove from UI
                 SwiftSauce.GetComponent<Renderer>().sortingOrder = -1;
             }
-            else if (CurrentUp.GetComponent<LifeUp>())
+            else if (CurrentLeft.GetComponent<LifeUp>())
             {
                 //remove from UI
                 LifeUp.GetComponent<Renderer>().sortingOrder = -1;
@@ -127,14 +127,14 @@ public class Inventory : MonoBehaviour
                 //remove from UI
                 SwiftSauce.GetComponent<Renderer>().sortingOrder = -1;
             }
-            else if (CurrentUp.GetComponent<LifeUp>())
+            else if (CurrentRight.GetComponent<LifeUp>())
             {
                 //remove from UI
                 LifeUp.GetComponent<Renderer>().sortingOrder = -1;
             }
             rightItemUsed = false;
         }
-        if (downItemUsed && CurrentRight != null)
+        if (downItemUsed && CurrentDown != null)
         {
             if (CurrentDown.GetComponent<OdinAle>())
             {
@@ -151,7 +151,7 @@ public class Inventory : MonoBehaviour
                 //remove from UI
                 SwiftSauce.GetComponent<Renderer>().sortingOrder = -1;
             }
-            else if (CurrentUp.GetComponent<LifeUp>())
+            else if (CurrentDown.GetComponent<LifeUp>())
             {
                 //remove from UI
                 LifeUp.GetComponent<Renderer>().sortingOrder = -1;

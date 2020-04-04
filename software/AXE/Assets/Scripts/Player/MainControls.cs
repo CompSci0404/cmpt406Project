@@ -184,22 +184,22 @@ public class MainControls : MonoBehaviour
         }
 
         // DPad presses
-        else if (DPad.IsUp)
+        else if (DPad.IsUp || Input.GetKey("1"))
         {
             lastDPadPressed = "up";
             Debug.Log("last pressed up");
         }
-        else if (DPad.IsDown)
+        else if (DPad.IsDown || Input.GetKey("2"))
         {
             lastDPadPressed = "down";
             Debug.Log("last pressed down");
         }
-        else if (DPad.IsLeft)
+        else if (DPad.IsLeft || Input.GetKey("3"))
         {
             lastDPadPressed = "left";
             Debug.Log("last pressed left");
         }
-        else if (DPad.IsRight)
+        else if (DPad.IsRight || Input.GetKey("4"))
         {
             lastDPadPressed = "right";
             Debug.Log("last pressed right");
