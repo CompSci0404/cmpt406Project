@@ -6,6 +6,11 @@ using UnityEngine.InputSystem;
 
 public class MainControls : MonoBehaviour
 {
+    public enum ControlType
+    {
+        xbox,
+        mandk
+    }
     private CoinStats coins;
     private PlayerStats stats;
     public HUD HUD;
@@ -42,9 +47,11 @@ public class MainControls : MonoBehaviour
 
     public GameObject swapMessage;
 
+    private ControlType myControllerType;
     // Start is called before the first frame update
     void Awake()
     {
+        myControllerType = ControlType.mandk;
         swapSlow = this.GetComponent<TimeSlowSwap>();
         lastDPadPressed = "up";
         HUD = FindObjectOfType<HUD>();
@@ -63,9 +70,23 @@ public class MainControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // update vector and angle for the right stick
-        rightStickDirection = new Vector2(Input.GetAxis("LookHorizontal"), Input.GetAxis("LookVertical")).normalized;
-        rightStickAngle = Mathf.Atan2(rightStickDirection.y, rightStickDirection.x) * Mathf.Rad2Deg - 180f;
+        
+
+        if (myControllerType == ControlType.mandk)
+        {
+            // update vector and angle for the right stick
+            rightStickDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            rightStickAngle = Mathf.Atan2(rightStickDirection.y, rightStickDirection.x) * Mathf.Rad2Deg - 90f;
+        }
+        else
+        {
+            // update vector and angle for the right stick
+            rightStickDirection = new Vector2(Input.GetAxis("LookHorizontal"), Input.GetAxis("LookVertical")).normalized;
+            rightStickAngle = Mathf.Atan2(rightStickDirection.y, rightStickDirection.x) * Mathf.Rad2Deg - 180f;
+        }
+        
+        
+        // mouse control
 
         if (reticle == null)
         {
@@ -437,5 +458,30 @@ public class MainControls : MonoBehaviour
     public float GetRSAngle()
     {
         return rightStickAngle;
+    }
+
+    // changing controls
+    public void SetMyControllerToXbox()
+    {
+        myControllerType = ControlType.xbox;
+    }
+    public void SetMyControllerToMouseAndKeyboard()
+    {
+        myControllerType = ControlType.mandk;
+    }
+    public int GetControlType()
+    {
+        if (myControllerType == ControlType.mandk)
+        {
+            return 1;
+        }
+        else if (myControllerType == ControlType.xbox)
+        {
+            return 2;
+        }
+        else
+        {
+            return 1;
+        }
     }
 }

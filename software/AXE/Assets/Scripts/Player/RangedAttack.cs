@@ -44,7 +44,8 @@ public class RangedAttack: MonoBehaviour
         {
             if (parent.GetComponent<MainControls>().canAttack)
             {
-                ShootArrow(angle);
+                // changed argument of ShootArrow from angle to current argument.
+                ShootArrow(parent.GetComponent<MainControls>().GetRSAngle());
                 timer = stats.GetAttackSpeed();
             }
         }
