@@ -139,11 +139,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1372549103}
     m_Modifications:
-    - target: {fileID: 7094926620550571593, guid: c67b707d7e80e9a4098ae381aa88a345,
-        type: 3}
-      propertyPath: m_Name
-      value: aAbility
-      objectReference: {fileID: 0}
     - target: {fileID: 7094926620550571592, guid: c67b707d7e80e9a4098ae381aa88a345,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -258,6 +253,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 175
+      objectReference: {fileID: 0}
+    - target: {fileID: 7094926620550571593, guid: c67b707d7e80e9a4098ae381aa88a345,
+        type: 3}
+      propertyPath: m_Name
+      value: aAbility
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c67b707d7e80e9a4098ae381aa88a345, type: 3}
@@ -3684,11 +3684,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1372549103}
     m_Modifications:
-    - target: {fileID: 1914186943147242431, guid: 2b09c8af674443740bd3bc9edd0adec3,
-        type: 3}
-      propertyPath: m_Name
-      value: PickupMessage
-      objectReference: {fileID: 0}
     - target: {fileID: 1914186943147242428, guid: 2b09c8af674443740bd3bc9edd0adec3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3793,6 +3788,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914186943147242431, guid: 2b09c8af674443740bd3bc9edd0adec3,
+        type: 3}
+      propertyPath: m_Name
+      value: PickupMessage
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b09c8af674443740bd3bc9edd0adec3, type: 3}
