@@ -190,5 +190,3 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
-  collider: {fileID: 22821477838991446}
-  sprite: {fileID: 22821477838991445}
