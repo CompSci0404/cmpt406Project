@@ -9,6 +9,9 @@ public class RoomSystem : MonoBehaviour
     [SerializeField]
     Transform doorParent;
 
+    [SerializeField]
+    GameObject Player;
+
     public AudioClip newTrack;
 
     private MusicManager MManager;
@@ -44,6 +47,10 @@ public class RoomSystem : MonoBehaviour
         {
             Transform door = doorParent.GetChild(i);
             door.SendMessage("TurnOn");
+            if(Player.GetComponent<Abilities>().GetActiveAbility() != null)
+            {
+                Player.GetComponent<Abilities>().GetActiveAbility().GetComponentInChildren<ItemClass>().ReduceAbilityCooldown();
+            }
         }
     }
 
