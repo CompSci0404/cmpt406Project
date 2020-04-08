@@ -655,7 +655,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 770df49e233b16746808c29ae3ea8ef7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  refreshPrice: 1
+  refreshPrice: 3
 --- !u!61 &6079583265083031150
 BoxCollider2D:
   m_ObjectHideFlags: 0
