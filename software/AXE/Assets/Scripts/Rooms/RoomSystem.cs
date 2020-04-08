@@ -37,7 +37,10 @@ public class RoomSystem : MonoBehaviour
                 door.SendMessage("TurnOff");
             }
         }
-        ChangeTrack();
+        if (MManager.currentMusic.clip.name != newTrack.name)
+        {
+            ChangeTrack();
+        }
     }
 
     void RoomClear()
