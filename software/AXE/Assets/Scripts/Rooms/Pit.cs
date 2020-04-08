@@ -24,7 +24,6 @@ public class Pit : MonoBehaviour
             if (stats.GetControllerNumber() == 1)
             {
                 // Make Thor die 
-                stats.SetLives(stats.GetLives() - 1);
                 stats.DontMove();
                 FindObjectOfType<AudioManager>().PlaySound("FallScream");
                 // Switch to Valk to fly out
@@ -38,11 +37,10 @@ public class Pit : MonoBehaviour
         }
         else if (collision.CompareTag("BaseEnemy"))
         {
-            Debug.Log("enemyHas been choosen!");
             if(collision.GetComponent<EnemyAnim>().isDragur)
             {
                 // floor enemies should avoid the pits at all costs
-                collision.GetComponent<pathFinding>().setPitCollision(true, this.gameObject); 
+                collision.GetComponent<PathFinding>().SetPitCollision(true, this.gameObject); 
             }
             else
             { 
