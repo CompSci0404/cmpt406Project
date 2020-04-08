@@ -81,8 +81,6 @@ public class MainControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-
         if (myControllerType == ControlType.mandk)
         {
             // update vector and angle for the right stick
@@ -96,7 +94,6 @@ public class MainControls : MonoBehaviour
             rightStickAngle = Mathf.Atan2(rightStickDirection.y, rightStickDirection.x) * Mathf.Rad2Deg - 180f;
         }
         
-        
         // mouse control
 
         if (reticle == null)
@@ -109,7 +106,7 @@ public class MainControls : MonoBehaviour
         reticle.transform.localPosition = new Vector3(reticleLocation.transform.position.x, reticleLocation.transform.position.y, 0);
 
         // take right stick to move reticle around player
-        if (Input.GetAxis(rightTrigger) > 0 && gameObject.GetComponent<Abilities>().IsAbility())
+        if (Input.GetAxis(rightTrigger) > 0 && gameObject.GetComponent<Abilities>().IsAbility() && !PauseMenu.GameIsPaused)
         {
             // create player reticle
             reticle.SetActive(true);
@@ -122,7 +119,7 @@ public class MainControls : MonoBehaviour
         reticle.transform.rotation = Quaternion.Euler(0, 0, rightStickAngle);
 
         // Use the right trigger to attack 
-        if (Input.GetAxis(rightTrigger) > 0)
+        if (Input.GetAxis(rightTrigger) > 0 && !PauseMenu.GameIsPaused)
         {
             if (canAttack)
             {
@@ -131,7 +128,7 @@ public class MainControls : MonoBehaviour
         }
 
         // wait for an input and set opposite player controller active
-        if (Input.GetButtonDown(yButton))
+        if (Input.GetButtonDown(yButton) && !PauseMenu.GameIsPaused)
         {
             if (justSwapped)
             {
@@ -181,16 +178,17 @@ public class MainControls : MonoBehaviour
 
         else if (Input.GetButtonDown(bButton))
         {
-            if (canAttack)
+            if (canAttack && !PauseMenu.GameIsPaused)
             {
                 Attack();
             }
         }
         else if (Input.GetButtonDown(aButton) || Input.GetAxis(leftTrigger) > 0)
         {
-            UseAbility();
+            if (!PauseMenu.GameIsPaused)
+                UseAbility();
         }
-        else if (Input.GetButtonDown(xButton))
+        else if (Input.GetButtonDown(xButton)  && !PauseMenu.GameIsPaused)
         {
             if (GameObject.Find("Vendor").GetComponent<Vendor>().GetPlayerInRangeVendor())
             {
