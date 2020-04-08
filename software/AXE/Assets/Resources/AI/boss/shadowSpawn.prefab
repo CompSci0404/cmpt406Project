@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3041915305123152979}
   - component: {fileID: 8232157233785446883}
   - component: {fileID: 8411080585816222178}
-  - component: {fileID: 2271529720725331092}
+  - component: {fileID: 3262358817918605519}
   m_Layer: 8
   m_Name: shadowSpawn
   m_TagString: BaseEnemy
@@ -102,7 +102,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -191,7 +191,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2271529720725331092
+--- !u!114 &3262358817918605519
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -200,13 +200,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1792082654309347835}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1524eabd40588ef42a7307546c52cae1, type: 3}
+  m_Script: {fileID: 11500000, guid: 547f145a43cdd3f4398a8e60e4135a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
-  fov: 1000
+  speed: 3.5
+  fov: 2000
   range: 0
-  health: 10
+  health: 1
   atkDamage: 1
   tooCloseRange: 0
   velocityOfRangedAttack: 0
