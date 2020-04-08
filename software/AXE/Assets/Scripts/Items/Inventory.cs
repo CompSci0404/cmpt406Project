@@ -5,10 +5,10 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     // UI item location also where it is stored 
-    [SerializeField] private GameObject upItem;
-    [SerializeField] private GameObject leftItem;
-    [SerializeField] private GameObject rightItem;
-    [SerializeField] private GameObject downItem;
+    [SerializeField] public GameObject upItem;
+    [SerializeField] public GameObject leftItem;
+    [SerializeField] public GameObject rightItem;
+    [SerializeField] public GameObject downItem;
 
     private GameObject upItemTemp;
     private GameObject leftItemTemp;
@@ -193,6 +193,7 @@ public class Inventory : MonoBehaviour
                 {
                     if (isUp)
                     {
+                        HighlightDPad(upItem);
                         if (ItemsInRange[i].GetComponent<OdinAle>())
                         {
                             OdinAle = GameObject.Find("OA_UI");
@@ -234,10 +235,6 @@ public class Inventory : MonoBehaviour
                     }
                     else
                     {
-                        //if (!upItem.transform.GetChild(0).gameObject.GetComponent<ItemClass>().GetUsable())
-                        //{
-                        //    break;
-                        //}
                         // check our current item
                         if (CurrentUp.GetComponent<OdinAle>())
                         {
@@ -308,6 +305,7 @@ public class Inventory : MonoBehaviour
                 {
                     if (isLeft)
                     {
+                        HighlightDPad(leftItem);
                         if (ItemsInRange[i].GetComponent<OdinAle>())
                         {
                             OdinAle = GameObject.Find("OA_UI");
@@ -349,10 +347,6 @@ public class Inventory : MonoBehaviour
                     }
                     else
                     {
-                        //if (!leftItem.transform.GetChild(0).gameObject.GetComponent<ItemClass>().GetUsable())
-                        //{
-                        //    break;
-                        //}
                         // check our current item
                         if (CurrentLeft.GetComponent<OdinAle>())
                         {
@@ -423,6 +417,7 @@ public class Inventory : MonoBehaviour
                 {
                     if (isRight)
                     {
+                        HighlightDPad(rightItem);
                         if (ItemsInRange[i].GetComponent<OdinAle>())
                         {
                             OdinAle = GameObject.Find("OA_UI");
@@ -464,10 +459,6 @@ public class Inventory : MonoBehaviour
                     }
                     else
                     {
-                        //if (!rightItem.transform.GetChild(0).gameObject.GetComponent<ItemClass>().GetUsable())
-                        //{
-                        //    break;
-                        //}
                         // check our current item
                         if (CurrentRight.GetComponent<OdinAle>())
                         {
@@ -538,6 +529,7 @@ public class Inventory : MonoBehaviour
                 {
                     if (isDown)
                     {
+                        HighlightDPad(downItem);
                         if (ItemsInRange[i].GetComponent<OdinAle>())
                         {
                             OdinAle = GameObject.Find("OA_UI");
@@ -579,10 +571,6 @@ public class Inventory : MonoBehaviour
                     }
                     else
                     {
-                        //if (!downItem.transform.GetChild(0).gameObject.GetComponent<ItemClass>().GetUsable())
-                        //{
-                        //    break;
-                        //}
                         // check our current item
                         if (CurrentDown.GetComponent<OdinAle>())
                         {
@@ -743,6 +731,34 @@ public class Inventory : MonoBehaviour
         isDown = true;
     }
 
-    
+    public void HighlightDPad(GameObject DPad)
+    {
+        if (DPad.Equals(upItem))
+        {
+            downItem.GetComponent<SpriteRenderer>().sortingOrder = -1;
+            leftItem.GetComponent<SpriteRenderer>().sortingOrder = -1;
+            rightItem.GetComponent<SpriteRenderer>().sortingOrder = -1;
+        }
+        else if (DPad.Equals(downItem))
+        {
+            upItem.GetComponent<SpriteRenderer>().sortingOrder = -1;
+            leftItem.GetComponent<SpriteRenderer>().sortingOrder = -1;
+            rightItem.GetComponent<SpriteRenderer>().sortingOrder = -1;
+        }
+        else if (DPad.Equals(leftItem))
+        {
+            upItem.GetComponent<SpriteRenderer>().sortingOrder = -1;
+            downItem.GetComponent<SpriteRenderer>().sortingOrder = -1;
+            rightItem.GetComponent<SpriteRenderer>().sortingOrder = -1;
+        }
+        else if (DPad.Equals(rightItem))
+        {
+            upItem.GetComponent<SpriteRenderer>().sortingOrder = -1;
+            leftItem.GetComponent<SpriteRenderer>().sortingOrder = -1;
+            downItem.GetComponent<SpriteRenderer>().sortingOrder = -1;
+        }
+        DPad.GetComponent<SpriteRenderer>().sortingOrder = 1;
+
+    }
 
 }

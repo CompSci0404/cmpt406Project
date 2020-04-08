@@ -169,10 +169,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b198e25caaea1994c9e1b40bb8873556, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  fov: 20
+  speed: 3
+  fov: 8
   range: 0
-  health: 40
+  health: 30
   atkDamage: 1
   tooCloseRange: 0
   velocityOfRangedAttack: 0
