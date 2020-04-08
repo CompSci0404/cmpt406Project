@@ -16,7 +16,7 @@ public class PassiveRangedEnemy : AIClass
         this.FindPlayer();
         this.SetCooldown();
         this.BuildRangePrefabs();
-        this.FindProj("FireProjectile");
+        this.FindProj("NanoGhostProjectile");
 
         //---[[building decision tree:]]---//
 
