@@ -21,9 +21,6 @@ public class MainControls : MonoBehaviour
     [SerializeField]
     private ValkAnimationInput valkAnimation;
 
-    [SerializeField]
-    private Transform reticleLocation;
-
     public bool justSwapped;
     public bool canAttack;
     TimeSlowSwap swapSlow;
@@ -98,12 +95,12 @@ public class MainControls : MonoBehaviour
 
         if (reticle == null)
         {
-            reticle = Instantiate((GameObject)Resources.Load("Reticle"), reticleLocation.transform.position,
+            reticle = Instantiate((GameObject)Resources.Load("Reticle"), this.gameObject.transform.position,
                 Quaternion.Euler(0, 0, rightStickAngle)) as GameObject;
             reticle.SetActive(true);
         }
         // update position of reticle
-        reticle.transform.localPosition = new Vector3(reticleLocation.transform.position.x, reticleLocation.transform.position.y, 0);
+        reticle.transform.localPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0);
 
         // take right stick to move reticle around player
         if (Input.GetAxis(rightTrigger) > 0 && gameObject.GetComponent<Abilities>().IsAbility() && !PauseMenu.GameIsPaused)
@@ -115,7 +112,43 @@ public class MainControls : MonoBehaviour
         {
             reticle.SetActive(false);
         }
+
         // aim reticle
+        Debug.Log(rightStickAngle);
+        if (rightStickAngle < -15 && rightStickAngle > -60)
+        {
+            reticle.transform.position = new Vector2(reticle.transform.position.x + .5f, reticle.transform.position.y + .5f);
+        }
+        else if (rightStickAngle < -60 && rightStickAngle > -105)
+        {
+            reticle.transform.position = new Vector2(reticle.transform.position.x + .5f, reticle.transform.position.y);
+        }
+        else if (rightStickAngle < -105 && rightStickAngle > -150)
+        {
+            reticle.transform.position = new Vector2(reticle.transform.position.x + .5f, reticle.transform.position.y - .5f);
+        }
+        else if (rightStickAngle < -150 && rightStickAngle > -195)
+        {
+            reticle.transform.position = new Vector2(reticle.transform.position.x, reticle.transform.position.y - .5f);
+        }
+        else if (rightStickAngle < -195 && rightStickAngle > -240)
+        {
+            reticle.transform.position = new Vector2(reticle.transform.position.x - .5f, reticle.transform.position.y - .5f);
+        }
+        else if (rightStickAngle < -240 && rightStickAngle > -285)
+        {
+            reticle.transform.position = new Vector2(reticle.transform.position.x - .5f, reticle.transform.position.y);
+        }
+        else if (rightStickAngle < -285 && rightStickAngle > -330)
+        {
+            reticle.transform.position = new Vector2(reticle.transform.position.x - .5f, reticle.transform.position.y + .5f);
+        }
+        else if (rightStickAngle < -330 && rightStickAngle > -360 || rightStickAngle < 0  && rightStickAngle > -15 )
+        {
+            reticle.transform.position = new Vector2(reticle.transform.position.x, reticle.transform.position.y + .5f);
+        }
+
+        //move reticle
         reticle.transform.rotation = Quaternion.Euler(0, 0, rightStickAngle);
 
         // Use the right trigger to attack 
