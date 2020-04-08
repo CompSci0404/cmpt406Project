@@ -190,6 +190,7 @@ public class PlayerStats : MonoBehaviour
         this.gameObject.GetComponentInParent<MainControls>().canAttack = false;
         if (controllerNumber == 1) thorAnimation.DeathAnimTrigger();
         if (controllerNumber == 2) valkAnimation.DeathAnimTrigger();
+        FindObjectOfType<AudioManager>().PlaySound("PlayerDeath");
         DontMove();
         SetLives(GetLives() - 1);
         Debug.Log("Player lost a life, lives remaining:" + GetLives().ToString());
@@ -226,8 +227,8 @@ public class PlayerStats : MonoBehaviour
     // Full death of player
     public void Death()
     {
-        Destroy(this.gameObject, .5f);
-        SceneManager.LoadScene(2);
+        Destroy(this.gameObject, 1f);
+        SceneManager.LoadScene(4);
     }
 
     public void MakeInvincible()
