@@ -212,7 +212,7 @@ public class PlayerStats : MonoBehaviour
         this.gameObject.GetComponentInParent<MainControls>().canAttack = true;
     }
 
-    private void ResetHearts()
+    public void ResetHearts()
     {
         foreach (var Hrt in HUD.ThorHealth)
         {
