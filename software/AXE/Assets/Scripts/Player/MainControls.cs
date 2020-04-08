@@ -14,6 +14,7 @@ public class MainControls : MonoBehaviour
     private CoinStats coins;
     private PlayerStats stats;
     public HUD HUD;
+    private Inventory inventory;
 
     [SerializeField]
     private ThorAnimationInput thorAnimation;
@@ -53,11 +54,18 @@ public class MainControls : MonoBehaviour
     {
         myControllerType = ControlType.mandk;
         swapSlow = this.GetComponent<TimeSlowSwap>();
+
+        // Set Up on DPad
         lastDPadPressed = "up";
+
+        // Get Components
+        swapSlow = this.GetComponent<TimeSlowSwap>();
         HUD = FindObjectOfType<HUD>();
+        inventory = FindObjectOfType<Inventory>();
         coins = FindObjectOfType<CoinStats>();
         players = new List<GameObject>();
         canAttack = true;
+
         int count = transform.childCount;
         // Get movement script from this object
         for (int i = 0; i < count; i++)
@@ -138,7 +146,6 @@ public class MainControls : MonoBehaviour
                     thorAnimation.SwapAnimTrigger();
                     if (swapAbility.Equals(""))
                     {
-                        Debug.Log("No Ability");
                     }
                     else
                     {
@@ -146,15 +153,6 @@ public class MainControls : MonoBehaviour
                     }
                     stats.SetLives(stats.GetLives() - 1);
                     this.GetComponent<PlayerMovement>().enabled = false;
-                    //try
-                    //{
-                    //    GameObject swapMessage = GameObject.FindGameObjectsWithTag("Message")[1];
-                    //    swapMessage.SetActive(false);
-                    //}
-                    //catch (Exception e)
-                    //{
-                    //    print("Error, no message");
-                    //}
                     Invoke("SwapPlayer", 1.5f);
                 }
                 // if player 2 range
@@ -201,29 +199,28 @@ public class MainControls : MonoBehaviour
                 PickUpItem();
                 PickUpAbility();
             }
-            
         }
 
         // DPad presses
         else if (DPad.IsUp || Input.GetKey("1"))
         {
             lastDPadPressed = "up";
-            Debug.Log("last pressed up");
+            gameObject.GetComponent<Inventory>().HighlightDPad(inventory.upItem);
         }
         else if (DPad.IsDown || Input.GetKey("2"))
         {
             lastDPadPressed = "down";
-            Debug.Log("last pressed down");
+            gameObject.GetComponent<Inventory>().HighlightDPad(inventory.downItem);
         }
         else if (DPad.IsLeft || Input.GetKey("3"))
         {
             lastDPadPressed = "left";
-            Debug.Log("last pressed left");
+            gameObject.GetComponent<Inventory>().HighlightDPad(inventory.leftItem);
         }
         else if (DPad.IsRight || Input.GetKey("4"))
         {
             lastDPadPressed = "right";
-            Debug.Log("last pressed right");
+            gameObject.GetComponent<Inventory>().HighlightDPad(inventory.rightItem);
         }
         else if (Input.GetButtonDown(lbButton))
         {
@@ -238,7 +235,10 @@ public class MainControls : MonoBehaviour
 
     public void SwapPlayer()
     {
-        if (null != stats) stats.gameObject.SetActive(false);
+        if (null != stats)
+        {
+            stats.gameObject.SetActive(false);
+        }
         GameObject nextPlayer = players[0];
         nextPlayer.SetActive(true);
 

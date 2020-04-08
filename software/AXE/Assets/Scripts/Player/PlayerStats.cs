@@ -146,6 +146,10 @@ public class PlayerStats : MonoBehaviour
 
             heart -= damage;
 
+            // Short invincibility on taking damage
+            //MakeInvincible();
+            //Invoke("ResetInvincibility", 0.25f);
+
             SetCurrHearts(heart);
 
             RemoveHeart();
