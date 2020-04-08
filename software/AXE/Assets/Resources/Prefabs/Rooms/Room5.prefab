@@ -1701,7 +1701,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6036235635365845432}
   m_Layer: 0
-  m_Name: Room5-theirs
+  m_Name: Room5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6073,11 +6073,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6736524934842853258}
     m_Modifications:
-    - target: {fileID: 8448096205975752125, guid: a52a712328f107d409339728a67b06e8,
-        type: 3}
-      propertyPath: m_Name
-      value: Ice3 Prefab Variant
-      objectReference: {fileID: 0}
     - target: {fileID: 5699411749512551243, guid: a52a712328f107d409339728a67b06e8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6132,6 +6127,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8448096205975752125, guid: a52a712328f107d409339728a67b06e8,
+        type: 3}
+      propertyPath: m_Name
+      value: Ice3 Prefab Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a52a712328f107d409339728a67b06e8, type: 3}
@@ -6223,11 +6223,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6736524934842853258}
     m_Modifications:
-    - target: {fileID: 8448096205975752125, guid: a52a712328f107d409339728a67b06e8,
-        type: 3}
-      propertyPath: m_Name
-      value: Ice3 Prefab Variant (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 5699411749512551243, guid: a52a712328f107d409339728a67b06e8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6283,6 +6278,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8448096205975752125, guid: a52a712328f107d409339728a67b06e8,
+        type: 3}
+      propertyPath: m_Name
+      value: Ice3 Prefab Variant (1)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a52a712328f107d409339728a67b06e8, type: 3}
 --- !u!4 &374995355841205164 stripped
@@ -6298,11 +6298,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7423289289004708377}
     m_Modifications:
-    - target: {fileID: 3230852864015259509, guid: 87490fface04693479f68aa6cadb4359,
-        type: 3}
-      propertyPath: m_Name
-      value: RoomCoins
-      objectReference: {fileID: 0}
     - target: {fileID: 1332643811308377304, guid: 87490fface04693479f68aa6cadb4359,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6357,6 +6352,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3230852864015259509, guid: 87490fface04693479f68aa6cadb4359,
+        type: 3}
+      propertyPath: m_Name
+      value: RoomCoins
       objectReference: {fileID: 0}
     - target: {fileID: 8901318929504740120, guid: 87490fface04693479f68aa6cadb4359,
         type: 3}
@@ -6578,11 +6578,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6736524934842853258}
     m_Modifications:
-    - target: {fileID: 2499971651845608493, guid: 28e457014763be649ac98fcea30a6e80,
-        type: 3}
-      propertyPath: m_Name
-      value: Skull5 Variant
-      objectReference: {fileID: 0}
     - target: {fileID: 1771151121208656603, guid: 28e457014763be649ac98fcea30a6e80,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6637,6 +6632,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2499971651845608493, guid: 28e457014763be649ac98fcea30a6e80,
+        type: 3}
+      propertyPath: m_Name
+      value: Skull5 Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28e457014763be649ac98fcea30a6e80, type: 3}
