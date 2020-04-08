@@ -11,6 +11,7 @@ using UnityEngine.UI;
 public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
+    public static bool InOptions = false;
     public GameObject PauseMenuUI;
 
     public Image pointer;
@@ -18,11 +19,13 @@ public class PauseMenu : MonoBehaviour
     public TextMeshProUGUI option1;
     public TextMeshProUGUI option2;
     public TextMeshProUGUI option3;
-    public TextMeshProUGUI option4;
 
-    private int numberOfOptions = 4;
+    private int numberOfOptions = 3;
 
     private int selectedOption;
+    public Button OptionsButton;
+
+    private bool inputCD;
 
     void Start()
     {
@@ -30,112 +33,108 @@ public class PauseMenu : MonoBehaviour
         option1.color = new Color32(255, 255, 255, 255);
         option2.color = new Color32(0, 0, 0, 255);
         option3.color = new Color32(0, 0, 0, 255);
-        option4.color = new Color32(0, 0, 0, 255);
 
         pointer.transform.position = new Vector3(option1.transform.position.x, option1.transform.position.y);
+        inputCD = false;
     }
 
     // Check for pause key
     private void Update()
     {
-        float upDownMovement = Input.GetAxis("DPad Y");
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("StartButton"))
+        if (!inputCD)
         {
-            if (GameIsPaused)
+            float upDownMovement = Input.GetAxis("DPad Y");
+            if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("StartButton"))
             {
-                Resume();
+                if (GameIsPaused)
+                {
+                    if (InOptions)
+                    {
+                        Resume();
+                    }
+                }
+                else
+                {
+                    Pause();
+                }
             }
-            else
+            if (Input.GetKeyDown(KeyCode.DownArrow) || upDownMovement >= -1 && upDownMovement < 0)
+            { //Input telling it to go up or down.
+                selectedOption += 1;
+                if (selectedOption > numberOfOptions)
+                {
+                    selectedOption = numberOfOptions;
+                }
+
+                option1.color = new Color32(0, 0, 0, 255);
+                option2.color = new Color32(0, 0, 0, 255);
+                option3.color = new Color32(0, 0, 0, 255);
+
+                switch (selectedOption)
+                {
+                    case 1:
+                        option1.color = new Color32(255, 255, 255, 255);
+                        pointer.transform.position = new Vector3(option1.transform.position.x, option1.transform.position.y, 0);
+                        break;
+                    case 2:
+                        option2.color = new Color32(255, 255, 255, 255);
+                        pointer.transform.position = new Vector3(option2.transform.position.x, option2.transform.position.y, 0);
+                        break;
+                    case 3:
+                        option3.color = new Color32(255, 255, 255, 255);
+                        pointer.transform.position = new Vector3(option3.transform.position.x, option3.transform.position.y, 0);
+                        break;
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.UpArrow) || upDownMovement <= 1 && upDownMovement > 0)
+            { //Input telling it to go up or down.
+                selectedOption -= 1;
+                if (selectedOption < 1)
+                {
+                    selectedOption = 1;
+                }
+
+                option1.color = new Color32(0, 0, 0, 255);
+                option2.color = new Color32(0, 0, 0, 255);
+                option3.color = new Color32(0, 0, 0, 255);
+
+                switch (selectedOption)
+                {
+                    case 1:
+                        option1.color = new Color32(255, 255, 255, 255);
+                        pointer.transform.position = new Vector3(option1.transform.position.x, option1.transform.position.y, 0);
+                        break;
+                    case 2:
+                        option2.color = new Color32(255, 255, 255, 255);
+                        pointer.transform.position = new Vector3(option2.transform.position.x, option2.transform.position.y, 0);
+                        break;
+                    case 3:
+                        option3.color = new Color32(255, 255, 255, 255);
+                        pointer.transform.position = new Vector3(option3.transform.position.x, option3.transform.position.y, 0);
+                        break;
+                }
+            }
+            if ((Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 0")))
             {
-                Pause();
+
+                switch (selectedOption)
+                {
+                    case 1:
+                        Resume();
+                        break;
+                    case 2:
+                        OptionsButton.onClick.Invoke();
+                        InOptions = true;
+                        inputCD = true;
+                        break;
+                    case 3:
+                        QuitGame();
+                        break;
+                }
             }
         }
-        if (Input.GetKeyDown(KeyCode.DownArrow) || upDownMovement >= -1 && upDownMovement < 0)
-        { //Input telling it to go up or down.
-            selectedOption += 1;
-            if (selectedOption > numberOfOptions)
-            {
-                selectedOption = numberOfOptions;
-            }
-
-            option1.color = new Color32(0, 0, 0, 255);
-            option2.color = new Color32(0, 0, 0, 255);
-            option3.color = new Color32(0, 0, 0, 255);
-            option4.color = new Color32(0, 0, 0, 255);
-
-            switch (selectedOption)
-            {
-                case 1:
-                    option1.color = new Color32(255, 255, 255, 255);
-                    pointer.transform.position = new Vector3(option1.transform.position.x, option1.transform.position.y, 0);
-                    break;
-                case 2:
-                    option2.color = new Color32(255, 255, 255, 255);
-                    pointer.transform.position = new Vector3(option2.transform.position.x, option2.transform.position.y, 0);
-                    break;
-                case 3:
-                    option3.color = new Color32(255, 255, 255, 255);
-                    pointer.transform.position = new Vector3(option3.transform.position.x, option3.transform.position.y, 0);
-                    break;
-                case 4:
-                    option4.color = new Color32(255, 255, 255, 255);
-                    pointer.transform.position = new Vector3(option4.transform.position.x, option4.transform.position.y, 0);
-                    break;
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.UpArrow) || upDownMovement <= 1 && upDownMovement > 0)
-        { //Input telling it to go up or down.
-            selectedOption -= 1;
-            if (selectedOption < 1)
-            {
-                selectedOption = 1;
-            }
-
-            option1.color = new Color32(0, 0, 0, 255);
-            option2.color = new Color32(0, 0, 0, 255);
-            option3.color = new Color32(0, 0, 0, 255);
-            option4.color = new Color32(0, 0, 0, 255);
-
-            switch (selectedOption)
-            {
-                case 1:
-                    option1.color = new Color32(255, 255, 255, 255);
-                    pointer.transform.position = new Vector3(option1.transform.position.x, option1.transform.position.y, 0);
-                    break;
-                case 2:
-                    option2.color = new Color32(255, 255, 255, 255);
-                    pointer.transform.position = new Vector3(option2.transform.position.x, option2.transform.position.y, 0);
-                    break;
-                case 3:
-                    option3.color = new Color32(255, 255, 255, 255);
-                    pointer.transform.position = new Vector3(option3.transform.position.x, option3.transform.position.y, 0);
-                    break;
-                case 4:
-                    option4.color = new Color32(255, 255, 255, 255);
-                    pointer.transform.position = new Vector3(option4.transform.position.x, option4.transform.position.y, 0);
-                    break;
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 0"))
-        {
-            switch (selectedOption)
-            {
-                case 1:
-                    Resume();
-                    break;
-                case 2:
-                    //Option();
-                    break;
-                case 3:
-                    QuitGame();
-                    break;
-                case 4:
-                    ChangeControls();
-                    break;
-            }
-        }
+        
     }
 
     // Resume time on the current scene
@@ -163,22 +162,12 @@ public class PauseMenu : MonoBehaviour
         Time.fixedDeltaTime = 0.02f * Time.timeScale;
         SceneManager.LoadScene(0);
     }
-
-    // Option Controls
-    public void ChangeControls()
+    public void SetOptionBool()
     {
-        if (GameObject.FindGameObjectWithTag("Player").GetComponent<MainControls>().GetControlType() == 2)
-        {
-            option4.SetText("Mouse & KeyBoard");
-            option4.fontSize = 40f;
-            GameObject.FindGameObjectWithTag("Player").GetComponent<MainControls>().SetMyControllerToMouseAndKeyboard();
-        }
-        else if (GameObject.FindGameObjectWithTag("Player").GetComponent<MainControls>().GetControlType() == 1)
-        {
-            option4.SetText("XBox");
-            option4.fontSize = 60f;
-            GameObject.FindGameObjectWithTag("Player").GetComponent<MainControls>().SetMyControllerToXbox();
-        }
-
+        InOptions = false;
+    }
+    public void SetInputCD()
+    {
+        inputCD = false;
     }
 }

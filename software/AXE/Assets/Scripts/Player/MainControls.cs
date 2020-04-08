@@ -48,11 +48,11 @@ public class MainControls : MonoBehaviour
 
     public GameObject swapMessage;
 
-    private ControlType myControllerType;
+    private ScriptableControls myControls;
     // Start is called before the first frame update
     void Awake()
     {
-        myControllerType = ControlType.mandk;
+        myControls = (ScriptableControls)Resources.Load("MyControls"); ;
         swapSlow = this.GetComponent<TimeSlowSwap>();
 
         // Set Up on DPad
@@ -80,7 +80,7 @@ public class MainControls : MonoBehaviour
     {
         
 
-        if (myControllerType == ControlType.mandk)
+        if (myControls.PC)
         {
             // update vector and angle for the right stick
             rightStickDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
@@ -119,7 +119,7 @@ public class MainControls : MonoBehaviour
         reticle.transform.rotation = Quaternion.Euler(0, 0, rightStickAngle);
 
         // Use the right trigger to attack 
-        if (Input.GetAxis(rightTrigger) > 0)
+        if (Input.GetAxis(rightTrigger) > 0 || Input.GetMouseButton(0))
         {
             if (canAttack)
             {
@@ -128,7 +128,7 @@ public class MainControls : MonoBehaviour
         }
 
         // wait for an input and set opposite player controller active
-        if (Input.GetButtonDown(yButton))
+        if (Input.GetButtonDown(yButton) || Input.GetMouseButtonDown(1))
         {
             if (justSwapped)
             {
@@ -176,18 +176,18 @@ public class MainControls : MonoBehaviour
             }
         }
 
-        else if (Input.GetButtonDown(bButton))
+        else if (Input.GetButtonDown(bButton) || Input.GetMouseButtonDown(0))
         {
             if (canAttack)
             {
                 Attack();
             }
         }
-        else if (Input.GetButtonDown(aButton) || Input.GetAxis(leftTrigger) > 0)
+        else if (Input.GetButtonDown(aButton) || Input.GetAxis(leftTrigger) > 0 || Input.GetKey("q"))
         {
             UseAbility();
         }
-        else if (Input.GetButtonDown(xButton))
+        else if (Input.GetButtonDown(xButton) || Input.GetKey("e"))
         {
             if (GameObject.Find("Vendor").GetComponent<Vendor>().GetPlayerInRangeVendor())
             {
@@ -222,7 +222,7 @@ public class MainControls : MonoBehaviour
             lastDPadPressed = "right";
             gameObject.GetComponent<Inventory>().HighlightDPad(inventory.rightItem);
         }
-        else if (Input.GetButtonDown(lbButton))
+        else if (Input.GetButtonDown(lbButton) || Input.GetKey("f"))
         {
             UseItem();
         }
@@ -458,30 +458,5 @@ public class MainControls : MonoBehaviour
     public float GetRSAngle()
     {
         return rightStickAngle;
-    }
-
-    // changing controls
-    public void SetMyControllerToXbox()
-    {
-        myControllerType = ControlType.xbox;
-    }
-    public void SetMyControllerToMouseAndKeyboard()
-    {
-        myControllerType = ControlType.mandk;
-    }
-    public int GetControlType()
-    {
-        if (myControllerType == ControlType.mandk)
-        {
-            return 1;
-        }
-        else if (myControllerType == ControlType.xbox)
-        {
-            return 2;
-        }
-        else
-        {
-            return 1;
-        }
     }
 }

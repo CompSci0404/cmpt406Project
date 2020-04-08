@@ -76,7 +76,7 @@ public class MeleeAttack : MonoBehaviour
         {
             thorAnimation.AttackAnimTrigger();
             FindObjectOfType<AudioManager>().PlaySound("ThorSwing");
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(weaponPoint.position, stats.GetRange() / 2 , enemyLayers);
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(weaponPoint.position, stats.GetRange() *.8f, enemyLayers);
             for( int i = 0; i < hitEnemies.Length; i++ )
             {
                 if (hitEnemies[i].CompareTag("BaseEnemy") || hitEnemies[i].CompareTag("rngBlock"))
