@@ -21,6 +21,9 @@ public class MainControls : MonoBehaviour
     [SerializeField]
     private ValkAnimationInput valkAnimation;
 
+    [SerializeField]
+    private Transform reticleLocation;
+
     public bool justSwapped;
     public bool canAttack;
     TimeSlowSwap swapSlow;
@@ -98,12 +101,12 @@ public class MainControls : MonoBehaviour
 
         if (reticle == null)
         {
-            reticle = Instantiate((GameObject)Resources.Load("Reticle"), gameObject.transform.position,
+            reticle = Instantiate((GameObject)Resources.Load("Reticle"), reticleLocation.transform.position,
                 Quaternion.Euler(0, 0, rightStickAngle)) as GameObject;
-            reticle.SetActive(false);
+            reticle.SetActive(true);
         }
         // update position of reticle
-        reticle.transform.localPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0);
+        reticle.transform.localPosition = new Vector3(reticleLocation.transform.position.x, reticleLocation.transform.position.y, 0);
 
         // take right stick to move reticle around player
         if (Input.GetAxis(rightTrigger) > 0 && gameObject.GetComponent<Abilities>().IsAbility())
