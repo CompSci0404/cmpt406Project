@@ -713,21 +713,26 @@ public class Inventory : MonoBehaviour
     public void SetUpUsed()
     {
         upItemUsed = true;
+        RemoveItemFromUI(CurrentUp);
         isUp = true;
     }
     public void SetLeftUsed()
     {
         leftItemUsed = true;
+        RemoveItemFromUI(CurrentLeft);
         isLeft = true;
     }
     public void SetRightUsed()
     {
         rightItemUsed = true;
+        RemoveItemFromUI(CurrentRight);
+
         isRight = true;
     }
     public void SetDownUsed()
     {
         downItemUsed = true;
+        RemoveItemFromUI(CurrentDown);
         isDown = true;
     }
 
@@ -761,4 +766,27 @@ public class Inventory : MonoBehaviour
 
     }
 
+    public void RemoveItemFromUI(GameObject location)
+    {
+        if (location.GetComponent<OdinAle>())
+        {
+            //remove from UI
+            OdinAle.GetComponent<Renderer>().sortingOrder = -1;
+        }
+        else if (location.GetComponent<BatteryBread>())
+        {
+            //remove from UI
+            BatteryBread.GetComponent<Renderer>().sortingOrder = -1;
+        }
+        else if (location.GetComponent<SwiftSauce>())
+        {
+            //remove from UI
+            SwiftSauce.GetComponent<Renderer>().sortingOrder = -1;
+        }
+        else if (location.GetComponent<LifeUp>())
+        {
+            //remove from UI
+            LifeUp.GetComponent<Renderer>().sortingOrder = -1;
+        }
+    }
 }

@@ -24,6 +24,7 @@ public class MainMenu : MonoBehaviour
     public TextMeshProUGUI option3;
 
     public Button playButton;
+    public Button optionsButton;
 
     private int numberOfOptions = 3;
 
@@ -108,7 +109,7 @@ public class MainMenu : MonoBehaviour
                     ControllerCanvas();
                     break;
                 case 2:
-                    /*Do option two*/
+                    optionsButton.onClick.Invoke();
                     break;
                 case 3:
                     QuitGame();
