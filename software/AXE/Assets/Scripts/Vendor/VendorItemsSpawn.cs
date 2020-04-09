@@ -73,7 +73,7 @@ public class VendorItemsSpawn : MonoBehaviour
 
         int index;
         GameObject itemForSale;
-        if (this.transform.childCount > 1)
+        if (this.transform.childCount > 2)
         {
             Destroy(this.GetComponentInChildren<ItemClass>().gameObject);
         }
