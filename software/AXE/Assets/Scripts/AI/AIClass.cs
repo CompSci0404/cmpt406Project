@@ -42,7 +42,6 @@ public abstract class AIClass : MonoBehaviour
     
     /*Hel*/
     private GameObject oldLaserObject;
-    private bool laserSpawned;
     private float laserSpeed = 60;
     private float spawnTimer = 10;
     private float spawnCoolDown = 0;
@@ -50,6 +49,7 @@ public abstract class AIClass : MonoBehaviour
     private float totalHP;
     private bool setupShield = false;
     private bool phase2 = false;
+    private bool spawnedUnit = false; 
     
  
     //---[[pre-setup calls (call these before building the decision tree in start.)]]---//
@@ -65,7 +65,11 @@ public abstract class AIClass : MonoBehaviour
         this.saveSpeed = speed; 
     }
 
+    public void unitSpawnedCheckSet()
+    {
 
+        this.spawnedUnit = true;
+    }
 
     public void findHalfedHealth()
     {
@@ -228,17 +232,32 @@ public abstract class AIClass : MonoBehaviour
             {
                 this.gameObject.GetComponent<EnemyAnim>().Death();
             }
-            StartCoroutine(Die());
+
+            if (this.spawnedUnit == true)
+            {
+                StartCoroutine(spawnDeath());
+            }
+            else
+            {
+
+
+                StartCoroutine(Die());
+            }
         }
+    }
+
+    public IEnumerator spawnDeath()
+    {
+        yield return new WaitForSeconds(1.0f);
+        Destroy(this.gameObject);
+
     }
 
     public IEnumerator Die()
     {
         yield return new WaitForSeconds(1.0f);
-        Destroy(this.gameObject, 0.1f);
         SendMessageUpwards("EnemyDestroyed", gameObject, SendMessageOptions.RequireReceiver);
-        
-
+        Destroy(this.gameObject);
 
     }
 
@@ -608,7 +627,8 @@ public abstract class AIClass : MonoBehaviour
             int randomLocation = UnityEngine.Random.Range(0, spawnPoints.Length-1);
 
             GameObject newEnemy = Instantiate(this.AIPrefabs[this.enemySpawnIndex], spawnPoints[randomLocation].transform.position, Quaternion.identity);
-         
+
+            newEnemy.GetComponent<AIClass>().unitSpawnedCheckSet(); 
             counter++;
         }
     }
@@ -629,6 +649,8 @@ public abstract class AIClass : MonoBehaviour
             int randomLocation = UnityEngine.Random.Range(0, spawnPoints.Length - 1);
 
             GameObject newEnemy = Instantiate(this.AIPrefabs[this.enemySpawnIndex], spawnPoints[randomLocation].transform.position, Quaternion.identity);
+
+            newEnemy.GetComponent<AIClass>().unitSpawnedCheckSet();
 
             counter++;
         }

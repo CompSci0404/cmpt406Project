@@ -154,6 +154,7 @@ public abstract class ItemClass : MonoBehaviour
     public void SetAbilityCooldown(int cooldown)
     {
         curAbilityCooldown = cooldown;
+        abilityJustUsed = false;
     }
     public void ReduceAbilityCooldown()
     {

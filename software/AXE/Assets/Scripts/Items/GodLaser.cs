@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GodLaser : ItemClass
 {
-
     private GameObject playerCont;
     private GameObject curPlayCont;
     private Rigidbody2D playerRB;
@@ -48,7 +47,7 @@ public class GodLaser : ItemClass
         // con is not very accurate because of the controls
         // RaycastHit2D[] hitEnemies = Physics2D.BoxCastAll(playerRB.transform.position, new Vector2(1, 1), angle, new Vector2(lookDirection.y, lookDirection.x), 30f);
         // create spell indicator that will land where player aims and will leave an area with box collider
-        
+
         /*
         for (int i = 0; i < hitEnemies.Length; i++)
          {
@@ -61,6 +60,8 @@ public class GodLaser : ItemClass
 
 
          }*/
+
+        SetAbilityCooldown(2);
 
         // remove the particle effect indicator
         StartCoroutine(deleteEffects(laser));

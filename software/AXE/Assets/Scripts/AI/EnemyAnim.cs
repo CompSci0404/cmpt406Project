@@ -8,6 +8,8 @@ public class EnemyAnim : MonoBehaviour
     public bool isDragur;
     public bool isNanoGhost;
     public bool isHel;
+    public bool isShadow; 
+
     private bool dead;
 
     private Animator ani; 
@@ -50,13 +52,19 @@ public class EnemyAnim : MonoBehaviour
     public void Death()
     {
         dead = true;
-        ani.SetTrigger("Death");
+
+        if (isShadow == false)
+        {
+            ani.SetTrigger("Death");
+        }
     }
 
     // For Draugr attack trigger only!
     public void Attack()
     {
-        if (!dead) ani.SetTrigger("Attack");
+
+            if (!dead) ani.SetTrigger("Attack");
+        
     }
 
     // For Hel laser attack only!
@@ -173,6 +181,31 @@ public class EnemyAnim : MonoBehaviour
                 default:
                     throw new System.ArgumentException("Invalid animation state", "state");
             }
-        }   
+        }
+        else if (isShadow)
+        {
+            if (currentAct.Equals("idle"))
+            {
+                ani.SetFloat("speed", 0.0f);
+
+            } 
+            else if (currentAct.Equals("move"))
+            {
+
+                if (oldPos < this.transform.position.x)
+                {
+                    ani.SetFloat("speed", -0.02f);
+                }
+
+                if (oldPos > this.transform.position.x)
+                {
+                    ani.SetFloat("speed", 0.02f);
+                }
+
+                oldPos = this.transform.position.x;
+
+            }
+
+        }
     } 
 }

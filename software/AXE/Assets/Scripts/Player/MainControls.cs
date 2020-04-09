@@ -78,8 +78,6 @@ public class MainControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-
         if (myControls.PC)
         {
             // update vector and angle for the right stick
@@ -93,20 +91,19 @@ public class MainControls : MonoBehaviour
             rightStickAngle = Mathf.Atan2(rightStickDirection.y, rightStickDirection.x) * Mathf.Rad2Deg - 180f;
         }
         
-        
         // mouse control
 
         if (reticle == null)
         {
-            reticle = Instantiate((GameObject)Resources.Load("Reticle"), gameObject.transform.position,
+            reticle = Instantiate((GameObject)Resources.Load("Reticle"), this.gameObject.transform.position,
                 Quaternion.Euler(0, 0, rightStickAngle)) as GameObject;
-            reticle.SetActive(false);
+            reticle.SetActive(true);
         }
         // update position of reticle
         reticle.transform.localPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0);
 
         // take right stick to move reticle around player
-        if (Input.GetAxis(rightTrigger) > 0 && gameObject.GetComponent<Abilities>().IsAbility())
+        if (Input.GetAxis(rightTrigger) > 0 && gameObject.GetComponent<Abilities>().IsAbility() && !PauseMenu.GameIsPaused)
         {
             // create player reticle
             reticle.SetActive(true);
@@ -115,11 +112,47 @@ public class MainControls : MonoBehaviour
         {
             reticle.SetActive(false);
         }
+
         // aim reticle
+        Debug.Log(rightStickAngle);
+        if (rightStickAngle < -15 && rightStickAngle > -60)
+        {
+            reticle.transform.position = new Vector2(reticle.transform.position.x + .5f, reticle.transform.position.y + .5f);
+        }
+        else if (rightStickAngle < -60 && rightStickAngle > -105)
+        {
+            reticle.transform.position = new Vector2(reticle.transform.position.x + .5f, reticle.transform.position.y);
+        }
+        else if (rightStickAngle < -105 && rightStickAngle > -150)
+        {
+            reticle.transform.position = new Vector2(reticle.transform.position.x + .5f, reticle.transform.position.y - .5f);
+        }
+        else if (rightStickAngle < -150 && rightStickAngle > -195)
+        {
+            reticle.transform.position = new Vector2(reticle.transform.position.x, reticle.transform.position.y - .5f);
+        }
+        else if (rightStickAngle < -195 && rightStickAngle > -240)
+        {
+            reticle.transform.position = new Vector2(reticle.transform.position.x - .5f, reticle.transform.position.y - .5f);
+        }
+        else if (rightStickAngle < -240 && rightStickAngle > -285)
+        {
+            reticle.transform.position = new Vector2(reticle.transform.position.x - .5f, reticle.transform.position.y);
+        }
+        else if (rightStickAngle < -285 && rightStickAngle > -330)
+        {
+            reticle.transform.position = new Vector2(reticle.transform.position.x - .5f, reticle.transform.position.y + .5f);
+        }
+        else if (rightStickAngle < -330 && rightStickAngle > -360 || rightStickAngle < 0  && rightStickAngle > -15 )
+        {
+            reticle.transform.position = new Vector2(reticle.transform.position.x, reticle.transform.position.y + .5f);
+        }
+
+        //move reticle
         reticle.transform.rotation = Quaternion.Euler(0, 0, rightStickAngle);
 
         // Use the right trigger to attack 
-        if (Input.GetAxis(rightTrigger) > 0 || Input.GetMouseButton(0))
+        if ((Input.GetAxis(rightTrigger) > 0 || Input.GetMouseButton(0)) && !PauseMenu.GameIsPaused)
         {
             if (canAttack)
             {
@@ -128,7 +161,7 @@ public class MainControls : MonoBehaviour
         }
 
         // wait for an input and set opposite player controller active
-        if (Input.GetButtonDown(yButton) || Input.GetMouseButtonDown(1))
+        if ((Input.GetButtonDown(yButton) || Input.GetMouseButtonDown(1)) && !PauseMenu.GameIsPaused)
         {
             if (justSwapped)
             {
@@ -178,16 +211,17 @@ public class MainControls : MonoBehaviour
 
         else if (Input.GetButtonDown(bButton) || Input.GetMouseButtonDown(0))
         {
-            if (canAttack)
+            if (canAttack && !PauseMenu.GameIsPaused)
             {
                 Attack();
             }
         }
         else if (Input.GetButtonDown(aButton) || Input.GetAxis(leftTrigger) > 0 || Input.GetKey("q"))
         {
-            UseAbility();
+            if (!PauseMenu.GameIsPaused)
+                UseAbility();
         }
-        else if (Input.GetButtonDown(xButton) || Input.GetKey("e"))
+        else if ((Input.GetButtonDown(xButton) || Input.GetKey("e")) && !PauseMenu.GameIsPaused)
         {
             if (GameObject.Find("Vendor").GetComponent<Vendor>().GetPlayerInRangeVendor())
             {

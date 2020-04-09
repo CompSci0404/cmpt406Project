@@ -62,7 +62,7 @@ public class VendorItemsSpawn : MonoBehaviour
         }
 
         itemForSale.transform.parent = this.transform;
-        this.GetComponentInChildren<Text>().text = itemForSale.GetComponent<ItemClass>().GetPrice() + " Coins";
+        this.GetComponentInChildren<Text>().text = itemForSale.GetComponent<ItemClass>().GetPrice() + "";
 
     }
 
@@ -111,7 +111,7 @@ public class VendorItemsSpawn : MonoBehaviour
             itemForSale.GetComponent<ItemClass>().SetNeedCoin(true);
         }
         itemForSale.transform.parent = this.transform;
-        this.GetComponentInChildren<Text>().text = itemForSale.GetComponent<ItemClass>().GetPrice() + " Coins";
+        this.GetComponentInChildren<Text>().text = itemForSale.GetComponent<ItemClass>().GetPrice() + "";
 
     }
     private void OnTriggerEnter2D(Collider2D collision)

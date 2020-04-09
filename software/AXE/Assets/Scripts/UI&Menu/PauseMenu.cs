@@ -59,7 +59,7 @@ public class PauseMenu : MonoBehaviour
                 }
             }
             if (Input.GetKeyDown(KeyCode.DownArrow) || upDownMovement >= -1 && upDownMovement < 0)
-            { //Input telling it to go up or down.
+            { //Input telling it to go down.
                 selectedOption += 1;
                 if (selectedOption > numberOfOptions)
                 {
@@ -88,7 +88,7 @@ public class PauseMenu : MonoBehaviour
             }
 
             if (Input.GetKeyDown(KeyCode.UpArrow) || upDownMovement <= 1 && upDownMovement > 0)
-            { //Input telling it to go up or down.
+            { //Input telling it to go up.
                 selectedOption -= 1;
                 if (selectedOption < 1)
                 {
