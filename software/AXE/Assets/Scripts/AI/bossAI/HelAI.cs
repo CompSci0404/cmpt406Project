@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HelAI : AIClass
 {
@@ -19,7 +20,6 @@ public class HelAI : AIClass
         // we will rebuild decision trees when it comes time to switching to phase 2.
         if(returnPhase() == false)
         {
-
             Debug.Log("We have built the first tree");
             SetSaveSpeed();
             findHalfedHealth();
@@ -63,7 +63,6 @@ public class HelAI : AIClass
         } 
         else
         {
-
             Debug.Log("We have built the second tree");
 
             SetSaveSpeed();
@@ -105,24 +104,21 @@ public class HelAI : AIClass
             this.rootOfTree = enemySpotted;
 
         }
-        // later for when we want to do phase2. 
     }
 
     // Start is called before the first frame update
     void Start()
     {
-
         PhaseCheck();
-
-        
-
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        this.rootOfTree.Search(); 
-        
+        if (this.health <= 0)
+        {
+            SceneManager.LoadScene(5);
+        }
+        this.rootOfTree.Search();
     }
 }

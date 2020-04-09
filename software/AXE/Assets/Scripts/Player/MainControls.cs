@@ -114,7 +114,6 @@ public class MainControls : MonoBehaviour
         }
 
         // aim reticle
-        Debug.Log(rightStickAngle);
         if (rightStickAngle < -15 && rightStickAngle > -60)
         {
             reticle.transform.position = new Vector2(reticle.transform.position.x + .5f, reticle.transform.position.y + .5f);
