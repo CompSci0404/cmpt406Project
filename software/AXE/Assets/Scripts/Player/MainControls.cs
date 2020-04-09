@@ -6,9 +6,15 @@ using UnityEngine.InputSystem;
 
 public class MainControls : MonoBehaviour
 {
+    public enum ControlType
+    {
+        xbox,
+        mandk
+    }
     private CoinStats coins;
     private PlayerStats stats;
     public HUD HUD;
+    private Inventory inventory;
 
     [SerializeField]
     private ThorAnimationInput thorAnimation;
@@ -42,15 +48,24 @@ public class MainControls : MonoBehaviour
 
     public GameObject swapMessage;
 
+    private ScriptableControls myControls;
     // Start is called before the first frame update
     void Awake()
     {
+        myControls = (ScriptableControls)Resources.Load("MyControls");
         swapSlow = this.GetComponent<TimeSlowSwap>();
+
+        // Set Up on DPad
         lastDPadPressed = "up";
+
+        // Get Components
+        swapSlow = this.GetComponent<TimeSlowSwap>();
         HUD = FindObjectOfType<HUD>();
+        inventory = FindObjectOfType<Inventory>();
         coins = FindObjectOfType<CoinStats>();
         players = new List<GameObject>();
         canAttack = true;
+
         int count = transform.childCount;
         // Get movement script from this object
         for (int i = 0; i < count; i++)
@@ -63,21 +78,32 @@ public class MainControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // update vector and angle for the right stick
-        rightStickDirection = new Vector2(Input.GetAxis("LookHorizontal"), Input.GetAxis("LookVertical")).normalized;
-        rightStickAngle = Mathf.Atan2(rightStickDirection.y, rightStickDirection.x) * Mathf.Rad2Deg - 180f;
+        if (myControls.PC)
+        {
+            // update vector and angle for the right stick
+            rightStickDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            rightStickAngle = Mathf.Atan2(rightStickDirection.y, rightStickDirection.x) * Mathf.Rad2Deg - 90f;
+        }
+        else
+        {
+            // update vector and angle for the right stick
+            rightStickDirection = new Vector2(Input.GetAxis("LookHorizontal"), Input.GetAxis("LookVertical")).normalized;
+            rightStickAngle = Mathf.Atan2(rightStickDirection.y, rightStickDirection.x) * Mathf.Rad2Deg - 180f;
+        }
+        
+        // mouse control
 
         if (reticle == null)
         {
-            reticle = Instantiate((GameObject)Resources.Load("Reticle"), gameObject.transform.position,
+            reticle = Instantiate((GameObject)Resources.Load("Reticle"), this.gameObject.transform.position,
                 Quaternion.Euler(0, 0, rightStickAngle)) as GameObject;
-            reticle.SetActive(false);
+            reticle.SetActive(true);
         }
         // update position of reticle
         reticle.transform.localPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0);
 
         // take right stick to move reticle around player
-        if (Input.GetAxis(rightTrigger) > 0 && gameObject.GetComponent<Abilities>().IsAbility())
+        if (Input.GetAxis(rightTrigger) > 0 && gameObject.GetComponent<Abilities>().IsAbility() && !PauseMenu.GameIsPaused)
         {
             // create player reticle
             reticle.SetActive(true);
@@ -86,11 +112,47 @@ public class MainControls : MonoBehaviour
         {
             reticle.SetActive(false);
         }
+
         // aim reticle
+        Debug.Log(rightStickAngle);
+        if (rightStickAngle < -15 && rightStickAngle > -60)
+        {
+            reticle.transform.position = new Vector2(reticle.transform.position.x + .5f, reticle.transform.position.y + .5f);
+        }
+        else if (rightStickAngle < -60 && rightStickAngle > -105)
+        {
+            reticle.transform.position = new Vector2(reticle.transform.position.x + .5f, reticle.transform.position.y);
+        }
+        else if (rightStickAngle < -105 && rightStickAngle > -150)
+        {
+            reticle.transform.position = new Vector2(reticle.transform.position.x + .5f, reticle.transform.position.y - .5f);
+        }
+        else if (rightStickAngle < -150 && rightStickAngle > -195)
+        {
+            reticle.transform.position = new Vector2(reticle.transform.position.x, reticle.transform.position.y - .5f);
+        }
+        else if (rightStickAngle < -195 && rightStickAngle > -240)
+        {
+            reticle.transform.position = new Vector2(reticle.transform.position.x - .5f, reticle.transform.position.y - .5f);
+        }
+        else if (rightStickAngle < -240 && rightStickAngle > -285)
+        {
+            reticle.transform.position = new Vector2(reticle.transform.position.x - .5f, reticle.transform.position.y);
+        }
+        else if (rightStickAngle < -285 && rightStickAngle > -330)
+        {
+            reticle.transform.position = new Vector2(reticle.transform.position.x - .5f, reticle.transform.position.y + .5f);
+        }
+        else if (rightStickAngle < -330 && rightStickAngle > -360 || rightStickAngle < 0  && rightStickAngle > -15 )
+        {
+            reticle.transform.position = new Vector2(reticle.transform.position.x, reticle.transform.position.y + .5f);
+        }
+
+        //move reticle
         reticle.transform.rotation = Quaternion.Euler(0, 0, rightStickAngle);
 
         // Use the right trigger to attack 
-        if (Input.GetAxis(rightTrigger) > 0)
+        if ((Input.GetAxis(rightTrigger) > 0 || Input.GetMouseButton(0)) && !PauseMenu.GameIsPaused)
         {
             if (canAttack)
             {
@@ -99,7 +161,7 @@ public class MainControls : MonoBehaviour
         }
 
         // wait for an input and set opposite player controller active
-        if (Input.GetButtonDown(yButton))
+        if ((Input.GetButtonDown(yButton) || Input.GetMouseButtonDown(1)) && !PauseMenu.GameIsPaused)
         {
             if (justSwapped)
             {
@@ -117,7 +179,6 @@ public class MainControls : MonoBehaviour
                     thorAnimation.SwapAnimTrigger();
                     if (swapAbility.Equals(""))
                     {
-                        Debug.Log("No Ability");
                     }
                     else
                     {
@@ -125,15 +186,6 @@ public class MainControls : MonoBehaviour
                     }
                     stats.SetLives(stats.GetLives() - 1);
                     this.GetComponent<PlayerMovement>().enabled = false;
-                    //try
-                    //{
-                    //    GameObject swapMessage = GameObject.FindGameObjectsWithTag("Message")[1];
-                    //    swapMessage.SetActive(false);
-                    //}
-                    //catch (Exception e)
-                    //{
-                    //    print("Error, no message");
-                    //}
                     Invoke("SwapPlayer", 1.5f);
                 }
                 // if player 2 range
@@ -157,18 +209,19 @@ public class MainControls : MonoBehaviour
             }
         }
 
-        else if (Input.GetButtonDown(bButton))
+        else if (Input.GetButtonDown(bButton) || Input.GetMouseButtonDown(0))
         {
-            if (canAttack)
+            if (canAttack && !PauseMenu.GameIsPaused)
             {
                 Attack();
             }
         }
-        else if (Input.GetButtonDown(aButton) || Input.GetAxis(leftTrigger) > 0)
+        else if (Input.GetButtonDown(aButton) || Input.GetAxis(leftTrigger) > 0 || Input.GetKey("q"))
         {
-            UseAbility();
+            if (!PauseMenu.GameIsPaused)
+                UseAbility();
         }
-        else if (Input.GetButtonDown(xButton))
+        else if ((Input.GetButtonDown(xButton) || Input.GetKey("e")) && !PauseMenu.GameIsPaused)
         {
             if (GameObject.Find("Vendor").GetComponent<Vendor>().GetPlayerInRangeVendor())
             {
@@ -180,31 +233,30 @@ public class MainControls : MonoBehaviour
                 PickUpItem();
                 PickUpAbility();
             }
-            
         }
 
         // DPad presses
-        else if (DPad.IsUp)
+        else if (DPad.IsUp || Input.GetKey("1"))
         {
             lastDPadPressed = "up";
-            Debug.Log("last pressed up");
+            gameObject.GetComponent<Inventory>().HighlightDPad(inventory.upItem);
         }
-        else if (DPad.IsDown)
+        else if (DPad.IsDown || Input.GetKey("2"))
         {
             lastDPadPressed = "down";
-            Debug.Log("last pressed down");
+            gameObject.GetComponent<Inventory>().HighlightDPad(inventory.downItem);
         }
-        else if (DPad.IsLeft)
+        else if (DPad.IsLeft || Input.GetKey("3"))
         {
             lastDPadPressed = "left";
-            Debug.Log("last pressed left");
+            gameObject.GetComponent<Inventory>().HighlightDPad(inventory.leftItem);
         }
-        else if (DPad.IsRight)
+        else if (DPad.IsRight || Input.GetKey("4"))
         {
             lastDPadPressed = "right";
-            Debug.Log("last pressed right");
+            gameObject.GetComponent<Inventory>().HighlightDPad(inventory.rightItem);
         }
-        else if (Input.GetButtonDown(lbButton))
+        else if (Input.GetButtonDown(lbButton) || Input.GetKey("f"))
         {
             UseItem();
         }
@@ -217,7 +269,10 @@ public class MainControls : MonoBehaviour
 
     public void SwapPlayer()
     {
-        if (null != stats) stats.gameObject.SetActive(false);
+        if (null != stats)
+        {
+            stats.gameObject.SetActive(false);
+        }
         GameObject nextPlayer = players[0];
         nextPlayer.SetActive(true);
 

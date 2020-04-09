@@ -101,7 +101,7 @@ MonoBehaviour:
     through all enemies.
   myItemType: 2
   price: 15
-  abilityCooldown: 3
+  abilityCooldown: 2
   itemDuration: 0
   itemMultiplier: 4
 --- !u!58 &4757509488211693421

@@ -8,7 +8,7 @@ public class HelAI : AIClass
     {
         if (collision.gameObject.tag == "Player")
         {
-            this.gameObject.GetComponent<EnemyAnim>().Attack();
+            //this.gameObject.GetComponent<EnemyAnim>().Attack();
             collision.gameObject.GetComponentInChildren<PlayerStats>().DamagePlayer(this.atkDamage);
         }
     }
@@ -74,6 +74,9 @@ public class HelAI : AIClass
             FindProj("helLaser");
             FindAIPrefab("shadowSpawn");
 
+            this.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+
+            this.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
 
             DecisionTree enemySpotted = new DecisionTree();
             enemySpotted.BuildDecision(EnemySpotted);

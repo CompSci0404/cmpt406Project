@@ -15,7 +15,7 @@ public class RangedEnemy : AIClass
         this.FindPlayer();
         this.SetCooldown();
         this.BuildRangePrefabs();
-        this.FindProj("FireProjectile"); 
+        this.FindProj("CyberWizardProjectile"); 
 
 
         DecisionTree enemySpotted = new DecisionTree();

@@ -19,29 +19,12 @@ public class Vendor : MonoBehaviour
         //vendorUI.SetActive(false);
     }
 
-    //// Update is called once per frame
-    //void Update()
-    //{
-    //    if (playerCont.GetComponent<MainControls>().GetControllerNumber() == 1)
-    //    {
-    //        // Should be Valk
-    //        stats = GameObject.FindWithTag("Type2").GetComponent<PlayerStats>();
-    //    }
-    //    else if (playerCont.GetComponent<MainControls>().GetControllerNumber() == 2)
-    //    {
-    //        // Should be Thor
-    //        stats = GameObject.FindWithTag("Thor").GetComponent<PlayerStats>();
-    //    }
-    //}
-
     public void VendorInteract()
     {
         if (playerInRange)
         {
             BuyRefresh();
         }
-
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -64,6 +47,7 @@ public class Vendor : MonoBehaviour
     {
         return playerInRange;
     }
+
     public void BuyRefresh()
     {
         GameObject playerCont = GameObject.FindWithTag("Player");
@@ -77,7 +61,6 @@ public class Vendor : MonoBehaviour
                 for (int i = 0; i < 4; i++)
                 {
                     this.transform.GetChild(0).transform.GetChild(0).transform.GetChild(i).GetComponent<VendorItemsSpawn>().Refresh();
-                    Debug.Log(this.transform.GetChild(0).transform.GetChild(0).transform.GetChild(i));
                 }
             }
         }
@@ -90,13 +73,10 @@ public class Vendor : MonoBehaviour
                 for (int i = 0; i < 4; i++)
                 {
                     this.transform.GetChild(0).transform.GetChild(0).transform.GetChild(i).GetComponent<VendorItemsSpawn>().Refresh();
-                    Debug.Log(this.transform.GetChild(0).transform.GetChild(0).transform.GetChild(i));
                 }
             }
         }
-
         // refresh the items
-        
-        
+
     }
 }

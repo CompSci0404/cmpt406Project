@@ -53,6 +53,8 @@ public class PlasmaHammer : ItemClass
         {
             Debug.LogError("Unable to load Prefabs/PlasmaHammerIndicator.prefab from Resources");
         }
+
+        SetAbilityCooldown(2);
     }
 
     IEnumerator DeleteEffects(GameObject effect)

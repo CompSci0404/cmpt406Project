@@ -40,25 +40,33 @@ public class ThorAnimationInput : MonoBehaviour, AnimationInput
     // Update is called once per frame
     void Update()
     {
-       lookDirection = new Vector2(Input.GetAxis("LookHorizontal"), Input.GetAxis("LookVertical"));
-
-        if (gameObject.activeInHierarchy)
+        if (this.gameObject.GetComponentInChildren<PlayerStats>().GetControllerNumber() == 1)
         {
+            lookDirection = new Vector2(Input.GetAxis("LookHorizontal"), Input.GetAxis("LookVertical"));
 
-            if(movement.x == 0f && movement.y == 0f)
+            if (gameObject.activeInHierarchy)
             {
-                thorAnimator.SetBool("Moving", false);
-            } else
-            {
-                thorAnimator.SetBool("Moving", true);
-                moveAngle = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg;
-                if (moveAngle < -45.0f) moveAngle += 360.0f;
-                thorAnimator.SetFloat("MoveAngle", moveAngle);
+
+                if (movement.x == 0f && movement.y == 0f)
+                {
+                    thorAnimator.SetBool("Moving", false);
+                }
+                else
+                {
+                    thorAnimator.SetBool("Moving", true);
+                    moveAngle = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg;
+                    if (moveAngle < -45.0f) moveAngle += 360.0f;
+                    thorAnimator.SetFloat("MoveAngle", moveAngle);
+                }
+                lookAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
+                lookAngle -= 90.0f;
+                if (lookAngle < -45.0f) lookAngle += 360.0f;
+                thorAnimator.SetFloat("LookAngle", lookAngle);
             }
-            lookAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
-            lookAngle -= 90.0f;
-            if (lookAngle < -45.0f) lookAngle += 360.0f;
-            thorAnimator.SetFloat("LookAngle", lookAngle);
+        }
+        else
+        {
+            return;
         }
     }
 }
