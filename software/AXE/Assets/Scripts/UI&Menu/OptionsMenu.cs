@@ -18,22 +18,26 @@ public class OptionsMenu : MonoBehaviour
     public TextMeshProUGUI option1;
     public TextMeshProUGUI option2;
     public TextMeshProUGUI option3;
+    public TextMeshProUGUI option4;
 
     public Button playButton;
     public Slider volumeSlider;
     public Button controllerButton;
     public Button backButton;
-    private int numberOfOptions = 3;
+    private int numberOfOptions = 4;
 
     private int selectedOption;
     public GameObject pauseMenu;
 
+    public GameObject pcControlsUI;
+    public GameObject controllersUI;
     void Start()
     {
         selectedOption = 1;
         option1.color = new Color32(255, 255, 255, 255);
         option2.color = new Color32(0, 0, 0, 255);
         option3.color = new Color32(0, 0, 0, 255);
+        option4.color = new Color32(0, 0, 0, 255);
 
         pointer.transform.position = new Vector3(option1.transform.position.x, option1.transform.position.y);
     }
@@ -52,6 +56,7 @@ public class OptionsMenu : MonoBehaviour
             option1.color = new Color32(0, 0, 0, 255);
             option2.color = new Color32(0, 0, 0, 255);
             option3.color = new Color32(0, 0, 0, 255);
+            option4.color = new Color32(0, 0, 0, 255);
 
             switch (selectedOption)
             {
@@ -66,6 +71,10 @@ public class OptionsMenu : MonoBehaviour
                 case 3:
                     option3.color = new Color32(255, 255, 255, 255);
                     pointer.transform.position = new Vector3(option3.transform.position.x, option3.transform.position.y, 0);
+                    break;
+                case 4:
+                    option4.color = new Color32(255, 255, 255, 255);
+                    pointer.transform.position = new Vector3(option4.transform.position.x, option4.transform.position.y, 0);
                     break;
             }
         }
@@ -81,6 +90,7 @@ public class OptionsMenu : MonoBehaviour
             option1.color = new Color32(0, 0, 0, 255);
             option2.color = new Color32(0, 0, 0, 255);
             option3.color = new Color32(0, 0, 0, 255);
+            option4.color = new Color32(0, 0, 0, 255);
 
             switch (selectedOption)
             {
@@ -95,6 +105,10 @@ public class OptionsMenu : MonoBehaviour
                 case 3:
                     option3.color = new Color32(255, 255, 255, 255);
                     pointer.transform.position = new Vector3(option3.transform.position.x, option3.transform.position.y, 0);
+                    break;
+                case 4:
+                    option4.color = new Color32(255, 255, 255, 255);
+                    pointer.transform.position = new Vector3(option4.transform.position.x, option4.transform.position.y, 0);
                     break;
             }
         }
@@ -122,6 +136,13 @@ public class OptionsMenu : MonoBehaviour
                     }
                     break;
                 case 3:
+                    // Show controls
+                    if (Input.GetKeyDown("joystick button 0"))
+                    {
+                        ShowControlUI();
+                    }
+                    break;
+                case 4:
                     // go back
                     if (Input.GetKeyDown("joystick button 0"))
                     {
@@ -152,6 +173,36 @@ public class OptionsMenu : MonoBehaviour
             pauseMenu.GetComponent<PauseMenu>().SetInputCD();
         }
         backButton.onClick.Invoke();
+    }
+
+    public void CloseControlUI()
+    {
+        ScriptableControls myControls = (ScriptableControls)Resources.Load("MyControls");
+        if (myControls.PC)
+        {
+            pcControlsUI.SetActive(false);
+            this.gameObject.SetActive(true);
+        }
+        else
+        {
+            controllersUI.SetActive(false);
+            this.gameObject.SetActive(true);
+        }
+    }
+
+    public void ShowControlUI()
+    {
+        ScriptableControls myControls = (ScriptableControls)Resources.Load("MyControls");
+        if (myControls.PC)
+        {
+            pcControlsUI.SetActive(true);
+            this.gameObject.SetActive(false);
+        }
+        else
+        {
+            controllersUI.SetActive(true);
+            this.gameObject.SetActive(false);
+        }
     }
 }
 

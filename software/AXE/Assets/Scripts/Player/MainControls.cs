@@ -52,7 +52,7 @@ public class MainControls : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        myControls = (ScriptableControls)Resources.Load("MyControls"); ;
+        myControls = (ScriptableControls)Resources.Load("MyControls");
         swapSlow = this.GetComponent<TimeSlowSwap>();
 
         // Set Up on DPad
