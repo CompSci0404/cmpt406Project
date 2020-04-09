@@ -21,6 +21,9 @@ public class LifeUp : ItemClass
 
     public void AddLife()
     {
+        //SoundEffect
+        FindObjectOfType<AudioManager>().PlaySound("itemConsumed");
+
         if (playerCont.GetComponent<MainControls>().GetControllerNumber() == 1)
         {
             playerCont = GameObject.FindWithTag("Thor");
