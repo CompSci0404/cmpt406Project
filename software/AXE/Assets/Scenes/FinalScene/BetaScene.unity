@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2915,7 +2915,7 @@ Transform:
   - {fileID: 549198940}
   - {fileID: 144122830}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1455780345 stripped
 MonoBehaviour:
@@ -4332,6 +4332,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoubleDamage
       objectReference: {fileID: 0}
+    - target: {fileID: 8028848318687978143, guid: a7e0087306b1107458af3c5ef668fcc0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8028848318687978142, guid: a7e0087306b1107458af3c5ef668fcc0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4649,7 +4654,7 @@ PrefabInstance:
     - target: {fileID: 6064305276922864397, guid: 030dbe44befba48afbc50b9c13a0a09e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6064305276922864397, guid: 030dbe44befba48afbc50b9c13a0a09e,
         type: 3}
