@@ -25,7 +25,7 @@ public class Inventory : MonoBehaviour
     private GameObject SwiftSauce;
     private GameObject LifeUp;
 
-    private GameObject CurrentUp;
+    public GameObject CurrentUp;
     private GameObject CurrentLeft;
     private GameObject CurrentRight;
     private GameObject CurrentDown;
@@ -64,98 +64,18 @@ public class Inventory : MonoBehaviour
 
         if (upItemUsed && CurrentUp != null)
         {
-            if (CurrentUp.GetComponent<OdinAle>())
-            {
-                //remove from UI
-                OdinAle.GetComponent<Renderer>().sortingOrder = -1;
-            }
-            else if (CurrentUp.GetComponent<BatteryBread>())
-            {
-                //remove from UI
-                BatteryBread.GetComponent<Renderer>().sortingOrder = -1;
-            }
-            else if (CurrentUp.GetComponent<SwiftSauce>())
-            {
-                //remove from UI
-                SwiftSauce.GetComponent<Renderer>().sortingOrder = -1;
-            }
-            else if (CurrentUp.GetComponent<LifeUp>())
-            {
-                //remove from UI
-                LifeUp.GetComponent<Renderer>().sortingOrder = -1;
-            }
             upItemUsed = false;
         }
         if (leftItemUsed && CurrentLeft != null)
         {
-            if (CurrentLeft.GetComponent<OdinAle>())
-            {
-                //remove from UI
-                OdinAle.GetComponent<Renderer>().sortingOrder = -1;
-            }
-            else if (CurrentLeft.GetComponent<BatteryBread>())
-            {
-                //remove from UI
-                BatteryBread.GetComponent<Renderer>().sortingOrder = -1;
-            }
-            else if (CurrentLeft.GetComponent<SwiftSauce>())
-            {
-                //remove from UI
-                SwiftSauce.GetComponent<Renderer>().sortingOrder = -1;
-            }
-            else if (CurrentLeft.GetComponent<LifeUp>())
-            {
-                //remove from UI
-                LifeUp.GetComponent<Renderer>().sortingOrder = -1;
-            }
             leftItemUsed = false;
         }
         if (rightItemUsed && CurrentRight != null)
         {
-            if (CurrentRight.GetComponent<OdinAle>())
-            {
-                //remove from UI
-                OdinAle.GetComponent<Renderer>().sortingOrder = -1;
-            }
-            else if (CurrentRight.GetComponent<BatteryBread>())
-            {
-                //remove from UI
-                BatteryBread.GetComponent<Renderer>().sortingOrder = -1;
-            }
-            else if (CurrentRight.GetComponent<SwiftSauce>())
-            {
-                //remove from UI
-                SwiftSauce.GetComponent<Renderer>().sortingOrder = -1;
-            }
-            else if (CurrentRight.GetComponent<LifeUp>())
-            {
-                //remove from UI
-                LifeUp.GetComponent<Renderer>().sortingOrder = -1;
-            }
             rightItemUsed = false;
         }
         if (downItemUsed && CurrentDown != null)
         {
-            if (CurrentDown.GetComponent<OdinAle>())
-            {
-                //remove from UI
-                OdinAle.GetComponent<Renderer>().sortingOrder = -1;
-            }
-            else if (CurrentDown.GetComponent<BatteryBread>())
-            {
-                //remove from UI
-                BatteryBread.GetComponent<Renderer>().sortingOrder = -1;
-            }
-            else if (CurrentDown.GetComponent<SwiftSauce>())
-            {
-                //remove from UI
-                SwiftSauce.GetComponent<Renderer>().sortingOrder = -1;
-            }
-            else if (CurrentDown.GetComponent<LifeUp>())
-            {
-                //remove from UI
-                LifeUp.GetComponent<Renderer>().sortingOrder = -1;
-            }
             downItemUsed = false;
         }
     }
@@ -235,32 +155,23 @@ public class Inventory : MonoBehaviour
                     }
                     else
                     {
-                        // check our current item
+                        // This statement will drop the item 
                         if (CurrentUp.GetComponent<OdinAle>())
                         {
-                            //remove from UI
-                            OdinAle.GetComponent<Renderer>().sortingOrder = -1;
-                            CurrentUp.transform.position = new Vector2(playerRB.transform.position.x, playerRB.transform.position.y - 1);
+                            DropItem(CurrentUp, OdinAle);
                         }
                         else if (CurrentUp.GetComponent<BatteryBread>())
                         {
-                            //remove from UI
-                            BatteryBread.GetComponent<Renderer>().sortingOrder = -1;
-                            CurrentUp.transform.position = new Vector2(playerRB.transform.position.x, playerRB.transform.position.y - 1);
+                            DropItem(CurrentUp, BatteryBread);
                         }
                         else if (CurrentUp.GetComponent<SwiftSauce>())
                         {
-                            //remove from UI
-                            SwiftSauce.GetComponent<Renderer>().sortingOrder = -1;
-                            CurrentUp.transform.position = new Vector2(playerRB.transform.position.x, playerRB.transform.position.y - 1);
+                            DropItem(CurrentUp, SwiftSauce);
                         }
                         else if (CurrentUp.GetComponent<LifeUp>())
                         {
-                            //remove from UI
-                            LifeUp.GetComponent<Renderer>().sortingOrder = -1;
-                            CurrentUp.transform.position = new Vector2(playerRB.transform.position.x, playerRB.transform.position.y - 1);
+                            DropItem(CurrentUp, LifeUp);
                         }
-
                         // Pick up new item
                         if (ItemsInRange[i].GetComponent<OdinAle>())
                         {
@@ -347,30 +258,22 @@ public class Inventory : MonoBehaviour
                     }
                     else
                     {
-                        // check our current item
+                        // This statement will drop the item 
                         if (CurrentLeft.GetComponent<OdinAle>())
                         {
-                            //remove from UI
-                            OdinAle.GetComponent<Renderer>().sortingOrder = -1;
-                            CurrentLeft.transform.position = new Vector2(playerRB.transform.position.x, playerRB.transform.position.y - 1);
+                            DropItem(CurrentLeft, OdinAle);
                         }
                         else if (CurrentLeft.GetComponent<BatteryBread>())
                         {
-                            //remove from UI
-                            BatteryBread.GetComponent<Renderer>().sortingOrder = -1;
-                            CurrentLeft.transform.position = new Vector2(playerRB.transform.position.x, playerRB.transform.position.y - 1);
+                            DropItem(CurrentLeft, BatteryBread);
                         }
                         else if (CurrentLeft.GetComponent<SwiftSauce>())
                         {
-                            //remove from UI
-                            SwiftSauce.GetComponent<Renderer>().sortingOrder = -1;
-                            CurrentLeft.transform.position = new Vector2(playerRB.transform.position.x, playerRB.transform.position.y - 1);
+                            DropItem(CurrentLeft, SwiftSauce);
                         }
                         else if (CurrentLeft.GetComponent<LifeUp>())
                         {
-                            //remove from UI
-                            LifeUp.GetComponent<Renderer>().sortingOrder = -1;
-                            CurrentLeft.transform.position = new Vector2(playerRB.transform.position.x, playerRB.transform.position.y - 1);
+                            DropItem(CurrentLeft, LifeUp);
                         }
 
                         // Pick up new item
@@ -459,30 +362,22 @@ public class Inventory : MonoBehaviour
                     }
                     else
                     {
-                        // check our current item
+                        // This statement will drop the item 
                         if (CurrentRight.GetComponent<OdinAle>())
                         {
-                            //remove from UI
-                            OdinAle.GetComponent<Renderer>().sortingOrder = -1;
-                            CurrentRight.transform.position = new Vector2(playerRB.transform.position.x, playerRB.transform.position.y - 1);
+                            DropItem(CurrentRight, OdinAle);
                         }
                         else if (CurrentRight.GetComponent<BatteryBread>())
                         {
-                            //remove from UI
-                            BatteryBread.GetComponent<Renderer>().sortingOrder = -1;
-                            CurrentRight.transform.position = new Vector2(playerRB.transform.position.x, playerRB.transform.position.y - 1);
-                        }
-                        else if (CurrentRight.GetComponent<LifeUp>())
-                        {
-                            //remove from UI
-                            LifeUp.GetComponent<Renderer>().sortingOrder = -1;
-                            CurrentRight.transform.position = new Vector2(playerRB.transform.position.x, playerRB.transform.position.y - 1);
+                            DropItem(CurrentRight, BatteryBread);
                         }
                         else if (CurrentRight.GetComponent<SwiftSauce>())
                         {
-                            //remove from UI
-                            SwiftSauce.GetComponent<Renderer>().sortingOrder = -1;
-                            CurrentRight.transform.position = new Vector2(playerRB.transform.position.x, playerRB.transform.position.y - 1);
+                            DropItem(CurrentRight, SwiftSauce);
+                        }
+                        else if (CurrentRight.GetComponent<LifeUp>())
+                        {
+                            DropItem(CurrentRight, LifeUp);
                         }
 
                         // Pick up new item
@@ -571,30 +466,22 @@ public class Inventory : MonoBehaviour
                     }
                     else
                     {
-                        // check our current item
+                        // This statement will drop the item 
                         if (CurrentDown.GetComponent<OdinAle>())
                         {
-                            //remove from UI
-                            OdinAle.GetComponent<Renderer>().sortingOrder = -1;
-                            CurrentDown.transform.position = new Vector2(playerRB.transform.position.x, playerRB.transform.position.y - 1);
+                            DropItem(CurrentDown, OdinAle);
                         }
                         else if (CurrentDown.GetComponent<BatteryBread>())
                         {
-                            //remove from UI
-                            BatteryBread.GetComponent<Renderer>().sortingOrder = -1;
-                            CurrentDown.transform.position = new Vector2(playerRB.transform.position.x, playerRB.transform.position.y - 1);
+                            DropItem(CurrentDown, BatteryBread);
                         }
                         else if (CurrentDown.GetComponent<SwiftSauce>())
                         {
-                            //remove from UI
-                            SwiftSauce.GetComponent<Renderer>().sortingOrder = -1;
-                            CurrentDown.transform.position = new Vector2(playerRB.transform.position.x, playerRB.transform.position.y - 1);
+                            DropItem(CurrentDown, SwiftSauce);
                         }
                         else if (CurrentDown.GetComponent<LifeUp>())
                         {
-                            //remove from UI
-                            LifeUp.GetComponent<Renderer>().sortingOrder = -1;
-                            CurrentDown.transform.position = new Vector2(playerRB.transform.position.x, playerRB.transform.position.y - 1);
+                            DropItem(CurrentDown, LifeUp);
                         }
 
                         // Pick up new item
@@ -788,5 +675,12 @@ public class Inventory : MonoBehaviour
             //remove from UI
             LifeUp.GetComponent<Renderer>().sortingOrder = -1;
         }
+    }
+
+    public void DropItem(GameObject currentItem, GameObject item)
+    {
+
+        item.GetComponent<Renderer>().sortingOrder = -1;
+        currentItem.transform.position = new Vector2(playerRB.transform.position.x, playerRB.transform.position.y - 1);
     }
 }
