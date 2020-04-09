@@ -217,6 +217,11 @@ PrefabInstance:
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[7].y
       value: 0.31076014
       objectReference: {fileID: 0}
+    - target: {fileID: 5902347085643825220, guid: dd31ea9594ec96e419708ba61f6b9d56,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 9051135358679058597}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd31ea9594ec96e419708ba61f6b9d56, type: 3}
 --- !u!1 &2499971651845608493 stripped
