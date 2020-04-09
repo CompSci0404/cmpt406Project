@@ -212,10 +212,11 @@ MonoBehaviour:
   atkDamage: 1
   tooCloseRange: 5
   velocityOfRangedAttack: 50
-  rangedAttackCooldown: 3
+  rangedAttackCooldown: 1.5
   spawnPoints: []
   ParticleDamage: {fileID: 6980632896635148368, guid: e01f146a534f643e3a8bec06f3966da9,
     type: 3}
+  helShield: {fileID: 0}
 --- !u!114 &315639154512859546
 MonoBehaviour:
   m_ObjectHideFlags: 0

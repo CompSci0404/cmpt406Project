@@ -18,9 +18,8 @@ public class PauseMenu : MonoBehaviour
     public TextMeshProUGUI option1;
     public TextMeshProUGUI option2;
     public TextMeshProUGUI option3;
-    public TextMeshProUGUI option4;
 
-    private int numberOfOptions = 4;
+    private int numberOfOptions = 3;
 
     private int selectedOption;
 
@@ -30,7 +29,6 @@ public class PauseMenu : MonoBehaviour
         option1.color = new Color32(255, 255, 255, 255);
         option2.color = new Color32(0, 0, 0, 255);
         option3.color = new Color32(0, 0, 0, 255);
-        option4.color = new Color32(0, 0, 0, 255);
 
         pointer.transform.position = new Vector3(option1.transform.position.x, option1.transform.position.y);
     }
@@ -61,7 +59,6 @@ public class PauseMenu : MonoBehaviour
             option1.color = new Color32(0, 0, 0, 255);
             option2.color = new Color32(0, 0, 0, 255);
             option3.color = new Color32(0, 0, 0, 255);
-            option4.color = new Color32(0, 0, 0, 255);
 
             switch (selectedOption)
             {
@@ -76,10 +73,6 @@ public class PauseMenu : MonoBehaviour
                 case 3:
                     option3.color = new Color32(255, 255, 255, 255);
                     pointer.transform.position = new Vector3(option3.transform.position.x, option3.transform.position.y, 0);
-                    break;
-                case 4:
-                    option4.color = new Color32(255, 255, 255, 255);
-                    pointer.transform.position = new Vector3(option4.transform.position.x, option4.transform.position.y, 0);
                     break;
             }
         }
@@ -95,7 +88,6 @@ public class PauseMenu : MonoBehaviour
             option1.color = new Color32(0, 0, 0, 255);
             option2.color = new Color32(0, 0, 0, 255);
             option3.color = new Color32(0, 0, 0, 255);
-            option4.color = new Color32(0, 0, 0, 255);
 
             switch (selectedOption)
             {
@@ -111,10 +103,6 @@ public class PauseMenu : MonoBehaviour
                     option3.color = new Color32(255, 255, 255, 255);
                     pointer.transform.position = new Vector3(option3.transform.position.x, option3.transform.position.y, 0);
                     break;
-                case 4:
-                    option4.color = new Color32(255, 255, 255, 255);
-                    pointer.transform.position = new Vector3(option4.transform.position.x, option4.transform.position.y, 0);
-                    break;
             }
         }
 
@@ -123,16 +111,13 @@ public class PauseMenu : MonoBehaviour
             switch (selectedOption)
             {
                 case 1:
-                    Resume();
+                    ChangeControls();
                     break;
                 case 2:
-                    //Option();
+                    Resume();
                     break;
                 case 3:
                     QuitGame();
-                    break;
-                case 4:
-                    ChangeControls();
                     break;
             }
         }
@@ -169,14 +154,14 @@ public class PauseMenu : MonoBehaviour
     {
         if (GameObject.FindGameObjectWithTag("Player").GetComponent<MainControls>().GetControlType() == 2)
         {
-            option4.SetText("Mouse & KeyBoard");
-            option4.fontSize = 40f;
+            option1.SetText("Mouse & Keyboard");
+            option1.fontSize = 40f;
             GameObject.FindGameObjectWithTag("Player").GetComponent<MainControls>().SetMyControllerToMouseAndKeyboard();
         }
         else if (GameObject.FindGameObjectWithTag("Player").GetComponent<MainControls>().GetControlType() == 1)
         {
-            option4.SetText("XBox");
-            option4.fontSize = 60f;
+            option1.SetText("Xbox");
+            option1.fontSize = 60f;
             GameObject.FindGameObjectWithTag("Player").GetComponent<MainControls>().SetMyControllerToXbox();
         }
 
