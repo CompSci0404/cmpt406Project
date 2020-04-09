@@ -122,6 +122,7 @@ MonoBehaviour:
   isDragur: 0
   isNanoGhost: 0
   isHel: 0
+  isShadow: 1
 --- !u!95 &8411080585816222178
 Animator:
   serializedVersion: 3
