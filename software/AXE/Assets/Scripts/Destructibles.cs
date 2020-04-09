@@ -7,6 +7,7 @@ public class Destructibles : MonoBehaviour
 
     private float health;
     public GameObject ParticleDamage;
+    public Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -34,9 +35,18 @@ public class Destructibles : MonoBehaviour
             // for now its just NormalDrops
             NormalDrops();
 
+            //destroy object if animator has not been hooked up
+            if (animator == null)
+            {
+                Destroy(this.gameObject);
+            }
 
-            // could change destroy to animation to transition to destroyedObject state
-            Destroy(this.gameObject);
+            else
+            {
+                animator.SetTrigger("hit");
+                // could change destroy to animation to transition to destroyedObject state
+                Invoke("destroyObject", 0.5f);
+            }
         }
     }
 
@@ -54,5 +64,10 @@ public class Destructibles : MonoBehaviour
             GameObject coin1 = Instantiate((GameObject)Resources.Load("Prefabs/Coin"), new Vector2(this.transform.position.x, this.transform.position.y), Quaternion.identity) as GameObject;
             GameObject coin2 = Instantiate((GameObject)Resources.Load("Prefabs/Coin"), new Vector2(this.transform.position.x + .25f, this.transform.position.y + .25f), Quaternion.identity) as GameObject;
         }
+    }
+
+    public void destroyObject()
+    {
+        Destroy(this.gameObject);
     }
 }
