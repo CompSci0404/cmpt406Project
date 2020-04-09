@@ -40,7 +40,7 @@ public class RangedAttack: MonoBehaviour
         {
             timer = Mathf.Max(0, timer - Time.deltaTime);
         }
-        else if (Input.GetButtonDown("J2B") || Input.GetAxis(rightTrigger) > 0)
+        else if (Input.GetButtonDown("J2B") || Input.GetAxis(rightTrigger) > 0 || Input.GetMouseButton(0))
         {
             if (parent.GetComponent<MainControls>().canAttack)
             {
