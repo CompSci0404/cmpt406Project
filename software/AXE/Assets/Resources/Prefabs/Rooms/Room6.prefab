@@ -1880,7 +1880,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorParent: {fileID: 5045530207689405814}
-  Player: {fileID: 0}
+  Player: {fileID: 7600984664673736890, guid: 16c7e1f4973d0fb44910bce4460806f1, type: 3}
   newTrack: {fileID: 8300000, guid: bb5747eb7c357c746a221cb77bb3c66e, type: 3}
 --- !u!114 &1077771087275774435
 MonoBehaviour:
@@ -6102,6 +6102,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 832830579479785102}
     m_Modifications:
+    - target: {fileID: 134500919006282328, guid: 1f89ce68848ca8d41a9e670a7d46aad5,
+        type: 3}
+      propertyPath: m_Name
+      value: Arm3 Variant
+      objectReference: {fileID: 0}
     - target: {fileID: 4321236453422388398, guid: 1f89ce68848ca8d41a9e670a7d46aad5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6156,11 +6161,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 134500919006282328, guid: 1f89ce68848ca8d41a9e670a7d46aad5,
-        type: 3}
-      propertyPath: m_Name
-      value: Arm3 Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f89ce68848ca8d41a9e670a7d46aad5, type: 3}
@@ -6472,6 +6472,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 832830579479785102}
     m_Modifications:
+    - target: {fileID: 510532789497046982, guid: 169e989420df5974ca7fa068a89afd95,
+        type: 3}
+      propertyPath: m_Name
+      value: Arm4 Variant
+      objectReference: {fileID: 0}
     - target: {fileID: 4409037962227593520, guid: 169e989420df5974ca7fa068a89afd95,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6526,11 +6531,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 510532789497046982, guid: 169e989420df5974ca7fa068a89afd95,
-        type: 3}
-      propertyPath: m_Name
-      value: Arm4 Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 169e989420df5974ca7fa068a89afd95, type: 3}
