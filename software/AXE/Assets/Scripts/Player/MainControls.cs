@@ -279,6 +279,14 @@ public class MainControls : MonoBehaviour
         players.Add(nextPlayer);
 
         this.GetComponent<PlayerMovement>().enabled = true;
+        if (stats.GetControllerNumber() == 1)
+        {
+            Physics2D.IgnoreLayerCollision(11, 10, false);
+        }
+        else
+        {
+            Physics2D.IgnoreLayerCollision(11, 10, true);
+        }
 
         canAttack = true;
         Invoke("ResetSwap", 1);
