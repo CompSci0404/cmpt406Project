@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8998638514090871919}
   - component: {fileID: 6171376365292914577}
   - component: {fileID: 3070521567600756980}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ZArrow
   m_TagString: Arrow
   m_Icon: {fileID: 0}
