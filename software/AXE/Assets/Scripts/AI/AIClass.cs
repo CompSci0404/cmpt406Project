@@ -511,7 +511,7 @@ public abstract class AIClass : MonoBehaviour
         this.currentAct = "move";
         this.gameObject.GetComponent<EnemyAnim>().UpdateCurrentAct(currentAct);
 
-        this.gameObject.tag = "rngBlock";
+        //this.gameObject.tag = "rngBlock";
 
         if (setupShield == false)
         {  
