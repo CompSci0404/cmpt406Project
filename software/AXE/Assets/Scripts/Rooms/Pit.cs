@@ -17,10 +17,15 @@ public class Pit : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        GameObject obj = collision.gameObject;
+        Collider2D pitCollider = gameObject.GetComponent<Collider2D>();
+
+        if (obj.CompareTag("Player"))
         {
-            PlayerMovement player = collision.gameObject.GetComponent<PlayerMovement>();
+            PlayerMovement player = obj.GetComponent<PlayerMovement>();
             PlayerStats stats = player.GetComponentInChildren<PlayerStats>();
+
+            Collider2D playerCollider = obj.GetComponent<Collider2D>();
 
             if (stats.GetControllerNumber() == 1)
             {
@@ -33,13 +38,14 @@ public class Pit : MonoBehaviour
             }
             else
             {
-                Physics2D.IgnoreCollision(this.gameObject.GetComponent<Collider2D>(), collision.gameObject.GetComponent<Collider2D>());
+                //Physics2D.IgnoreCollision(pitCollider, playerCollider);
                 // Valk can fly
             }
         }
-        else if (collision.gameObject.CompareTag("BaseEnemy"))
+        else if (obj.CompareTag("BaseEnemy"))
         {
-            if(collision.gameObject.GetComponent<EnemyAnim>().isDragur)
+            Collider2D enemyCollider = obj.GetComponent<Collider2D>();
+            if(obj.GetComponent<EnemyAnim>().isDragur)
             {
                 // floor enemies should avoid the pits at all costs
                 //collision.gameObject.GetComponent<PathFinding>().SetPitCollision(true, this.gameObject); 
@@ -47,12 +53,12 @@ public class Pit : MonoBehaviour
             else
             {
                 // Enemy can fly
-                Physics2D.IgnoreCollision(this.gameObject.GetComponent<Collider2D>(), collision.gameObject.GetComponent<Collider2D>());
+                Physics2D.IgnoreCollision(pitCollider, enemyCollider);
             }
         }
-        else if (collision.gameObject.CompareTag("Projectile") || collision.gameObject.CompareTag("Arrow"))
+        else if (obj.CompareTag("Projectile") || obj.CompareTag("Arrow"))
         {
-            Physics2D.IgnoreCollision(this.gameObject.GetComponent<Collider2D>(), collision.gameObject.GetComponent<Collider2D>());
+            Physics2D.IgnoreCollision(pitCollider, obj.GetComponent<Collider2D>());
         }
     }
 
@@ -60,13 +66,13 @@ public class Pit : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            PlayerStats stats = collision.GetComponentInChildren<PlayerStats>();
             swapMessage.SetActive(false);
+            //Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), collision.gameObject.GetComponent<Collider2D>(), false);
         }
 
         else if (collision.gameObject.CompareTag("Projectile") || collision.gameObject.CompareTag("Arrow"))
         {
-            Physics2D.IgnoreCollision(this.gameObject.GetComponent<Collider2D>(), collision.GetComponent<Collider2D>());
+            Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), collision.GetComponent<Collider2D>());
         }
     }
 }

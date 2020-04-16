@@ -439,7 +439,7 @@ GameObject:
   - component: {fileID: 8374656412407698382}
   - component: {fileID: 354118581}
   - component: {fileID: 6928307704922019999}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SwapController
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -668,7 +668,6 @@ MonoBehaviour:
   HUD: {fileID: 0}
   thorAnimation: {fileID: 895764767}
   valkAnimation: {fileID: 109676076239904554}
-  reticleLocation: {fileID: 0}
   justSwapped: 0
   canAttack: 0
   swapAbility: 
@@ -729,6 +728,7 @@ MonoBehaviour:
   leftItem: {fileID: 0}
   rightItem: {fileID: 0}
   downItem: {fileID: 0}
+  CurrentUp: {fileID: 0}
 --- !u!114 &5291062775590370721
 MonoBehaviour:
   m_ObjectHideFlags: 0
