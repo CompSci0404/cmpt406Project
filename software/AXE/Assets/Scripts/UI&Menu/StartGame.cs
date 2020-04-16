@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class StartGame : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class StartGame : MonoBehaviour
 
     [SerializeField]
     Canvas UIHelper;
+
+    public Button playButton;
 
     bool pastController;
 
@@ -40,6 +43,7 @@ public class StartGame : MonoBehaviour
         //ControllerCanvas.enabled = false;
         //ControllerCanvas.gameObject.SetActive(false);
         UIHelper.sortingOrder = 1;
+        playButton.gameObject.SetActive(false);
     }
 
     // Start Scene
