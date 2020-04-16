@@ -1,5 +1,24 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!95 &952330834129043531
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134500919006282328}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e4fc7d22b5847420da1f9f91035153fa, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &5892359441881357265
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7,11 +26,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5771374394149738889, guid: dd31ea9594ec96e419708ba61f6b9d56,
-        type: 3}
-      propertyPath: m_Name
-      value: Arm3 Variant
-      objectReference: {fileID: 0}
     - target: {fileID: 7655486158074548095, guid: dd31ea9594ec96e419708ba61f6b9d56,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -67,6 +81,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5771374394149738889, guid: dd31ea9594ec96e419708ba61f6b9d56,
+        type: 3}
+      propertyPath: m_Name
+      value: Arm3 Variant
+      objectReference: {fileID: 0}
     - target: {fileID: 8667056983805488402, guid: dd31ea9594ec96e419708ba61f6b9d56,
         type: 3}
       propertyPath: m_Sprite
@@ -78,6 +97,11 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5902347085643825220, guid: dd31ea9594ec96e419708ba61f6b9d56,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 952330834129043531}
     - target: {fileID: 6658924510082956397, guid: dd31ea9594ec96e419708ba61f6b9d56,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.size
@@ -210,3 +234,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd31ea9594ec96e419708ba61f6b9d56, type: 3}
+--- !u!1 &134500919006282328 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5771374394149738889, guid: dd31ea9594ec96e419708ba61f6b9d56,
+    type: 3}
+  m_PrefabInstance: {fileID: 5892359441881357265}
+  m_PrefabAsset: {fileID: 0}
