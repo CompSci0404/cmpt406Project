@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 6314175471189925814}
   - component: {fileID: 486692900337653899}
   - component: {fileID: 7142919491305266689}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: NanoGhostProjectile
   m_TagString: Projectile
   m_Icon: {fileID: 0}
