@@ -22,11 +22,12 @@ public class MainMenu : MonoBehaviour
     public TextMeshProUGUI option1;
     public TextMeshProUGUI option2;
     public TextMeshProUGUI option3;
+    public TextMeshProUGUI option4;
 
     public Button playButton;
     public Button optionsButton;
 
-    private int numberOfOptions = 3;
+    private int numberOfOptions = 4;
 
     private int selectedOption;
 
@@ -36,6 +37,7 @@ public class MainMenu : MonoBehaviour
         option1.color = new Color32(255, 255, 255, 255);
         option2.color = new Color32(0, 0, 0, 255);
         option3.color = new Color32(0, 0, 0, 255);
+        option4.color = new Color32(0, 0, 0, 255);
 
         pointer.transform.position = new Vector3(option1.transform.position.x, option1.transform.position.y);
     }
@@ -54,6 +56,7 @@ public class MainMenu : MonoBehaviour
             option1.color = new Color32(0, 0, 0, 255); 
             option2.color = new Color32(0, 0, 0, 255);
             option3.color = new Color32(0, 0, 0, 255);
+            option4.color = new Color32(0, 0, 0, 255);
 
             switch (selectedOption) 
             {
@@ -69,6 +72,10 @@ public class MainMenu : MonoBehaviour
                     option3.color = new Color32(255, 255, 255, 255);
                     pointer.transform.position = new Vector3(option3.transform.position.x, option3.transform.position.y,0);
                     break;
+                case 4:
+                    option4.color = new Color32(255, 255, 255, 255);
+                    pointer.transform.position = new Vector3(option4.transform.position.x, option4.transform.position.y, 0);
+                    break;
             }
         }
 
@@ -83,6 +90,7 @@ public class MainMenu : MonoBehaviour
             option1.color = new Color32(0, 0, 0, 255); 
             option2.color = new Color32(0, 0, 0, 255);
             option3.color = new Color32(0, 0, 0, 255);
+            option4.color = new Color32(0, 0, 0, 255);
 
             switch (selectedOption) 
             { 
@@ -98,6 +106,10 @@ public class MainMenu : MonoBehaviour
                 option3.color = new Color32(255, 255, 255, 255);
                 pointer.transform.position = new Vector3(option3.transform.position.x, option3.transform.position.y,0);
                 break;
+            case 4:
+                option4.color = new Color32(255, 255, 255, 255);
+                pointer.transform.position = new Vector3(option4.transform.position.x, option4.transform.position.y, 0);
+                break;
             }
         }
 
@@ -112,6 +124,9 @@ public class MainMenu : MonoBehaviour
                     optionsButton.onClick.Invoke();
                     break;
                 case 3:
+                    ShowCredits();
+                    break;
+                case 4:
                     QuitGame();
                     break;
             }
@@ -141,7 +156,12 @@ public class MainMenu : MonoBehaviour
         Time.timeScale = 1f;
         PauseMenu.GameIsPaused = false;
     }
-    
+
+    public void ShowCredits()
+    {
+        SceneManager.LoadScene(6);
+    }
+
     // Quit when game is built
     public void QuitGame()
     {
