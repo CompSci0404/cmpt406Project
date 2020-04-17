@@ -31,6 +31,10 @@ public class OptionsMenu : MonoBehaviour
 
     public GameObject pcControlsUI;
     public GameObject controllersUI;
+
+    private float upDownMovement = 0;
+    private float lastUpDownMovement = 0;
+
     void Start()
     {
         selectedOption = 1;
@@ -44,8 +48,9 @@ public class OptionsMenu : MonoBehaviour
 
     void Update()
     {
-        float upDownMovement = Input.GetAxis("DPad Y");
-        if (Input.GetKeyDown(KeyCode.DownArrow) || upDownMovement >= -1 && upDownMovement < 0)
+        lastUpDownMovement = upDownMovement;
+        upDownMovement = Input.GetAxisRaw("DPad Y");
+        if (Input.GetKeyDown(KeyCode.DownArrow) || (upDownMovement == -1 && lastUpDownMovement != -1))
         { //Input telling it to go up or down.
             selectedOption += 1;
             if (selectedOption > numberOfOptions)
@@ -79,7 +84,7 @@ public class OptionsMenu : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) || upDownMovement <= 1 && upDownMovement > 0)
+        if (Input.GetKeyDown(KeyCode.UpArrow) || (upDownMovement == 1 && lastUpDownMovement != 1))
         { //Input telling it to go up or down.
             selectedOption -= 1;
             if (selectedOption < 1)

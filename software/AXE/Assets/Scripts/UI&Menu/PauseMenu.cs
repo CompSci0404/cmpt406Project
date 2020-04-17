@@ -27,6 +27,9 @@ public class PauseMenu : MonoBehaviour
 
     private bool inputCD;
 
+    private float upDownMovement = 0;
+    private float lastUpDownMovement = 0;
+
     void Start()
     {
         selectedOption = 1;
@@ -43,7 +46,8 @@ public class PauseMenu : MonoBehaviour
     {
         if (!inputCD)
         {
-            float upDownMovement = Input.GetAxis("DPad Y");
+            lastUpDownMovement = upDownMovement;
+            upDownMovement = Input.GetAxisRaw("DPad Y");
             if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("StartButton"))
             {
                 if (GameIsPaused)
@@ -58,7 +62,7 @@ public class PauseMenu : MonoBehaviour
                     Pause();
                 }
             }
-            if (Input.GetKeyDown(KeyCode.DownArrow) || upDownMovement >= -1 && upDownMovement < 0)
+            if (Input.GetKeyDown(KeyCode.DownArrow) || (upDownMovement == -1 && lastUpDownMovement != -1))
             { //Input telling it to go down.
                 selectedOption += 1;
                 if (selectedOption > numberOfOptions)
@@ -87,7 +91,7 @@ public class PauseMenu : MonoBehaviour
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.UpArrow) || upDownMovement <= 1 && upDownMovement > 0)
+            if (Input.GetKeyDown(KeyCode.UpArrow) || (upDownMovement == 1 && lastUpDownMovement != 1))
             { //Input telling it to go up.
                 selectedOption -= 1;
                 if (selectedOption < 1)
