@@ -12,7 +12,42 @@ public class Door : MonoBehaviour
     public Compass direction;
 
     [SerializeField]
+    Collider2D collider;
+    [SerializeField]
+    SpriteRenderer spriteOn;
+    [SerializeField]
+    SpriteRenderer spriteOff;
+
+
+    [SerializeField]
     private Door destination;
+
+
+    private void Start()
+    {
+        if (null == destination)
+        {
+            Debug.Log("Door removed due to no destination");
+            Destroy(gameObject);
+        }
+
+        TurnOn();
+    }
+
+    public void TurnOn()
+    {
+        collider.enabled = true;
+        spriteOn.enabled = true;
+        spriteOff.enabled = false;
+    }
+
+    public void TurnOff()
+    {
+        collider.enabled = false;
+        spriteOn.enabled = false;
+        spriteOff.enabled = true;
+    }
+
 
     public void AssignPartner(Door door)
     {

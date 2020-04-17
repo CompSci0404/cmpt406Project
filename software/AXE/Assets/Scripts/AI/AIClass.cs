@@ -23,10 +23,11 @@ public abstract class AIClass : MonoBehaviour
     public float rangedAttackCooldown;      /*the cool down before a Range AI can fire again.*/
     public GameObject[]  spawnPoints;
     public GameObject ParticleDamage;
+    public Sprite helShield;
 
     protected DecisionTree rootOfTree;      /*this is the root of the tree. for the decision tree. All classes extended from this super class have access to this function call.*/
-  
 
+    private bool controlToPf = false;               /*Is Path finding needed? This will be set by code.*/
     private float saveSpeed;                /*The inital speed a AI originally had.*/
     private GameObject player;
     private List<GameObject> rangePrefabs;  /* all bullet prefabs for AI are stored in this list. */
@@ -41,12 +42,16 @@ public abstract class AIClass : MonoBehaviour
     
     /*Hel*/
     private GameObject oldLaserObject;
-    private bool laserSpawned;
-    private float laserSpeed = 20;
-    private float spawnTimer = 15;
-    private float spawnCoolDown = 0; 
-
-
+    private float laserSpeed = 60;
+    private float spawnTimer = 10;
+    private float spawnCoolDown = 0;
+    private float halfedHP;
+    private float totalHP;
+    private bool setupShield = false;
+    private bool phase2 = false;
+    private bool spawnedUnit = false; 
+    
+ 
     //---[[pre-setup calls (call these before building the decision tree in start.)]]---//
 
     /// <summary>
@@ -58,6 +63,19 @@ public abstract class AIClass : MonoBehaviour
     public void SetSaveSpeed()
     {
         this.saveSpeed = speed; 
+    }
+
+    public void unitSpawnedCheckSet()
+    {
+
+        this.spawnedUnit = true;
+    }
+
+    public void findHalfedHealth()
+    {
+
+        halfedHP = health / 2;
+        totalHP = health; 
     }
 
     /// <summary>
@@ -84,6 +102,7 @@ public abstract class AIClass : MonoBehaviour
     {
         this.cooldown = 0; 
     }
+
 
     /// <summary>
     ///  <c>BuildRangePrefabs</c>
@@ -174,6 +193,23 @@ public abstract class AIClass : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// <c>FindEnemyParticle</c>
+    /// 
+    /// pre: path to the gameobject we want to use as particles. 
+    /// post: sets the particleDamage variable to a gameobject.
+    /// 
+    /// 
+    /// </summary>
+    /// <param name="effectName">path to the Particle effect we want to use.</param>
+    public void FindEnemyParticle(string effectName)
+    {
+        if (this.ParticleDamage == null)
+        {
+            this.ParticleDamage = Resources.Load(effectName) as GameObject;
+        }
+    }
+
     // --- [[ Damage to AI: ]] ---//
 
     /// <summary>
@@ -188,10 +224,33 @@ public abstract class AIClass : MonoBehaviour
     {
         health -= damage;
         Instantiate(ParticleDamage, transform.position, Quaternion.identity);
+        //sound Effect
+        FindObjectOfType<AudioManager>().PlaySound("enemyHit");
+
         if (health <= 0) {
-            this.gameObject.GetComponent<EnemyAnim>().Death();
-            StartCoroutine(Die());
+            if (phase2 == false)
+            {
+                this.gameObject.GetComponent<EnemyAnim>().Death();
+            }
+
+            if (this.spawnedUnit == true)
+            {
+                StartCoroutine(spawnDeath());
+            }
+            else
+            {
+
+
+                StartCoroutine(Die());
+            }
         }
+    }
+
+    public IEnumerator spawnDeath()
+    {
+        yield return new WaitForSeconds(1.0f);
+        Destroy(this.gameObject);
+
     }
 
     public IEnumerator Die()
@@ -199,6 +258,7 @@ public abstract class AIClass : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         SendMessageUpwards("EnemyDestroyed", gameObject, SendMessageOptions.RequireReceiver);
         Destroy(this.gameObject);
+
     }
 
     //---[[range attack actions]]---//
@@ -272,7 +332,7 @@ public abstract class AIClass : MonoBehaviour
         if(cooldown == 0)
         {
 
-                this.currentAct = "attack";
+                this.gameObject.GetComponent<EnemyAnim>().HelLaser();
 
                 this.cooldown = this.rangedAttackCooldown;
 
@@ -360,8 +420,8 @@ public abstract class AIClass : MonoBehaviour
         if (this.spawnCoolDown > 0)
         {
 
-            this.spawnCoolDown = this.spawnCoolDown - Time.deltaTime; 
-
+            this.spawnCoolDown = this.spawnCoolDown - Time.deltaTime;
+            
 
             if(this.spawnCoolDown <= 0)
             {
@@ -375,7 +435,7 @@ public abstract class AIClass : MonoBehaviour
         
         if(this.spawnCoolDown == 0)
         {
-
+            
             this.spawnCoolDown = this.spawnTimer;
 
             return true; 
@@ -389,7 +449,37 @@ public abstract class AIClass : MonoBehaviour
     }
 
 
+    public bool checkHPHalfed()
+    {
+        Debug.Log("checking health: health:" + health + " halfed:" + halfedHP);
+        if(this.health >= this.halfedHP)
+        {
+
+            return true;
+
+        } 
+        else
+        {
+
+            return false; 
+
+        }
+
+
+    }
+
+
     //---[[Movement Actions!]]---//
+
+
+
+    public void activatePhase2()
+    {
+
+        phase2 = true;
+        this.health = totalHP;
+        this.gameObject.GetComponent<HelAI>().PhaseCheck(); 
+    }
 
     /// <summary>
     /// <c>MoveTowrdsPlayer</c>
@@ -400,12 +490,52 @@ public abstract class AIClass : MonoBehaviour
     /// </summary>
     public void MoveTowardsPlayer()
     {
+        if (controlToPf == false)
+        {
+            speed = saveSpeed;
+            this.currentAct = "move";
+            this.gameObject.GetComponent<EnemyAnim>().UpdateCurrentAct(currentAct);
+            this.transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
+        } 
+        else
+        {
+            speed = saveSpeed;
+            this.GetComponent<PathFinding>().WalkAroundObject(this.speed, this.player, this.gameObject);
+        }
+    }
+
+
+    public void shieldedAtkMove()
+    {
         speed = saveSpeed;
         this.currentAct = "move";
         this.gameObject.GetComponent<EnemyAnim>().UpdateCurrentAct(currentAct);
-        this.transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
-    }
 
+        //this.gameObject.tag = "rngBlock";
+
+        if (setupShield == false)
+        {  
+            // not the best way to do this, but for now we out product > coding style.
+            //Sprite shield = Resources.Load("AI/sprites/Hel", typeof(Sprite)) as Sprite;
+
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = helShield;
+            this.gameObject.GetComponent<EnemyAnim>().isHel = false;
+            Destroy(this.gameObject.GetComponent<Animator>());  // just for now, our hels are different shadow V shield etc.
+            Destroy(this.gameObject.GetComponent<PolygonCollider2D>());
+
+            this.gameObject.AddComponent<PolygonCollider2D>(); // just re-adding a polygon collider, because the sprite changes.
+
+            this.spawnTimer = 20;
+
+            setupShield = true; 
+        }
+    
+        this.transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
+
+
+
+
+    }
     
     /// <summary>
     /// <c>Teleport</c>
@@ -491,17 +621,42 @@ public abstract class AIClass : MonoBehaviour
 
         int randomNumSpawns = UnityEngine.Random.Range(0, spawnPoints.Length);
 
+
         while (counter < randomNumSpawns)
         {
             int randomLocation = UnityEngine.Random.Range(0, spawnPoints.Length-1);
 
             GameObject newEnemy = Instantiate(this.AIPrefabs[this.enemySpawnIndex], spawnPoints[randomLocation].transform.position, Quaternion.identity);
-         
+
+            newEnemy.GetComponent<AIClass>().unitSpawnedCheckSet(); 
             counter++;
         }
     }
 
     
+    public void createIllusions()
+    {
+        int counter = 0;
+
+        int randomNumSpawns = UnityEngine.Random.Range(0, spawnPoints.Length);
+
+        // could be neat, but decided to axe this.
+        //this.gameObject.transform.position = new Vector2(spawnPoints[randomNumSpawns].transform.position.x, spawnPoints[randomNumSpawns].transform.position.y);
+
+
+        while (counter < randomNumSpawns)
+        {
+            int randomLocation = UnityEngine.Random.Range(0, spawnPoints.Length - 1);
+
+            GameObject newEnemy = Instantiate(this.AIPrefabs[this.enemySpawnIndex], spawnPoints[randomLocation].transform.position, Quaternion.identity);
+
+            newEnemy.GetComponent<AIClass>().unitSpawnedCheckSet();
+
+            counter++;
+        }
+
+    }
+
 
 
     /// <summary>
@@ -533,6 +688,13 @@ public abstract class AIClass : MonoBehaviour
         this.speed = 0f;
     }
 
+
+    public bool returnPhase()
+    {
+
+        return phase2; 
+    }
+
     /// <summary>
     /// pre: none
     /// post: returns the current action this AI is doing.
@@ -542,4 +704,18 @@ public abstract class AIClass : MonoBehaviour
     {
         return this.currentAct;
     }
+
+
+    public void giveControlToPF()
+    {
+        controlToPf = true; 
+
+    }
+
+    public void takeControlFromPF()
+    {
+        controlToPf = false; 
+
+    }
+
 }

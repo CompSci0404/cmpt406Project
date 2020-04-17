@@ -11,6 +11,17 @@ public class Arrow : MonoBehaviour
 
     private float arrowDamage;
 
+    private Vector2 velocity;
+
+    private void Start()
+    {
+        velocity = GetComponent<Rigidbody2D>().velocity;
+    }
+
+    private void Update()
+    {
+        GetComponent<Rigidbody2D>().velocity = velocity;
+    }
 
     public void SetDamage(float damage)
     {
@@ -23,20 +34,34 @@ public class Arrow : MonoBehaviour
 
         GameObject obj = collision.gameObject;
 
-        // Check if bullent should not be destroyed
+        // Check if bullet should not be destroyed
         string[] tags = { "Player", "Arrow", "Projectile"};
         for (int i = 0; i < tags.Length; i++)
         {
             if (obj.CompareTag(tags[i])) return;
         }
 
-        // Check if collision is an enemy
-        used = true;
-        Destroy(gameObject);
-        if (obj.CompareTag("BaseEnemy"))
+        if (obj.layer.Equals(10))
         {
-            obj.GetComponent<AIClass>().Damage(arrowDamage);
-            return;
+            Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), obj.GetComponent<Collider2D>());
+        }
+
+        // Check if collision is an enemy
+        else if (!collision.collider.isTrigger)
+        {
+            used = true;
+            Destroy(gameObject);
+
+            if (obj.CompareTag("BaseEnemy"))
+            {
+                obj.GetComponent<AIClass>().Damage(arrowDamage);
+                return;
+            }
+            if (obj.CompareTag("Destructibles"))
+            {
+                obj.GetComponent<Destructibles>().Damage(arrowDamage);
+                return;
+            }
         }
     }
 }

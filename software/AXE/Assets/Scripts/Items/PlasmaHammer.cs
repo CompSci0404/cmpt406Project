@@ -33,6 +33,8 @@ public class PlasmaHammer : ItemClass
         {
             stats = GameObject.FindWithTag("Type2").GetComponent<PlayerStats>();
         }
+        //PlasmaHammer soundeffect
+        FindObjectOfType<AudioManager>().PlaySound("PlasmaHammer");
 
         // box collider 2D Version
         angle = playerCont.GetComponent<MainControls>().GetRSAngle();
@@ -51,6 +53,8 @@ public class PlasmaHammer : ItemClass
         {
             Debug.LogError("Unable to load Prefabs/PlasmaHammerIndicator.prefab from Resources");
         }
+
+        SetAbilityCooldown(2);
     }
 
     IEnumerator DeleteEffects(GameObject effect)

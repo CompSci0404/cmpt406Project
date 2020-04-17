@@ -40,10 +40,14 @@ public class RangedAttack: MonoBehaviour
         {
             timer = Mathf.Max(0, timer - Time.deltaTime);
         }
-        else if (Input.GetButtonDown("J2B") || Input.GetAxis(rightTrigger) > 0)
+        else if (Input.GetButtonDown("J2B") || Input.GetAxis(rightTrigger) > 0 || Input.GetMouseButton(0))
         {
-            ShootArrow(angle);
-            timer = stats.GetAttackSpeed();
+            if (parent.GetComponent<MainControls>().canAttack)
+            {
+                // changed argument of ShootArrow from angle to current argument.
+                ShootArrow(parent.GetComponent<MainControls>().GetRSAngle());
+                timer = stats.GetAttackSpeed();
+            }
         }
     }
 

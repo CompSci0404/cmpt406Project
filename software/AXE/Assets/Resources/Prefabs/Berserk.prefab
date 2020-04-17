@@ -49,7 +49,7 @@ MonoBehaviour:
   itemName: Berserk
   itemDescription: Double damage for 10 seconds
   myItemType: 1
-  price: 3
+  price: 10
   abilityCooldown: 0
   itemDuration: 10
   itemMultiplier: 0

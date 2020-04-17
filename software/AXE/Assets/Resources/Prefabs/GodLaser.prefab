@@ -100,8 +100,8 @@ MonoBehaviour:
     it reaches critical mass, allowing them to unleash a devastating beam which penetrates
     through all enemies.
   myItemType: 2
-  price: 4
-  abilityCooldown: 3
+  price: 15
+  abilityCooldown: 2
   itemDuration: 0
   itemMultiplier: 4
 --- !u!58 &4757509488211693421

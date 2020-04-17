@@ -21,6 +21,8 @@ TagManager:
   - CoinMagnet
   - InvulnerableOutline
   - Pit
+  - rngBlock
+  - Destructibles
   layers:
   - Default
   - TransparentFX
@@ -32,10 +34,10 @@ TagManager:
   - 
   - enemy
   - wall
-  - 
-  - 
-  - 
-  - 
+  - pit
+  - player
+  - projectiles
+  - cover
   - 
   - 
   - 

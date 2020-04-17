@@ -6,66 +6,72 @@ public class RoomSystem : MonoBehaviour
 {
     bool isClear = false;
 
-    List<Transform> doors;
-
     [SerializeField]
     Transform doorParent;
+
+    [SerializeField]
+    GameObject Player;
+
+    public AudioClip newTrack;
+
+    private MusicManager MManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        doors = new List<Transform>();
+        MManager = FindObjectOfType<MusicManager>();
+    }
 
-        for (int i = 0; i < doorParent.childCount; i++)
-        {
-            Transform door = doorParent.GetChild(i);
-
-            if (door.childCount > 0)
-            {
-                doors.Add(door.GetChild(0));
-            }
-        }
+    public void ChangeTrack()
+    {
+        MManager.ChangeMusic(newTrack);
     }
 
     void PlayerEnter()
     {
         if (!isClear)
         {
-            foreach (Transform door in doors)
+            for (int i = 0; i < doorParent.childCount; i++)
             {
-                door.gameObject.SetActive(false);
+                Transform door = doorParent.GetChild(i);
+                door.SendMessage("TurnOff");
             }
+        }
+        if (MManager.currentMusic.clip.name != newTrack.name)
+        {
+            ChangeTrack();
         }
     }
 
     void RoomClear()
     {
         isClear = true;
-        foreach (Transform door in doors)
+        for (int i = 0; i < doorParent.childCount; i++)
         {
-            door.gameObject.SetActive(true);
+            Transform door = doorParent.GetChild(i);
+            door.SendMessage("TurnOn");
+            if(Player.GetComponent<Abilities>().GetActiveAbility() != null)
+            {
+                Player.GetComponent<Abilities>().GetActiveAbility().GetComponentInChildren<ItemClass>().ReduceAbilityCooldown();
+            }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject obj = collision.gameObject;
-        if (!obj.CompareTag("Player"))
+        if (obj.CompareTag("Player"))
         {
-            return;
+            SendMessage("PlayerEnter");
         }
-
-        SendMessage("PlayerEnter");
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         GameObject obj = collision.gameObject;
-        if (!obj.CompareTag("Player"))
+        if (obj.CompareTag("Player"))
         {
-            return;
+            SendMessage("PlayerExit");
         }
-
-        SendMessage("PlayerExit");
     }
 }

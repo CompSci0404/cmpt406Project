@@ -12,7 +12,13 @@ public class MeleeAttack : MonoBehaviour
     Vector2 movement;
     Rigidbody2D rBody;
 
+    float thorAttackSpeed = .5f;
+    float thorAttackDamage = 5f;
+
     [SerializeField] private Transform weaponPoint;
+
+    [SerializeField]
+    private ThorAnimationInput thorAnimation;
 
     private bool canAttack;
 
@@ -31,22 +37,22 @@ public class MeleeAttack : MonoBehaviour
         movement.y = Input.GetAxis("Vertical");
         if (movement.x > 0)
         {
-            Vector2 weaponPosition = new Vector2(gameObject.transform.position.x + 0.8f, gameObject.transform.position.y);
+            Vector2 weaponPosition = new Vector2(gameObject.transform.position.x + 1f, gameObject.transform.position.y);
             weaponPoint.transform.position = weaponPosition;
         }
         else if (movement.x < 0)
         {
-            Vector2 weaponPosition = new Vector2(gameObject.transform.position.x - 0.8f, gameObject.transform.position.y);
+            Vector2 weaponPosition = new Vector2(gameObject.transform.position.x - 1f, gameObject.transform.position.y);
             weaponPoint.transform.position = weaponPosition;
         }
         else if (movement.y > 0)
         {
-            Vector2 weaponPosition = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + 0.8f);
+            Vector2 weaponPosition = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + 1f);
             weaponPoint.transform.position = weaponPosition;
         }
         else if (movement.y < 0)
         {
-            Vector2 weaponPosition = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 0.8f);
+            Vector2 weaponPosition = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 1f);
             weaponPoint.transform.position = weaponPosition;
         }
 
@@ -54,7 +60,7 @@ public class MeleeAttack : MonoBehaviour
         if (attackTime <= 0)
         {
             canAttack = true;
-            attackTime = stats.GetAttackSpeed();
+            attackTime = stats.GetAttackSpeed() + thorAttackSpeed;
         }
         else
         {
@@ -67,13 +73,19 @@ public class MeleeAttack : MonoBehaviour
     public void MeleeAtt()
     {
         if (canAttack)
-        { 
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(weaponPoint.position, stats.GetRange() / 3, enemyLayers);
+        {
+            thorAnimation.AttackAnimTrigger();
+            FindObjectOfType<AudioManager>().PlaySound("ThorSwing");
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(weaponPoint.position, stats.GetRange() *.8f, enemyLayers);
             for( int i = 0; i < hitEnemies.Length; i++ )
             {
-                if (hitEnemies[i].CompareTag("BaseEnemy"))
+                if (hitEnemies[i].CompareTag("BaseEnemy") || hitEnemies[i].CompareTag("rngBlock"))
                 {
-                    hitEnemies[i].GetComponent<AIClass>().Damage(stats.GetDamage());
+                    hitEnemies[i].GetComponent<AIClass>().Damage(stats.GetDamage() + thorAttackDamage);
+                }
+                else if (hitEnemies[i].CompareTag("Destructibles"))
+                {
+                    hitEnemies[i].GetComponent<Destructibles>().Damage(stats.GetDamage() + thorAttackDamage);
                 }
             }
             canAttack = false;

@@ -71,12 +71,17 @@ public abstract class ItemClass : MonoBehaviour
                 abilityJustUsed = true;
                 
             }
+            /*
+             *  if we want to go back to timed base cooldowns
+             * need to comment out all things that is covered with // ability cooldowns // in enemySystems
+             * and remove this commented block
             if (abilityJustUsed)
             {
                 // will be relocated at top of this else if statement and check if cooldown is 0 then change abilityJustUsed to false
                 // just need room to call SetCurAbilityCooldown(abilityCooldown - 1) once a player finnish a room or once it calls roomClear()
                 Invoke("TempTimer", abilityCooldown);
             }
+            */
         }
     }
 
@@ -149,6 +154,18 @@ public abstract class ItemClass : MonoBehaviour
     public void SetAbilityCooldown(int cooldown)
     {
         curAbilityCooldown = cooldown;
+        abilityJustUsed = false;
+    }
+    public void ReduceAbilityCooldown()
+    {
+        if (curAbilityCooldown > 0)
+        {
+            curAbilityCooldown -= 1;
+        }
+        else if (curAbilityCooldown == 0)
+        {
+            abilityJustUsed = false;
+        }
     }
     public bool GetAbilityJustUsed()
     {
@@ -190,7 +207,7 @@ public abstract class ItemClass : MonoBehaviour
     {
         return price;
     }
-    public void BuyItem()
+    public bool BuyItem()
     {
         GameObject playerCont =  GameObject.FindWithTag("Player");
         CoinStats stats;
@@ -201,7 +218,10 @@ public abstract class ItemClass : MonoBehaviour
             {
                 stats.UseThorCoins(price);
                 needCoin = false;
+                return true;
             }
+            return false;
+
         }
         else
         {
@@ -210,7 +230,9 @@ public abstract class ItemClass : MonoBehaviour
             {
                 stats.UseValkCoins(price);
                 needCoin = false;
+                return true;
             }
+            return false;
         }
     }
 }

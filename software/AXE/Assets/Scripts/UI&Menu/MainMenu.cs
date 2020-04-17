@@ -10,15 +10,29 @@ using TMPro;
  */
 public class MainMenu : MonoBehaviour
 {
+
+    [SerializeField]
+    Canvas MenuCanavs;
+
+    [SerializeField]
+    Canvas ControllerMapping;
+
     public Image pointer;
 
     public TextMeshProUGUI option1;
     public TextMeshProUGUI option2;
     public TextMeshProUGUI option3;
+    public TextMeshProUGUI option4;
 
-    private int numberOfOptions = 3;
+    public Button playButton;
+    public Button optionsButton;
+
+    private int numberOfOptions = 4;
 
     private int selectedOption;
+
+    private float upDownMovement = 0;
+    private float lastUpDownMovement = 0;
 
     void Start()
     {
@@ -26,14 +40,16 @@ public class MainMenu : MonoBehaviour
         option1.color = new Color32(255, 255, 255, 255);
         option2.color = new Color32(0, 0, 0, 255);
         option3.color = new Color32(0, 0, 0, 255);
+        option4.color = new Color32(0, 0, 0, 255);
 
         pointer.transform.position = new Vector3(option1.transform.position.x, option1.transform.position.y);
     }
 
     void Update()
     {
-        float upDownMovement = Input.GetAxis("DPad Y");
-        if (Input.GetKeyDown(KeyCode.DownArrow) || upDownMovement >= -1 && upDownMovement < 0)
+        lastUpDownMovement = upDownMovement;
+        upDownMovement = Input.GetAxisRaw("DPad Y");
+        if (Input.GetKeyDown(KeyCode.DownArrow) || (upDownMovement == -1 && lastUpDownMovement != -1))
         { //Input telling it to go up or down.
             selectedOption += 1;
             if (selectedOption > numberOfOptions) 
@@ -44,6 +60,7 @@ public class MainMenu : MonoBehaviour
             option1.color = new Color32(0, 0, 0, 255); 
             option2.color = new Color32(0, 0, 0, 255);
             option3.color = new Color32(0, 0, 0, 255);
+            option4.color = new Color32(0, 0, 0, 255);
 
             switch (selectedOption) 
             {
@@ -59,10 +76,14 @@ public class MainMenu : MonoBehaviour
                     option3.color = new Color32(255, 255, 255, 255);
                     pointer.transform.position = new Vector3(option3.transform.position.x, option3.transform.position.y,0);
                     break;
+                case 4:
+                    option4.color = new Color32(255, 255, 255, 255);
+                    pointer.transform.position = new Vector3(option4.transform.position.x, option4.transform.position.y, 0);
+                    break;
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) || upDownMovement <= 1 && upDownMovement > 0)
+        if (Input.GetKeyDown(KeyCode.UpArrow) || (upDownMovement == 1 && lastUpDownMovement != 1))
         { //Input telling it to go up or down.
             selectedOption -= 1;
             if (selectedOption < 1) 
@@ -73,6 +94,7 @@ public class MainMenu : MonoBehaviour
             option1.color = new Color32(0, 0, 0, 255); 
             option2.color = new Color32(0, 0, 0, 255);
             option3.color = new Color32(0, 0, 0, 255);
+            option4.color = new Color32(0, 0, 0, 255);
 
             switch (selectedOption) 
             { 
@@ -88,6 +110,10 @@ public class MainMenu : MonoBehaviour
                 option3.color = new Color32(255, 255, 255, 255);
                 pointer.transform.position = new Vector3(option3.transform.position.x, option3.transform.position.y,0);
                 break;
+            case 4:
+                option4.color = new Color32(255, 255, 255, 255);
+                pointer.transform.position = new Vector3(option4.transform.position.x, option4.transform.position.y, 0);
+                break;
             }
         }
 
@@ -96,17 +122,36 @@ public class MainMenu : MonoBehaviour
             switch (selectedOption) 
             {
                 case 1:
-                    StartGame();
+                    ControllerCanvas();
                     break;
                 case 2:
-                    /*Do option two*/
+                    optionsButton.onClick.Invoke();
                     break;
                 case 3:
+                    ShowCredits();
+                    break;
+                case 4:
                     QuitGame();
                     break;
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("StartButton"))
+        {
+            StartGame();
+        }
     }
+
+    public void ControllerCanvas()
+    {
+        MenuCanavs.enabled = false;
+        MenuCanavs.gameObject.SetActive(false);
+
+        ControllerMapping.enabled = true;
+        ControllerMapping.gameObject.SetActive(true);
+
+    }
+
     // Start Scene
     public void StartGame()
     {
@@ -115,7 +160,12 @@ public class MainMenu : MonoBehaviour
         Time.timeScale = 1f;
         PauseMenu.GameIsPaused = false;
     }
-    
+
+    public void ShowCredits()
+    {
+        SceneManager.LoadScene(6);
+    }
+
     // Quit when game is built
     public void QuitGame()
     {
